@@ -1,4 +1,4 @@
-package com.birdie.asterismArcanum;
+package com.birdie.asterismarcanum;
 
 import java.util.List;
 
