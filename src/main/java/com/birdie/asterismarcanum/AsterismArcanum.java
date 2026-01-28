@@ -52,7 +52,7 @@ public class AsterismArcanum {
     }
 //the error detector does NOT like this thing VVVV I understand it's outdated but I don't understand what it needs
 //to be replaced with (also its fucking grammar correcting me smh)
-    @EventBusSubscriber(modid = AsterismArcanum.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = AsterismArcanum.MOD_ID, value = Dist.CLIENT)
     static class ClientModEvents {
         @SubscribeEvent
         static void onClientSetup(FMLClientSetupEvent event) {
