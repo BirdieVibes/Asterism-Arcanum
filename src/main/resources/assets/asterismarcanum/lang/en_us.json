@@ -1,3 +1,6 @@
 {
-  "item.asterismarcanum.stellar_nautilus_shell" : "Stellar Nautilus Shell"
+  "item.asterismarcanum.stellar_nautilus_shell" : "Stellar Nautilus Shell",
+  "item.asterismarcanum.liquid_luminance" : "Liquid Luminance",
+
+  "creativetab.asterismarcanum.asterism_arcanum_items" : "Asterism Items"
 }

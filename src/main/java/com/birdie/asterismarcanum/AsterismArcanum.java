@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum;
 
+import com.birdie.asterismarcanum.item.ModCreativeModeTabs;
 import com.birdie.asterismarcanum.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
@@ -28,9 +29,9 @@ public class AsterismArcanum {
     public AsterismArcanum(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
 
-
-
         NeoForge.EVENT_BUS.register(this);
+
+        ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
         modEventBus.addListener(this::addCreative);
@@ -44,7 +45,8 @@ public class AsterismArcanum {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.STELLAR_NAUTILUS_SHELL);
-        }
+            event.accept(ModItems.LIQUID_LUMINANCE);
+
     }
 
     @SubscribeEvent
