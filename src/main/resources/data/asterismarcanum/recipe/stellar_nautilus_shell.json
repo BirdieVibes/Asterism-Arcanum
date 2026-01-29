@@ -3,7 +3,8 @@
   "category" : "misc",
   "ingredients" : [
     {
-      "item" : "asterismarcanum:liquid_luminance",
+      "item" : "asterismarcanum:liquid_luminance"},
+    {
       "item" : "minecraft:nautilus_shell"
     }
   ],
