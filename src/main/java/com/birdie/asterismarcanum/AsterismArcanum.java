@@ -29,8 +29,6 @@ public class AsterismArcanum {
     public AsterismArcanum(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
 
-        NeoForge.EVENT_BUS.register(this);
-
         ModCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
@@ -46,19 +44,6 @@ public class AsterismArcanum {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ModItems.STELLAR_NAUTILUS_SHELL);
             event.accept(ModItems.LIQUID_LUMINANCE);
-
-    }
-
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
-    }
-//the error detector does NOT like this thing VVVV I understand it's outdated but I don't understand what it needs
-//to be replaced with (also its fucking grammar correcting me smh)
-    @EventBusSubscriber(modid = AsterismArcanum.MOD_ID, value = Dist.CLIENT)
-    static class ClientModEvents {
-        @SubscribeEvent
-        static void onClientSetup(FMLClientSetupEvent event) {
-
         }
     }
 }

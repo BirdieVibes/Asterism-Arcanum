@@ -19,6 +19,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.asterismarcanum.asterism_arcanum_items"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.STELLAR_NAUTILUS_SHELL);
+                        output.accept(ModItems.LIQUID_LUMINANCE);
                     })
                     .build());
 
