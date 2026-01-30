@@ -21,6 +21,7 @@ public class ASARCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.STELLAR_NAUTILUS_SHELL);
                         output.accept(ModItems.LIQUID_LUMINANCE);
+                        output.accept(ModItems.SCROLL_ASTRAL);
                     })
                     .build());
 

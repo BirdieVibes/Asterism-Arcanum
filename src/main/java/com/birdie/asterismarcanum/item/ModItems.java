@@ -16,6 +16,9 @@ public class ModItems {
     public static final DeferredItem<Item> LIQUID_LUMINANCE = ITEMS.register("liquid_luminance",
             () -> new Item(new Item.Properties()));
 
+    public static  final DeferredItem<Item> SCROLL_ASTRAL = ITEMS.register("scroll_astral",
+            () -> new Item(new Item.Properties()));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
