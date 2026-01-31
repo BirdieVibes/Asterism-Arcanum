@@ -54,6 +54,4 @@ public class ASARSchoolRegistry extends SchoolRegistry {
                     SoundRegistry.EVOCATION_CAST,
                     ASARDamageTypes.ASTRAL_MAGIC
             ));
-
-    public static final Supplier<AbstractSpell> STARFIRE = registerSpell(new StarfireSpell());
 }

@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.entity.spells.starfire;
 
+import com.birdie.asterismarcanum.AsterismArcanum;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -21,7 +22,7 @@ import org.joml.Matrix4f;
 import javax.naming.Context;
 
 public class StarfireRenderer  extends EntityRenderer<StarfireProjectile> {
-    private static final ResourceLocation TEXTURE = IronsSpellbooks.id("textures/entity/magic_missile/magic_missile.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "textures/entity/magic_missile/magic_missile.png");
     private static final ResourceLocation FLARE = IronsSpellbooks.id("textures/entity/lens_flare.png");
             private final ModelPart body;
 

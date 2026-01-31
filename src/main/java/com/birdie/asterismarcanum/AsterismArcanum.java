@@ -1,9 +1,7 @@
 package com.birdie.asterismarcanum;
 
-import com.birdie.asterismarcanum.registries.ASARCreativeModeTabs;
+import com.birdie.asterismarcanum.registries.*;
 import com.birdie.asterismarcanum.item.ModItems;
-import com.birdie.asterismarcanum.registries.ASARAttributeRegistry;
-import com.birdie.asterismarcanum.registries.SpellRegistries;
 import net.minecraft.world.item.CreativeModeTabs;
 import org.slf4j.Logger;
 
@@ -31,6 +29,10 @@ public class AsterismArcanum {
         modEventBus.addListener(this::addCreative);
 
         SpellRegistries.register(modEventBus);
+
+        ASAREntityRegistry.register(modEventBus);
+
+        ASARSchoolRegistry.register(modEventBus);
 
         ASARAttributeRegistry.register(modEventBus);
 
