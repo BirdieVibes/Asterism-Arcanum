@@ -20,6 +20,7 @@ import java.util.Optional;
 
 //based on Magic Missile, first spell made
 public class StarfireProjectile extends AbstractMagicProjectile {
+
     public StarfireProjectile(EntityType<? extends StarfireProjectile> entityType, Level level) {
         super(entityType, level);
         this.setNoGravity(true);
@@ -58,7 +59,7 @@ public class StarfireProjectile extends AbstractMagicProjectile {
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         super.onHitEntity(entityHitResult);
-        DamageSources.applyDamage(entityHitResult.getEntity(), damage, SpellRegistries.STARFIRE.get().getDamageSource(this, getOwner()));
+        DamageSources.applyDamage(entityHitResult.getEntity(), getDamage(), SpellRegistries.STARFIRE.get().getDamageSource(this, getOwner()));
         pierceOrDiscard();
     }
 

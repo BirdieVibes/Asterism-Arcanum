@@ -22,8 +22,7 @@ import org.joml.Matrix4f;
 import javax.naming.Context;
 
 public class StarfireRenderer  extends EntityRenderer<StarfireProjectile> {
-    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "textures/entity/magic_missile/magic_missile.png");
-    private static final ResourceLocation FLARE = IronsSpellbooks.id("textures/entity/lens_flare.png");
+    private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "textures/entity/starfire/starfire.png");
             private final ModelPart body;
 
     public StarfireRenderer(EntityRendererProvider.Context context) {
@@ -42,32 +41,12 @@ public class StarfireRenderer  extends EntityRenderer<StarfireProjectile> {
         poseStack.mulPose(Axis.XP.rotationDegrees(xRot));
         poseStack.scale(0.35f, 0.35f, 0.35f);
 
-        VertexConsumer consumer = bufferSource.getBuffer(renderType(getTextureLocation(entity)));
+        VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
         this.body.render(poseStack, consumer, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, RenderHelper.colorf(.8f, .8f, .8f));
 
         poseStack.popPose();
 
-        poseStack.pushPose();
-
-        PoseStack.Pose pose = poseStack.last();
-        Matrix4f poseMatrix = pose.pose();
-        float f = entity.tickCount + partialTicks;
-        float scale = 0.5f + Mth.sin(f) * .125f;
-        poseStack.scale(scale, scale, scale);
-        poseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
-        poseStack.mulPose(Axis.YP.rotationDegrees(90f));
-        poseStack.mulPose(Axis.XP.rotationDegrees((entity.tickCount + partialTicks) * 15));
-        consumer = bufferSource.getBuffer(RenderType.entityTranslucent(FLARE));
-        consumer.addVertex(poseMatrix, 0, -1, -1).setColor(255, 255, 180, 255).setUv(0f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
-        consumer.addVertex(poseMatrix, 0, 1, -1).setColor(255, 255, 180, 255).setUv(0f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
-        consumer.addVertex(poseMatrix, 0, 1, 1).setColor(255, 255, 180, 255).setUv(1f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
-        consumer.addVertex(poseMatrix, 0, -1, 1).setColor(255, 255, 180, 255).setUv(1f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
-        poseStack.popPose();
         super.render(entity, yaw, partialTicks, poseStack, bufferSource, light);
-    }
-
-    public RenderType renderType(ResourceLocation TEXTURE) {
-        return RenderType.energySwirl(TEXTURE, 0, 0);
     }
 
     @Override

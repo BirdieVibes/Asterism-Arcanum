@@ -39,17 +39,6 @@ repositories {
         }
     }
 
-    maven {
-        name = "aces_spell_utilsReleases"
-        url = "http://localhost:8080/releases"
-        allowInsecureProtocol = true
-    }
-
-    maven {
-        name = "aces_spell_utilsSnapshots"
-        url = "http://localhost:8080/snapshots"
-        allowInsecureProtocol = true
-    }
 
     maven { url = "https://maven.theillusivec4.top" }
     maven { url = "https://cursemaven.com" }
@@ -161,16 +150,11 @@ dependencies {
 
     implementation "curse.maven:geckolib-388172:6304958"
 
-    compileOnly "com.illusivesoulworks.caelus:caelus-neoforge:${caelus_version}:api"
-    localRuntime "com.illusivesoulworks.caelus:caelus-neoforge:${caelus_version}"
-
     implementation "curse.maven:playeranimator-658587:6024462"
 
     implementation "curse.maven:jei-238222:6756166"
 
     implementation "curse.maven:curios-309927:6274154"
-
-    implementation "curse.maven:aces-spell-utils-1299492:7462227"
 
     implementation "com.google.code.gson:gson:${gson_version}"
     // Example optional mod dependency with JEI

@@ -3,6 +3,8 @@ package com.birdie.asterismarcanum;
 import com.birdie.asterismarcanum.registries.*;
 import com.birdie.asterismarcanum.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -40,6 +42,13 @@ public class AsterismArcanum {
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
+    }
+
+    @Mod(AsterismArcanum.MOD_ID)
+    public static  class ClientModEvents
+    {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {}
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

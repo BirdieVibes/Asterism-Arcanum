@@ -2,6 +2,9 @@
   "item.asterismarcanum.stellar_nautilus_shell" : "Stellar Nautilus Shell",
   "item.asterismarcanum.liquid_luminance" : "Liquid Luminance",
   "item.asterismarcanum.scroll_astral" : "Astral Scroll",
+  "school.asterismarcanum.astral" : "Astral",
+  "spell.asterismarcanum.starfire" : "Starfire",
+  "spell.asterismarcanum.starfire.guide" : "Bring forth a minor piece of the heavens themselves, and launch it towards where you are looking.",
 
   "creativetab.asterismarcanum.asterism_arcanum_items" : "Asterism Items"
 }
