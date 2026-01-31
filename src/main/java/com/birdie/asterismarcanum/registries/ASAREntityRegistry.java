@@ -1,0 +1,25 @@
+package com.birdie.asterismarcanum.registries;
+
+import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+public class ASAREntityRegistry {
+    private static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, AsterismArcanum.MOD_ID);
+
+    public static void register(IEventBus eventBus) {
+        ENTITIES.register(eventBus);
+    }
+
+    public static final DeferredHolder<EntityType<?>, EntityType<StarfireProjectile>> STARFIRE_PROJECTILE =
+            ENTITIES.register("starfire", () -> EntityType.Builder.<StarfireProjectile>of(StarfireProjectile::new, MobCategory.MISC)
+                    .sized(.5f, .5f)
+                    .clientTrackingRange(64)
+                    .build( ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "starfire").toString()));
+}

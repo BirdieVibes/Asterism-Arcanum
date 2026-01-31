@@ -1,9 +1,15 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.spells.StarfireSpell;
+import io.redspace.ironsspellbooks.api.config.IronConfigParameters;
+import io.redspace.ironsspellbooks.api.config.ModifyDefaultConfigValuesEvent;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
+import io.redspace.ironsspellbooks.spells.ender.StarfallSpell;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -19,4 +25,13 @@ public class SpellRegistries {
     public static void register(IEventBus eventBus) {
         SPELLS.register(eventBus);
     }
+
+    @SubscribeEvent
+    public static void modifyStarfallSchool(ModifyDefaultConfigValuesEvent event){
+        if(event.getSpell() instanceof StarfallSpell){
+            event.setDefaultValue(IronConfigParameters.SCHOOL, ASARSchoolRegistry.ASTRAL.get());
+        }
+    }
+
+    public static final Supplier<AbstractSpell> STARFIRE = registerSpell(new StarfireSpell());
 }
