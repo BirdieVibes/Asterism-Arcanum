@@ -5,6 +5,8 @@
   "school.asterismarcanum.astral" : "Astral",
   "spell.asterismarcanum.starfire" : "Starfire",
   "spell.asterismarcanum.starfire.guide" : "Bring forth a minor piece of the heavens themselves, and launch it towards where you are looking.",
+  "spell.asterismarcanum.moonbeamed" : "Moonbeamed",
+  "spell.asterismarcanum.moonbeamed.guide" : "Disappear in a flash of light, appearing at the location in which you are looking.",
 
   "creativetab.asterismarcanum.asterism_arcanum_items" : "Asterism Items"
 }

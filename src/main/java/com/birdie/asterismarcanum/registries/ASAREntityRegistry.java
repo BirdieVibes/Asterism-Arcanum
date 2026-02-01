@@ -2,6 +2,7 @@ package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
+import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -22,4 +23,10 @@ public class ASAREntityRegistry {
                     .sized(.5f, .5f)
                     .clientTrackingRange(64)
                     .build( ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "starfire").toString()));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<MoonbeamEntity>> MOONBEAM =
+            ENTITIES.register("moonbeam", () -> EntityType.Builder.<MoonbeamEntity>of(MoonbeamEntity::new, MobCategory.MISC)
+                    .sized(1.5f, 14f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "moonbeam").toString()));
 }

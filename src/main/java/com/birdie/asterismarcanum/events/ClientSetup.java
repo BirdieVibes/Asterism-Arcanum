@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.events;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamRenderer;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireRenderer;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import net.neoforged.api.distmarker.Dist;
@@ -15,5 +16,6 @@ public class ClientSetup {
     @SubscribeEvent
     public static void  rendererRegister(EntityRenderersEvent.RegisterRenderers event){
         event.registerEntityRenderer(ASAREntityRegistry.STARFIRE_PROJECTILE.get(), StarfireRenderer::new);
+        event.registerEntityRenderer(ASAREntityRegistry.MOONBEAM.get(), MoonbeamRenderer::new);
     }
 }

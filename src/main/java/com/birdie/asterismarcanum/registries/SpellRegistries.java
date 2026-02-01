@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.spells.MoonbeamedSpell;
 import com.birdie.asterismarcanum.spells.StarfireSpell;
 import io.redspace.ironsspellbooks.api.config.IronConfigParameters;
 import io.redspace.ironsspellbooks.api.config.ModifyDefaultConfigValuesEvent;
@@ -34,4 +35,5 @@ public class SpellRegistries {
     }
 
     public static final Supplier<AbstractSpell> STARFIRE = registerSpell(new StarfireSpell());
+    public static final Supplier<AbstractSpell> MOONBEAMED = registerSpell(new MoonbeamedSpell());
 }
