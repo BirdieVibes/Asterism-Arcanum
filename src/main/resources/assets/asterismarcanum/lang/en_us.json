@@ -6,7 +6,9 @@
   "spell.asterismarcanum.starfire" : "Starfire",
   "spell.asterismarcanum.starfire.guide" : "Bring forth a minor piece of the heavens themselves, and launch it towards where you are looking.",
   "spell.asterismarcanum.moonbeamed" : "Moonbeamed",
-  "spell.asterismarcanum.moonbeamed.guide" : "Disappear in a flash of light, appearing at the location in which you are looking.",
+  "spell.asterismarcanum.moonbeamed.guide" : "Disappear in a flash of light, and appear at the location in which you are looking.",
+  "spell.asterismarcanum.nebulous_cone" : "Nebulous Cone",
+  "spell.asterismarcanum.nebulous_cone.guide" : "Send out a cone of nebulous magic, and deal damage to entities caught within.",
 
   "creativetab.asterismarcanum.asterism_arcanum_items" : "Asterism Items"
 }

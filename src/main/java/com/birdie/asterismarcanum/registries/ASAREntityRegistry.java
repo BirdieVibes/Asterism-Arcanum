@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.entity.spells.nebulous_cone.NebulousConeProjectile;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamEntity;
 import net.minecraft.core.registries.Registries;
@@ -29,4 +30,10 @@ public class ASAREntityRegistry {
                     .sized(1.5f, 14f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "moonbeam").toString()));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<NebulousConeProjectile>> NEBULOUS_CONE_PROJECTILE =
+            ENTITIES.register("nebulous_cone", () -> EntityType.Builder.<NebulousConeProjectile>of(NebulousConeProjectile::new, MobCategory.MISC)
+                    .sized(1.f, 1f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "nebulous_cone").toString()));
 }
