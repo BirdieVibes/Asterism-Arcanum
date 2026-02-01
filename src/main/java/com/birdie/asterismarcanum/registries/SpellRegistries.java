@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.spells.DarkFlowSpell;
 import com.birdie.asterismarcanum.spells.MoonbeamedSpell;
 import com.birdie.asterismarcanum.spells.NebulousConeSpell;
 import com.birdie.asterismarcanum.spells.StarfireSpell;
@@ -38,5 +39,6 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> STARFIRE = registerSpell(new StarfireSpell());
     public static final Supplier<AbstractSpell> MOONBEAMED = registerSpell(new MoonbeamedSpell());
     public static final Supplier<AbstractSpell> NEBULOUS_CONE = registerSpell(new NebulousConeSpell());
+    public static final Supplier<AbstractSpell> DARK_FLOW = registerSpell(new DarkFlowSpell());
 
 }

@@ -1,11 +1,13 @@
 package com.birdie.asterismarcanum.entity.spells.nebulous_cone;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
+import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import com.birdie.asterismarcanum.registries.SpellRegistries;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractConeProjectile;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -44,9 +46,7 @@ public class NebulousConeProjectile extends AbstractConeProjectile {
             double angularness = .5;
             Vec3 randomVec = new Vec3(Math.random() * 2 * angularness - angularness, Math.random() * 2 * angularness - angularness, Math.random() * 2 * angularness - angularness).normalize();
             Vec3 result = (rotation.scale(3).add(randomVec)).normalize().scale(speed);
-            level().addParticle(ParticleHelper.UNSTABLE_ENDER, x + ox, y + oy, z + oz, result.x, result.y, result.z);
-            level().addParticle(ParticleHelper.WISP, x + ox, y + oy, z + oz, result.x, result.y, result.z);
-            level().addParticle(ParticleTypes.SPIT, x + ox, y + oy, z + oz, result.x, result.y, result.z);
+            level().addParticle(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE.get(), x + ox, y + oy, z + oz, result.x, result.y, result.z);
         }
     }
 

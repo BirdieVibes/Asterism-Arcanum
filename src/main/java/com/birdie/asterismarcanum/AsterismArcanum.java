@@ -38,6 +38,8 @@ public class AsterismArcanum {
 
         ASARAttributeRegistry.register(modEventBus);
 
+        ASARParticleRegistry.register(modEventBus);
+
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 

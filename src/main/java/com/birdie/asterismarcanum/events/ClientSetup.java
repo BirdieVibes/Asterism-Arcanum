@@ -1,14 +1,18 @@
 package com.birdie.asterismarcanum.events;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlowRenderer;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamRenderer;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireRenderer;
+import com.birdie.asterismarcanum.particle.NebulousDustParticle;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
+import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
 @SuppressWarnings("removal")
 @EventBusSubscriber(modid = AsterismArcanum.MOD_ID, value = Dist.CLIENT)
@@ -19,5 +23,11 @@ public class ClientSetup {
         event.registerEntityRenderer(ASAREntityRegistry.STARFIRE_PROJECTILE.get(), StarfireRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.MOONBEAM.get(), MoonbeamRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.NEBULOUS_CONE_PROJECTILE.get(), NoopRenderer::new);
+        event.registerEntityRenderer(ASAREntityRegistry.DARK_FLOW.get(), DarkFlowRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void registerParticles(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE.get(), NebulousDustParticle.Provider::new);
     }
 }
