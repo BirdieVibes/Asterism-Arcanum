@@ -1,10 +1,7 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.spells.DarkFlowSpell;
-import com.birdie.asterismarcanum.spells.MoonbeamedSpell;
-import com.birdie.asterismarcanum.spells.NebulousConeSpell;
-import com.birdie.asterismarcanum.spells.StarfireSpell;
+import com.birdie.asterismarcanum.spells.*;
 import io.redspace.ironsspellbooks.api.config.IronConfigParameters;
 import io.redspace.ironsspellbooks.api.config.ModifyDefaultConfigValuesEvent;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
@@ -40,5 +37,6 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> MOONBEAMED = registerSpell(new MoonbeamedSpell());
     public static final Supplier<AbstractSpell> NEBULOUS_CONE = registerSpell(new NebulousConeSpell());
     public static final Supplier<AbstractSpell> DARK_FLOW = registerSpell(new DarkFlowSpell());
+    public static final Supplier<AbstractSpell> NIGHT_VISION = registerSpell(new NightVisionSpell());
 
 }

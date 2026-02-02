@@ -148,19 +148,21 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
                 float bossResistance = entity.getType().is(Tags.EntityTypes.BOSSES) ? 0.5f : 1f;
 
 
-                Vec3 diff = center.add(entity.position()).scale(scale * resistance * bossResistance);
-                entity.push(diff.x, diff.y, diff.z);
+                Vec3 diff = center.subtract(entity.position()).scale(scale * resistance * bossResistance);
+                entity.push(-diff.x, -diff.y, -diff.z);
                 entity.fallDistance = 0;
             }
         }
+
         if (!level().isClientSide) {
             if (tickCount > duration) {
                 this.discard();
-                this.playSound(SoundRegistry.BLACK_HOLE_CHARGE.get(), getRadius() / 2f, 1);
+                this.playSound(SoundRegistry.BLACK_HOLE_CAST.get(), getRadius() / 2f, 1);
                 MagicManager.spawnParticles(level(), ParticleHelper.UNSTABLE_ENDER, getX(), getY() + getRadius(), getZ(), 200, 1, 1, 1, 1, true);
                 for (Entity entity : trackingEntities) {
                     if (entity.distanceToSqr(center) < 9) {
                         entity.setDeltaMovement(entity.getDeltaMovement().add(entity.position().subtract(center).normalize().scale(0.5f)));
+                        entity.hurtMarked = true;
                     }
                 }
             } else if ((tickCount - 1) % loopSoundDurationInTicks == 0 && (duration < loopSoundDurationInTicks || tickCount + loopSoundDurationInTicks < duration)) {

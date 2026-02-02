@@ -44,7 +44,8 @@ public class NebulousConeProjectile extends AbstractConeProjectile {
             double oz = Math.random() * 2 * offset - offset;
 
             double angularness = .5;
-            Vec3 randomVec = new Vec3(Math.random() * 2 * angularness - angularness, Math.random() * 2 * angularness - angularness, Math.random() * 2 * angularness - angularness).normalize();
+            Vec3 randomVec = new Vec3(Math.random() * 2 * angularness - angularness,
+                    Math.random() * 2 * angularness - angularness, Math.random() * 2 * angularness - angularness).normalize();
             Vec3 result = (rotation.scale(3).add(randomVec)).normalize().scale(speed);
             level().addParticle(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE.get(), x + ox, y + oy, z + oz, result.x, result.y, result.z);
         }
