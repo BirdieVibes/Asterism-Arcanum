@@ -57,6 +57,18 @@ public class MoonbeamedSpell extends AbstractSpell {
         this.manaCostPerLevel = 5;
         this.castTime = 0;
     }
+// not sure how to get this to work, .inCombat is private but my usual methods of resolving that error arent working
+ //   @Override
+ //   public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
+ //       if (!(entity instanceof ServerPlayer serverPlayer)) {
+  //          return false;
+ //       }
+ //       if (entity.getCombatTracker().inCombat) {
+ //           serverPlayer.displayClientMessage(Component.translatable("ui.irons_spellbooks.cast_error_combat").withStyle(ChatFormatting.RED), true);
+ //           return false;
+  //      }
+ //       return true;
+ //   }
 
     @Override
     public CastType getCastType() {

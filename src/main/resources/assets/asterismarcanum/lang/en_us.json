@@ -2,7 +2,15 @@
   "item.asterismarcanum.stellar_nautilus_shell" : "Stellar Nautilus Shell",
   "item.asterismarcanum.liquid_luminance" : "Liquid Luminance",
   "item.asterismarcanum.scroll_astral" : "Astral Scroll",
+  "item.asterismarcanum.astral_rune" : "Astral Rune",
+  "item.asterismarcanum.astral_upgrade_orb" : "Astral Upgrade Orb",
+  "item.asterismarcanum.cosmic_atlas" : "Cosmic Atlas",
+  "attribute.asterismarcanum.astral_spell_power" : "Astral Spell Power",
+
+
   "school.asterismarcanum.astral" : "Astral",
+
+
   "spell.asterismarcanum.starfire" : "Starfire",
   "spell.asterismarcanum.starfire.guide" : "Bring forth a minor piece of the heavens themselves, and launch it towards where you are looking.",
   "spell.asterismarcanum.moonbeamed" : "Moonbeamed",

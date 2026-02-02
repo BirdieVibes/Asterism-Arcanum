@@ -1,0 +1,9 @@
+{
+  "amount": 0.05,
+  "attribute": "asterismarcanum:astral_spell_power",
+  "containerItem": {
+    "count": 1,
+    "id": "asterismarcanum:astral_upgrade_orb"
+  },
+  "operation": "add_multiplied_base"
+}

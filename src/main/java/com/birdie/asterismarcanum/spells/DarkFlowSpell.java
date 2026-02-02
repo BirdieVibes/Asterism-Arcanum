@@ -42,13 +42,13 @@ public class DarkFlowSpell extends AbstractSpell {
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.EPIC)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
-            .setMaxLevel(6)
+            .setMaxLevel(4)
             .setCooldownSeconds(120)
             .build();
 
     public DarkFlowSpell() {
         this.manaCostPerLevel = 80;
-        this.baseSpellPower = 1;
+        this.baseSpellPower = 2;
         this.spellPowerPerLevel = 0;
         this.castTime = 100;
         this.baseManaCost = 250;

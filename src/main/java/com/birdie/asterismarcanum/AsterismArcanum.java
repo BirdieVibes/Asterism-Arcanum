@@ -2,9 +2,15 @@ package com.birdie.asterismarcanum;
 
 import com.birdie.asterismarcanum.registries.*;
 import com.birdie.asterismarcanum.item.ModItems;
+import io.redspace.ironsspellbooks.item.SpellBook;
+import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -15,6 +21,7 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 @Mod(AsterismArcanum.MOD_ID)
 public class AsterismArcanum {
@@ -42,15 +49,27 @@ public class AsterismArcanum {
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
-
+    public static ResourceLocation id(@NotNull String path)
+    {
+        return ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, path);
+    }
     private void commonSetup(FMLCommonSetupEvent event) {
     }
 
-    @Mod(AsterismArcanum.MOD_ID)
-    public static  class ClientModEvents
+
+    @EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
+    public static class ClientModEvents
     {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {}
+        public static void onClientSetup(FMLClientSetupEvent event)
+        {
+            // curios
+            event.enqueueWork(() -> {
+                ModItems.getASARItems().stream().filter(item -> item.get() instanceof SpellBook).forEach((item) -> CuriosRendererRegistry.register(item.get(), SpellBookCurioRenderer::new));
+            });
+        }
+
+
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

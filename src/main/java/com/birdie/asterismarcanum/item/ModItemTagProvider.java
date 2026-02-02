@@ -22,5 +22,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
         tag(ASARTags.ASTRAL_FOCUS)
                 .add(ModItems.LIQUID_LUMINANCE.get());
+        tag(ASARTags.ASTRAL_RESOURCE)
+                .add(ModItems.ASTRAL_UPGRADE_ORB.get());
     }
 }
