@@ -43,20 +43,20 @@ public class DarkFlowSpell extends AbstractSpell {
             .setMinRarity(SpellRarity.EPIC)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
             .setMaxLevel(4)
-            .setCooldownSeconds(120)
+            .setCooldownSeconds(45)
             .build();
 
     public DarkFlowSpell() {
         this.manaCostPerLevel = 80;
         this.baseSpellPower = 2;
         this.spellPowerPerLevel = 0;
-        this.castTime = 100;
-        this.baseManaCost = 250;
+        this.castTime = 0;
+        this.baseManaCost = 100;
     }
 
     @Override
     public CastType getCastType() {
-        return CastType.LONG;
+        return CastType.INSTANT;
     }
 
     @Override
@@ -69,21 +69,12 @@ public class DarkFlowSpell extends AbstractSpell {
         return spellId;
     }
 
-    @Override
-    public Optional<SoundEvent> getCastStartSound() {
-        return Optional.of(SoundRegistry.BLACK_HOLE_CHARGE.get());
-    }
-
-    @Override
-    public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(SoundRegistry.BLACK_HOLE_CAST.get());
-    }
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         float radius = getRadius(spellLevel, entity);
 
-        HitResult raycast = Utils.raycastForEntity(level, entity, 16 + radius * 1.5f, true);
+        HitResult raycast = Utils.raycastForEntity(level, entity, 0, true);
         Vec3 center = raycast.getLocation();
         if (raycast instanceof BlockHitResult blockHitResult) {
             if (blockHitResult.getDirection().getAxis().isHorizontal()) {

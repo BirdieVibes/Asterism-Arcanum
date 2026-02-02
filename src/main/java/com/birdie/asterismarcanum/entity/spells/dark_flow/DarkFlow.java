@@ -58,7 +58,7 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
 
 
     private float damage;
-    private int duration = 20 * 15 * 2;
+    private int duration = 20 ;
 
     public int getDuration() {
         return duration;
