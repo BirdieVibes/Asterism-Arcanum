@@ -43,7 +43,7 @@ public class DarkFlowRenderer extends EntityRenderer<DarkFlow> {
 
         VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(CENTER_TEXTURE));
 
-        float centerScale = 10;
+        float centerScale = 0;
         consumer.addVertex(poseMatrix, 0, -centerScale, -centerScale).setColor(255, 255, 255, 150).setUv(0f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
         consumer.addVertex(poseMatrix, 0, centerScale, -centerScale).setColor(255, 255, 255, 150).setUv(0f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
         consumer.addVertex(poseMatrix, 0, centerScale, centerScale).setColor(255, 255, 255, 150).setUv(1f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
@@ -57,34 +57,6 @@ public class DarkFlowRenderer extends EntityRenderer<DarkFlow> {
         float fadeProgress = .5f;
         RandomSource randomSource = RandomSource.create(432L);
 //        VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.lightning());
-        VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.energySwirl(BEAM_TEXTURE, 0, 0));
-        //poseStack.translate(0.0D, -1.0D, -2.0D);
-
-        float segments = Math.min(animationProgress, .8f);
-        for (int i = 0; (float) i < (segments + segments * segments) / 2.0F * 40.0F; ++i) {
-            poseStack.mulPose(Axis.XP.rotationDegrees(randomSource.nextFloat() * 360.0F));
-            poseStack.mulPose(Axis.YP.rotationDegrees(randomSource.nextFloat() * 360.0F));
-            poseStack.mulPose(Axis.ZP.rotationDegrees(randomSource.nextFloat() * 360.0F));
-            poseStack.mulPose(Axis.XP.rotationDegrees(randomSource.nextFloat() * 360.0F));
-            poseStack.mulPose(Axis.YP.rotationDegrees(randomSource.nextFloat() * 360.0F));
-            poseStack.mulPose(Axis.ZP.rotationDegrees(randomSource.nextFloat() * 360.0F + animationProgress * 90.0F));
-            float size1 = (randomSource.nextFloat() * 10.0F + 5.0F + fadeProgress * 5.0F) * entityScale * .4f;
-            //float size2 = randomSource.nextFloat() * 2.0F + 1.0F + fadeProgress * 2.0F;
-            Matrix4f matrix = poseStack.last().pose();
-            Matrix3f normalMatrix2 = poseStack.last().normal();
-
-//            int alpha = (int) (255.0F * (1.0F - fadeProgress));
-//            vertex01(vertexConsumer, matrix, alpha);
-//            vertex2(vertexConsumer, matrix, size1, size2);
-//            vertex3(vertexConsumer, matrix, size1, size2);
-//            vertex01(vertexConsumer, matrix, alpha);
-            drawTriangle(vertexConsumer, matrix, normalMatrix2, size1);
-//            vertex3(vertexConsumer, matrix, size1, size2);
-//            vertex4(vertexConsumer, matrix, size1, size2);
-//            vertex01(vertexConsumer, matrix, alpha);
-//            vertex4(vertexConsumer, matrix, size1, size2);
-//            vertex2(vertexConsumer, matrix, size1, size2);
-        }
 
         poseStack.popPose();
 
@@ -97,12 +69,5 @@ public class DarkFlowRenderer extends EntityRenderer<DarkFlow> {
     }
 
     private static final float HALF_SQRT_3 = (float) (Math.sqrt(3.0D) / 2.0D);
-
-    private static void drawTriangle(VertexConsumer consumer, Matrix4f poseMatrix, Matrix3f normalMatrix, float size) {
-        consumer.addVertex(poseMatrix, 0, 0, 0).setColor(255, 0, 255, 255).setUv(0f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
-        consumer.addVertex(poseMatrix, 0, 3 * size, -1 * size).setColor(0, 0, 0, 0).setUv(0f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
-        consumer.addVertex(poseMatrix, 0, 3 * size, 1 * size).setColor(0, 0, 0, 0).setUv(1f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
-        consumer.addVertex(poseMatrix, 0, 0, 0).setColor(255, 0, 255, 255).setUv(1f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
-    }
 
 }

@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.entity.spells.starfire;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
+import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import com.birdie.asterismarcanum.registries.SpellRegistries;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
@@ -72,7 +73,7 @@ public class StarfireProjectile extends AbstractMagicProjectile {
         for (int i = 0; i < count; i++) {
             Vec3 random = Utils.getRandomVec3(0.02);
             Vec3 p = vec.scale(f * i);
-            level().addParticle(ParticleHelper.FIERY_SMOKE, this.getX() + random.x + p.x, this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
+            level().addParticle(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE.get(), this.getX() + random.x + p.x, this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
         }
     }
 }

@@ -2,6 +2,7 @@ package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
+import com.birdie.asterismarcanum.entity.spells.ethereal_sphere.EtherealSphere;
 import com.birdie.asterismarcanum.entity.spells.nebulous_cone.NebulousConeProjectile;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamEntity;
@@ -32,15 +33,21 @@ public class ASAREntityRegistry {
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "moonbeam").toString()));
 
-    public static final DeferredHolder<EntityType<?>, EntityType<NebulousConeProjectile>> NEBULOUS_CONE_PROJECTILE =
-            ENTITIES.register("nebulous_cone", () -> EntityType.Builder.<NebulousConeProjectile>of(NebulousConeProjectile::new, MobCategory.MISC)
-                    .sized(1.f, 1f)
-                    .clientTrackingRange(64)
-                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "nebulous_cone").toString()));
+//    public static final DeferredHolder<EntityType<?>, EntityType<NebulousConeProjectile>> NEBULOUS_CONE_PROJECTILE =
+//            ENTITIES.register("nebulous_cone", () -> EntityType.Builder.<NebulousConeProjectile>of(NebulousConeProjectile::new, MobCategory.MISC)
+//                    .sized(1f, 1f)
+//                    .clientTrackingRange(64)
+//                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "nebulous_cone").toString()));
 
     public static final DeferredHolder<EntityType<?>, EntityType<DarkFlow>> DARK_FLOW =
             ENTITIES.register("black_hole", () -> EntityType.Builder.<DarkFlow>of(DarkFlow::new, MobCategory.MISC)
                     .sized(11, 11)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "dark_flow").toString()));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<EtherealSphere>> ETHEREAL_SPHERE =
+            ENTITIES.register("ethereal_sphere", () -> EntityType.Builder.<EtherealSphere>of(EtherealSphere::new, MobCategory.MISC)
+                    .sized(4f, 4f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "ethereal_flow").toString()));
 }

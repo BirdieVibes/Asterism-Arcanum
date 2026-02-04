@@ -35,8 +35,9 @@ public class SpellRegistries {
 
     public static final Supplier<AbstractSpell> STARFIRE = registerSpell(new StarfireSpell());
     public static final Supplier<AbstractSpell> MOONBEAMED = registerSpell(new MoonbeamedSpell());
-    public static final Supplier<AbstractSpell> NEBULOUS_CONE = registerSpell(new NebulousConeSpell());
+//    public static final Supplier<AbstractSpell> NEBULOUS_CONE = registerSpell(new NebulousConeSpell());
     public static final Supplier<AbstractSpell> DARK_FLOW = registerSpell(new DarkFlowSpell());
     public static final Supplier<AbstractSpell> NIGHT_VISION = registerSpell(new NightVisionSpell());
+    public static final Supplier<AbstractSpell> ETHEREAL_SPHERE = registerSpell(new EtherealSphereSpell());
 
 }

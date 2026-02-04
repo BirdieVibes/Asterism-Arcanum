@@ -78,11 +78,11 @@ public class DarkFlowSpell extends AbstractSpell {
         Vec3 center = raycast.getLocation();
         if (raycast instanceof BlockHitResult blockHitResult) {
             if (blockHitResult.getDirection().getAxis().isHorizontal()) {
-                center = center.subtract(0, radius, 0); // Make black hole centered on hit location
+                center = center.subtract(0, radius + 1, 0); // Make black hole centered on hit location
             } else if (blockHitResult.getDirection() == Direction.DOWN) {
-                center = center.subtract(0, radius * 2 - 1, 0); // Make black hole stick one block into ceiling surface
+                center = center.subtract(0, radius + 1, 0); // Make black hole stick one block into ceiling surface
             } else {
-                center = center.subtract(0, 1, 0); // Make black hole sink into ground 1 block if we hit top face
+                center = center.subtract(0, radius + 1, 0); // Make black hole sink into ground 1 block if we hit top face
             }
         }
 

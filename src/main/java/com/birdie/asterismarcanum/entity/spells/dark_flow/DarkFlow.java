@@ -1,18 +1,22 @@
 package com.birdie.asterismarcanum.entity.spells.dark_flow;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
+import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.config.ServerConfigs;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
+import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -124,6 +128,8 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
 
     }
 
+    public static final int WARMUP_TIME = 2;
+
     @Override
     public void tick() {
         super.tick();
@@ -154,17 +160,18 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
             }
         }
 
+        if (tickCount == WARMUP_TIME) {
+            if (!level().isClientSide) {
+                MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(.1f, .1f, 0.1f, 10f), getX(), getY() + (radius / 2) + 0.06, getZ(),
+                        1, 0, 0, 0, 0, true);
+                MagicManager.spawnParticles(level(), ASARParticleRegistry.NEBULOUS_DUST_PARTICLE.get(), getX(), getY() + getRadius(), getZ(), 200, 1, 1, 1, 1, true);
+                level().playSound(null, this.blockPosition(), SoundEvents.DRAGON_FIREBALL_EXPLODE, SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(9, 11) * .3f);
+            }
+        }
+
         if (!level().isClientSide) {
             if (tickCount > duration) {
                 this.discard();
-                MagicManager.spawnParticles(level(), ParticleHelper.UNSTABLE_ENDER, getX(), getY() + getRadius(), getZ(), 200, 1, 1, 1, 1, true);
-                for (Entity entity : trackingEntities) {
-                    if (entity.distanceToSqr(center) < 9) {
-                        entity.setDeltaMovement(entity.getDeltaMovement().add(entity.position().subtract(center).normalize().scale(0.5f)));
-                        entity.hurtMarked = true;
-                    }
-                }
-            } else if ((tickCount - 1) % loopSoundDurationInTicks == 0 && (duration < loopSoundDurationInTicks || tickCount + loopSoundDurationInTicks < duration)) {
             }
         }
     }
