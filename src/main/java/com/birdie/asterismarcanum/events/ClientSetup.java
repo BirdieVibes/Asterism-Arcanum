@@ -2,13 +2,15 @@ package com.birdie.asterismarcanum.events;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlowRenderer;
-import com.birdie.asterismarcanum.entity.spells.ethereal_sphere.EtherealSphereRenderer;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamRenderer;
+import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmRenderer;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireRenderer;
+import com.birdie.asterismarcanum.entity.spells.tidal_lock.TidalLockRenderer;
 import com.birdie.asterismarcanum.particle.NebulousDustParticle;
+import com.birdie.asterismarcanum.particle.StardustParticle;
+import com.birdie.asterismarcanum.particle.StarsParticle;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
-import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -25,11 +27,19 @@ public class ClientSetup {
         event.registerEntityRenderer(ASAREntityRegistry.MOONBEAM.get(), MoonbeamRenderer::new);
 //        event.registerEntityRenderer(ASAREntityRegistry.NEBULOUS_CONE_PROJECTILE.get(), NoopRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.DARK_FLOW.get(), DarkFlowRenderer::new);
-        event.registerEntityRenderer(ASAREntityRegistry.ETHEREAL_SPHERE.get(), EtherealSphereRenderer::new);
+        event.registerEntityRenderer(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), StarSwarmRenderer::new);
+        event.registerEntityRenderer(ASAREntityRegistry.TIDAL_LOCK.get(), TidalLockRenderer::new);
     }
 
     @SubscribeEvent
     public static void registerParticles(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE.get(), NebulousDustParticle.Provider::new);
+        event.registerSpriteSet(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE_1.get(), NebulousDustParticle.Provider::new);
+        event.registerSpriteSet(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE_2.get(), NebulousDustParticle.Provider::new);
+        event.registerSpriteSet(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE_3.get(), NebulousDustParticle.Provider::new);
+        event.registerSpriteSet(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE_4.get(), NebulousDustParticle.Provider::new);
+        event.registerSpriteSet(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE_5.get(), NebulousDustParticle.Provider::new);
+        event.registerSpriteSet(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE_6.get(), NebulousDustParticle.Provider::new);
+        event.registerSpriteSet(ASARParticleRegistry.STARS_PARTICLE.get(), StarsParticle.Provider::new);
+        event.registerSpriteSet(ASARParticleRegistry.STARDUST_PARTICLE.get(), StardustParticle.Provider::new);
     }
 }

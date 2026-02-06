@@ -59,7 +59,7 @@ public class NightVisionSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, (int) (getSpellPower(spellLevel, entity) * 100), getAmplifierForLevel(spellLevel), false, false, true));
+        entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, (int) (getSpellPower(spellLevel, entity) * 200), getAmplifierForLevel(spellLevel), false, false, true));
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 

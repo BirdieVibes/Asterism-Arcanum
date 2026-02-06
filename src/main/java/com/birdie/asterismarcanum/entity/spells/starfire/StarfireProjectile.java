@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -38,7 +39,7 @@ public class StarfireProjectile extends AbstractMagicProjectile {
 
     @Override
     public void impactParticles(double x, double y, double z) {
-        MagicManager.spawnParticles(this.level(), ParticleHelper.FIRE, x, y, z, 25, 0, 0, 0, .18, true);
+        MagicManager.spawnParticles(this.level(), ASARParticleRegistry.STARDUST_PARTICLE.get(), x, y, z, 25, 0, 0, 0, .18, true);
     }
 
     @Override
@@ -73,7 +74,10 @@ public class StarfireProjectile extends AbstractMagicProjectile {
         for (int i = 0; i < count; i++) {
             Vec3 random = Utils.getRandomVec3(0.02);
             Vec3 p = vec.scale(f * i);
-            level().addParticle(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE.get(), this.getX() + random.x + p.x, this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
+            level().addParticle(ASARParticleRegistry.STARS_PARTICLE.get(), this.getX() + random.x + p.x,
+                    this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
+            level().addParticle(ParticleTypes.ELECTRIC_SPARK, this.getX() + random.x + p.x,
+                    this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
         }
     }
 }

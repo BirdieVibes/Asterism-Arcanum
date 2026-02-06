@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.entity.spells.moonbeam;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
+import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
@@ -9,6 +10,7 @@ import io.redspace.ironsspellbooks.entity.spells.AoeEntity;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
@@ -51,7 +53,7 @@ public class MoonbeamEntity extends AoeEntity implements AntiMagicSusceptible {
         if (tickCount == WARMUP_TIME) {
             if (!level().isClientSide) {
                 checkHits();
-                MagicManager.spawnParticles(level(), ParticleHelper.CLEANSE_PARTICLE, getX(), getY() + 0.06, getZ(), 50, getRadius() * .7f, .2f, getRadius() * .7f, 0.6f, true);
+                MagicManager.spawnParticles(level(), ASARParticleRegistry.STARS_PARTICLE.get(), getX(), getY() + 0.06, getZ(), 50, getRadius() * .7f, .2f, getRadius() * .7f, 0.6f, true);
                 MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(.4f, .85f, 1f, 7f), getX(), getY() + 0.06, getZ(), 1, 0, 0, 0, 0, true);
                 level().playSound(null, this.blockPosition(), SoundEvents.ALLAY_AMBIENT_WITHOUT_ITEM, SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(9, 11) * .3f);
             }

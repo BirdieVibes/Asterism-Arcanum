@@ -7,18 +7,18 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-public class NebulousDustParticle extends TextureSheetParticle {
+public class StarsParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
 
-    public NebulousDustParticle(ClientLevel level, double xCoord, double yCoord, double zCoord, SpriteSet spriteSet, double xd, double yd, double zd) {
+    public StarsParticle(ClientLevel level, double xCoord, double yCoord, double zCoord, SpriteSet spriteSet, double xd, double yd, double zd) {
 
         super(level, xCoord, yCoord, zCoord, xd, yd, zd);
 
-        this.friction = 0.1f;
+        //this.friction = 1.0f;
         this.xd = xd;
         this.yd = yd;
         this.zd = zd;
-        this.quadSize *= 1f;
+        this.quadSize *= (.6f);
         this.scale(2.5f);
         this.lifetime = 5 + (int) (Math.random() * 10);
         sprites = spriteSet;
@@ -28,7 +28,6 @@ public class NebulousDustParticle extends TextureSheetParticle {
         this.rCol = 1f;
         this.gCol = 1f;
         this.bCol = 1f;
-        this.alpha = 0.6f;
     }
 
     @Override
@@ -39,7 +38,7 @@ public class NebulousDustParticle extends TextureSheetParticle {
 
     @Override
     public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
+        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -53,7 +52,14 @@ public class NebulousDustParticle extends TextureSheetParticle {
         public Particle createParticle(SimpleParticleType particleType, ClientLevel level,
                                        double x, double y, double z,
                                        double dx, double dy, double dz) {
-            return new NebulousDustParticle(level, x, y, z, this.sprites, dx, dy, dz);
+            return new StarsParticle(level, x, y, z, this.sprites, dx, dy, dz);
         }
     }
+
+    @Override
+    protected int getLightColor(float pPartialTick) {
+        return LightTexture.FULL_BRIGHT;
+    }
 }
+
+

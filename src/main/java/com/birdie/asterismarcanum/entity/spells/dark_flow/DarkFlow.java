@@ -11,6 +11,7 @@ import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -150,7 +151,8 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
                 }
                 float f = 1 - distance / radius;
                 float scale = f * f * f * f * .25f;
-                float resistance = entity instanceof LivingEntity livingEntity ? Mth.clamp(1 - (float) livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE), .3f, 1f) : 1f;
+                float resistance = entity instanceof LivingEntity livingEntity ? Mth.clamp(1 -
+                        (float) livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE), .3f, 1f) : 1f;
                 float bossResistance = entity.getType().is(Tags.EntityTypes.BOSSES) ? 0.5f : 1f;
 
 
@@ -162,10 +164,15 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
 
         if (tickCount == WARMUP_TIME) {
             if (!level().isClientSide) {
-                MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(.1f, .1f, 0.1f, 10f), getX(), getY() + (radius / 2) + 0.06, getZ(),
+                MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(.1f, .1f, 0.1f,
+                                10f), getX(), getY() + (radius / 2) + 0.06, getZ(),
                         1, 0, 0, 0, 0, true);
-                MagicManager.spawnParticles(level(), ASARParticleRegistry.NEBULOUS_DUST_PARTICLE.get(), getX(), getY() + getRadius(), getZ(), 200, 1, 1, 1, 1, true);
-                level().playSound(null, this.blockPosition(), SoundEvents.DRAGON_FIREBALL_EXPLODE, SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(9, 11) * .3f);
+                MagicManager.spawnParticles(level(), ASARParticleRegistry.STARS_PARTICLE.get(), getX(),
+                        getY() + getRadius(), getZ(), 200, 1, 1, 1, 1, true);
+                MagicManager.spawnParticles(level(), ParticleTypes.EXPLOSION, getX(),
+                        getY() + getRadius(), getZ(), 200, 1, 1, 1, 1, true);
+                level().playSound(null, this.blockPosition(), SoundEvents.DRAGON_FIREBALL_EXPLODE,
+                        SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(9, 11) * .3f);
             }
         }
 

@@ -44,10 +44,10 @@ public class DarkFlowRenderer extends EntityRenderer<DarkFlow> {
         VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(CENTER_TEXTURE));
 
         float centerScale = 0;
-        consumer.addVertex(poseMatrix, 0, -centerScale, -centerScale).setColor(255, 255, 255, 150).setUv(0f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
-        consumer.addVertex(poseMatrix, 0, centerScale, -centerScale).setColor(255, 255, 255, 150).setUv(0f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
-        consumer.addVertex(poseMatrix, 0, centerScale, centerScale).setColor(255, 255, 255, 150).setUv(1f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
-        consumer.addVertex(poseMatrix, 0, -centerScale, centerScale).setColor(255, 255, 255, 150).setUv(1f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
+        consumer.addVertex(poseMatrix, 0, -centerScale, -centerScale).setColor(255, 255, 255, 0).setUv(0f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
+        consumer.addVertex(poseMatrix, 0, centerScale, -centerScale).setColor(255, 255, 255, 0).setUv(0f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
+        consumer.addVertex(poseMatrix, 0, centerScale, centerScale).setColor(255, 255, 255, 0).setUv(1f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
+        consumer.addVertex(poseMatrix, 0, -centerScale, centerScale).setColor(255, 255, 255, 0).setUv(1f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(LightTexture.FULL_BRIGHT).setNormal(0f, 1f, 0f);
         poseStack.popPose();
         poseStack.pushPose();
 
