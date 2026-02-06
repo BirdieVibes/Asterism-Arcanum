@@ -41,8 +41,8 @@ public class StarfireRenderer  extends EntityRenderer<StarfireProjectile> {
         poseStack.mulPose(Axis.XP.rotationDegrees(xRot));
         poseStack.scale(0.35f, 0.35f, 0.35f);
 
-        VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
-        this.body.render(poseStack, consumer, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, RenderHelper.colorf(.8f, .8f, .8f));
+        VertexConsumer consumer = bufferSource.getBuffer(RenderType.energySwirl(getTextureLocation(entity), 0, 0));
+        this.body.render(poseStack, consumer, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, RenderHelper.colorf(1.8f, 1.8f, 1.8f));
 
         poseStack.popPose();
 

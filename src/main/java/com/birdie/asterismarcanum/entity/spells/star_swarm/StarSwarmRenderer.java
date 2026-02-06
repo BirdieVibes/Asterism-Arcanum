@@ -38,7 +38,7 @@ public class StarSwarmRenderer extends EntityRenderer<StarSwarmProjectile> {
         poseStack.mulPose(Axis.XP.rotationDegrees(xRot));
         poseStack.scale(4f, 4f, 4f);
 
-        VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucent(TEXTURE));
+        VertexConsumer consumer = bufferSource.getBuffer(RenderType.energySwirl(getTextureLocation(entity), 0, 0));
         this.body.render(poseStack, consumer, LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, RenderHelper.colorf(0.8f, 0.8f, 0.8f, 1f));
 
         poseStack.popPose();
