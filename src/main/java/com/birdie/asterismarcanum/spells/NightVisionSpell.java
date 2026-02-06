@@ -36,8 +36,8 @@ public class NightVisionSpell extends AbstractSpell {
 
     public NightVisionSpell() {
         this.manaCostPerLevel = 10;
-        this.baseSpellPower = 30;
-        this.spellPowerPerLevel = 0;
+        this.baseSpellPower = 50;
+        this.spellPowerPerLevel = 20;
         this.castTime = 0;
         this.baseManaCost = 40;
     }
@@ -59,7 +59,7 @@ public class NightVisionSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, (int) (getSpellPower(spellLevel, entity) * 200), getAmplifierForLevel(spellLevel), false, false, true));
+        entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, (int) (getSpellPower(spellLevel, entity) * 100), getAmplifierForLevel(spellLevel), false, false, true));
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 

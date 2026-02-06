@@ -42,3 +42,4 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> TIDAL_LOCK = registerSpell(new TidalLockSpell());
 
 }
+//magelight summon

@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.mobs.ice_spider.ICritablePartEntity;
 import io.redspace.ironsspellbooks.entity.spells.root.PreventDismount;
+import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -86,6 +87,18 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
         if (lifetime >= 0 && tickCount > lifetime) {
             destroyTidalLock();
         }
+
+        if (lifetime >= 0 && tickCount < lifetime) {
+            if (tickCount % 25 == 0) {
+                MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(.4f, .85f, 1f, 3f),
+                        getX(), getY() + 0.06, getZ(), 1, 0, 0, 0, 0, true);
+            }
+
+            if (tickCount == 1) {
+                MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(.4f, .85f, 1f, 3f),
+                        getX(), getY() + 0.06, getZ(), 1, 0, 0, 0, 0, true);
+            }
+        }
     }
 
     @Override
@@ -113,8 +126,8 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
     public void destroyTidalLock() {
         if (!level().isClientSide) {
             this.ejectPassengers();
-            this.playSound(SoundEvents.GRAVEL_FALL, 2, 1);
-            MagicManager.spawnParticles(level(), ParticleHelper.ELECTRIC_SPARKS, getX(), getY() + 1, getZ(), 50, 0.2, 0.2, 0.2, 0.2, false);
+            this.playSound(SoundEvents.GLASS_BREAK, 2, 1);
+            MagicManager.spawnParticles(level(), ParticleHelper.ELECTRICITY, getX(), getY() + 1, getZ(), 50, 0.2, 0.2, 0.2, 0.2, false);
             this.discard();
         }
     }
