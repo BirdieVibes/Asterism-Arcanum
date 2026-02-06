@@ -35,7 +35,7 @@ public class ModItems {
 //School Equipment
     public static final DeferredHolder<Item, Item> COSMIC_ATLAS = ITEMS.register("cosmic_atlas", () ->
             new SpellBook(10).withSpellbookAttributes(
-                    new AttributeContainer(ASARAttributeRegistry.ASTRAL_SPELL_POWER, .10F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+                    new AttributeContainer(ASARAttributeRegistry.ASTRAL_SPELL_POWER, .15F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                     new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE)));
 
 //School Crafting

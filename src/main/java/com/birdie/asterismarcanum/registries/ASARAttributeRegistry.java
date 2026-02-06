@@ -14,8 +14,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ASARAttributeRegistry {
     private static final DeferredRegister<Attribute> ATTRIBUTES = DeferredRegister.create(Registries.ATTRIBUTE, AsterismArcanum.MOD_ID);
 
-    public static final DeferredHolder<Attribute, Attribute> ASTRAL_MAGIC_RESIST = registerResistanceAttribute("astral");
-    public static final DeferredHolder<Attribute, Attribute> ASTRAL_SPELL_POWER = registerPowerAttribute("astral");
+    public static final DeferredHolder<Attribute, Attribute> ASTRAL_MAGIC_RESIST = newResistanceAttribute("astral");
+    public static final DeferredHolder<Attribute, Attribute> ASTRAL_SPELL_POWER = newPowerAttribute("astral");
 
     public static void register(IEventBus eventBus)
     {
@@ -32,17 +32,17 @@ public class ASARAttributeRegistry {
     }
 
     // ;_;
-    private static DeferredHolder<Attribute, Attribute> registerResistanceAttribute(String id)
+    private static DeferredHolder<Attribute, Attribute> newResistanceAttribute(String id)
     {
         return ATTRIBUTES.register(id + "_magic_resist", () ->
-                (new MagicRangedAttribute("attribute.asterismarcanum." + id + "_magic_resist",
+                (new MagicRangedAttribute("attribute.irons_spellbooks." + id + "_magic_resist",
                         1.0D, -100, 100).setSyncable(true)));
     }
 
-    private static DeferredHolder<Attribute, Attribute> registerPowerAttribute(String id)
+    private static DeferredHolder<Attribute, Attribute> newPowerAttribute(String id)
     {
         return ATTRIBUTES.register(id + "_spell_power", () ->
-                (new MagicRangedAttribute("attribute.asterismarcanum." + id + "_spell_power",
+                (new MagicRangedAttribute("attribute.irons_spellbooks." + id + "_spell_power",
                         1.0D, -100, 100).setSyncable(true)));
     }
 }

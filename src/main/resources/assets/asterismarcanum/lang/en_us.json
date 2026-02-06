@@ -5,7 +5,8 @@
   "item.asterismarcanum.astral_rune" : "Astral Rune",
   "item.asterismarcanum.astral_upgrade_orb" : "Astral Upgrade Orb",
   "item.asterismarcanum.cosmic_atlas" : "Cosmic Atlas",
-  "attribute.asterismarcanum.astral_spell_power" : "Astral Spell Power",
+  "attribute.irons_spellbooks.astral_spell_power" : "Astral Spell Power",
+  "attribute.irons_spellbooks.astral_magic_resist" : "Astral Magic Resist",
 
 
   "school.asterismarcanum.astral" : "Astral",
