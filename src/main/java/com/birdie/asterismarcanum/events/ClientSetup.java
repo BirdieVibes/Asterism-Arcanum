@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.events;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.entity.spells.constellation.ConstellationRenderer;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlowRenderer;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamRenderer;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmRenderer;
@@ -29,6 +30,7 @@ public class ClientSetup {
         event.registerEntityRenderer(ASAREntityRegistry.DARK_FLOW.get(), DarkFlowRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), StarSwarmRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.TIDAL_LOCK.get(), TidalLockRenderer::new);
+        event.registerEntityRenderer(ASAREntityRegistry.CONSTELLATION.get(), ConstellationRenderer::new);
     }
 
     @SubscribeEvent

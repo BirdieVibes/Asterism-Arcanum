@@ -1,6 +1,8 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+
+import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
@@ -57,6 +59,14 @@ public class ASAREntityRegistry {
                     .sized(11, 11)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "dark_flow").toString()));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<Constellation>> CONSTELLATION =
+            ENTITIES.register("constellation", () -> EntityType.Builder.<Constellation>of(Constellation::new, MobCategory.MISC)
+                    .sized(1, 1)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "constellation").toString()));
+
+
 
 //
 //

@@ -32,7 +32,7 @@ public class TidalLockSpell extends AbstractSpell {
             .setMinRarity(SpellRarity.EPIC)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
             .setMaxLevel(4)
-            .setCooldownSeconds(100)
+            .setCooldownSeconds(60)
             .build();
 
     public TidalLockSpell() {

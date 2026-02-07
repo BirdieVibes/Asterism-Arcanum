@@ -2,6 +2,7 @@ package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.spells.*;
+import com.mojang.datafixers.types.templates.Const;
 import io.redspace.ironsspellbooks.api.config.IronConfigParameters;
 import io.redspace.ironsspellbooks.api.config.ModifyDefaultConfigValuesEvent;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
@@ -26,13 +27,6 @@ public class SpellRegistries {
         SPELLS.register(eventBus);
     }
 
-    @SubscribeEvent
-    public static void modifyStarfallSchool(ModifyDefaultConfigValuesEvent event){
-        if(event.getSpell() instanceof StarfallSpell){
-            event.setDefaultValue(IronConfigParameters.SCHOOL, ASARSchoolRegistry.ASTRAL.get());
-        }
-    }
-
     public static final Supplier<AbstractSpell> STARFIRE = registerSpell(new StarfireSpell());
     public static final Supplier<AbstractSpell> MOONBEAMED = registerSpell(new MoonbeamedSpell());
 //    public static final Supplier<AbstractSpell> NEBULOUS_CONE = registerSpell(new NebulousConeSpell());
@@ -40,6 +34,7 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> NIGHT_VISION = registerSpell(new NightVisionSpell());
     public static final Supplier<AbstractSpell> STAR_SWARM = registerSpell(new StarSwarmSpell());
     public static final Supplier<AbstractSpell> TIDAL_LOCK = registerSpell(new TidalLockSpell());
+    public static final Supplier<AbstractSpell> CONSTELLATION = registerSpell(new ConstellationSpell());
 
 }
 //magelight summon

@@ -41,7 +41,7 @@ public class StarSwarmSpell extends AbstractSpell {
         this.baseSpellPower = 1;
         this.spellPowerPerLevel = 2;
         this.castTime = 0;
-        this.baseManaCost = 80;
+        this.baseManaCost = 40;
     }
 
     @Override
@@ -60,21 +60,16 @@ public class StarSwarmSpell extends AbstractSpell {
     }
 
     @Override
-    public int getRecastCount(int spellLevel, @Nullable LivingEntity entity) {
-        return 1;
-    }
-
-    @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         var recasts = playerMagicData.getPlayerRecasts();
         if (!recasts.hasRecastForSpell(getSpellId())) {
             recasts.addRecast(new RecastInstance(getSpellId(), spellLevel, getRecastCount(spellLevel, entity), 200, castSource, null), playerMagicData);
         }
-        Vec3 origin = entity.getEyePosition().add(entity.getForward().normalize().scale(.2f)).subtract(0, 0.15, 0);
+        Vec3 origin = entity.getEyePosition().add(entity.getForward().normalize().scale(.2f)).subtract(0, -2, 0);
         StarSwarmProjectile star_swarm = new StarSwarmProjectile(level, entity);
         star_swarm.setPos(origin.subtract(0, star_swarm.getBbHeight(), 0));
         Vec3 vec = entity.getForward().add(0,0.2,0).normalize(); // adjust for inaccuracy sometimes hitting the ground
-        star_swarm.shoot(vec.scale(.5f));
+        star_swarm.shoot(vec.scale(.7f));
         star_swarm.setDamage(getDamage(spellLevel, entity));
         star_swarm.setCursorHoming(true);
         level.addFreshEntity(star_swarm);
