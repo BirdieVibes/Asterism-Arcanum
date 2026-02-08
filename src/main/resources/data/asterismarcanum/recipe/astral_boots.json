@@ -1,0 +1,30 @@
+{
+
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+
+    "A": {
+      "item": "irons_spellbooks:arcane_essence"
+    },
+
+    "B": {
+      "item": "asterismarcanum:astral_rune"
+    },
+
+    "C": {
+      "item": "irons_spellbooks:wizard_boots"
+    }
+  },
+  "pattern": [
+
+    "CB ",
+    "A  ",
+    "   "
+
+  ],
+  "result": {
+    "count": 1,
+    "id": "asterismarcanum:astral_boots"
+  }
+}

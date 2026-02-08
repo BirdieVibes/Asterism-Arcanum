@@ -24,6 +24,10 @@ public class ASARCreativeModeTabs {
                         output.accept(ModItems.COSMIC_ATLAS.get());
                         output.accept(ModItems.ASTRAL_RUNE.get());
                         output.accept(ModItems.ASTRAL_UPGRADE_ORB.get());
+                        output.accept(ModItems.ASTRAL_CROWN.get());
+                        output.accept(ModItems.ASTRAL_CHESTPLATE.get());
+                        output.accept(ModItems.ASTRAL_LEGGINGS.get());
+                        output.accept(ModItems.ASTRAL_BOOTS.get());
                     })
                     .build());
 

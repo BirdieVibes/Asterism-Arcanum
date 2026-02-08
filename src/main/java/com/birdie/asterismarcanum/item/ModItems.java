@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.item;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.item.armor.AstralMagicArmorItem;
 import com.birdie.asterismarcanum.registries.ASARAttributeRegistry;
 import com.birdie.asterismarcanum.registries.ASARUpgradeOrbTypeRegistry;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
@@ -10,6 +11,7 @@ import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
 import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
@@ -38,7 +40,17 @@ public class ModItems {
                     new AttributeContainer(ASARAttributeRegistry.ASTRAL_SPELL_POWER, .15F, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
                     new AttributeContainer(AttributeRegistry.MAX_MANA, 200, AttributeModifier.Operation.ADD_VALUE)));
 
-//School Crafting
+    public static final DeferredHolder<Item, Item> ASTRAL_CROWN = ITEMS.register("astral_crown", () -> new AstralMagicArmorItem
+            (ArmorItem.Type.HELMET, ItemPropertiesHelper.equipment(1).durability(ArmorItem.Type.HELMET.getDurability(37))));
+    public static final DeferredHolder<Item, Item> ASTRAL_CHESTPLATE = ITEMS.register("astral_chestplate", () -> new AstralMagicArmorItem
+            (ArmorItem.Type.CHESTPLATE, ItemPropertiesHelper.equipment(1).durability(ArmorItem.Type.CHESTPLATE.getDurability(37))));
+    public static final DeferredHolder<Item, Item> ASTRAL_LEGGINGS = ITEMS.register("astral_leggings", () -> new AstralMagicArmorItem
+            (ArmorItem.Type.LEGGINGS, ItemPropertiesHelper.equipment(1).durability(ArmorItem.Type.LEGGINGS.getDurability(37))));
+    public static final DeferredHolder<Item, Item> ASTRAL_BOOTS = ITEMS.register("astral_boots", () -> new AstralMagicArmorItem
+            (ArmorItem.Type.BOOTS, ItemPropertiesHelper.equipment(1).durability(ArmorItem.Type.BOOTS.getDurability(37))));
+
+
+    //School Crafting
     public static final DeferredHolder<Item, Item> ASTRAL_RUNE = ITEMS.register("astral_rune", () -> new Item(ItemPropertiesHelper.material()));
 
     public static final DeferredHolder<Item, Item> ASTRAL_UPGRADE_ORB = ITEMS.register("astral_upgrade_orb",
