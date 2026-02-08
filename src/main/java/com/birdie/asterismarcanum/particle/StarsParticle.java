@@ -10,8 +10,9 @@ import net.neoforged.api.distmarker.OnlyIn;
 public class StarsParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
 
-    public StarsParticle(ClientLevel level, double xCoord, double yCoord, double zCoord, SpriteSet spriteSet, double xd, double yd, double zd) {
-
+    public StarsParticle(
+            ClientLevel level, double xCoord, double yCoord, double zCoord,
+            SpriteSet spriteSet, double xd, double yd, double zd) {
         super(level, xCoord, yCoord, zCoord, xd, yd, zd);
 
         //this.friction = 1.0f;
@@ -37,29 +38,25 @@ public class StarsParticle extends TextureSheetParticle {
     }
 
     @Override
-    public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
-    }
+    public ParticleRenderType getRenderType() { return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT; }
 
     @OnlyIn(Dist.CLIENT)
     public static class Provider implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet sprites;
 
-        public Provider(SpriteSet spriteSet) {
-            this.sprites = spriteSet;
-        }
+        public Provider(SpriteSet spriteSet) { this.sprites = spriteSet; }
 
-        public Particle createParticle(SimpleParticleType particleType, ClientLevel level,
-                                       double x, double y, double z,
-                                       double dx, double dy, double dz) {
+        public Particle createParticle(
+                SimpleParticleType particleType, ClientLevel level,
+                double x, double y, double z,
+                double dx, double dy, double dz
+        ) {
             return new StarsParticle(level, x, y, z, this.sprites, dx, dy, dz);
         }
     }
 
     @Override
-    protected int getLightColor(float pPartialTick) {
-        return LightTexture.FULL_BRIGHT;
-    }
+    protected int getLightColor(float pPartialTick) { return LightTexture.FULL_BRIGHT; }
 }
 
 

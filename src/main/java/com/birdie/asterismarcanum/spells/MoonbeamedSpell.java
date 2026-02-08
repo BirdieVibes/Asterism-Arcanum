@@ -37,9 +37,9 @@ public class MoonbeamedSpell extends AbstractSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(
-                Component.translatable("ui.irons_spellbooks.distance", Utils.stringTruncation(getDistance(spellLevel, caster), 1))
-        );
+        return List.of(Component.translatable("ui.irons_spellbooks.distance",
+                Utils.stringTruncation(getDistance(spellLevel, caster), 1)
+        ));
     }
 
 
@@ -63,10 +63,15 @@ public class MoonbeamedSpell extends AbstractSpell {
         if (!(entity instanceof ServerPlayer serverPlayer)) {
             return false;
         }
+
         if (entity.getCombatTracker().getCombatDuration() != 0) {
-            serverPlayer.displayClientMessage(Component.translatable("ui.irons_spellbooks.cast_error_combat").withStyle(ChatFormatting.RED), true);
+            serverPlayer.displayClientMessage(Component.translatable(
+                    "ui.irons_spellbooks.cast_error_combat").withStyle(ChatFormatting.RED), true
+            );
+
             return false;
         }
+
         return true;
     }
 
@@ -101,6 +106,7 @@ public class MoonbeamedSpell extends AbstractSpell {
 
         MoonbeamEntity moonbeam = new MoonbeamEntity(level);
         moonbeam.setPos(entity.getBoundingBox().getCenter().subtract(0, moonbeam.getBbHeight() * .5f, 0));
+
         level.addFreshEntity(moonbeam);
     }
 
@@ -108,21 +114,19 @@ public class MoonbeamedSpell extends AbstractSpell {
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         var teleportData = (TeleportSpell.TeleportData) playerMagicData.getAdditionalCastData();
 
-        Vec3 dest = null;
-        if (teleportData != null) {
-            var potentialTarget = teleportData.getTeleportTargetPosition();
-            dest = potentialTarget;
-        }
+        Vec3 dest;
 
-        if (dest == null) {
+        if (teleportData != null && teleportData.getTeleportTargetPosition() != null)
+            dest = teleportData.getTeleportTargetPosition();
+        else
             dest = findTeleportLocation(spellLevel, level, entity);
-        }
 
-        if (entity.isPassenger()) {
-            entity.stopRiding();
-        }
+        if (entity.isPassenger()) entity.stopRiding();
+
         Utils.handleSpellTeleport(this, entity, dest);
+
         entity.resetFallDistance();
+
         level.playSound(null, dest.x, dest.y, dest.z, getCastFinishSound().get(), SoundSource.NEUTRAL, 1f, 1f);
 
         playerMagicData.resetAdditionalCastData();
@@ -131,6 +135,7 @@ public class MoonbeamedSpell extends AbstractSpell {
 
         MoonbeamEntity moonbeam = new MoonbeamEntity(level);
         moonbeam.setPos(entity.getBoundingBox().getCenter().subtract(0, moonbeam.getBbHeight() * .5f, 0));
+
         level.addFreshEntity(moonbeam);
     }
 

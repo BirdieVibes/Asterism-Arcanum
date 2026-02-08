@@ -10,10 +10,7 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.capabilities.magic.RecastInstance;
-import io.redspace.ironsspellbooks.capabilities.magic.RecastResult;
-import io.redspace.ironsspellbooks.capabilities.magic.SummonManager;
-import io.redspace.ironsspellbooks.capabilities.magic.SummonedEntitiesCastData;
+import io.redspace.ironsspellbooks.capabilities.magic.*;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.fireball.MagicFireball;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
@@ -45,11 +42,11 @@ public class ConstellationSpell extends AbstractSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(
-                Component.translatable("ui.irons_spellbooks.radius", Utils.stringTruncation(getRadius(spellLevel, caster), 1))
-        );
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.radius",
+                Utils.stringTruncation(getRadius(spellLevel, caster), 1)
+        ));
     }
-
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.EPIC)
@@ -89,15 +86,17 @@ public class ConstellationSpell extends AbstractSpell {
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         float radius = getRadius(spellLevel, entity);
-        HitResult raycast = Utils.raycastForEntity(level, entity, 16 + radius * 1.5f, true);
-        Vec3 center = raycast.getLocation();
+        HitResult rayCast = Utils.raycastForEntity(level, entity, 16 + radius * 1.5f, true);
+        Vec3 center = rayCast.getLocation();
 
-        var recasts = playerMagicData.getPlayerRecasts();
+        PlayerRecasts recasts = playerMagicData.getPlayerRecasts();
+
         if (!recasts.hasRecastForSpell(getSpellId())) {
             recasts.addRecast(new RecastInstance(getSpellId(), spellLevel, getRecastCount(spellLevel, entity),
                     100, castSource, null), playerMagicData);
         }
 
+        /*
         if (raycast instanceof BlockHitResult blockHitResult) {
             Constellation constellation = new Constellation(level, entity);
 
@@ -107,6 +106,7 @@ public class ConstellationSpell extends AbstractSpell {
 
             level.addFreshEntity(constellation);
         }
+         */
 
         Constellation constellation = new Constellation(level, entity);
 

@@ -18,7 +18,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
-@SuppressWarnings("removal")
+//@SuppressWarnings("removal") why this?
 @EventBusSubscriber(modid = AsterismArcanum.MOD_ID, value = Dist.CLIENT)
 
 public class ClientSetup {
@@ -26,7 +26,7 @@ public class ClientSetup {
     public static void  rendererRegister(EntityRenderersEvent.RegisterRenderers event){
         event.registerEntityRenderer(ASAREntityRegistry.STARFIRE_PROJECTILE.get(), StarfireRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.MOONBEAM.get(), MoonbeamRenderer::new);
-//        event.registerEntityRenderer(ASAREntityRegistry.NEBULOUS_CONE_PROJECTILE.get(), NoopRenderer::new);
+        // event.registerEntityRenderer(ASAREntityRegistry.NEBULOUS_CONE_PROJECTILE.get(), NoopRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.DARK_FLOW.get(), DarkFlowRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), StarSwarmRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.TIDAL_LOCK.get(), TidalLockRenderer::new);
