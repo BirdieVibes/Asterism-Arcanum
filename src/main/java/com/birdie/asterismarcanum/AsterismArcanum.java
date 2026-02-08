@@ -67,12 +67,12 @@ public class AsterismArcanum {
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // curios
-            event.enqueueWork(() -> {
-                ModItems.getASARItems().stream().filter(item -> item.get() instanceof SpellBook).forEach((item) -> CuriosRendererRegistry.register(item.get(), SpellBookCurioRenderer::new));
-            });
+            event.enqueueWork(() -> ModItems.getASARItems().stream()
+                    .filter(item -> item.get() instanceof SpellBook)
+                    .forEach((item) -> CuriosRendererRegistry.register(
+                            item.get(), SpellBookCurioRenderer::new)
+                    ));
         }
-
-
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

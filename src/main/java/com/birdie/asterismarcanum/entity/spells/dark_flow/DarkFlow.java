@@ -50,8 +50,7 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
     List<Entity> trackingEntities = new ArrayList<>();
 
     @Override
-    public void onAntiMagic(MagicData playerMagicData) {
-    }
+    public void onAntiMagic(MagicData playerMagicData) { }
 
     public void refreshDimensions() {
         double d0 = this.getX();

@@ -10,13 +10,10 @@
   "item.asterismarcanum.astral_leggings" : "Astral Leggings",
   "item.asterismarcanum.astral_crown" : "Astral Crown",
 
-
   "attribute.irons_spellbooks.astral_spell_power" : "Astral Spell Power",
   "attribute.irons_spellbooks.astral_magic_resist" : "Astral Magic Resist",
 
-
   "school.asterismarcanum.astral" : "Astral",
-
 
   "spell.asterismarcanum.starfire" : "Starfire",
   "spell.asterismarcanum.starfire.guide" : "Bring forth a minor piece of the heavens themselves, and launch it towards where you are looking.",
@@ -33,8 +30,7 @@
   "spell.asterismarcanum.tidal_lock" : "Tidal Lock",
   "spell.asterismarcanum.tidal_lock.guide" :"Lock yourself into place, allowing you to hover until you are knocked free or leave of your own accord.",
   "spell.asterismarcanum.constellation" : "Constellation",
-  "spell.asterismarcanum.constellation_guide" : "Rely on the magic of the patterns in the night sky, summoning stars which after a short moment will burst with explosive light.",
-
+  "spell.asterismarcanum.constellation.guide" : "Rely on the magic of the patterns in the night sky, summoning stars which after a short moment will burst with explosive light.",
 
   "creativetab.asterismarcanum.asterism_arcanum_items" : "Asterism Items"
 }

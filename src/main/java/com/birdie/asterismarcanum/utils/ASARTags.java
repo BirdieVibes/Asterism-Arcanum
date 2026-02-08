@@ -11,12 +11,10 @@ import net.minecraft.world.item.Item;
 public class ASARTags {
     // Astral School Focus
     public static final TagKey<Item> ASTRAL_FOCUS = ItemTags.create(
-            ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "astral_focus")
-                    .toString())
+            ResourceLocation.parse(AsterismArcanum.namespacePath("astral_focus").toString())
     );
 
     public static final TagKey<Item> ASTRAL_RESOURCE = ItemTags.create(
-            ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "astral_resource")
-                    .toString())
+            ResourceLocation.parse(AsterismArcanum.namespacePath("astral_resource").toString())
     );
 }
