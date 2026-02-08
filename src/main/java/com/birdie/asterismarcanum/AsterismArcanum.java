@@ -28,13 +28,15 @@ public class AsterismArcanum {
     public static final String MOD_ID = "asterismarcanum";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-
     public AsterismArcanum(IEventBus modEventBus, ModContainer modContainer) {
+        LOGGER.info("Asterism Arcanum is loading...");
+
         modEventBus.addListener(this::commonSetup);
 
         ASARCreativeModeTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
+
         modEventBus.addListener(this::addCreative);
 
         SpellRegistries.register(modEventBus);
@@ -48,14 +50,15 @@ public class AsterismArcanum {
         ASARParticleRegistry.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-    }
-    public static ResourceLocation id(@NotNull String path)
-    {
-        return ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, path);
-    }
-    private void commonSetup(FMLCommonSetupEvent event) {
+
+        LOGGER.info("Asterism Arcanum finished loading!");
     }
 
+    public static ResourceLocation namespacePath(@NotNull String path) {
+        return ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, path);
+    }
+
+    private void commonSetup(FMLCommonSetupEvent event) { }
 
     @EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
     public static class ClientModEvents
@@ -64,12 +67,12 @@ public class AsterismArcanum {
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // curios
-            event.enqueueWork(() -> {
-                ModItems.getASARItems().stream().filter(item -> item.get() instanceof SpellBook).forEach((item) -> CuriosRendererRegistry.register(item.get(), SpellBookCurioRenderer::new));
-            });
+            event.enqueueWork(() -> ModItems.getASARItems().stream()
+                    .filter(item -> item.get() instanceof SpellBook)
+                    .forEach((item) -> CuriosRendererRegistry.register(
+                            item.get(), SpellBookCurioRenderer::new)
+                    ));
         }
-
-
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

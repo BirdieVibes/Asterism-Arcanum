@@ -14,15 +14,16 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagProvider extends ItemTagsProvider {
-    public ModItemTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper) {
+    public ModItemTagProvider(
+            PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
+            CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper
+    ) {
         super(output, lookupProvider, blockTags, AsterismArcanum.MOD_ID, existingFileHelper);
     }
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(ASARTags.ASTRAL_FOCUS)
-                .add(ModItems.LIQUID_LUMINANCE.get());
-        tag(ASARTags.ASTRAL_RESOURCE)
-                .add(ModItems.ASTRAL_UPGRADE_ORB.get());
+        tag(ASARTags.ASTRAL_FOCUS).add(ModItems.LIQUID_LUMINANCE.get());
+        tag(ASARTags.ASTRAL_RESOURCE).add(ModItems.ASTRAL_UPGRADE_ORB.get());
     }
 }

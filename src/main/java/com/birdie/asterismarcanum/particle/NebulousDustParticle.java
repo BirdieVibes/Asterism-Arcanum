@@ -10,8 +10,10 @@ import net.neoforged.api.distmarker.OnlyIn;
 public class NebulousDustParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
 
-    public NebulousDustParticle(ClientLevel level, double xCoord, double yCoord, double zCoord, SpriteSet spriteSet, double xd, double yd, double zd) {
-
+    public NebulousDustParticle(
+            ClientLevel level, double xCoord, double yCoord, double zCoord,
+            SpriteSet spriteSet, double xd, double yd, double zd
+    ) {
         super(level, xCoord, yCoord, zCoord, xd, yd, zd);
 
         this.friction = 0.1f;
@@ -38,21 +40,19 @@ public class NebulousDustParticle extends TextureSheetParticle {
     }
 
     @Override
-    public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
-    }
+    public ParticleRenderType getRenderType() { return ParticleRenderType.PARTICLE_SHEET_OPAQUE; }
 
     @OnlyIn(Dist.CLIENT)
     public static class Provider implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet sprites;
 
-        public Provider(SpriteSet spriteSet) {
-            this.sprites = spriteSet;
-        }
+        public Provider(SpriteSet spriteSet) { this.sprites = spriteSet; }
 
-        public Particle createParticle(SimpleParticleType particleType, ClientLevel level,
-                                       double x, double y, double z,
-                                       double dx, double dy, double dz) {
+        public Particle createParticle(
+                SimpleParticleType particleType, ClientLevel level,
+                double x, double y, double z,
+                double dx, double dy, double dz
+        ) {
             return new NebulousDustParticle(level, x, y, z, this.sprites, dx, dy, dz);
         }
     }

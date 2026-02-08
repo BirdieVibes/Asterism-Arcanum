@@ -23,9 +23,10 @@ public class TidalLockSpell extends AbstractSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(
-                Component.translatable("ui.irons_spellbooks.duration", Utils.timeFromTicks(getDuration(spellLevel, caster), 1))
-        );
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.duration",
+                Utils.timeFromTicks(getDuration(spellLevel, caster), 1)
+        ));
     }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
@@ -74,9 +75,6 @@ public class TidalLockSpell extends AbstractSpell {
         return 160 + spellLevel * 160 * Mth.sqrt(getEntityPowerMultiplier(caster));
     }
 
-
     @Override
-    public AnimationHolder getCastStartAnimation() {
-        return SpellAnimations.SELF_CAST_TWO_HANDS;
-    }
+    public AnimationHolder getCastStartAnimation() { return SpellAnimations.SELF_CAST_TWO_HANDS; }
 }

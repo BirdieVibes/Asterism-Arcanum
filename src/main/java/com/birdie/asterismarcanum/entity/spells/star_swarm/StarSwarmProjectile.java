@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.entity.spells.star_swarm;
 
+import com.birdie.asterismarcanum.entity.spells.SpellUtils;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
@@ -12,6 +13,7 @@ import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.registries.EntityRegistry;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
@@ -31,7 +33,9 @@ import static java.math.RoundingMode.UP;
 import static javax.swing.SwingConstants.*;
 
 public class StarSwarmProjectile extends AbstractMagicProjectile implements AntiMagicSusceptible {
-
+    public StarSwarmProjectile(Level levelIn, LivingEntity shooter) {
+        this(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), levelIn, shooter);
+    }
 
     public StarSwarmProjectile(EntityType<? extends StarSwarmProjectile> entityType, Level level) {
         super(entityType, level);
@@ -42,25 +46,6 @@ public class StarSwarmProjectile extends AbstractMagicProjectile implements Anti
     public StarSwarmProjectile(EntityType<? extends StarSwarmProjectile> entityType, Level levelIn, LivingEntity shooter) {
         this(entityType, levelIn);
         setOwner(shooter);
-    }
-
-    public StarSwarmProjectile(Level levelIn, LivingEntity shooter) {
-        this(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), levelIn, shooter);
-    }
-
-    @Override
-    public void impactParticles(double x, double y, double z) {
-        MagicManager.spawnParticles(this.level(), ParticleHelper.WISP, x, y, z, 25, 0, 0, 0, .18, true);
-    }
-
-    @Override
-    public float getSpeed() {
-        return 0.8f;
-    }
-
-    @Override
-    public Optional<Holder<SoundEvent>> getImpactSound() {
-        return Optional.empty();
     }
 
     @Override
@@ -77,8 +62,21 @@ public class StarSwarmProjectile extends AbstractMagicProjectile implements Anti
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         super.onHitEntity(entityHitResult);
-        DamageSources.applyDamage(entityHitResult.getEntity(), getDamage(), SpellRegistries.STAR_SWARM.get().getDamageSource(this, getOwner()));
+
+        DamageSources.applyDamage(
+                entityHitResult.getEntity(), getDamage(),
+                SpellRegistries.STAR_SWARM.get().getDamageSource(this, getOwner())
+        );
+
         pierceOrDiscard();
+    }
+
+    @Override
+    public void impactParticles(double x, double y, double z) {
+        MagicManager.spawnParticles(
+                level(), ParticleHelper.WISP,
+                x, y, z, 25, 0, 0, 0, .18, true
+        );
     }
 
     @Override
@@ -86,26 +84,34 @@ public class StarSwarmProjectile extends AbstractMagicProjectile implements Anti
         var vec = getDeltaMovement();
         var length = vec.length();
         int count = (int) Math.min(20, Math.round(length) * 0.1) + 1;
+
+        Level level = level();
+        Vec3 position = position();
+
         float f = (float) length / count;
+
         for (int i = 0; i < count; i++) {
             Vec3 random = Utils.getRandomVec3(0.2);
             Vec3 p = vec.scale(f * i);
-            level().addParticle(ASARParticleRegistry.STARDUST_PARTICLE.get(), this.getX() + random.x + p.x,
-                    this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
-            level().addParticle(ASARParticleRegistry.STARS_PARTICLE.get(), this.getX() + random.x + p.x,
-                    this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
-            level().addParticle(ASARParticleRegistry.STARS_PARTICLE.get(), this.getX() + random.x + p.x,
-                    this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
-            level().addParticle(ParticleTypes.ELECTRIC_SPARK, this.getX() + random.x + p.x,
-                    this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
-            level().addParticle(ParticleTypes.END_ROD, this.getX() + random.x + p.x,
-                    this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
-            level().addParticle(ParticleTypes.GLOW, this.getX() + random.x + p.x,
-                    this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
-            level().addParticle(ParticleTypes.END_ROD, this.getX() + random.x + p.x,
-                    this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
-            level().addParticle(ParticleTypes.END_ROD, this.getX() + random.x + p.x,
-                    this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
+
+            SpellUtils.addParticle(level, ASARParticleRegistry.STARDUST_PARTICLE.get(), position, p, random);
+            SpellUtils.addParticle(level, ASARParticleRegistry.STARS_PARTICLE.get(), position, p, random);
+            SpellUtils.addParticle(level, ASARParticleRegistry.STARS_PARTICLE.get(), position, p, random);
+            SpellUtils.addParticle(level, ParticleTypes.ELECTRIC_SPARK, position, p, random);
+            SpellUtils.addParticle(level, ParticleTypes.END_ROD, position, p, random);
+            SpellUtils.addParticle(level, ParticleTypes.GLOW, position, p, random);
+            SpellUtils.addParticle(level, ParticleTypes.END_ROD, position, p, random);
+            SpellUtils.addParticle(level, ParticleTypes.END_ROD, position, p, random);
         }
+    }
+
+    @Override
+    public float getSpeed() {
+        return 0.8f;
+    }
+
+    @Override
+    public Optional<Holder<SoundEvent>> getImpactSound() {
+        return Optional.empty();
     }
 }

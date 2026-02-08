@@ -22,9 +22,10 @@ public class NightVisionSpell extends AbstractSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(
-                Component.translatable("ui.irons_spellbooks.effect_length", Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 100, 1))
-        );
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.effect_length",
+                Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 100, 1)
+        ));
     }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
@@ -43,19 +44,13 @@ public class NightVisionSpell extends AbstractSpell {
     }
 
     @Override
-    public CastType getCastType() {
-        return CastType.INSTANT;
-    }
+    public CastType getCastType() { return CastType.INSTANT; }
 
     @Override
-    public DefaultConfig getDefaultConfig() {
-        return defaultConfig;
-    }
+    public DefaultConfig getDefaultConfig() { return defaultConfig; }
 
     @Override
-    public ResourceLocation getSpellResource() {
-        return spellId;
-    }
+    public ResourceLocation getSpellResource() { return spellId; }
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
@@ -63,13 +58,8 @@ public class NightVisionSpell extends AbstractSpell {
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
-
-    private int getAmplifierForLevel(int spellLevel) {
-        return spellLevel; // 6 base damage
-    }
+    private int getAmplifierForLevel(int spellLevel) { return spellLevel; }
 
     @Override
-    public AnimationHolder getCastStartAnimation() {
-        return SpellAnimations.SELF_CAST_ANIMATION;
-    }
+    public AnimationHolder getCastStartAnimation() { return SpellAnimations.SELF_CAST_ANIMATION; }
 }

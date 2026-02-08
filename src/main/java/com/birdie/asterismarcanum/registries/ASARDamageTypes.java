@@ -9,17 +9,23 @@ import net.minecraft.world.damagesource.DamageScaling;
 import net.minecraft.world.damagesource.DamageType;
 
 public class ASARDamageTypes {
-    public static ResourceKey<DamageType> register(String name)
-    {
-        return ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, name).toString()));
+    public static ResourceKey<DamageType> register(String name) {
+        return ResourceKey.create(
+                Registries.DAMAGE_TYPE,
+                ResourceLocation.parse(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, name).toString())
+        );
     }
 
     // Astral
     public static final ResourceKey<DamageType> ASTRAL_MAGIC = register("astral_magic");
 
-
-    public static void bootstrap(BootstrapContext<DamageType> context)
-    {
-        context.register(ASTRAL_MAGIC, new DamageType(ASTRAL_MAGIC.location().getPath(), DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER, 0F));
+    public static void bootstrap(BootstrapContext<DamageType> context) {
+        context.register(
+                ASTRAL_MAGIC,
+                new DamageType(
+                        ASTRAL_MAGIC.location().getPath(),
+                        DamageScaling.WHEN_CAUSED_BY_LIVING_NON_PLAYER, 0F
+                )
+        );
     }
 }

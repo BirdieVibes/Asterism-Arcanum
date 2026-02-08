@@ -5,7 +5,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
-import io.redspace.ironsspellbooks.entity.spells.ice_tomb.IceTombEntity;
 import io.redspace.ironsspellbooks.render.RenderHelper;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -19,12 +18,9 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
-import static io.redspace.ironsspellbooks.entity.spells.ice_tomb.IceTombRenderer.CULL;
-import static io.redspace.ironsspellbooks.entity.spells.ice_tomb.IceTombRenderer.NOCULL;
-
 public class TidalLockRenderer extends EntityRenderer<TidalLockEntity> {
-    public static final ResourceLocation NOCULL = AsterismArcanum.id("textures/entity/blank_texture/blank_texture.png");
-    public static final ResourceLocation CULL = AsterismArcanum.id("textures/entity/blank_texture/blank_texture.png");
+    public static final ResourceLocation NOCULL = AsterismArcanum.namespacePath("textures/entity/blank_texture/blank_texture.png");
+    public static final ResourceLocation CULL = AsterismArcanum.namespacePath("textures/entity/blank_texture/blank_texture.png");
     private final IceTombModel model;
 
     public TidalLockRenderer(EntityRendererProvider.Context pContext) {

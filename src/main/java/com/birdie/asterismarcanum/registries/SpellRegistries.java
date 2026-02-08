@@ -16,16 +16,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.function.Supplier;
 
 public class SpellRegistries {
-    public static final DeferredRegister<AbstractSpell> SPELLS = DeferredRegister.create(SpellRegistry.SPELL_REGISTRY_KEY, AsterismArcanum.MOD_ID);
-
-
-    public static Supplier<AbstractSpell> registerSpell(AbstractSpell spell) {
-        return SPELLS.register(spell.getSpellName(), () -> spell);
-    }
-
-    public static void register(IEventBus eventBus) {
-        SPELLS.register(eventBus);
-    }
+    public static final DeferredRegister<AbstractSpell> SPELLS =
+            DeferredRegister.create(SpellRegistry.SPELL_REGISTRY_KEY, AsterismArcanum.MOD_ID);
 
     public static final Supplier<AbstractSpell> STARFIRE = registerSpell(new StarfireSpell());
     public static final Supplier<AbstractSpell> MOONBEAMED = registerSpell(new MoonbeamedSpell());
@@ -36,5 +28,10 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> TIDAL_LOCK = registerSpell(new TidalLockSpell());
     public static final Supplier<AbstractSpell> CONSTELLATION = registerSpell(new ConstellationSpell());
 
+    public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }
+
+    public static Supplier<AbstractSpell> registerSpell(AbstractSpell spell) {
+        return SPELLS.register(spell.getSpellName(), () -> spell);
+    }
 }
 //magelight summon
