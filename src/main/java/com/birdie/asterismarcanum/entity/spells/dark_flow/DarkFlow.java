@@ -5,12 +5,10 @@ import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
-import io.redspace.ironsspellbooks.config.ServerConfigs;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
-import io.redspace.ironsspellbooks.registries.SoundRegistry;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -21,73 +19,36 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.Tags;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DarkFlow extends Projectile implements AntiMagicSusceptible {
-    private static final EntityDataAccessor<Float> DATA_RADIUS = SynchedEntityData.defineId(DarkFlow.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Float> DATA_RADIUS =
+            SynchedEntityData.defineId(DarkFlow.class, EntityDataSerializers.FLOAT);
 
-    public DarkFlow(EntityType<? extends Projectile> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
-    }
+    public static final int WARMUP_TIME = 2;
+
+    private static final int LOOP_SOUND_DURATION_IN_TICKS = 40;
+
+    private float damage;
+    private int duration = 20 ;
+
+    private List<Entity> trackingEntities = List.of();
+
+    public DarkFlow(EntityType<? extends Projectile> pEntityType, Level pLevel) { super(pEntityType, pLevel); }
 
     public DarkFlow(Level pLevel, LivingEntity owner) {
         this(ASAREntityRegistry.DARK_FLOW.get(), pLevel);
         setOwner(owner);
     }
 
-    List<Entity> trackingEntities = new ArrayList<>();
-
     @Override
     public void onAntiMagic(MagicData playerMagicData) { }
-
-    public void refreshDimensions() {
-        double d0 = this.getX();
-        double d1 = this.getY();
-        double d2 = this.getZ();
-        super.refreshDimensions();
-        this.setPos(d0, d1, d2);
-    }
-
-
-    private float damage;
-    private int duration = 20 ;
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public void setDamage(float damage) {
-        this.damage = damage;
-    }
-
-    public float getDamage() {
-        return damage;
-    }
-
-    @Override
-    public EntityDimensions getDimensions(Pose pPose) {
-        return EntityDimensions.scalable(this.getRadius() * 2.0F, this.getRadius() * 2.0F);
-    }
-
-    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
-        pBuilder.define(DATA_RADIUS, 5F);
-    }
 
     @Override
     public void onSyncedDataUpdated(EntityDataAccessor<?> pKey) {
@@ -100,14 +61,101 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
         super.onSyncedDataUpdated(pKey);
     }
 
-    public void setRadius(float pRadius) {
-        if (!this.level().isClientSide) {
-            this.getEntityData().set(DATA_RADIUS, Math.min(pRadius, 48));
+    @Override
+    public void tick() {
+        super.tick();
+
+        float radius = this.getRadius();
+
+        int update = Math.max((int) (this.getRadius() / 2), 2);
+
+        //prevent lag from giagantic black holes
+        if (tickCount % update == 0) updateTrackingEntities();
+
+        Level level = level();
+        AABB boundingBox = this.getBoundingBox();
+
+        float boundingBoxRadiusX = (float) (boundingBox.getXsize());
+
+        BlockPos blockPos = this.blockPosition();
+        Vec3 position = this.position();
+        Vec3 center = boundingBox.getCenter();
+
+        // Unused variable?
+        // boolean hitTick = this.tickCount % 10 == 0;
+
+        for (Entity entity : trackingEntities) {
+            if (entity != getOwner() && !DamageSources.isFriendlyFireBetween(getOwner(), entity) && !entity.isSpectator()) {
+                float distance = (float) center.distanceTo(position);
+
+                if (distance > boundingBoxRadiusX) {
+                    continue;
+                }
+
+                float f = 1 - distance / boundingBoxRadiusX;
+                float scale = f * f * f * f * .25f;
+                float resistance = entity instanceof LivingEntity livingEntity
+                        ? Mth.clamp(1 - (float) livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE), .3f, 1f)
+                        : 1f;
+
+                float bossResistance = entity.getType().is(Tags.EntityTypes.BOSSES) ? 0.5f : 1f;
+
+                Vec3 diff = center.subtract(position).scale(scale * resistance * bossResistance);
+                entity.push(-diff.x, -diff.y, -diff.z);
+                entity.fallDistance = 0;
+            }
         }
+
+        if (level.isClientSide) return;
+
+        if (tickCount == WARMUP_TIME) {
+            MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.1f, .1f, 0.1f, 10f),
+                    position.x, position.y + (boundingBoxRadiusX / 2) + 0.06, position.z,
+                    1, 0, 0, 0, 0, true
+            );
+
+            MagicManager.spawnParticles(level, ASARParticleRegistry.STARS_PARTICLE.get(),
+                    position.x, position.y + radius, position.z,
+                    200, 1, 1, 1, 1, true
+            );
+
+            MagicManager.spawnParticles(level, ParticleTypes.EXPLOSION, position.x,
+                    position.y + radius, position.z,
+                    200, 1, 1, 1, 1, true);
+
+            level.playSound(null, blockPos, SoundEvents.DRAGON_FIREBALL_EXPLODE,
+                    SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(9, 11) * .3f);
+        }
+
+        if (tickCount > duration) this.discard();
     }
 
-    public float getRadius() {
-        return this.getEntityData().get(DATA_RADIUS);
+    @Override
+    public boolean displayFireAnimation() {
+        return false;
+    }
+
+    @Override
+    public EntityDimensions getDimensions(Pose pPose) {
+        return EntityDimensions.scalable(this.getRadius() * 2.0F, this.getRadius() * 2.0F);
+    }
+
+    public int getDuration() { return duration; }
+    public void setDuration(int duration) { this.duration = duration; }
+
+    public float getDamage() { return damage; }
+    public void setDamage(float damage) { this.damage = damage; }
+
+    public float getRadius() { return this.getEntityData().get(DATA_RADIUS); }
+
+    public void setRadius(float pRadius) {
+        if (level().isClientSide) return;
+
+        this.getEntityData().set(DATA_RADIUS, Math.min(pRadius, 48));
+    }
+
+    protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
+        pBuilder.define(DATA_RADIUS, 5F);
     }
 
     protected void addAdditionalSaveData(CompoundTag pCompound) {
@@ -128,68 +176,15 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
 
     }
 
-    public static final int WARMUP_TIME = 2;
-
-    @Override
-    public void tick() {
-        super.tick();
-        int update = Math.max((int) (getRadius() / 2), 2);
-        //prevent lag from giagantic black holes
-        if (tickCount % update == 0) {
-            updateTrackingEntities();
-        }
-        var bb = this.getBoundingBox();
-        float radius = (float) (bb.getXsize());
-        boolean hitTick = this.tickCount % 10 == 0;
-        Vec3 center = bb.getCenter();
-        for (Entity entity : trackingEntities) {
-            if (entity != getOwner() && !DamageSources.isFriendlyFireBetween(getOwner(), entity) && !entity.isSpectator()) {
-                float distance = (float) center.distanceTo(entity.position());
-                if (distance > radius) {
-                    continue;
-                }
-                float f = 1 - distance / radius;
-                float scale = f * f * f * f * .25f;
-                float resistance = entity instanceof LivingEntity livingEntity ? Mth.clamp(1 -
-                        (float) livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE), .3f, 1f) : 1f;
-                float bossResistance = entity.getType().is(Tags.EntityTypes.BOSSES) ? 0.5f : 1f;
-
-
-                Vec3 diff = center.subtract(entity.position()).scale(scale * resistance * bossResistance);
-                entity.push(-diff.x, -diff.y, -diff.z);
-                entity.fallDistance = 0;
-            }
-        }
-
-        if (tickCount == WARMUP_TIME) {
-            if (!level().isClientSide) {
-                MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(.1f, .1f, 0.1f,
-                                10f), getX(), getY() + (radius / 2) + 0.06, getZ(),
-                        1, 0, 0, 0, 0, true);
-                MagicManager.spawnParticles(level(), ASARParticleRegistry.STARS_PARTICLE.get(), getX(),
-                        getY() + getRadius(), getZ(), 200, 1, 1, 1, 1, true);
-                MagicManager.spawnParticles(level(), ParticleTypes.EXPLOSION, getX(),
-                        getY() + getRadius(), getZ(), 200, 1, 1, 1, 1, true);
-                level().playSound(null, this.blockPosition(), SoundEvents.DRAGON_FIREBALL_EXPLODE,
-                        SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(9, 11) * .3f);
-            }
-        }
-
-        if (!level().isClientSide) {
-            if (tickCount > duration) {
-                this.discard();
-            }
-        }
+    public void refreshDimensions() {
+        double d0 = this.getX();
+        double d1 = this.getY();
+        double d2 = this.getZ();
+        super.refreshDimensions();
+        this.setPos(d0, d1, d2);
     }
 
     private void updateTrackingEntities() {
         trackingEntities = level().getEntities(this, this.getBoundingBox().inflate(1));
-    }
-
-    private static final int loopSoundDurationInTicks = 40;
-
-    @Override
-    public boolean displayFireAnimation() {
-        return false;
     }
 }

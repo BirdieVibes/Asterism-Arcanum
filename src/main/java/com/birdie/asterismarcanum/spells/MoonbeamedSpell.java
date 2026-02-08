@@ -119,7 +119,7 @@ public class MoonbeamedSpell extends AbstractSpell {
         if (teleportData != null && teleportData.getTeleportTargetPosition() != null)
             dest = teleportData.getTeleportTargetPosition();
         else
-            dest = findTeleportLocation(spellLevel, level, entity);
+            dest = this.findTeleportLocation(spellLevel, level, entity);
 
         if (entity.isPassenger()) entity.stopRiding();
 
@@ -150,7 +150,5 @@ public class MoonbeamedSpell extends AbstractSpell {
 
 
     @Override
-    public AnimationHolder getCastStartAnimation() {
-        return AnimationHolder.none();
-    }
+    public AnimationHolder getCastStartAnimation() { return AnimationHolder.none(); }
 }

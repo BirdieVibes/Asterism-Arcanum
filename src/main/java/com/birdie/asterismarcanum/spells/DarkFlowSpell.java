@@ -3,31 +3,25 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
-import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.entity.spells.target_area.TargetedAreaEntity;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
-import io.redspace.ironsspellbooks.spells.TargetAreaCastData;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Optional;
 
 public class DarkFlowSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "dark_flow");
@@ -76,7 +70,7 @@ public class DarkFlowSpell extends AbstractSpell {
         float radius = getRadius(spellLevel, entity);
 
         HitResult rayCast = Utils.raycastForEntity(level, entity, 0, true);
-        Vec3 center = getVec3(rayCast, radius);
+        Vec3 center = getCenterFromRaycastAndRadius(rayCast, radius);
 
         level.playSound(null, center.x, center.y, center.z, SoundRegistry.BLACK_HOLE_CAST.get(), SoundSource.AMBIENT, 4, 1);
 
@@ -92,7 +86,7 @@ public class DarkFlowSpell extends AbstractSpell {
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
-    private static @NotNull Vec3 getVec3(HitResult rayCast, float radius) {
+    private static @NotNull Vec3 getCenterFromRaycastAndRadius(HitResult rayCast, float radius) {
         Vec3 center = rayCast.getLocation();
 
         if (rayCast instanceof BlockHitResult blockHitResult) {

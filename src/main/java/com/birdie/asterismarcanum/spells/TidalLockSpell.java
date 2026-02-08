@@ -75,9 +75,6 @@ public class TidalLockSpell extends AbstractSpell {
         return 160 + spellLevel * 160 * Mth.sqrt(getEntityPowerMultiplier(caster));
     }
 
-
     @Override
-    public AnimationHolder getCastStartAnimation() {
-        return SpellAnimations.SELF_CAST_TWO_HANDS;
-    }
+    public AnimationHolder getCastStartAnimation() { return SpellAnimations.SELF_CAST_TWO_HANDS; }
 }

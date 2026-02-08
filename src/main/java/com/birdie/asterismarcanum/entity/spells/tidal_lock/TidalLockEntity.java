@@ -24,13 +24,11 @@ import javax.annotation.Nullable;
 import java.util.UUID;
 
 public class TidalLockEntity extends Entity implements PreventDismount, AntiMagicSusceptible, ICritablePartEntity {
-    @Nullable
-    private Entity cachedOwner;
-    @Nullable
-    private UUID ownerUUID;
+    private @Nullable Entity cachedOwner;
+
+    private @Nullable UUID ownerUUID;
 
     private int lifetime = -1;
-
 
     public TidalLockEntity(EntityType<?> entityType, Level level) {
         super(entityType, level);
@@ -42,61 +40,49 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
     }
 
     @Override
+    public void onAntiMagic(MagicData playerMagicData) { destroyTidalLock(); }
+
+    @Override
     public boolean skipAttackInteraction(Entity entity) {
         return isPassengerOfSameVehicle(entity);
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+    protected void defineSynchedData(SynchedEntityData.Builder builder) { }
 
-    }
-
-    public void setOwner(@Nullable Entity owner) {
-        if (owner != null) {
-            this.ownerUUID = owner.getUUID();
-            this.cachedOwner = owner;
-        }
-    }
-
-    public void setLifetime(int lifetime) {
-        this.lifetime = lifetime;
-    }
-
-
-    @Nullable
-    public Entity getOwner() {
-        if (this.cachedOwner != null && !this.cachedOwner.isRemoved()) {
-            return this.cachedOwner;
-        } else if (this.ownerUUID != null && this.level() instanceof ServerLevel serverlevel) {
-            this.cachedOwner = serverlevel.getEntity(this.ownerUUID);
-            return this.cachedOwner;
-        } else {
-            return null;
-        }
-    }
+    @Override
+    public void push(@NotNull Entity pEntity) { }
 
     @Override
     public void tick() {
         super.tick();
         this.move(MoverType.SELF, getDeltaMovement());
+
         if (onGround()) {
             this.setDeltaMovement(getDeltaMovement().scale(0));
         } else {
             this.setDeltaMovement(getDeltaMovement().multiply(0, 0, 0));
         }
+
         if (lifetime >= 0 && tickCount > lifetime) {
             destroyTidalLock();
         }
 
+        Vec3 position = this.position();
+
         if (lifetime >= 0 && tickCount < lifetime) {
             if (tickCount % 25 == 0) {
                 MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(.4f, .85f, 1f, 3f),
-                        getX(), getY() + 0.06, getZ(), 1, 0, 0, 0, 0, true);
+                        position.x, position.y + 0.06, position.z,
+                        1, 0, 0, 0, 0, true
+                );
             }
 
             if (tickCount == 1) {
                 MagicManager.spawnParticles(level(), new BlastwaveParticleOptions(.4f, .85f, 1f, 3f),
-                        getX(), getY() + 0.06, getZ(), 1, 0, 0, 0, 0, true);
+                        position.x, position.y + 0.06, position.z,
+                        1, 0, 0, 0, 0, true
+                );
             }
         }
     }
@@ -123,29 +109,9 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
         destroyTidalLock();
     }
 
-    public void destroyTidalLock() {
-        if (!level().isClientSide) {
-            this.ejectPassengers();
-            this.playSound(SoundEvents.GLASS_BREAK, 2, 1);
-            MagicManager.spawnParticles(level(), ParticleHelper.ELECTRICITY, getX(), getY() + 1, getZ(), 50, 0.2, 0.2, 0.2, 0.2, false);
-            this.discard();
-        }
-    }
-
-    @Override
-    public Vec3 getPassengerRidingPosition(Entity pEntity) {
-        return this.position();
-    }
-
     @Override
     public void positionRider(Entity passenger, Entity.MoveFunction p_19958_) {
         passenger.setPos(this.getX(), this.getY(), this.getZ());
-    }
-
-
-    @Override
-    public boolean isPushedByFluid(FluidType type) {
-        return false;
     }
 
     @Override
@@ -158,16 +124,6 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
     }
 
     @Override
-    public boolean dismountsUnderwater() {
-        return false;
-    }
-
-    @Override
-    public boolean shouldRiderSit() {
-        return false;
-    }
-
-    @Override
     protected void readAdditionalSaveData(CompoundTag compound) {
         if (compound.hasUUID("Owner")) {
             this.ownerUUID = compound.getUUID("Owner");
@@ -177,6 +133,63 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
         this.lifetime = compound.getInt("lifetime");
     }
 
+    @Override
+    public EntityDimensions getDimensions(Pose pPose) {
+        var passengers = getPassengers();
+        float hScale = 1f;
+        float vScale = 1f;
+
+        if (!passengers.isEmpty() && passengers.getFirst() instanceof LivingEntity livingEntity) {
+            hScale = livingEntity.getBbWidth() + .4f;//* 1.66f; // ratio of our default hitbox to the players default hitbox
+            vScale = (livingEntity.getBbHeight() + .2f) / 2;//* 0.555f;  // ratio of our default hitbox to the players default hitbox
+            vScale = (vScale + hScale) * .5f; // average fixed-scale to desired scale. no change for humanoids, but will stretch for more cuboid entities
+        }
+
+        return super.getDimensions(pPose).scale(hScale * .9f, vScale * .9f);
+    }
+
+    @Override
+    public boolean canCollideWith(@NotNull Entity pEntity) { return false; }
+
+    @Override
+    public boolean canBeCollidedWith() { return false; }
+
+    @Override
+    public boolean isPickable() { return false; }
+
+    @Override
+    public boolean dismountsUnderwater() { return false; }
+
+    @Override
+    public boolean shouldRiderSit() { return false; }
+
+    @Override
+    public Vec3 getPassengerRidingPosition(Entity pEntity) { return position(); }
+
+    @Override
+    public boolean isPushedByFluid(FluidType type) { return false; }
+
+    @Nullable
+    public Entity getOwner() {
+        if (this.cachedOwner != null && !this.cachedOwner.isRemoved()) {
+            return this.cachedOwner;
+        } else if (this.ownerUUID != null && this.level() instanceof ServerLevel serverlevel) {
+            this.cachedOwner = serverlevel.getEntity(this.ownerUUID);
+            return this.cachedOwner;
+        } else {
+            return null;
+        }
+    }
+
+    public void setOwner(@Nullable Entity owner) {
+        if (owner != null) {
+            this.ownerUUID = owner.getUUID();
+            this.cachedOwner = owner;
+        }
+    }
+
+    public void setLifetime(int lifetime) { this.lifetime = lifetime; }
+
     public void refreshDimensions() {
         double d0 = this.getX();
         double d1 = this.getY();
@@ -185,41 +198,20 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
         this.setPos(d0, d1, d2);
     }
 
-    @Override
-    public EntityDimensions getDimensions(Pose pPose) {
-        var passengers = getPassengers();
-        float hScale = 1f;
-        float vScale = 1f;
-        if (!passengers.isEmpty() && passengers.getFirst() instanceof LivingEntity livingEntity) {
-            hScale = livingEntity.getBbWidth() + .4f;//* 1.66f; // ratio of our default hitbox to the players default hitbox
-            vScale = (livingEntity.getBbHeight() + .2f) / 2;//* 0.555f;  // ratio of our default hitbox to the players default hitbox
-            vScale = (vScale + hScale) * .5f; // average fixed-scale to desired scale. no change for humanoids, but will stretch for more cuboid entities
-        }
-        return super.getDimensions(pPose).scale(hScale * .9f, vScale * .9f);
-    }
+    public void destroyTidalLock() {
+        Level level = level();
 
-    @Override
-    public boolean canCollideWith(@NotNull Entity pEntity) {
-        return false;
-    }
+        if (level.isClientSide) return;
 
-    @Override
-    public boolean canBeCollidedWith() {
-        return false;
-    }
+        this.ejectPassengers();
+        this.playSound(SoundEvents.GLASS_BREAK, 2, 1);
 
-    @Override
-    public boolean isPickable() {
-        return false;
-    }
+        MagicManager.spawnParticles(
+                level, ParticleHelper.ELECTRICITY,
+                getX(), getY() + 1, getZ(),
+                50, 0.2, 0.2, 0.2, 0.2, false
+        );
 
-    @Override
-    public void push(@NotNull Entity pEntity) {
-
-    }
-
-    @Override
-    public void onAntiMagic(MagicData playerMagicData) {
-        destroyTidalLock();
+        this.discard();
     }
 }

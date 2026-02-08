@@ -85,7 +85,7 @@ public class ConstellationSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        float radius = getRadius(spellLevel, entity);
+        float radius = this.getRadius(spellLevel, entity);
         HitResult rayCast = Utils.raycastForEntity(level, entity, 16 + radius * 1.5f, true);
         Vec3 center = rayCast.getLocation();
 

@@ -88,12 +88,8 @@ public class StarSwarmSpell extends AbstractSpell {
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
-    private float getDamage(int spellLevel, LivingEntity caster) {
-        return getSpellPower(spellLevel, caster);
-    }
+    private float getDamage(int spellLevel, LivingEntity caster) { return getSpellPower(spellLevel, caster); }
 
     @Override
-    public ICastDataSerializable getEmptyCastData() {
-        return new MultiTargetEntityCastData();
-    }
+    public ICastDataSerializable getEmptyCastData() { return new MultiTargetEntityCastData(); }
 }

@@ -79,13 +79,13 @@ public class Constellation extends Projectile implements AntiMagicSusceptible {
 
         AABB boundingBox = this.getBoundingBox();
         float blastWaveRadius = (float) (boundingBox.getXsize());
-        float totalRadius = getRadius();
+        float totalRadius = this.getRadius();
 
         // Why this variables?
         // boolean hitTick = this.tickCount % 10 == 0;
         // Vec3 center = boundingBox.getCenter();
-        Vec3 position = position();
-        BlockPos blockPos = blockPosition();
+        Vec3 position = this.position();
+        BlockPos blockPos = this.blockPosition();
 
         if (tickCount == WARMUP_TIME) {
             MagicManager.spawnParticles(level,
