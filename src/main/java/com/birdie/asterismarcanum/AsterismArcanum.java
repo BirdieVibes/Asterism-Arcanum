@@ -49,7 +49,7 @@ public class AsterismArcanum {
 
         ASARParticleRegistry.register(modEventBus);
 
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        ArcanumConfig.register(modContainer);
 
         LOGGER.info("Asterism Arcanum finished loading!");
     }
