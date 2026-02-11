@@ -47,11 +47,11 @@ public class DarkFlowSpell extends AbstractSpell {
             .build();
 
     public DarkFlowSpell() {
-        this.manaCostPerLevel = 80;
+        this.manaCostPerLevel = 10;
         this.baseSpellPower = 2;
         this.spellPowerPerLevel = 0;
         this.castTime = 0;
-        this.baseManaCost = 100;
+        this.baseManaCost = 60;
     }
 
     @Override

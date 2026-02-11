@@ -4,6 +4,7 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 
 import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
+import com.birdie.asterismarcanum.entity.spells.luminous_ray.LuminousRayProjectile;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamEntity;
@@ -32,6 +33,11 @@ public class ASAREntityRegistry {
                     .clientTrackingRange(64)
                     .build( ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "starfire").toString()));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<LuminousRayProjectile>> LUMINOUS_RAY_PROJECTILE =
+            ENTITIES.register("luminous_ray", () -> EntityType.Builder.<LuminousRayProjectile>of(LuminousRayProjectile::new, MobCategory.MISC)
+                    .sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "luminous_ray").toString()));
 
     public static final DeferredHolder<EntityType<?>, EntityType<StarSwarmProjectile>> STAR_SWARM_PROJECTILE =
             ENTITIES.register("star_swarm", () -> EntityType.Builder.<StarSwarmProjectile>of(StarSwarmProjectile::new, MobCategory.MISC)

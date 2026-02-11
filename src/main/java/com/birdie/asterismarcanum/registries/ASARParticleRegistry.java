@@ -39,4 +39,10 @@ public class ASARParticleRegistry {
 
     public static final Supplier<SimpleParticleType> STARS_PARTICLE = PARTICLE_TYPES.register("stars",
             () -> new SimpleParticleType(true));
+
+    public static final Supplier<SimpleParticleType> SIGNS_PARTICLE = PARTICLE_TYPES.register("signs",
+            () -> new SimpleParticleType(true));
+
+    public static final Supplier<SimpleParticleType> ALTSIGNS_PARTICLE = PARTICLE_TYPES.register("altsigns",
+            () -> new SimpleParticleType(true));
 }

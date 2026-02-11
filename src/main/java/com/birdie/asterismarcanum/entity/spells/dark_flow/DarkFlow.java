@@ -150,7 +150,7 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
                     continue;
                 }
                 float f = 1 - distance / radius;
-                float scale = f * f * f * f * .25f;
+                float scale = f * f * f * f * .5f;
                 float resistance = entity instanceof LivingEntity livingEntity ? Mth.clamp(1 -
                         (float) livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE), .3f, 1f) : 1f;
                 float bossResistance = entity.getType().is(Tags.EntityTypes.BOSSES) ? 0.5f : 1f;
@@ -169,7 +169,9 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
                         1, 0, 0, 0, 0, true);
                 MagicManager.spawnParticles(level(), ASARParticleRegistry.STARS_PARTICLE.get(), getX(),
                         getY() + getRadius(), getZ(), 200, 1, 1, 1, 1, true);
-                MagicManager.spawnParticles(level(), ParticleTypes.EXPLOSION, getX(),
+                MagicManager.spawnParticles(level(), ParticleTypes.GLOW, getX(),
+                        getY() + getRadius(), getZ(), 200, 1, 1, 1, 1, true);
+                MagicManager.spawnParticles(level(), ASARParticleRegistry.ALTSIGNS_PARTICLE.get(), getX(),
                         getY() + getRadius(), getZ(), 200, 1, 1, 1, 1, true);
                 level().playSound(null, this.blockPosition(), SoundEvents.DRAGON_FIREBALL_EXPLODE,
                         SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(9, 11) * .3f);
@@ -186,8 +188,6 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
     private void updateTrackingEntities() {
         trackingEntities = level().getEntities(this, this.getBoundingBox().inflate(1));
     }
-
-    private static final int loopSoundDurationInTicks = 40;
 
     @Override
     public boolean displayFireAnimation() {

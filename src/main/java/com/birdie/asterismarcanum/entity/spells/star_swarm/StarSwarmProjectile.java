@@ -50,7 +50,7 @@ public class StarSwarmProjectile extends AbstractMagicProjectile implements Anti
 
     @Override
     public void impactParticles(double x, double y, double z) {
-        MagicManager.spawnParticles(this.level(), ParticleHelper.WISP, x, y, z, 25, 0, 0, 0, .18, true);
+        MagicManager.spawnParticles(this.level(), ASARParticleRegistry.STARDUST_PARTICLE.get(), x, y, z, 25, 0, 0, 0, .18, true);
     }
 
     @Override
@@ -90,9 +90,7 @@ public class StarSwarmProjectile extends AbstractMagicProjectile implements Anti
         for (int i = 0; i < count; i++) {
             Vec3 random = Utils.getRandomVec3(0.2);
             Vec3 p = vec.scale(f * i);
-            level().addParticle(ASARParticleRegistry.STARDUST_PARTICLE.get(), this.getX() + random.x + p.x,
-                    this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
-            level().addParticle(ASARParticleRegistry.STARS_PARTICLE.get(), this.getX() + random.x + p.x,
+            level().addParticle(ASARParticleRegistry.ALTSIGNS_PARTICLE.get(), this.getX() + random.x + p.x,
                     this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);
             level().addParticle(ASARParticleRegistry.STARS_PARTICLE.get(), this.getX() + random.x + p.x,
                     this.getY() + random.y + p.y, this.getZ() + random.z + p.z, random.x, random.y, random.z);

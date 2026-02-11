@@ -29,12 +29,11 @@ public class SpellRegistries {
 
     public static final Supplier<AbstractSpell> STARFIRE = registerSpell(new StarfireSpell());
     public static final Supplier<AbstractSpell> MOONBEAMED = registerSpell(new MoonbeamedSpell());
-//    public static final Supplier<AbstractSpell> NEBULOUS_CONE = registerSpell(new NebulousConeSpell());
     public static final Supplier<AbstractSpell> DARK_FLOW = registerSpell(new DarkFlowSpell());
     public static final Supplier<AbstractSpell> NIGHT_VISION = registerSpell(new NightVisionSpell());
     public static final Supplier<AbstractSpell> STAR_SWARM = registerSpell(new StarSwarmSpell());
     public static final Supplier<AbstractSpell> TIDAL_LOCK = registerSpell(new TidalLockSpell());
     public static final Supplier<AbstractSpell> CONSTELLATION = registerSpell(new ConstellationSpell());
-
+    public static final Supplier<AbstractSpell> LUMINOUS_RAY = registerSpell(new LuminousRaySpell());
 }
 //magelight summon
