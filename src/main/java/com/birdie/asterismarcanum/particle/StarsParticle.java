@@ -18,7 +18,7 @@ public class StarsParticle extends TextureSheetParticle {
         this.xd = xd;
         this.yd = yd;
         this.zd = zd;
-        this.quadSize *= (.6f);
+        this.quadSize *= (.4f);
         this.scale(2.5f);
         this.lifetime = 5 + (int) (Math.random() * 10);
         sprites = spriteSet;
@@ -28,6 +28,7 @@ public class StarsParticle extends TextureSheetParticle {
         this.rCol = 1f;
         this.gCol = 1f;
         this.bCol = 1f;
+        this.alpha = 0.8f;
     }
 
     @Override

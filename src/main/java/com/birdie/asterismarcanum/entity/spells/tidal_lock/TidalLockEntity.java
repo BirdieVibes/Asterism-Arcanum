@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.entity.spells.tidal_lock;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
+import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
@@ -8,6 +9,7 @@ import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.mobs.ice_spider.ICritablePartEntity;
 import io.redspace.ironsspellbooks.entity.spells.root.PreventDismount;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
+import io.redspace.ironsspellbooks.particle.TraceParticleOptions;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -127,7 +129,7 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
         if (!level().isClientSide) {
             this.ejectPassengers();
             this.playSound(SoundEvents.GLASS_BREAK, 2, 1);
-            MagicManager.spawnParticles(level(), ParticleHelper.ELECTRICITY, getX(), getY() + 1, getZ(), 50, 0.2, 0.2, 0.2, 0.2, false);
+            MagicManager.spawnParticles(level(), ASARParticleRegistry.SIGNS_PARTICLE.get(), getX(), getY() + 1, getZ(), 50, 0.2, 0.2, 0.2, 0.2, true);
             this.discard();
         }
     }

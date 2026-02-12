@@ -39,15 +39,15 @@ public class StarfireSpell extends AbstractSpell {
             .setMinRarity(SpellRarity.COMMON)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
             .setMaxLevel(10)
-            .setCooldownSeconds(1)
+            .setCooldownSeconds(0.3)
             .build();
 
     public StarfireSpell() {
-        this.manaCostPerLevel = 2;
+        this.manaCostPerLevel = 1;
         this.baseSpellPower = 12;
         this.spellPowerPerLevel = 1;
         this.castTime = 0;
-        this.baseManaCost = 10;
+        this.baseManaCost = 5;
     }
 
     @Override
@@ -77,7 +77,7 @@ public class StarfireSpell extends AbstractSpell {
     }
 
     private float getDamage(int spellLevel, LivingEntity entity) {
-        return getSpellPower(spellLevel, entity) * .5f;
+        return getSpellPower(spellLevel, entity) * .3f;
     }
 
     @Override

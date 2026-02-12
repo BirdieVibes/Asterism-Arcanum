@@ -39,6 +39,7 @@ public class StarfireProjectile extends AbstractMagicProjectile {
     public StarfireProjectile(EntityType<? extends StarfireProjectile> entityType, Level level) {
         super(entityType, level);
         this.setNoGravity(true);
+        this.setPierceLevel(3);
     }
 
     public StarfireProjectile(EntityType<? extends StarfireProjectile> entityType, Level levelIn, LivingEntity shooter) {
@@ -61,15 +62,25 @@ public class StarfireProjectile extends AbstractMagicProjectile {
         return 2.5f;
     }
 
+    int bounces;
+
     @Override
     public Optional<Holder<SoundEvent>> getImpactSound() {
         return Optional.empty();
     }
 
     @Override
-    protected void onHitBlock(BlockHitResult blockHitResult) {
-        super.onHitBlock(blockHitResult);
-        discard();
+    protected void onHitBlock(BlockHitResult pResult) {
+        super.onHitBlock(pResult);
+        switch (pResult.getDirection()) {
+            case UP, DOWN ->
+                    this.setDeltaMovement(this.getDeltaMovement().multiply(1, this.isNoGravity() ? -1 : -2.5f, 1));
+            case EAST, WEST -> this.setDeltaMovement(this.getDeltaMovement().multiply(-1, 1, 1));
+            case NORTH, SOUTH -> this.setDeltaMovement(this.getDeltaMovement().multiply(1, 1, -1));
+        }
+        if (++bounces >= 3) {
+            discard();
+        }
     }
 
     @Override
