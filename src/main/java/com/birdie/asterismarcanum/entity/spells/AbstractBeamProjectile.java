@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 import static java.nio.file.Files.setOwner;
 
-public class AbstractBeamProjectile extends Projectile implements NoKnockbackProjectile {
+public abstract class AbstractBeamProjectile extends Projectile implements NoKnockbackProjectile {
     protected static final int FAILSAFE_EXPIRE_TIME = 20 * 20;
     protected int age;
     protected float damage;
@@ -63,9 +63,7 @@ public class AbstractBeamProjectile extends Projectile implements NoKnockbackPro
         return false;
     }
 
-    public void spawnParticles() {
-
-    }
+    public abstract void spawnParticles();
 
     @Override
     public boolean shouldBeSaved() {
@@ -73,9 +71,7 @@ public class AbstractBeamProjectile extends Projectile implements NoKnockbackPro
     }
 
     @Override
-    protected void onHitEntity(EntityHitResult entityHitResult) {
-
-    }
+    protected abstract void onHitEntity(EntityHitResult entityHitResult);
 
     @Override
     public boolean isMultipartEntity() {

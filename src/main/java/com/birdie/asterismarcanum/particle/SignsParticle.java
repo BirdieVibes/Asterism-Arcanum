@@ -20,8 +20,8 @@ public class SignsParticle extends TextureSheetParticle {
         this.xd = xd;
         this.yd = yd;
         this.zd = zd;
-        this.quadSize *= (0.6f);
-        this.scale(5f);
+        this.quadSize *= (10f);
+        this.scale(1f);
         this.lifetime = 5 + (int) (Math.random() * 10);
         sprites = spriteSet;
         this.gravity = 0F;

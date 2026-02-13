@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.AbstractBeamProjectile;
 import com.birdie.asterismarcanum.entity.spells.luminous_ray.LuminousRayProjectile;
+import com.birdie.asterismarcanum.particle.PulseParticleOptions;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
@@ -11,9 +12,13 @@ import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
+import io.redspace.ironsspellbooks.entity.spells.ray_of_frost.RayOfFrostVisualEntity;
 import io.redspace.ironsspellbooks.network.particles.BloodSiphonParticlesPacket;
+import io.redspace.ironsspellbooks.particle.EnderSlashParticleOptions;
+import io.redspace.ironsspellbooks.particle.TraceParticleOptions;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.spells.CastingMobAimingData;
 import io.redspace.ironsspellbooks.spells.EntityCastData;
@@ -24,11 +29,13 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
+import org.joml.Vector3f;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -76,25 +83,49 @@ public class LuminousRaySpell extends AbstractSpell {
 
     @Override
     public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(SoundRegistry.FIRE_BREATH_LOOP.get());
+        return Optional.of(SoundRegistry.CLOUD_OF_REGEN_LOOP.get());
     }
 
     @Override
-    public void onCast(Level world, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
+    public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         if (playerMagicData.isCasting() && playerMagicData.getCastingSpellId().equals(this.getSpellId())
                 && playerMagicData.getAdditionalCastData() instanceof EntityCastData entityCastData
                 && entityCastData.getCastingEntity() instanceof AbstractBeamProjectile beam) {
             beam.setDealDamageActive();
         } else {
-            LuminousRayProjectile luminousRayProjectile = new LuminousRayProjectile(world, entity);
+            LuminousRayProjectile luminousRayProjectile = new LuminousRayProjectile(level, entity);
             luminousRayProjectile.setPos(entity.position().add(0, entity.getEyeHeight() * .9, 0));
             luminousRayProjectile.setDamage(getDamage(spellLevel, entity));
-            world.addFreshEntity(luminousRayProjectile);
+            level.addFreshEntity(luminousRayProjectile);
 
             playerMagicData.setAdditionalCastData(new EntityCastData(luminousRayProjectile));
         }
+        float distance = 6f; //todo: scale with power
+        Vec3 forward = entity.getForward();
+        Vec3 end = Utils.raycastForBlock(level, entity.getEyePosition(), entity.getEyePosition().add(forward.scale(distance)),
+                ClipContext.Fluid.NONE).getLocation();
+        Vec3 rayVector = end.subtract(entity.getEyePosition());
+        Vec3 impulse = rayVector.scale(1 / 2f).add(0, 0.1, 0);
+        entity.setDeltaMovement(entity.getDeltaMovement().scale(0.2).add(impulse));
 
-        super.onCast(world, spellLevel, entity, castSource, playerMagicData);
+
+        forward = impulse.normalize(); // recalculate forward as the direction we are actually moving
+        Vec3 up = new Vec3(0, 1, 0);
+        if (forward.dot(up) > .999) {
+            up = new Vec3(1, 0, 0);
+        }
+        Vec3 right = up.cross(forward);
+        int trailParticles = 15;
+        double speed = rayVector.length() / 6.0 * 2;
+        double lessSpeed = rayVector.length() / 6.0 * 1;
+        for (int i = 0; i < trailParticles; i++) {
+            Vec3 particleStart = entity.getBoundingBox().getCenter().add(Utils.getRandomVec3(0.5 * entity.getBbWidth()));
+            Vec3 particleEnd = particleStart.add(rayVector);
+            MagicManager.spawnParticles(level, new PulseParticleOptions(Utils.v3f(particleEnd), new Vector3f(10f, 10f, 10f)),
+                    particleStart.x, particleStart.y, particleStart.z, 15, 0, 0, 0, speed, true);
+        }
+
+        super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
     public float getDamage(int spellLevel, LivingEntity caster) {

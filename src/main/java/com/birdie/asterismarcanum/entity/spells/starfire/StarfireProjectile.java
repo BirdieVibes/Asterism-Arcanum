@@ -24,10 +24,12 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Optional;
 
 import static io.redspace.ironsspellbooks.effect.InstantManaEffect.manaPerAmplifier;
@@ -39,7 +41,28 @@ public class StarfireProjectile extends AbstractMagicProjectile {
     public StarfireProjectile(EntityType<? extends StarfireProjectile> entityType, Level level) {
         super(entityType, level);
         this.setNoGravity(true);
-        this.setPierceLevel(3);
+        this.setPierceLevel(2);
+        this.setCanRicochet(true);
+    }
+
+    public void doRicochet(HitResult hitResult) {
+        if (hitResult instanceof EntityHitResult entityHitResult) {
+            Vec3 deltaMovement = getDeltaMovement();
+            Vec3 vec = deltaMovement.normalize();
+            Entity owner = getOwner();
+            Entity hit = entityHitResult.getEntity();
+            List<Entity> potentialTargets = level().getEntities(this, this.getBoundingBox().inflate(3).expandTowards(deltaMovement.scale(12)),
+                    entity -> entity != hit && (
+                            (owner == null || !Utils.shouldHealEntity(owner, entity))
+                                    || entity.getClass() == hit.getClass()
+                    ) && entity.getBoundingBox().getCenter().subtract(position()).normalize().dot(vec) > 0.6 && Utils.hasLineOfSight(level(),
+                            this, entity, false));
+            if (potentialTargets.isEmpty()) {
+                return;
+            }
+            Entity target = potentialTargets.get(this.getId() % potentialTargets.size()); // use deterministic random to keep client and server in sync
+            setDeltaMovement(target.getBoundingBox().getCenter().subtract(this.position()).normalize().scale(deltaMovement.length()));
+        }
     }
 
     public StarfireProjectile(EntityType<? extends StarfireProjectile> entityType, Level levelIn, LivingEntity shooter) {
@@ -78,7 +101,7 @@ public class StarfireProjectile extends AbstractMagicProjectile {
             case EAST, WEST -> this.setDeltaMovement(this.getDeltaMovement().multiply(-1, 1, 1));
             case NORTH, SOUTH -> this.setDeltaMovement(this.getDeltaMovement().multiply(1, 1, -1));
         }
-        if (++bounces >= 3) {
+        if (++bounces >= 0) {
             discard();
         }
     }
@@ -88,6 +111,9 @@ public class StarfireProjectile extends AbstractMagicProjectile {
         super.onHitEntity(entityHitResult);
         DamageSources.applyDamage(entityHitResult.getEntity(), getDamage(), SpellRegistries.STARFIRE.get().getDamageSource(this, getOwner()));
         pierceOrDiscard();
+        if (canRicochet()) {
+            doRicochet(entityHitResult);
+        }
     }
 
     @Override
