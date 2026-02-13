@@ -100,7 +100,7 @@ public class LuminousRaySpell extends AbstractSpell {
 
             playerMagicData.setAdditionalCastData(new EntityCastData(luminousRayProjectile));
         }
-        float distance = 6f; //todo: scale with power
+        float distance = 6f;
         Vec3 forward = entity.getForward();
         Vec3 end = Utils.raycastForBlock(level, entity.getEyePosition(), entity.getEyePosition().add(forward.scale(distance)),
                 ClipContext.Fluid.NONE).getLocation();
