@@ -27,14 +27,6 @@ import java.util.List;
 public class DarkFlowSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "dark_flow");
 
-    @Override
-    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.irons_spellbooks.radius",
-                Utils.stringTruncation(getRadius(spellLevel, caster), 1)
-        ));
-    }
-
-
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.EPIC)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
@@ -48,6 +40,14 @@ public class DarkFlowSpell extends AbstractSpell {
         this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
         this.castTime = config.castTime.getAsInt();
         this.baseManaCost = config.baseManaCost.getAsInt();
+    }
+
+    @Override
+    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.radius",
+                Utils.stringTruncation(getRadius(spellLevel, caster), 1)
+        ));
     }
 
     @Override

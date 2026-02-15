@@ -38,6 +38,8 @@ import static io.redspace.ironsspellbooks.effect.InstantManaEffect.manaPerAmplif
 
 //based on Magic Missile, first spell made
 public class StarfireProjectile extends AbstractMagicProjectile {
+    private int bounces;
+
     public StarfireProjectile(Level levelIn, LivingEntity shooter) {
         this(ASAREntityRegistry.STARFIRE_PROJECTILE.get(), levelIn, shooter);
     }
@@ -82,13 +84,6 @@ public class StarfireProjectile extends AbstractMagicProjectile {
         );
         MagicManager.spawnParticles(this.level(), ASARParticleRegistry.STARDUST_PARTICLE.get(), x, y, z, 25, 0, 0, 0, .18, true);
 
-    }
-
-    int bounces;
-
-    @Override
-    public Optional<Holder<SoundEvent>> getImpactSound() {
-        return Optional.empty();
     }
 
     @Override

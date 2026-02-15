@@ -31,14 +31,6 @@ import java.util.List;
 public class StarfireSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "starfire");
 
-    @Override
-    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable(
-                "ui.irons_spellbooks.damage",
-                Utils.stringTruncation(getDamage(spellLevel, caster), 2)
-        ));
-    }
-
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.COMMON)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
@@ -52,6 +44,14 @@ public class StarfireSpell extends AbstractSpell {
         this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
         this.castTime = config.castTime.getAsInt();
         this.baseManaCost = config.baseManaCost.getAsInt();
+    }
+
+    @Override
+    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.damage",
+                Utils.stringTruncation(getDamage(spellLevel, caster), 2)
+        ));
     }
 
     @Override

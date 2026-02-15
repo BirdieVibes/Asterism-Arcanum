@@ -22,14 +22,6 @@ import java.util.List;
 public class TidalLockSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "tidal_lock");
 
-    @Override
-    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable(
-                "ui.irons_spellbooks.duration",
-                Utils.timeFromTicks(getDuration(spellLevel, caster), 1)
-        ));
-    }
-
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.EPIC)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
@@ -43,6 +35,14 @@ public class TidalLockSpell extends AbstractSpell {
         this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
         this.castTime = config.castTime.getAsInt();
         this.baseManaCost = config.baseManaCost.getAsInt();
+    }
+
+    @Override
+    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.duration",
+                Utils.timeFromTicks(getDuration(spellLevel, caster), 1)
+        ));
     }
 
     @Override

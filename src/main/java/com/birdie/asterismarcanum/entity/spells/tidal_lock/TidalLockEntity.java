@@ -111,20 +111,6 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
         destroyTidalLock();
     }
 
-    public void destroyTidalLock() {
-        if (!level().isClientSide) {
-            this.ejectPassengers();
-            this.playSound(SoundEvents.GLASS_BREAK, 2, 1);
-            MagicManager.spawnParticles(level(), ASARParticleRegistry.ALTSIGNS_PARTICLE.get(), getX(), getY() + 1, getZ(), 50, 0.2, 0.2, 0.2, 0.2, true);
-            this.discard();
-        }
-    }
-
-    @Override
-    public Vec3 getPassengerRidingPosition(Entity pEntity) {
-        return this.position();
-    }
-
     @Override
     public void positionRider(Entity passenger, Entity.MoveFunction p_19958_) {
         passenger.setPos(this.getX(), this.getY(), this.getZ());
@@ -223,7 +209,7 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
         this.playSound(SoundEvents.GLASS_BREAK, 2, 1);
 
         MagicManager.spawnParticles(
-                level, ParticleHelper.ELECTRICITY,
+                level, ASARParticleRegistry.ALTSIGNS_PARTICLE.get(),
                 getX(), getY() + 1, getZ(),
                 50, 0.2, 0.2, 0.2, 0.2, false
         );

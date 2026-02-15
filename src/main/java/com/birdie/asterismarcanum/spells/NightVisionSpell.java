@@ -21,14 +21,6 @@ import java.util.List;
 public class NightVisionSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "night_vision");
 
-    @Override
-    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable(
-                "ui.irons_spellbooks.effect_length",
-                Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 100, 1)
-        ));
-    }
-
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.COMMON)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
@@ -42,6 +34,14 @@ public class NightVisionSpell extends AbstractSpell {
         this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
         this.castTime = config.castTime.getAsInt();
         this.baseManaCost = config.baseManaCost.getAsInt();
+    }
+
+    @Override
+    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.effect_length",
+                Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 100, 1)
+        ));
     }
 
     @Override

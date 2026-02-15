@@ -36,13 +36,6 @@ import static io.redspace.ironsspellbooks.item.curios.ExpulsionRing.RADIUS;
 public class MoonbeamedSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "moonbeamed");
 
-    @Override
-    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.irons_spellbooks.distance",
-                Utils.stringTruncation(getDistance(spellLevel, caster), 1)
-        ));
-    }
-
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.UNCOMMON)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
@@ -73,6 +66,14 @@ public class MoonbeamedSpell extends AbstractSpell {
         }
 
         return true;
+    }
+
+    @Override
+    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.distance",
+                Utils.stringTruncation(getDistance(spellLevel, caster), 1)
+        ));
     }
 
     @Override

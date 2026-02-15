@@ -13,7 +13,7 @@ public class ArcanumConfig {
     public static final ConstellationConfig CONSTELLATION;
     public static final DarkFlowConfig DARK_FLOW;
     public static final MoonbeamedConfig MOON_BEAMED;
-    public static final NebulousConfig NEBULOUS;
+    public static final LuminousConfig LUMINOUS_RAY;
     public static final NightVisionConfig NIGHT_VISION;
     public static final StarFireConfig STAR_FIRE;
     public static final StarSwarmConfig STAR_SWARM;
@@ -25,7 +25,7 @@ public class ArcanumConfig {
         CONSTELLATION = new ConstellationConfig();
         DARK_FLOW = new DarkFlowConfig();
         MOON_BEAMED = new MoonbeamedConfig();
-        NEBULOUS = new NebulousConfig();
+        LUMINOUS_RAY = new LuminousConfig();
         NIGHT_VISION = new NightVisionConfig();
         STAR_FIRE = new StarFireConfig();
         STAR_SWARM = new StarSwarmConfig();
@@ -67,6 +67,27 @@ public class ArcanumConfig {
 
             this.spec = BUILDER.build();
         }
+
+        BaseSpellConfig(
+                String path,
+                int manaCostPerLevelDefault,
+                int baseSpellPowerDefault,
+                int spellPowerPerLevelDefault,
+                int castTimeDefault,
+                int baseManaCostDefault
+        ) {
+            BUILDER.push(path);
+
+            this.manaCostPerLevel = define(BUILDER, "manaCost", manaCostPerLevelDefault);
+            this.baseSpellPower = define(BUILDER, "baseSpellPower", baseSpellPowerDefault);
+            this.spellPowerPerLevel = define(BUILDER, "spellPowerPerLevel", spellPowerPerLevelDefault);
+            this.castTime = define(BUILDER, "castTime", castTimeDefault);
+            this.baseManaCost = define(BUILDER, "baseManaCost", baseManaCostDefault);
+
+            BUILDER.pop();
+
+            this.spec = BUILDER.build();
+        }
     }
 
     public static class ConstellationConfig extends BaseSpellConfig {
@@ -81,8 +102,8 @@ public class ArcanumConfig {
         public MoonbeamedConfig() { super("moon_beamed"); }
     }
 
-    public static class NebulousConfig extends BaseSpellConfig {
-        public NebulousConfig() { super("nebulous"); }
+    public static class LuminousConfig extends BaseSpellConfig {
+        public LuminousConfig() { super("luminous");}
     }
 
     public static class NightVisionConfig extends BaseSpellConfig {

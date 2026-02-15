@@ -29,6 +29,14 @@ public class StarSwarmSpell extends AbstractSpell {
             .setCooldownSeconds(15)
             .build();
 
+    public StarSwarmSpell(ArcanumConfig.StarSwarmConfig config) {
+        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
+        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
+        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
+        this.castTime = config.castTime.getAsInt();
+        this.baseManaCost = config.baseManaCost.getAsInt();
+    }
+
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
@@ -42,14 +50,6 @@ public class StarSwarmSpell extends AbstractSpell {
                         getRecastCount(spellLevel, caster)
                 )
         );
-    }
-
-    public StarSwarmSpell(ArcanumConfig.StarSwarmConfig config) {
-        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
-        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
-        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
-        this.castTime = config.castTime.getAsInt();
-        this.baseManaCost = config.baseManaCost.getAsInt();
     }
 
     @Override

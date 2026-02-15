@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.spells;
 
+import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.AbstractBeamProjectile;
 import com.birdie.asterismarcanum.entity.spells.luminous_ray.LuminousRayProjectile;
@@ -48,7 +49,10 @@ public class LuminousRaySpell extends AbstractSpell {
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getDamage(spellLevel, caster), 2)));
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.damage",
+                Utils.stringTruncation(getDamage(spellLevel, caster), 2)
+        ));
     }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
@@ -58,12 +62,12 @@ public class LuminousRaySpell extends AbstractSpell {
             .setCooldownSeconds(12)
             .build();
 
-    public LuminousRaySpell() {
-        this.manaCostPerLevel = 1;
-        this.baseSpellPower = 0;
-        this.spellPowerPerLevel = 1;
-        this.castTime = 200;
-        this.baseManaCost = 2;
+    public LuminousRaySpell(ArcanumConfig.LuminousConfig config) {
+        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
+        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
+        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
+        this.castTime = config.castTime.getAsInt();
+        this.baseManaCost = config.baseManaCost.getAsInt();
     }
 
     @Override
