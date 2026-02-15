@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.spells;
 
+import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
@@ -43,12 +44,12 @@ public class StarSwarmSpell extends AbstractSpell {
         );
     }
 
-    public StarSwarmSpell() {
-        this.manaCostPerLevel = 5;
-        this.baseSpellPower = 1;
-        this.spellPowerPerLevel = 2;
-        this.castTime = 0;
-        this.baseManaCost = 40;
+    public StarSwarmSpell(ArcanumConfig.StarSwarmConfig config) {
+        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
+        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
+        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
+        this.castTime = config.castTime.getAsInt();
+        this.baseManaCost = config.baseManaCost.getAsInt();
     }
 
     @Override

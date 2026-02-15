@@ -51,7 +51,7 @@ public class ArcanumConfig {
         public final IntValue manaCostPerLevel;
         public final IntValue baseSpellPower;
         public final IntValue spellPowerPerLevel;
-        public final DoubleValue castTime;
+        public final IntValue castTime;
         public final IntValue baseManaCost;
 
         BaseSpellConfig(String path) {
@@ -60,7 +60,7 @@ public class ArcanumConfig {
             this.manaCostPerLevel = define(BUILDER, "manaCost", 30);
             this.baseSpellPower = define(BUILDER, "baseSpellPower", 1);
             this.spellPowerPerLevel = define(BUILDER, "spellPowerPerLevel", 0);
-            this.castTime = define(BUILDER, "castTime", 0.0D);
+            this.castTime = define(BUILDER, "castTime", 0);
             this.baseManaCost = define(BUILDER, "baseManaCost", 100);
 
             BUILDER.pop();

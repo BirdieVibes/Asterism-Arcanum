@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.spells;
 
+import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamEntity;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
@@ -42,7 +43,6 @@ public class MoonbeamedSpell extends AbstractSpell {
         ));
     }
 
-
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.UNCOMMON)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
@@ -50,12 +50,12 @@ public class MoonbeamedSpell extends AbstractSpell {
             .setCooldownSeconds(5)
             .build();
 
-    public MoonbeamedSpell() {
-        this.baseSpellPower = 12;
-        this.spellPowerPerLevel = 10;
-        this.baseManaCost = 20;
-        this.manaCostPerLevel = 5;
-        this.castTime = 0;
+    public MoonbeamedSpell(ArcanumConfig.MoonbeamedConfig config) {
+        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
+        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
+        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
+        this.castTime = config.castTime.getAsInt();
+        this.baseManaCost = config.baseManaCost.getAsInt();
     }
 
     @Override
@@ -143,11 +143,9 @@ public class MoonbeamedSpell extends AbstractSpell {
         return TeleportSpell.findTeleportLocation(level, entity, getDistance(spellLevel, entity));
     }
 
-
     private float getDistance(int spellLevel, LivingEntity sourceEntity) {
         return 9 + (float) (Utils.softCapFormula(getEntityPowerMultiplier(sourceEntity)) * getSpellPower(spellLevel, null));
     }
-
 
     @Override
     public AnimationHolder getCastStartAnimation() { return AnimationHolder.none(); }

@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.spells;
 
+import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
@@ -41,12 +42,12 @@ public class DarkFlowSpell extends AbstractSpell {
             .setCooldownSeconds(45)
             .build();
 
-    public DarkFlowSpell() {
-        this.manaCostPerLevel = 80;
-        this.baseSpellPower = 2;
-        this.spellPowerPerLevel = 0;
-        this.castTime = 0;
-        this.baseManaCost = 100;
+    public DarkFlowSpell(ArcanumConfig.DarkFlowConfig config) {
+        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
+        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
+        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
+        this.castTime = config.castTime.getAsInt();
+        this.baseManaCost = config.baseManaCost.getAsInt();
     }
 
     @Override

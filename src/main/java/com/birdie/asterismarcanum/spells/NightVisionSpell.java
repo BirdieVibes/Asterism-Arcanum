@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.spells;
 
+import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
@@ -35,12 +36,12 @@ public class NightVisionSpell extends AbstractSpell {
             .setCooldownSeconds(60)
             .build();
 
-    public NightVisionSpell() {
-        this.manaCostPerLevel = 10;
-        this.baseSpellPower = 50;
-        this.spellPowerPerLevel = 20;
-        this.castTime = 0;
-        this.baseManaCost = 40;
+    public NightVisionSpell(ArcanumConfig.NightVisionConfig config) {
+        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
+        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
+        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
+        this.castTime = config.castTime.getAsInt();
+        this.baseManaCost = config.baseManaCost.getAsInt();
     }
 
     @Override
