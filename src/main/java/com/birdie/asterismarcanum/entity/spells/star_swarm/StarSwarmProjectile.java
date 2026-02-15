@@ -73,10 +73,7 @@ public class StarSwarmProjectile extends AbstractMagicProjectile implements Anti
 
     @Override
     public void impactParticles(double x, double y, double z) {
-        MagicManager.spawnParticles(
-                level(), ParticleHelper.WISP,
-                x, y, z, 25, 0, 0, 0, .18, true
-        );
+        MagicManager.spawnParticles(this.level(), ASARParticleRegistry.STARDUST_PARTICLE.get(), x, y, z, 25, 0, 0, 0, .18, true);
     }
 
     @Override

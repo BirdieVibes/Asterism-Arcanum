@@ -24,7 +24,6 @@ public class SpellRegistries {
             registerSpell(new StarfireSpell(ArcanumConfig.STAR_FIRE));
     public static final Supplier<AbstractSpell> MOONBEAMED =
             registerSpell(new MoonbeamedSpell(ArcanumConfig.MOON_BEAMED));
-//    public static final Supplier<AbstractSpell> NEBULOUS_CONE = registerSpell(new NebulousConeSpell());
     public static final Supplier<AbstractSpell> DARK_FLOW =
         registerSpell(new DarkFlowSpell(ArcanumConfig.DARK_FLOW));
     public static final Supplier<AbstractSpell> NIGHT_VISION =
@@ -36,10 +35,11 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> CONSTELLATION =
             registerSpell(new ConstellationSpell(ArcanumConfig.CONSTELLATION));
 
+    //TODO("Luminous Ray")
+
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }
 
     public static Supplier<AbstractSpell> registerSpell(AbstractSpell spell) {
         return SPELLS.register(spell.getSpellName(), () -> spell);
     }
 }
-//magelight summon

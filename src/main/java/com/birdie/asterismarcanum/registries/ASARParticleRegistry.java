@@ -1,9 +1,13 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.particle.PulseParticleOptions;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -44,6 +48,24 @@ public class ASARParticleRegistry {
     public static final Supplier<SimpleParticleType> STARS_PARTICLE = PARTICLE_TYPES.register(
             "stars",
             () -> new SimpleParticleType(true));
+
+    public static final Supplier<SimpleParticleType> SIGNS_PARTICLE = PARTICLE_TYPES.register("signs",
+            () -> new SimpleParticleType(true));
+
+
+    public static final Supplier<SimpleParticleType> ALTSIGNS_PARTICLE = PARTICLE_TYPES.register("altsigns",
+            () -> new SimpleParticleType(true));
+
+    public static final Supplier<ParticleType<PulseParticleOptions>> PULSE_PARTICLE = PARTICLE_TYPES.register("pulse",
+            () -> new ParticleType<>(true) {
+        public MapCodec<PulseParticleOptions> codec() {
+            return PulseParticleOptions.MAP_CODEC;
+        }
+
+        public StreamCodec<? super RegistryFriendlyByteBuf, PulseParticleOptions> streamCodec() {
+            return PulseParticleOptions.STREAM_CODEC;
+        }
+    });
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

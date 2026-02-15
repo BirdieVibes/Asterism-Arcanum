@@ -7,20 +7,21 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-public class StarsParticle extends TextureSheetParticle {
+import java.util.Random;
+
+public class SignsParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
 
-    public StarsParticle(
-            ClientLevel level, double xCoord, double yCoord, double zCoord,
-            SpriteSet spriteSet, double xd, double yd, double zd) {
+    public SignsParticle(ClientLevel level, double xCoord, double yCoord, double zCoord, SpriteSet spriteSet, double xd, double yd, double zd) {
+
         super(level, xCoord, yCoord, zCoord, xd, yd, zd);
 
         //this.friction = 1.0f;
         this.xd = xd;
         this.yd = yd;
         this.zd = zd;
-        this.quadSize *= (.4f);
-        this.scale(2.5f);
+        this.quadSize *= (10f);
+        this.scale(1f);
         this.lifetime = 5 + (int) (Math.random() * 10);
         sprites = spriteSet;
         this.gravity = 0F;
@@ -29,7 +30,6 @@ public class StarsParticle extends TextureSheetParticle {
         this.rCol = 1f;
         this.gCol = 1f;
         this.bCol = 1f;
-        this.alpha = 0.8f;
     }
 
     @Override
@@ -39,25 +39,27 @@ public class StarsParticle extends TextureSheetParticle {
     }
 
     @Override
-    public ParticleRenderType getRenderType() { return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT; }
+    public ParticleRenderType getRenderType() {
+        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
+    }
 
     @OnlyIn(Dist.CLIENT)
     public static class Provider implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet sprites;
 
-        public Provider(SpriteSet spriteSet) { this.sprites = spriteSet; }
+        public Provider(SpriteSet spriteSet) {
+            this.sprites = spriteSet;
+        }
 
-        public Particle createParticle(
-                SimpleParticleType particleType, ClientLevel level,
-                double x, double y, double z,
-                double dx, double dy, double dz
-        ) {
+        public Particle createParticle(SimpleParticleType particleType, ClientLevel level,
+                                       double x, double y, double z,
+                                       double dx, double dy, double dz) {
             return new StarsParticle(level, x, y, z, this.sprites, dx, dy, dz);
         }
     }
 
     @Override
-    protected int getLightColor(float pPartialTick) { return LightTexture.FULL_BRIGHT; }
+    protected int getLightColor(float pPartialTick) {
+        return LightTexture.FULL_BRIGHT;
+    }
 }
-
-

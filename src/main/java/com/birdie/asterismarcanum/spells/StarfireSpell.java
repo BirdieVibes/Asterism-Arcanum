@@ -13,11 +13,18 @@ import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
@@ -36,7 +43,7 @@ public class StarfireSpell extends AbstractSpell {
             .setMinRarity(SpellRarity.COMMON)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
             .setMaxLevel(10)
-            .setCooldownSeconds(1)
+            .setCooldownSeconds(0.3)
             .build();
 
     public StarfireSpell(ArcanumConfig.StarFireConfig config) {
@@ -77,7 +84,7 @@ public class StarfireSpell extends AbstractSpell {
     }
 
     private float getDamage(int spellLevel, LivingEntity entity) {
-        return getSpellPower(spellLevel, entity) * .5f;
+        return getSpellPower(spellLevel, entity) * .3f;
     }
 
     @Override

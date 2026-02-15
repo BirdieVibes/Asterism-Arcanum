@@ -93,7 +93,7 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
                 }
 
                 float f = 1 - distance / boundingBoxRadiusX;
-                float scale = f * f * f * f * .25f;
+                float scale = f * f * f * f * .5f;
                 float resistance = entity instanceof LivingEntity livingEntity
                         ? Mth.clamp(1 - (float) livingEntity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE), .3f, 1f)
                         : 1f;
@@ -149,7 +149,7 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
     public float getRadius() { return this.getEntityData().get(DATA_RADIUS); }
 
     public void setRadius(float pRadius) {
-        if (level().isClientSide) return;
+        if (this.level().isClientSide) return;
 
         this.getEntityData().set(DATA_RADIUS, Math.min(pRadius, 48));
     }
@@ -185,6 +185,6 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
     }
 
     private void updateTrackingEntities() {
-        trackingEntities = level().getEntities(this, this.getBoundingBox().inflate(1));
+        trackingEntities = this.level().getEntities(this, this.getBoundingBox().inflate(1));
     }
 }
