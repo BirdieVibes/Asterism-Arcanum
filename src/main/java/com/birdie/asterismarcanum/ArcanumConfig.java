@@ -34,18 +34,6 @@ public class ArcanumConfig {
         SPEC = BUILDER.build();
     }
 
-    public static ArcanumConfig INSTANCE;
-
-    private ArcanumConfig(ModContainer modContainer) {
-        modContainer.registerConfig(ModConfig.Type.SERVER, SPEC);
-    }
-
-    public static void register(ModContainer modContainer) {
-        if (INSTANCE != null) return;
-
-        INSTANCE = new ArcanumConfig(modContainer);
-    }
-
     abstract static class BaseSpellConfig {
         public final ModConfigSpec spec;
         public final IntValue manaCostPerLevel;
@@ -91,39 +79,40 @@ public class ArcanumConfig {
     }
 
     public static class ConstellationConfig extends BaseSpellConfig {
-        public ConstellationConfig() { super("constellation");}
+        public ConstellationConfig() { super("constellation", 30, 1, 0, 0, 100); }
     }
 
     public static class DarkFlowConfig extends BaseSpellConfig {
-        public DarkFlowConfig() { super("darkflow"); }
-    }
-
-    public static class MoonbeamedConfig extends BaseSpellConfig {
-        public MoonbeamedConfig() { super("moon_beamed"); }
+        public DarkFlowConfig() { super("darkflow", 10, 2, 0, 0, 60); }
     }
 
     public static class LuminousConfig extends BaseSpellConfig {
-        public LuminousConfig() { super("luminous");}
+        public LuminousConfig() { super("luminous", 1, 0, 1, 200, 2);}
+    }
+
+    public static class MoonbeamedConfig extends BaseSpellConfig {
+        public MoonbeamedConfig() { super("moon_beamed", 12, 10, 20, 5, 0); }
     }
 
     public static class NightVisionConfig extends BaseSpellConfig {
-        public NightVisionConfig() { super("night_vision"); }
-    }
-
-    public static class StarFireConfig extends BaseSpellConfig {
-        public StarFireConfig() { super("star_fire"); }
+        public NightVisionConfig() { super("night_vision", 10, 50, 20, 0, 40); }
     }
 
     public static class StarSwarmConfig extends BaseSpellConfig {
-        public StarSwarmConfig() { super("star_swarm"); }
+        public StarSwarmConfig() { super("star_swarm", 5, 1, 2, 0, 40); }
+    }
+
+    public static class StarFireConfig extends BaseSpellConfig {
+        public StarFireConfig() { super("star_fire", 1, 12, 1, 0, 5); }
     }
 
     public static class TidalLockConfig extends BaseSpellConfig {
-        public TidalLockConfig() { super("tidal_lock"); }
+        public TidalLockConfig() { super("tidal_lock", 20, 5, 1, 0, 70); }
     }
 
-    private static BooleanValue define(ModConfigSpec.Builder builder, String name, boolean defaultValue,
-                                       String comment) {
+    private static BooleanValue define(
+            ModConfigSpec.Builder builder, String name, boolean defaultValue, String comment
+    ) {
         builder.comment(comment);
         return define(builder, name, defaultValue);
     }
@@ -169,5 +158,9 @@ public class ArcanumConfig {
 
     private static IntValue define(ModConfigSpec.Builder builder, String name, int defaultValue) {
         return define(builder, name, defaultValue, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    public static void register(ModContainer modContainer) {
+        modContainer.registerConfig(ModConfig.Type.SERVER, SPEC);
     }
 }

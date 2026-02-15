@@ -40,13 +40,9 @@ public class AsterismArcanum {
         modEventBus.addListener(this::addCreative);
 
         SpellRegistries.register(modEventBus);
-
         ASAREntityRegistry.register(modEventBus);
-
         ASARSchoolRegistry.register(modEventBus);
-
         ASARAttributeRegistry.register(modEventBus);
-
         ASARParticleRegistry.register(modEventBus);
 
         ArcanumConfig.register(modContainer);
