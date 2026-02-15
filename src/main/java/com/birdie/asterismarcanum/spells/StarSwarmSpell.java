@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.spells;
 
+import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
@@ -28,20 +29,27 @@ public class StarSwarmSpell extends AbstractSpell {
             .setCooldownSeconds(15)
             .build();
 
+    public StarSwarmSpell(ArcanumConfig.StarSwarmConfig config) {
+        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
+        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
+        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
+        this.castTime = config.castTime.getAsInt();
+        this.baseManaCost = config.baseManaCost.getAsInt();
+    }
+
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
-                Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getDamage(spellLevel, caster), 2)),
-                Component.translatable("ui.irons_spellbooks.projectile_count", (int) (getRecastCount(spellLevel, caster)))
-        );
-    }
+                Component.translatable(
+                        "ui.irons_spellbooks.damage",
+                        Utils.stringTruncation(getDamage(spellLevel, caster), 2)
+                ),
 
-    public StarSwarmSpell() {
-        this.manaCostPerLevel = 5;
-        this.baseSpellPower = 1;
-        this.spellPowerPerLevel = 2;
-        this.castTime = 0;
-        this.baseManaCost = 40;
+                Component.translatable(
+                        "ui.irons_spellbooks.projectile_count",
+                        getRecastCount(spellLevel, caster)
+                )
+        );
     }
 
     @Override
@@ -62,26 +70,27 @@ public class StarSwarmSpell extends AbstractSpell {
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         var recasts = playerMagicData.getPlayerRecasts();
+
         if (!recasts.hasRecastForSpell(getSpellId())) {
             recasts.addRecast(new RecastInstance(getSpellId(), spellLevel, getRecastCount(spellLevel, entity), 200, castSource, null), playerMagicData);
         }
+
         Vec3 origin = entity.getEyePosition().add(entity.getForward().normalize().scale(.2f)).subtract(0, -2, 0);
         StarSwarmProjectile star_swarm = new StarSwarmProjectile(level, entity);
-        star_swarm.setPos(origin.subtract(0, star_swarm.getBbHeight(), 0));
         Vec3 vec = entity.getForward().add(0,0.2,0).normalize(); // adjust for inaccuracy sometimes hitting the ground
+
+        star_swarm.setPos(origin.subtract(0, star_swarm.getBbHeight(), 0));
         star_swarm.shoot(vec.scale(.7f));
         star_swarm.setDamage(getDamage(spellLevel, entity));
         star_swarm.setCursorHoming(true);
+
         level.addFreshEntity(star_swarm);
+
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
-    private float getDamage(int spellLevel, LivingEntity caster) {
-        return getSpellPower(spellLevel, caster);
-    }
+    private float getDamage(int spellLevel, LivingEntity caster) { return getSpellPower(spellLevel, caster); }
 
     @Override
-    public ICastDataSerializable getEmptyCastData() {
-        return new MultiTargetEntityCastData();
-    }
+    public ICastDataSerializable getEmptyCastData() { return new MultiTargetEntityCastData(); }
 }

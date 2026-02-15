@@ -17,9 +17,8 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
-@SuppressWarnings("removal")
+//@SuppressWarnings("removal") why this there is no removal warning?
 @EventBusSubscriber(modid = AsterismArcanum.MOD_ID, value = Dist.CLIENT)
-
 public class ClientSetup {
     @SubscribeEvent
     public static void  rendererRegister(EntityRenderersEvent.RegisterRenderers event){

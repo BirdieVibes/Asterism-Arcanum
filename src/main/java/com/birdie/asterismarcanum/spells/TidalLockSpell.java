@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.spells;
 
+import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.tidal_lock.TidalLockEntity;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
@@ -21,13 +22,6 @@ import java.util.List;
 public class TidalLockSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "tidal_lock");
 
-    @Override
-    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(
-                Component.translatable("ui.irons_spellbooks.duration", Utils.timeFromTicks(getDuration(spellLevel, caster), 1))
-        );
-    }
-
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.EPIC)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
@@ -35,12 +29,20 @@ public class TidalLockSpell extends AbstractSpell {
             .setCooldownSeconds(60)
             .build();
 
-    public TidalLockSpell() {
-        this.manaCostPerLevel = 20;
-        this.baseSpellPower = 5;
-        this.spellPowerPerLevel = 1;
-        this.castTime = 0;
-        this.baseManaCost = 70;
+    public TidalLockSpell(ArcanumConfig.TidalLockConfig config) {
+        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
+        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
+        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
+        this.castTime = config.castTime.getAsInt();
+        this.baseManaCost = config.baseManaCost.getAsInt();
+    }
+
+    @Override
+    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.duration",
+                Utils.timeFromTicks(getDuration(spellLevel, caster), 1)
+        ));
     }
 
     @Override
@@ -74,9 +76,6 @@ public class TidalLockSpell extends AbstractSpell {
         return 160 + spellLevel * 160 * Mth.sqrt(getEntityPowerMultiplier(caster));
     }
 
-
     @Override
-    public AnimationHolder getCastStartAnimation() {
-        return SpellAnimations.SELF_CAST_TWO_HANDS;
-    }
+    public AnimationHolder getCastStartAnimation() { return SpellAnimations.SELF_CAST_TWO_HANDS; }
 }

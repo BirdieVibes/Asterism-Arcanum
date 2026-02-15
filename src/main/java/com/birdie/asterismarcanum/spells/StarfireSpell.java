@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.spells;
 
+import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
@@ -30,11 +31,6 @@ import java.util.List;
 public class StarfireSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "starfire");
 
-    @Override
-    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getDamage(spellLevel, caster), 2)));
-    }
-
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.COMMON)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
@@ -42,12 +38,20 @@ public class StarfireSpell extends AbstractSpell {
             .setCooldownSeconds(0.3)
             .build();
 
-    public StarfireSpell() {
-        this.manaCostPerLevel = 1;
-        this.baseSpellPower = 12;
-        this.spellPowerPerLevel = 1;
-        this.castTime = 0;
-        this.baseManaCost = 5;
+    public StarfireSpell(ArcanumConfig.StarFireConfig config) {
+        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
+        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
+        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
+        this.castTime = config.castTime.getAsInt();
+        this.baseManaCost = config.baseManaCost.getAsInt();
+    }
+
+    @Override
+    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.damage",
+                Utils.stringTruncation(getDamage(spellLevel, caster), 2)
+        ));
     }
 
     @Override
@@ -68,11 +72,14 @@ public class StarfireSpell extends AbstractSpell {
     @Override
     public void onCast(Level world, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         StarfireProjectile starfire = new StarfireProjectile(world, entity);
+
         starfire.setPos(entity.position().add(0, entity.getEyeHeight() - starfire.getBoundingBox().getYsize() * .5f, 0));
         starfire.shoot(entity.getLookAngle());
         starfire.setDamage(getDamage(spellLevel, entity));
         starfire.setNoGravity(true);
+
         world.addFreshEntity(starfire);
+
         super.onCast(world, spellLevel, entity, castSource, playerMagicData);
     }
 

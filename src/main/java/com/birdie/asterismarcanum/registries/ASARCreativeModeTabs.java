@@ -15,7 +15,8 @@ public class ASARCreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, AsterismArcanum.MOD_ID);
 
-    public static final Supplier<CreativeModeTab> ASTERISM_ARCANUM_ITEMS_TAB = CREATIVE_MODE_TAB.register("asterism_arcanum_items_tab",
+    public static final Supplier<CreativeModeTab> ASTERISM_ARCANUM_ITEMS_TAB = CREATIVE_MODE_TAB.register(
+            "asterism_arcanum_items_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.STELLAR_NAUTILUS_SHELL.get()))
                     .title(Component.translatable("creativetab.asterismarcanum.asterism_arcanum_items"))
                     .displayItems((itemDisplayParameters, output) -> {
@@ -29,7 +30,8 @@ public class ASARCreativeModeTabs {
                         output.accept(ModItems.ASTRAL_LEGGINGS.get());
                         output.accept(ModItems.ASTRAL_BOOTS.get());
                     })
-                    .build());
+                    .build()
+    );
 
     public static void register(IEventBus eventBus) {
         CREATIVE_MODE_TAB.register(eventBus);

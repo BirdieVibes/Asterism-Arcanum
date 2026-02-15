@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.spells;
 
+import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
@@ -10,10 +11,7 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.capabilities.magic.RecastInstance;
-import io.redspace.ironsspellbooks.capabilities.magic.RecastResult;
-import io.redspace.ironsspellbooks.capabilities.magic.SummonManager;
-import io.redspace.ironsspellbooks.capabilities.magic.SummonedEntitiesCastData;
+import io.redspace.ironsspellbooks.capabilities.magic.*;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.fireball.MagicFireball;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
@@ -41,15 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConstellationSpell extends AbstractSpell {
-    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "constellation");
-
-    @Override
-    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(
-                Component.translatable("ui.irons_spellbooks.radius", Utils.stringTruncation(getRadius(spellLevel, caster), 1))
-        );
-    }
-
+    private final ResourceLocation spellId = AsterismArcanum.namespacePath("constellation");
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.EPIC)
@@ -58,12 +48,20 @@ public class ConstellationSpell extends AbstractSpell {
             .setCooldownSeconds(45)
             .build();
 
-    public ConstellationSpell() {
-        this.manaCostPerLevel = 30;
-        this.baseSpellPower = 1;
-        this.spellPowerPerLevel = 0;
-        this.castTime = 0;
-        this.baseManaCost = 100;
+    public ConstellationSpell(ArcanumConfig.ConstellationConfig config) {
+        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
+        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
+        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
+        this.castTime = config.castTime.getAsInt();
+        this.baseManaCost = config.baseManaCost.getAsInt();
+    }
+
+    @Override
+    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.radius",
+                Utils.stringTruncation(getRadius(spellLevel, caster), 1)
+        ));
     }
 
     @Override
@@ -88,16 +86,18 @@ public class ConstellationSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        float radius = getRadius(spellLevel, entity);
-        HitResult raycast = Utils.raycastForEntity(level, entity, 16 + radius * 1.5f, true);
-        Vec3 center = raycast.getLocation();
+        float radius = this.getRadius(spellLevel, entity);
+        HitResult rayCast = Utils.raycastForEntity(level, entity, 16 + radius * 1.5f, true);
+        Vec3 center = rayCast.getLocation();
 
-        var recasts = playerMagicData.getPlayerRecasts();
+        PlayerRecasts recasts = playerMagicData.getPlayerRecasts();
+
         if (!recasts.hasRecastForSpell(getSpellId())) {
             recasts.addRecast(new RecastInstance(getSpellId(), spellLevel, getRecastCount(spellLevel, entity),
                     100, castSource, null), playerMagicData);
         }
 
+        /*
         if (raycast instanceof BlockHitResult blockHitResult) {
             Constellation constellation = new Constellation(level, entity);
 
@@ -107,6 +107,7 @@ public class ConstellationSpell extends AbstractSpell {
 
             level.addFreshEntity(constellation);
         }
+         */
 
         Constellation constellation = new Constellation(level, entity);
 

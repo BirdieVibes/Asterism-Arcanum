@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.spells;
 
+import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
@@ -20,13 +21,6 @@ import java.util.List;
 public class NightVisionSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "night_vision");
 
-    @Override
-    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
-        return List.of(
-                Component.translatable("ui.irons_spellbooks.effect_length", Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 100, 1))
-        );
-    }
-
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.COMMON)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
@@ -34,28 +28,30 @@ public class NightVisionSpell extends AbstractSpell {
             .setCooldownSeconds(60)
             .build();
 
-    public NightVisionSpell() {
-        this.manaCostPerLevel = 10;
-        this.baseSpellPower = 50;
-        this.spellPowerPerLevel = 20;
-        this.castTime = 0;
-        this.baseManaCost = 40;
+    public NightVisionSpell(ArcanumConfig.NightVisionConfig config) {
+        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
+        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
+        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
+        this.castTime = config.castTime.getAsInt();
+        this.baseManaCost = config.baseManaCost.getAsInt();
     }
 
     @Override
-    public CastType getCastType() {
-        return CastType.INSTANT;
+    public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
+        return List.of(Component.translatable(
+                "ui.irons_spellbooks.effect_length",
+                Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 100, 1)
+        ));
     }
 
     @Override
-    public DefaultConfig getDefaultConfig() {
-        return defaultConfig;
-    }
+    public CastType getCastType() { return CastType.INSTANT; }
 
     @Override
-    public ResourceLocation getSpellResource() {
-        return spellId;
-    }
+    public DefaultConfig getDefaultConfig() { return defaultConfig; }
+
+    @Override
+    public ResourceLocation getSpellResource() { return spellId; }
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
@@ -63,13 +59,8 @@ public class NightVisionSpell extends AbstractSpell {
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
-
-    private int getAmplifierForLevel(int spellLevel) {
-        return spellLevel; // 6 base damage
-    }
+    private int getAmplifierForLevel(int spellLevel) { return spellLevel; }
 
     @Override
-    public AnimationHolder getCastStartAnimation() {
-        return SpellAnimations.SELF_CAST_ANIMATION;
-    }
+    public AnimationHolder getCastStartAnimation() { return SpellAnimations.SELF_CAST_ANIMATION; }
 }
