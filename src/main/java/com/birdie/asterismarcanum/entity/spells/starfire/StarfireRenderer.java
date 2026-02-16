@@ -4,7 +4,6 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.entity.spells.fireball.FireballRenderer;
 import io.redspace.ironsspellbooks.render.RenderHelper;
 import net.minecraft.client.model.geom.ModelPart;
@@ -17,9 +16,6 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Matrix4f;
-
-import javax.naming.Context;
 
 public class StarfireRenderer  extends EntityRenderer<StarfireProjectile> {
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "textures/entity/starfire/starfire.png");

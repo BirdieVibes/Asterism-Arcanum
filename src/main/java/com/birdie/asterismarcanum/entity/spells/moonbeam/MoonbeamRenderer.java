@@ -15,8 +15,6 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
-import javax.naming.Context;
-
 public class MoonbeamRenderer extends EntityRenderer<MoonbeamEntity> {
 
     public MoonbeamRenderer(EntityRendererProvider.Context context) {
@@ -33,7 +31,6 @@ public class MoonbeamRenderer extends EntityRenderer<MoonbeamEntity> {
     public void render(MoonbeamEntity entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int light) {
         poseStack.pushPose();
 
-        //poseStack.mulPose(Axis.XP.rotationDegrees(90));
         float maxRadius = 2.5f;
         float minRadius = 0.005f;
         float deltaTicks = entity.tickCount + partialTicks;
@@ -44,12 +41,10 @@ public class MoonbeamRenderer extends EntityRenderer<MoonbeamEntity> {
         f *= f;
         float radius = Mth.clampedLerp(maxRadius, minRadius, f);
         VertexConsumer inner = bufferSource.getBuffer(RenderHelper.CustomerRenderType.magic(SpellRenderingHelper.BEACON));
-        //SpellRenderingHelper.drawHull(Vec3.ZERO, new Vec3(0, 100, 0), radius, radius, poseStack.last(), inner, 255, 255, 255, (int) (255 * f), min, max);
         float halfRadius = radius * .5f;
         float quarterRadius = halfRadius * .5f;
         float yMin = entity.onGround() ? 0 : Utils.findRelativeGroundLevel(entity.level(), entity.position(), 8) - (float) entity.getY();
         for (int i = 0; i < 4; i++) {
-            //orange glow
             RenderHelper.quadBuilder()
                     .vertex(-halfRadius, yMin, -halfRadius).uv(0, min).normal(0, 1, 0)
                     .vertex(-halfRadius, yMin, halfRadius).uv(1, min).normal(0, 1, 0)
@@ -60,7 +55,6 @@ public class MoonbeamRenderer extends EntityRenderer<MoonbeamEntity> {
                     .overlay(OverlayTexture.NO_OVERLAY)
                     .matrix(poseStack.last().pose())
                     .build(inner);
-            //yellow core
             RenderHelper.quadBuilder()
                     .vertex(-quarterRadius, yMin, -quarterRadius).uv(0, min).normal(0, 1, 0)
                     .vertex(-quarterRadius, yMin, quarterRadius).uv(1, min).normal(0, 1, 0)

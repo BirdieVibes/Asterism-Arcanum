@@ -12,8 +12,6 @@ import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.entity.spells.sunbeam.SunbeamEntity;
-import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.spells.ender.TeleportSpell;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -31,7 +29,8 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-import static io.redspace.ironsspellbooks.item.curios.ExpulsionRing.RADIUS;
+//A combination of the Sunbeam spell, teleport spell, and utilizing the combat-exclusion function from Iron's Spells n' Spellbooks
+//Teleports the caster a long distance, but can only be used out of combat
 
 public class MoonbeamedSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "moonbeamed");
@@ -93,12 +92,12 @@ public class MoonbeamedSpell extends AbstractSpell {
 
     @Override
     public Optional<SoundEvent> getCastStartSound() {
-        return Optional.of(SoundEvents.ALLAY_AMBIENT_WITHOUT_ITEM);
+        return Optional.of(SoundEvents.AMETHYST_BLOCK_CHIME);
     }
 
     @Override
     public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(SoundEvents.ALLAY_AMBIENT_WITHOUT_ITEM);
+        return Optional.of(SoundEvents.AMETHYST_BLOCK_RESONATE);
     }
 
     @Override

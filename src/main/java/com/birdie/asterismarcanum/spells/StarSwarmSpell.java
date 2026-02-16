@@ -10,15 +10,22 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MultiTargetEntityCastData;
 import io.redspace.ironsspellbooks.capabilities.magic.RecastInstance;
+import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Optional;
+
+//based on the firefly, flaming barrage and ball o' lightning spells from Iron's spells n' spellbooks
+//creates a cursor-tracking entity that can pierce multiple enemies at once and functions as a mobile AOE
+//very janky and I will almost certainly completely re-do it at some point
+//TODO: Rework Star Swarm entirely
 
 public class StarSwarmSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "star_swarm");
@@ -65,6 +72,16 @@ public class StarSwarmSpell extends AbstractSpell {
     @Override
     public ResourceLocation getSpellResource() {
         return spellId;
+    }
+
+    @Override
+    public Optional<SoundEvent> getCastStartSound() {
+        return Optional.of(SoundRegistry.CLEANSE_CAST.get());
+    }
+
+    @Override
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of(SoundRegistry.CLOUD_OF_REGEN_LOOP.get());
     }
 
     @Override

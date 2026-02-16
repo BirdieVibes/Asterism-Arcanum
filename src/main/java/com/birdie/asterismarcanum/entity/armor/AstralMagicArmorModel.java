@@ -2,7 +2,6 @@ package com.birdie.asterismarcanum.entity.armor;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.item.armor.AstralMagicArmorItem;
-import io.redspace.ironsspellbooks.IronsSpellbooks;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.DefaultedItemGeoModel;
 

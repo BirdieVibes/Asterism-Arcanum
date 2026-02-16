@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static java.nio.file.Files.setOwner;
+//based on AbstractConeProjectile from Iron's Spells n' Spellbooks
 
 public abstract class AbstractBeamProjectile extends Projectile implements NoKnockbackProjectile {
     protected static final int FAILSAFE_EXPIRE_TIME = 20 * 20;
@@ -37,6 +37,8 @@ public abstract class AbstractBeamProjectile extends Projectile implements NoKno
         super(entityType, level);
         this.noPhysics = true;
         this.blocksBuilding = false;
+
+        //I don't know off the top of my head any way to truncate this VVV but since it works I decided it would be okay
 
         this.subEntities = new BeamPart[]{
                 new BeamPart(this, "part1", 1.5F, 1.5F),
@@ -86,7 +88,7 @@ public abstract class AbstractBeamProjectile extends Projectile implements NoKno
     @Override
     public void setId(int id) {
         super.setId(id);
-        for (int i = 0; i < this.subEntities.length; i++) // Forge: Fix MC-158205: Set part ids to successors of parent mob id
+        for (int i = 0; i < this.subEntities.length; i++)
             this.subEntities[i].setId(id + i + 1);
     }
 
@@ -151,7 +153,6 @@ public abstract class AbstractBeamProjectile extends Projectile implements NoKno
         if (!level().isClientSide) {
             if (dealDamageActive) {
                 for (Entity entity : getSubEntityCollisions()) {
-                    //irons_spellbooks.LOGGER.debug("ConeOfColdHit : {}", entity.getName().getString());
                     onHitEntity(new EntityHitResult(entity));
                 }
                 dealDamageActive = false;

@@ -33,8 +33,6 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
 
     public static final int WARMUP_TIME = 2;
 
-    private static final int LOOP_SOUND_DURATION_IN_TICKS = 40;
-
     private float damage;
     private int duration = 20 ;
 
@@ -69,7 +67,6 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
 
         int update = Math.max((int) (this.getRadius() / 2), 2);
 
-        //prevent lag from giagantic black holes
         if (tickCount % update == 0) updateTrackingEntities();
 
         Level level = level();
@@ -81,8 +78,6 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
         Vec3 position = this.position();
         Vec3 center = boundingBox.getCenter();
 
-        // Unused variable?
-        // boolean hitTick = this.tickCount % 10 == 0;
 
         for (Entity entity : trackingEntities) {
             if (entity != getOwner() && !DamageSources.isFriendlyFireBetween(getOwner(), entity) && !entity.isSpectator()) {
@@ -139,9 +134,6 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
     public EntityDimensions getDimensions(Pose pPose) {
         return EntityDimensions.scalable(this.getRadius() * 2.0F, this.getRadius() * 2.0F);
     }
-
-    public int getDuration() { return duration; }
-    public void setDuration(int duration) { this.duration = duration; }
 
     public float getDamage() { return damage; }
     public void setDamage(float damage) { this.damage = damage; }

@@ -3,40 +3,31 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
-import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
-import io.redspace.ironsspellbooks.api.events.SpellSummonEvent;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.*;
-import io.redspace.ironsspellbooks.damage.DamageSources;
-import io.redspace.ironsspellbooks.entity.spells.fireball.MagicFireball;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
-import net.minecraft.core.Direction;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.Fireball;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.NeoForge;
-import org.checkerframework.checker.units.qual.K;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+//A frankensteined spell utilizing script from Flaming Barrage and Ball o' Lightning from Iron's Spells n' Spellbooks
+//Still in progress, eventually will have lines of particles drawn between the summoned entities,
+//currently just summons entities that explode after a short amount of time
+//TODO: Lines between Constellation Points
 
 public class ConstellationSpell extends AbstractSpell {
     private final ResourceLocation spellId = AsterismArcanum.namespacePath("constellation");
@@ -82,6 +73,11 @@ public class ConstellationSpell extends AbstractSpell {
     @Override
     public int getRecastCount(int spellLevel, @Nullable LivingEntity entity) {
         return 7;
+    }
+
+    @Override
+    public Optional<SoundEvent> getCastStartSound() {
+        return Optional.of(SoundRegistry.CLEANSE_CAST.get());
     }
 
     @Override

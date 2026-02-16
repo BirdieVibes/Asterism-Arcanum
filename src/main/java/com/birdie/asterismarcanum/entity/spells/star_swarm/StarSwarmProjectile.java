@@ -1,7 +1,6 @@
 package com.birdie.asterismarcanum.entity.spells.star_swarm;
 
 import com.birdie.asterismarcanum.entity.spells.SpellUtils;
-import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import com.birdie.asterismarcanum.registries.SpellRegistries;
@@ -10,27 +9,17 @@ import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
-import io.redspace.ironsspellbooks.registries.EntityRegistry;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 
-import javax.annotation.Nullable;
 import java.util.Optional;
-
-import static java.math.RoundingMode.DOWN;
-import static java.math.RoundingMode.UP;
-import static javax.swing.SwingConstants.*;
 
 public class StarSwarmProjectile extends AbstractMagicProjectile implements AntiMagicSusceptible {
     public StarSwarmProjectile(Level levelIn, LivingEntity shooter) {

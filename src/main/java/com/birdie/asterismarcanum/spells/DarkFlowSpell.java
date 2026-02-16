@@ -24,6 +24,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+//Spell based on Black Hole in Iron's Spells n' Spellbooks
+//Pushes entities within a broad range away from the caster by summoning an inverted black hole entity for a brief amount of time
+
 public class DarkFlowSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "dark_flow");
 
@@ -75,7 +78,6 @@ public class DarkFlowSpell extends AbstractSpell {
 
         level.playSound(null, center.x, center.y, center.z, SoundRegistry.BLACK_HOLE_CAST.get(), SoundSource.AMBIENT, 4, 1);
 
-        // tracks player location and aligns entity to player
 
         DarkFlow darkFlow = new DarkFlow(level, entity);
         darkFlow.setRadius(radius);
@@ -92,11 +94,11 @@ public class DarkFlowSpell extends AbstractSpell {
 
         if (rayCast instanceof BlockHitResult blockHitResult) {
             if (blockHitResult.getDirection().getAxis().isHorizontal()) {
-                center = center.subtract(0, radius + 1, 0); // Make black hole centered on hit location
+                center = center.subtract(0, radius + 1, 0);
             } else if (blockHitResult.getDirection() == Direction.DOWN) {
-                center = center.subtract(0, radius + 1, 0); // Make black hole stick one block into ceiling surface
+                center = center.subtract(0, radius + 1, 0);
             } else {
-                center = center.subtract(0, radius + 1, 0); // Make black hole sink into ground 1 block if we hit top face
+                center = center.subtract(0, radius + 1, 0);
             }
         }
 

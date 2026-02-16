@@ -8,9 +8,7 @@ import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.spells.AoeEntity;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
@@ -19,17 +17,11 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-import javax.annotation.Nullable;
 import java.util.Optional;
 
 public class MoonbeamEntity extends AoeEntity implements AntiMagicSusceptible {
     public static final int WARMUP_TIME = 15;
 
-    // Unused variable?
-    // @Nullable
-    // LivingEntity target;
-
-    // I recommend putting constructors with fewer parameters first
     public MoonbeamEntity(Level level) { this(ASAREntityRegistry.MOONBEAM.get(), level); }
 
     public MoonbeamEntity(EntityType<? extends Projectile> pEntityType, Level pLevel) {
@@ -44,19 +36,9 @@ public class MoonbeamEntity extends AoeEntity implements AntiMagicSusceptible {
 
         Level level = level();
 
-//        if (tickCount < WARMUP_TIME) {
-//            if (target != null) {
-//                Vec3 delta = target.position().subtract(this.position());
-//                delta = delta.normalize().scale(0.06f);
-//                this.setPos(this.position().add(delta));
-//            }
-//        }
-
-        // If you need this ServerSide no need to check an "if" inside "if" just put another condition :D
         if (tickCount == WARMUP_TIME && !level.isClientSide) {
             checkHits();
 
-            // If you are going to use a method more than 2-3 times you may create a variable for it
             Vec3 position = this.position();
             float radius = this.getRadius();
 

@@ -14,35 +14,24 @@ import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
-import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.damage.SpellDamageSource;
-import io.redspace.ironsspellbooks.entity.spells.ray_of_frost.RayOfFrostVisualEntity;
-import io.redspace.ironsspellbooks.network.particles.BloodSiphonParticlesPacket;
-import io.redspace.ironsspellbooks.particle.EnderSlashParticleOptions;
-import io.redspace.ironsspellbooks.particle.TraceParticleOptions;
-import io.redspace.ironsspellbooks.registries.SoundRegistry;
-import io.redspace.ironsspellbooks.spells.CastingMobAimingData;
 import io.redspace.ironsspellbooks.spells.EntityCastData;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.network.PacketDistributor;
 import org.joml.Vector3f;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Optional;
 
-import static io.redspace.ironsspellbooks.spells.blood.RayOfSiphoningSpell.getRange;
+//A hybridization of a Cone spell, Shadow Slash from Iron's Spells n' Spellbooks, and a customized cone entity "beam"
+//Sends out a damaging beam of particles approximately 20 blocks
 
 public class LuminousRaySpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "luminous_ray");
@@ -86,11 +75,6 @@ public class LuminousRaySpell extends AbstractSpell {
     }
 
     @Override
-    public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(SoundRegistry.CLOUD_OF_REGEN_LOOP.get());
-    }
-
-    @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         if (playerMagicData.isCasting() && playerMagicData.getCastingSpellId().equals(this.getSpellId())
                 && playerMagicData.getAdditionalCastData() instanceof EntityCastData entityCastData
@@ -98,7 +82,7 @@ public class LuminousRaySpell extends AbstractSpell {
             beam.setDealDamageActive();
         } else {
             LuminousRayProjectile luminousRayProjectile = new LuminousRayProjectile(level, entity);
-            luminousRayProjectile.setPos(entity.position().add(0, entity.getEyeHeight() * .9, 0));
+            luminousRayProjectile.setPos(entity.position().add(0, entity.getEyeHeight() * .5, 0));
             luminousRayProjectile.setDamage(getDamage(spellLevel, entity));
             level.addFreshEntity(luminousRayProjectile);
 

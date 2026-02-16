@@ -1,7 +1,6 @@
 package com.birdie.asterismarcanum.entity.spells.star_swarm;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;

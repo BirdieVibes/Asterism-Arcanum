@@ -14,7 +14,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.*;
@@ -27,10 +26,6 @@ import net.minecraft.world.phys.Vec3;
 public class Constellation extends Projectile implements AntiMagicSusceptible {
     private static final EntityDataAccessor<Float> DATA_RADIUS =
             SynchedEntityData.defineId(Constellation.class, EntityDataSerializers.FLOAT);
-
-    // Why do these variables exist?
-    // private static final int LOOP_SOUND_DURATION_IN_TICKS = 40;
-    // List<Entity> trackingEntities = new ArrayList<>();
 
     public static final int WARMUP_TIME = 2;
 
@@ -64,26 +59,15 @@ public class Constellation extends Projectile implements AntiMagicSusceptible {
     public void tick() {
         super.tick();
 
-        // Storing level in a variable is more effecient than using level() a lot of times.
         Level level = this.level();
 
-        // You can easily do this to avoid ClientSide ticking instead doing 2 "ifs" and nesting them :D.
         if (level.isClientSide) return;
-
-        // int update = Math.max((int) (getRadius() / 2), 2);
-        // prevent lag from giagantic black holes
-        // Koji: Why the point of this if you are storing them but not using?
-        // if (tickCount % update == 0) {
-        //     updateTrackingEntities();
-        // }
 
         AABB boundingBox = this.getBoundingBox();
         float blastWaveRadius = (float) (boundingBox.getXsize());
         float totalRadius = this.getRadius();
 
-        // Why this variables?
-        // boolean hitTick = this.tickCount % 10 == 0;
-        // Vec3 center = boundingBox.getCenter();
+
         Vec3 position = this.position();
         BlockPos blockPos = this.blockPosition();
 
@@ -195,9 +179,4 @@ public class Constellation extends Projectile implements AntiMagicSusceptible {
 
         super.readAdditionalSaveData(pCompound);
     }
-
-    // Why do this method exist?
-    // private void updateTrackingEntities() {
-    //     trackingEntities = level().getEntities(this, this.getBoundingBox().inflate(1));
-    // }
 }

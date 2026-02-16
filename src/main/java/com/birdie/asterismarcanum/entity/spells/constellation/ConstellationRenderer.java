@@ -1,20 +1,14 @@
 package com.birdie.asterismarcanum.entity.spells.constellation;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
-import io.redspace.ironsspellbooks.entity.spells.icicle.IcicleRenderer;
 import io.redspace.ironsspellbooks.render.RenderHelper;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.CubeListBuilder;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
-import net.minecraft.client.model.geom.builders.MeshDefinition;
-import net.minecraft.client.model.geom.builders.PartDefinition;
+
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -23,12 +17,11 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.phys.Vec3;
+
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-import static io.redspace.ironsspellbooks.entity.spells.ball_lightning.BallLightning.lifetime;
+//based on ball lightning from ISS
 
 public class ConstellationRenderer extends EntityRenderer<Constellation> {
     public static final ModelLayerLocation MODEL_LAYER_LOCATION = new ModelLayerLocation(
