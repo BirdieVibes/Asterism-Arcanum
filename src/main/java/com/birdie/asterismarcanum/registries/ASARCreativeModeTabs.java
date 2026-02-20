@@ -1,7 +1,6 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -17,18 +16,18 @@ public class ASARCreativeModeTabs {
 
     public static final Supplier<CreativeModeTab> ASTERISM_ARCANUM_ITEMS_TAB = CREATIVE_MODE_TAB.register(
             "asterism_arcanum_items_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.STELLAR_NAUTILUS_SHELL.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ASARItemsRegistry.STELLAR_NAUTILUS_SHELL.get()))
                     .title(Component.translatable("creativetab.asterismarcanum.asterism_arcanum_items"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModItems.STELLAR_NAUTILUS_SHELL);
-                        output.accept(ModItems.LIQUID_LUMINANCE);
-                        output.accept(ModItems.COSMIC_ATLAS.get());
-                        output.accept(ModItems.ASTRAL_RUNE.get());
-                        output.accept(ModItems.ASTRAL_UPGRADE_ORB.get());
-                        output.accept(ModItems.ASTRAL_CROWN.get());
-                        output.accept(ModItems.ASTRAL_CHESTPLATE.get());
-                        output.accept(ModItems.ASTRAL_LEGGINGS.get());
-                        output.accept(ModItems.ASTRAL_BOOTS.get());
+                        output.accept(ASARItemsRegistry.STELLAR_NAUTILUS_SHELL.get());
+                        output.accept(ASARItemsRegistry.LIQUID_LUMINANCE_BOTTLE.get());
+                        output.accept(ASARItemsRegistry.COSMIC_ATLAS.get());
+                        output.accept(ASARItemsRegistry.ASTRAL_RUNE.get());
+                        output.accept(ASARItemsRegistry.ASTRAL_UPGRADE_ORB.get());
+                        output.accept(ASARItemsRegistry.ASTRAL_CROWN.get());
+                        output.accept(ASARItemsRegistry.ASTRAL_CHESTPLATE.get());
+                        output.accept(ASARItemsRegistry.ASTRAL_LEGGINGS.get());
+                        output.accept(ASARItemsRegistry.ASTRAL_BOOTS.get());
                     })
                     .build()
     );

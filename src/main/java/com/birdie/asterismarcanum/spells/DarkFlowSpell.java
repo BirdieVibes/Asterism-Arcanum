@@ -1,6 +1,5 @@
 package com.birdie.asterismarcanum.spells;
 
-import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
@@ -37,12 +36,12 @@ public class DarkFlowSpell extends AbstractSpell {
             .setCooldownSeconds(45)
             .build();
 
-    public DarkFlowSpell(ArcanumConfig.DarkFlowConfig config) {
-        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
-        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
-        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
-        this.castTime = config.castTime.getAsInt();
-        this.baseManaCost = config.baseManaCost.getAsInt();
+    public DarkFlowSpell() {
+        this.manaCostPerLevel = 15;
+        this.baseSpellPower = 10;
+        this.spellPowerPerLevel = 2;
+        this.castTime = 0;
+        this.baseManaCost = 60;
     }
 
     @Override
@@ -73,8 +72,17 @@ public class DarkFlowSpell extends AbstractSpell {
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         float radius = getRadius(spellLevel, entity);
 
-        HitResult rayCast = Utils.raycastForEntity(level, entity, 0, true);
-        Vec3 center = getCenterFromRaycastAndRadius(rayCast, radius);
+        HitResult raycast = Utils.raycastForEntity(level, entity, 0, true);
+        Vec3 center = raycast.getLocation();
+        if (raycast instanceof BlockHitResult blockHitResult) {
+            if (blockHitResult.getDirection().getAxis().isHorizontal()) {
+                center = center.subtract(0, radius + 1, 0); // Make black hole centered on hit location
+            } else if (blockHitResult.getDirection() == Direction.DOWN) {
+                center = center.subtract(0, radius + 1, 0); // Make black hole stick one block into ceiling surface
+            } else {
+                center = center.subtract(0, radius + 1, 0); // Make black hole sink into ground 1 block if we hit top face
+            }
+        }
 
         level.playSound(null, center.x, center.y, center.z, SoundRegistry.BLACK_HOLE_CAST.get(), SoundSource.AMBIENT, 4, 1);
 
@@ -87,22 +95,6 @@ public class DarkFlowSpell extends AbstractSpell {
         level.addFreshEntity(darkFlow);
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
-    }
-
-    private static @NotNull Vec3 getCenterFromRaycastAndRadius(HitResult rayCast, float radius) {
-        Vec3 center = rayCast.getLocation();
-
-        if (rayCast instanceof BlockHitResult blockHitResult) {
-            if (blockHitResult.getDirection().getAxis().isHorizontal()) {
-                center = center.subtract(0, radius + 1, 0);
-            } else if (blockHitResult.getDirection() == Direction.DOWN) {
-                center = center.subtract(0, radius + 1, 0);
-            } else {
-                center = center.subtract(0, radius + 1, 0);
-            }
-        }
-
-        return center;
     }
 
     private float getDamage(int spellLevel, LivingEntity entity) {

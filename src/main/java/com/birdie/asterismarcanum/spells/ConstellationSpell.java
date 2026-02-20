@@ -1,6 +1,5 @@
 package com.birdie.asterismarcanum.spells;
 
-import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
@@ -39,12 +38,12 @@ public class ConstellationSpell extends AbstractSpell {
             .setCooldownSeconds(45)
             .build();
 
-    public ConstellationSpell(ArcanumConfig.ConstellationConfig config) {
-        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
-        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
-        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
-        this.castTime = config.castTime.getAsInt();
-        this.baseManaCost = config.baseManaCost.getAsInt();
+    public ConstellationSpell() {
+        this.manaCostPerLevel = 15;
+        this.baseSpellPower =1;
+        this.spellPowerPerLevel = 1;
+        this.castTime = 0;
+        this.baseManaCost = 40;
     }
 
     @Override

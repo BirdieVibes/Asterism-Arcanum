@@ -1,7 +1,7 @@
 package com.birdie.asterismarcanum.item.custom;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.item.ModItems;
+import com.birdie.asterismarcanum.registries.ASARItemsRegistry;
 import com.birdie.asterismarcanum.registries.ASARAttributeRegistry;
 import io.redspace.ironsspellbooks.item.armor.UpgradeType;
 import net.minecraft.core.Holder;
@@ -15,7 +15,7 @@ import java.util.Optional;
 public enum ASARUpgradeTypes implements UpgradeType {
     ASTRAL_SPELL_POWER(
             "astral_power",
-            ModItems.ASTRAL_UPGRADE_ORB,
+            ASARItemsRegistry.ASTRAL_UPGRADE_ORB,
             ASARAttributeRegistry.ASTRAL_SPELL_POWER,
             AttributeModifier.Operation.ADD_MULTIPLIED_BASE,
             0.05F

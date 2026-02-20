@@ -1,6 +1,5 @@
 package com.birdie.asterismarcanum.spells;
 
-import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamEntity;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
@@ -42,12 +41,12 @@ public class MoonbeamedSpell extends AbstractSpell {
             .setCooldownSeconds(5)
             .build();
 
-    public MoonbeamedSpell(ArcanumConfig.MoonbeamedConfig config) {
-        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
-        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
-        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
-        this.castTime = config.castTime.getAsInt();
-        this.baseManaCost = config.baseManaCost.getAsInt();
+    public MoonbeamedSpell() {
+        this.manaCostPerLevel = 5;
+        this.baseSpellPower = 30;
+        this.spellPowerPerLevel = 10;
+        this.castTime = 0;
+        this.baseManaCost = 30;
     }
 
     @Override

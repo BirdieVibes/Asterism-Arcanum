@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "asterismarcanum:item/liquid_luminance"
+    "layer0": "asterismarcanum:item/liquid_luminance_bottle"
   }
 }

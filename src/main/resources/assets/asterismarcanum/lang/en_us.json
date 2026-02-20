@@ -1,6 +1,6 @@
 {
   "item.asterismarcanum.stellar_nautilus_shell" : "Stellar Nautilus Shell",
-  "item.asterismarcanum.liquid_luminance" : "Liquid Luminance",
+  "item.asterismarcanum.liquid_luminance_bottle" : "Liquid Luminance Bottle",
   "item.asterismarcanum.scroll_astral" : "Astral Scroll",
   "item.asterismarcanum.astral_rune" : "Astral Rune",
   "item.asterismarcanum.astral_upgrade_orb" : "Astral Upgrade Orb",
@@ -33,7 +33,6 @@
   "spell.asterismarcanum.constellation.guide" : "Rely on the magic of the patterns in the night sky, summoning stars which after a short moment will burst with explosive light.",
   "spell.asterismarcanum.luminous_ray" : "Luminous Ray",
   "spell.asterismarcanum.luminous_ray.guide" : "Conjure a beam of destructive light, damaging enemies in front of you while continuously consuming mana.",
-
 
   "creativetab.asterismarcanum.asterism_arcanum_items" : "Asterism Items"
 }

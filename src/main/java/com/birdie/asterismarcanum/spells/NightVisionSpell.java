@@ -1,6 +1,5 @@
 package com.birdie.asterismarcanum.spells;
 
-import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
@@ -33,19 +32,19 @@ public class NightVisionSpell extends AbstractSpell {
             .setCooldownSeconds(60)
             .build();
 
-    public NightVisionSpell(ArcanumConfig.NightVisionConfig config) {
-        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
-        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
-        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
-        this.castTime = config.castTime.getAsInt();
-        this.baseManaCost = config.baseManaCost.getAsInt();
+    public NightVisionSpell() {
+        this.manaCostPerLevel = 2;
+        this.baseSpellPower = 50;
+        this.spellPowerPerLevel = 15;
+        this.castTime = 0;
+        this.baseManaCost = 10;
     }
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(Component.translatable(
                 "ui.irons_spellbooks.effect_length",
-                Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 100, 1)
+                Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 200, 1)
         ));
     }
 
@@ -60,7 +59,7 @@ public class NightVisionSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-        entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, (int) (getSpellPower(spellLevel, entity) * 100), getAmplifierForLevel(spellLevel), false, false, true));
+        entity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, (int) (getSpellPower(spellLevel, entity) * 200), getAmplifierForLevel(spellLevel), false, false, true));
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 

@@ -1,7 +1,7 @@
 package com.birdie.asterismarcanum;
 
 import com.birdie.asterismarcanum.registries.*;
-import com.birdie.asterismarcanum.item.ModItems;
+import com.birdie.asterismarcanum.registries.ASARItemsRegistry;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -17,7 +17,6 @@ import com.mojang.logging.LogUtils;
 
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
@@ -35,7 +34,7 @@ public class AsterismArcanum {
 
         ASARCreativeModeTabs.register(modEventBus);
 
-        ModItems.register(modEventBus);
+        ASARItemsRegistry.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
 
@@ -44,8 +43,6 @@ public class AsterismArcanum {
         ASARSchoolRegistry.register(modEventBus);
         ASARAttributeRegistry.register(modEventBus);
         ASARParticleRegistry.register(modEventBus);
-
-        ArcanumConfig.register(modContainer);
 
         LOGGER.info("Asterism Arcanum finished loading!");
     }
@@ -63,7 +60,9 @@ public class AsterismArcanum {
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // curios
-            event.enqueueWork(() -> ModItems.getASARItems().stream()
+
+
+            event.enqueueWork(() -> ASARItemsRegistry.getASARItems().stream()
                     .filter(item -> item.get() instanceof SpellBook)
                     .forEach((item) -> CuriosRendererRegistry.register(
                             item.get(), SpellBookCurioRenderer::new)
@@ -73,8 +72,8 @@ public class AsterismArcanum {
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.STELLAR_NAUTILUS_SHELL);
-            event.accept(ModItems.LIQUID_LUMINANCE);
+            event.accept(ASARItemsRegistry.STELLAR_NAUTILUS_SHELL);
+            event.accept(ASARItemsRegistry.LIQUID_LUMINANCE_BOTTLE);
         }
     }
 }

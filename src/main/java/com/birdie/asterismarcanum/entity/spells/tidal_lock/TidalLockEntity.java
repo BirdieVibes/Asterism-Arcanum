@@ -205,7 +205,7 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
         this.playSound(SoundEvents.GLASS_BREAK, 2, 1);
 
         MagicManager.spawnParticles(
-                level, ASARParticleRegistry.ALTSIGNS_PARTICLE.get(),
+                level, ASARParticleRegistry.STARS_PARTICLE.get(),
                 getX(), getY() + 1, getZ(),
                 50, 0.2, 0.2, 0.2, 0.2, false
         );

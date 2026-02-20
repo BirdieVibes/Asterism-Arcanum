@@ -1,6 +1,5 @@
 package com.birdie.asterismarcanum.spells;
 
-import com.birdie.asterismarcanum.ArcanumConfig;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.tidal_lock.TidalLockEntity;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
@@ -34,12 +33,12 @@ public class TidalLockSpell extends AbstractSpell {
             .setCooldownSeconds(60)
             .build();
 
-    public TidalLockSpell(ArcanumConfig.TidalLockConfig config) {
-        this.manaCostPerLevel = config.manaCostPerLevel.getAsInt();
-        this.baseSpellPower = config.manaCostPerLevel.getAsInt();
-        this.spellPowerPerLevel = config.spellPowerPerLevel.getAsInt();
-        this.castTime = config.castTime.getAsInt();
-        this.baseManaCost = config.baseManaCost.getAsInt();
+    public TidalLockSpell() {
+        this.manaCostPerLevel = 3;
+        this.baseSpellPower = 50;
+        this.spellPowerPerLevel = 20;
+        this.castTime = 0;
+        this.baseManaCost = 25;
     }
 
     @Override
