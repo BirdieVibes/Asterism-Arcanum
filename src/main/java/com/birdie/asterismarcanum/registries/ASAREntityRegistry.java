@@ -2,14 +2,16 @@ package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 
+import com.birdie.asterismarcanum.entity.mobs.astromancer.AstromancerEntity;
 import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
-import com.birdie.asterismarcanum.entity.spells.luminous_ray.LuminousRayProjectile;
+import com.birdie.asterismarcanum.entity.spells.luminous_ray.LuminousFlareProjectile;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamEntity;
 import com.birdie.asterismarcanum.entity.spells.tidal_lock.TidalLockEntity;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.bus.api.IEventBus;
@@ -27,11 +29,11 @@ public class ASAREntityRegistry {
                     .clientTrackingRange(64)
                     .build(AsterismArcanum.namespacePath("starfire").toString()));
 
-    public static final DeferredHolder<EntityType<?>, EntityType<LuminousRayProjectile>> LUMINOUS_RAY_PROJECTILE =
-            ENTITIES.register("luminous_ray", () -> EntityType.Builder.<LuminousRayProjectile>of(LuminousRayProjectile::new, MobCategory.MISC)
+    public static final DeferredHolder<EntityType<?>, EntityType<LuminousFlareProjectile>> LUMINOUS_FLARE_PROJECTILE =
+            ENTITIES.register("luminous_flare", () -> EntityType.Builder.<LuminousFlareProjectile>of(LuminousFlareProjectile::new, MobCategory.MISC)
                     .sized(1f, 1f)
                     .clientTrackingRange(64)
-                    .build(AsterismArcanum.namespacePath("luminous_ray").toString()));
+                    .build(AsterismArcanum.namespacePath("luminous_flare").toString()));
 
     public static final DeferredHolder<EntityType<?>, EntityType<StarSwarmProjectile>> STAR_SWARM_PROJECTILE =
             ENTITIES.register("star_swarm", () -> EntityType.Builder.<StarSwarmProjectile>of(StarSwarmProjectile::new, MobCategory.MISC)
@@ -39,18 +41,20 @@ public class ASAREntityRegistry {
                     .clientTrackingRange(64)
                     .build(AsterismArcanum.namespacePath("star_swarm").toString()));
 
+    // Wizards
+    public static final DeferredHolder<EntityType<?>, EntityType<AstromancerEntity>> ASTROMANCER_MAGE =
+            ENTITIES.register("astromancer", () -> EntityType.Builder.of(AstromancerEntity::new, MobCategory.MONSTER)
+                    .sized(.6f, 1.8f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "astromancer").toString())
+            );
+
     // Particle Entities and AOES
     public static final DeferredHolder<EntityType<?>, EntityType<MoonbeamEntity>> MOONBEAM =
             ENTITIES.register("moonbeam", () -> EntityType.Builder.<MoonbeamEntity>of(MoonbeamEntity::new, MobCategory.MISC)
                     .sized(1.5f, 14f)
                     .clientTrackingRange(64)
                     .build(AsterismArcanum.namespacePath("moonbeam").toString()));
-
-//    public static final DeferredHolder<EntityType<?>, EntityType<NebulousConeProjectile>> NEBULOUS_CONE_PROJECTILE =
-//            ENTITIES.register("nebulous_cone", () -> EntityType.Builder.<NebulousConeProjectile>of(NebulousConeProjectile::new, MobCategory.MISC)
-//                    .sized(1f, 1f)
-//                    .clientTrackingRange(64)
-//                    .build(AsterismArcanum.namespacePath("nebulous_cone").toString()));
 
     public static final DeferredHolder<EntityType<?>, EntityType<DarkFlow>> DARK_FLOW =
             ENTITIES.register("black_hole", () -> EntityType.Builder.<DarkFlow>of(DarkFlow::new, MobCategory.MISC)

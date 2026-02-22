@@ -43,6 +43,7 @@ public class AsterismArcanum {
         ASARSchoolRegistry.register(modEventBus);
         ASARAttributeRegistry.register(modEventBus);
         ASARParticleRegistry.register(modEventBus);
+        ASARMobEffectRegistry.register(modEventBus);
 
         LOGGER.info("Asterism Arcanum finished loading!");
     }

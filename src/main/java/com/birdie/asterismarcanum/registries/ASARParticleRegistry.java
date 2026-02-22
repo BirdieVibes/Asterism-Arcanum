@@ -1,6 +1,8 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.particle.DelayedFirstPulseParticleOptions;
+import com.birdie.asterismarcanum.particle.DelayedSecondPulseParticleOptions;
 import com.birdie.asterismarcanum.particle.PulseParticleOptions;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.particles.ParticleType;
@@ -66,6 +68,28 @@ public class ASARParticleRegistry {
             return PulseParticleOptions.STREAM_CODEC;
         }
     });
+
+    public static final Supplier<ParticleType<DelayedFirstPulseParticleOptions>> DELAYED_FIRST_PULSE_PARTICLE = PARTICLE_TYPES.register("delayed_first_pulse",
+            () -> new ParticleType<>(true) {
+                public MapCodec<DelayedFirstPulseParticleOptions> codec() {
+                    return DelayedFirstPulseParticleOptions.MAP_CODEC;
+                }
+
+                public StreamCodec<? super RegistryFriendlyByteBuf, DelayedFirstPulseParticleOptions> streamCodec() {
+                    return DelayedFirstPulseParticleOptions.STREAM_CODEC;
+                }
+            });
+
+    public static final Supplier<ParticleType<DelayedSecondPulseParticleOptions>> DELAYED_SECOND_PULSE_PARTICLE = PARTICLE_TYPES.register("delayed_second_pulse",
+            () -> new ParticleType<>(true) {
+                public MapCodec<DelayedSecondPulseParticleOptions> codec() {
+                    return DelayedSecondPulseParticleOptions.MAP_CODEC;
+                }
+
+                public StreamCodec<? super RegistryFriendlyByteBuf, DelayedSecondPulseParticleOptions> streamCodec() {
+                    return DelayedSecondPulseParticleOptions.STREAM_CODEC;
+                }
+            });
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

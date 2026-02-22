@@ -36,8 +36,20 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> CONSTELLATION =
             registerSpell(new ConstellationSpell());
 // Cone spell but long and skinny <3
-    public static final Supplier<AbstractSpell> LUMINOUS_RAY =
-            registerSpell(new LuminousRaySpell());
+    public static final Supplier<AbstractSpell> LUMINOUS_FLARE =
+            registerSpell(new LuminousFlareSpell());
+// Dimension Teleporting spell similar to Pocket Dimension
+//    public static final Supplier<AbstractSpell> ASTRAL_SEA =
+//            registerSpell(new AstralSeaSpell());
+// Gradually builds astral spell power on the player before sharply dropping off and then lowering astral power
+    public static final Supplier<AbstractSpell> LUNAR_CHANNELING =
+            registerSpell(new LunarChannelingSpell());
+// Moon projectiles orbiting the player which are sent out on second cast to deal damage
+//    public static final Supplier<AbstractSpell> MOONCALL =
+//            registerSpell(new MooncallSpell());
+// A spell which summons lunar moths that apply a debuff in a short range around them, I think the debuff is gonna deal damage with enough stacks
+//    public static final Supplier<AbstractSpell> SUMMON_LUNAR_MOTHS =
+//            registerSpell(new SummonLunarMothsSpell());
 
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }
 

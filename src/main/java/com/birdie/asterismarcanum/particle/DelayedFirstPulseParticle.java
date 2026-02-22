@@ -6,25 +6,24 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
-public class PulseParticle extends TextureSheetParticle {
+public class DelayedFirstPulseParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
     //    private final Vec3 forward, up;
     private final Vec3 destination;
     private final Vec3 forward;
     private final double speed;
 
-    PulseParticle(ClientLevel pLevel, double pX, double pY, double pZ, SpriteSet spriteSet, double xd, double yd, double zd, PulseParticleOptions options) {
+    DelayedFirstPulseParticle(ClientLevel pLevel, double pX, double pY, double pZ, SpriteSet spriteSet, double xd, double yd, double zd, DelayedFirstPulseParticleOptions options) {
         super(pLevel, pX, pY, pZ, 0, 0, 0);
 
 
-        this.lifetime = 4 + level.random.nextInt(1);
+        this.lifetime = 4 + level.random.nextInt(16);
         this.gravity = 0;
         sprites = spriteSet;
 
@@ -48,8 +47,7 @@ public class PulseParticle extends TextureSheetParticle {
         this.xo = this.x;
         this.yo = this.y;
         this.zo = this.z;
-        this.move(forward.x * speed, forward.y * speed, forward.z * speed);
-
+        this.move(forward.x * speed * 0.6, forward.y * speed * 0.6, forward.z * speed * 0.6);
         if (this.age++ > this.lifetime) {
             this.remove();
         } else {
@@ -115,15 +113,15 @@ public class PulseParticle extends TextureSheetParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<PulseParticleOptions> {
+    public static class Provider implements ParticleProvider<DelayedFirstPulseParticleOptions> {
         private final SpriteSet sprite;
 
         public Provider(SpriteSet pSprite) {
             this.sprite = pSprite;
         }
 
-        public Particle createParticle(@NotNull PulseParticleOptions options, @NotNull ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
-            PulseParticle shriekparticle = new PulseParticle(pLevel, pX, pY, pZ, sprite, pXSpeed, pYSpeed, pZSpeed, options);
+        public Particle createParticle(@NotNull DelayedFirstPulseParticleOptions options, @NotNull ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
+            DelayedFirstPulseParticle shriekparticle = new DelayedFirstPulseParticle(pLevel, pX, pY, pZ, sprite, pXSpeed, pYSpeed, pZSpeed, options);
             shriekparticle.setSpriteFromAge(this.sprite);
             shriekparticle.setAlpha(1.0F);
             return shriekparticle;

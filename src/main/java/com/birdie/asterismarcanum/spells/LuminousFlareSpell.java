@@ -2,7 +2,9 @@ package com.birdie.asterismarcanum.spells;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.AbstractBeamProjectile;
-import com.birdie.asterismarcanum.entity.spells.luminous_ray.LuminousRayProjectile;
+import com.birdie.asterismarcanum.entity.spells.luminous_ray.LuminousFlareProjectile;
+import com.birdie.asterismarcanum.particle.DelayedFirstPulseParticleOptions;
+import com.birdie.asterismarcanum.particle.DelayedSecondPulseParticleOptions;
 import com.birdie.asterismarcanum.particle.PulseParticleOptions;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
@@ -32,8 +34,8 @@ import java.util.List;
 //A hybridization of a Cone spell, Shadow Slash from Iron's Spells n' Spellbooks, and a customized cone entity "beam"
 //Sends out a damaging beam of particles approximately 20 blocks
 
-public class LuminousRaySpell extends AbstractSpell {
-    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "luminous_ray");
+public class LuminousFlareSpell extends AbstractSpell {
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "luminous_flare");
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
@@ -50,7 +52,7 @@ public class LuminousRaySpell extends AbstractSpell {
             .setCooldownSeconds(12)
             .build();
 
-    public LuminousRaySpell() {
+    public LuminousFlareSpell() {
         this.manaCostPerLevel = 1;
         this.baseSpellPower = 0;
         this.spellPowerPerLevel = 1;
@@ -80,12 +82,12 @@ public class LuminousRaySpell extends AbstractSpell {
                 && entityCastData.getCastingEntity() instanceof AbstractBeamProjectile beam) {
             beam.setDealDamageActive();
         } else {
-            LuminousRayProjectile luminousRayProjectile = new LuminousRayProjectile(level, entity);
-            luminousRayProjectile.setPos(entity.position().add(0, entity.getEyeHeight() * .5, 0));
-            luminousRayProjectile.setDamage(getDamage(spellLevel, entity));
-            level.addFreshEntity(luminousRayProjectile);
+            LuminousFlareProjectile luminousFlareProjectile = new LuminousFlareProjectile(level, entity);
+            luminousFlareProjectile.setPos(entity.position().add(0, entity.getEyeHeight() * .75, 0));
+            luminousFlareProjectile.setDamage(getDamage(spellLevel, entity));
+            level.addFreshEntity(luminousFlareProjectile);
 
-            playerMagicData.setAdditionalCastData(new EntityCastData(luminousRayProjectile));
+            playerMagicData.setAdditionalCastData(new EntityCastData(luminousFlareProjectile));
         }
         float distance = 6f;
         Vec3 forward = entity.getForward();
@@ -93,7 +95,7 @@ public class LuminousRaySpell extends AbstractSpell {
                 ClipContext.Fluid.NONE).getLocation();
         Vec3 rayVector = end.subtract(entity.getEyePosition());
         Vec3 impulse = rayVector.scale(1 / 2f).add(0, 0.1, 0);
-        entity.setDeltaMovement(entity.getDeltaMovement().scale(0.2).add(impulse));
+        entity.setDeltaMovement(entity.getDeltaMovement().scale(0.5));
 
 
         forward = impulse.normalize(); // recalculate forward as the direction we are actually moving
@@ -102,14 +104,19 @@ public class LuminousRaySpell extends AbstractSpell {
             up = new Vec3(1, 0, 0);
         }
         Vec3 right = up.cross(forward);
-        int trailParticles = 15;
-        double speed = rayVector.length() / 6.0 * 2;
-        double lessSpeed = rayVector.length() / 6.0 * 1;
+        int trailParticles = 30;
+
+
+        double speed = rayVector.length() / 6.0;
         for (int i = 0; i < trailParticles; i++) {
-            Vec3 particleStart = entity.getBoundingBox().getCenter().add(Utils.getRandomVec3(0.5 * entity.getBbWidth()));
+            Vec3 particleStart = entity.getBoundingBox().getCenter().add(Utils.getRandomVec3(0.25 * entity.getBbWidth()).add(forward.scale(distance / 8)));
             Vec3 particleEnd = particleStart.add(rayVector);
             MagicManager.spawnParticles(level, new PulseParticleOptions(Utils.v3f(particleEnd), new Vector3f(10f, 10f, 10f)),
-                    particleStart.x, particleStart.y, particleStart.z, 15, 0, 0, 0, speed, true);
+                    particleStart.x, particleStart.y, particleStart.z, 10, 0, 0, 0, speed, false);
+            MagicManager.spawnParticles(level, new DelayedFirstPulseParticleOptions(Utils.v3f(particleEnd), new Vector3f(10f, 10f, 10f)),
+                    particleStart.x, particleStart.y, particleStart.z, 10, 0, 0, 0, speed, false);
+            MagicManager.spawnParticles(level, new DelayedSecondPulseParticleOptions(Utils.v3f(particleEnd), new Vector3f(10f, 10f, 10f)),
+                    particleStart.x, particleStart.y, particleStart.z, 10, 0, 0, 0, speed, false);
         }
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
@@ -126,6 +133,6 @@ public class LuminousRaySpell extends AbstractSpell {
 
     @Override
     public boolean shouldAIStopCasting(int spellLevel, Mob mob, LivingEntity target) {
-        return mob.distanceToSqr(target) > (10 * 10) * 1.2;
+        return mob.distanceToSqr(target) > (10 * 10) * 6;
     }
 }

@@ -31,8 +31,8 @@
   "spell.asterismarcanum.tidal_lock.guide" :"Lock yourself into place, allowing you to hover until you are knocked free or leave of your own accord.",
   "spell.asterismarcanum.constellation" : "Constellation",
   "spell.asterismarcanum.constellation.guide" : "Rely on the magic of the patterns in the night sky, summoning stars which after a short moment will burst with explosive light.",
-  "spell.asterismarcanum.luminous_ray" : "Luminous Ray",
-  "spell.asterismarcanum.luminous_ray.guide" : "Conjure a beam of destructive light, damaging enemies in front of you while continuously consuming mana.",
+  "spell.asterismarcanum.luminous_flare" : "Luminous Flare",
+  "spell.asterismarcanum.luminous_flare.guide" : "Conjure a flare of destructive light, damaging enemies in front of you while continuously consuming mana.",
 
   "creativetab.asterismarcanum.asterism_arcanum_items" : "Asterism Items"
 }
