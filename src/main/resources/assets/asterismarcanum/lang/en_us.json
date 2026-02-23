@@ -33,6 +33,8 @@
   "spell.asterismarcanum.constellation.guide" : "Rely on the magic of the patterns in the night sky, summoning stars which after a short moment will burst with explosive light.",
   "spell.asterismarcanum.luminous_flare" : "Luminous Flare",
   "spell.asterismarcanum.luminous_flare.guide" : "Conjure a flare of destructive light, damaging enemies in front of you while continuously consuming mana.",
+  "spell.asterismarcanum.lunar_channeling" : "Lunar Channeling",
+  "spell.asterismarcanum.lunar_channeling.guide" : "Align yourself to the resonance of the moon, scaling your astral power based on how long the effect has lasted.",
 
   "creativetab.asterismarcanum.asterism_arcanum_items" : "Asterism Items"
 }

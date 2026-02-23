@@ -1,15 +1,18 @@
 package com.birdie.asterismarcanum.registries;
 
+import io.redspace.ironsspellbooks.api.attribute.MagicPercentAttribute;
 import io.redspace.ironsspellbooks.api.attribute.MagicRangedAttribute;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityAttributeModificationEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+@EventBusSubscriber(modid = AsterismArcanum.MOD_ID)
 public class ASARAttributeRegistry {
     private static final DeferredRegister<Attribute> ATTRIBUTES =
             DeferredRegister.create(Registries.ATTRIBUTE, AsterismArcanum.MOD_ID);
@@ -31,8 +34,8 @@ public class ASARAttributeRegistry {
 
     // ;_;
     private static DeferredHolder<Attribute, Attribute> newResistanceAttribute(String id) {
-        return ATTRIBUTES.register(id + "_magic_resist", () -> (
-                new MagicRangedAttribute(
+        return (DeferredHolder<Attribute, Attribute>) ATTRIBUTES.register(id + "_magic_resist", () -> (
+                new MagicPercentAttribute(
                         "attribute.irons_spellbooks." + id + "_magic_resist",
                         1.0D, -100, 100
                 ).setSyncable(true))
@@ -40,8 +43,8 @@ public class ASARAttributeRegistry {
     }
 
     private static DeferredHolder<Attribute, Attribute> newPowerAttribute(String id) {
-        return ATTRIBUTES.register(id + "_spell_power", () -> (
-                new MagicRangedAttribute(
+        return (DeferredHolder<Attribute, Attribute>) ATTRIBUTES.register(id + "_spell_power", () -> (
+                new MagicPercentAttribute(
                         "attribute.irons_spellbooks." + id + "_spell_power",
                         1.0D, -100, 100
                 ).setSyncable(true))

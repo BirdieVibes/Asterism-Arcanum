@@ -41,7 +41,7 @@ public class StarfireSpell extends AbstractSpell {
         this.baseSpellPower = 7;
         this.spellPowerPerLevel = 2;
         this.castTime = 0;
-        this.baseManaCost = 8;
+        this.baseManaCost = 6;
     }
 
     @Override

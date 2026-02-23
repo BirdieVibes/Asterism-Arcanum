@@ -41,14 +41,6 @@ public class ClientSetup {
         event.registerEntityRenderer(ASAREntityRegistry.ASTROMANCER_MAGE.get(), AstromancerRenderer::new);
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    private static void addLayerToPlayerSkin(EntityRenderersEvent.AddLayers event, PlayerSkin.Model skinName) {
-        EntityRenderer<? extends Player> render = event.getSkin(skinName);
-        if (render instanceof LivingEntityRenderer livingRenderer) {
-            livingRenderer.addLayer(new EnergySwirlLayer.Vanilla(livingRenderer, CHARGE_TEXTURE, ASARMobEffectRegistry.LUNAR_CHANNELING));
-        }
-    }
-
     @SubscribeEvent
     public static void registerParticles(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ASARParticleRegistry.NEBULOUS_DUST_PARTICLE_1.get(), NebulousDustParticle.Provider::new);

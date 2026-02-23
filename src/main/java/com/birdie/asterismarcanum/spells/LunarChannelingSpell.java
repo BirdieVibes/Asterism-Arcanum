@@ -13,6 +13,7 @@ import io.redspace.ironsspellbooks.effect.ChargeEffect;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -25,8 +26,7 @@ public class LunarChannelingSpell extends AbstractSpell {
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(
-                Component.translatable("ui.irons_spellbooks.effect_length", Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 20, 1)),
-                Component.translatable("attribute.modifier.plus.1", Utils.stringTruncation(getPercentSpellPower(spellLevel, caster), 0), Component.translatable("attribute.irons_spellbooks.astral_spell_power"))
+                Component.translatable("ui.irons_spellbooks.effect_length", Utils.timeFromTicks(getSpellPower(spellLevel, caster) * 20, 1))
         );
     }
 
@@ -63,13 +63,8 @@ public class LunarChannelingSpell extends AbstractSpell {
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
 
-        entity.addEffect(new MobEffectInstance(ASARMobEffectRegistry.LUNAR_CHANNELING, (int) (getSpellPower(spellLevel, entity) * 20), spellLevel - 1, false, false, true));
-
+        entity.addEffect(new MobEffectInstance(ASARMobEffectRegistry.LUNAR_CHANNELING, (int) getSpellPower(spellLevel, entity) * 20, -1, false, false, true));
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
-    }
-
-    private float getPercentSpellPower(int spellLevel, LivingEntity entity) {
-        return spellLevel * LunarChannelingEffect.ASTRAL_SPELL_POWER_PER_LEVEL * 100;
     }
 
     @Override

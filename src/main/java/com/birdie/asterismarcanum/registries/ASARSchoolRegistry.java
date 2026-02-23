@@ -5,6 +5,7 @@ import com.birdie.asterismarcanum.utils.ASARTags;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -17,25 +18,13 @@ import java.util.function.Supplier;
 public class ASARSchoolRegistry extends SchoolRegistry {
     public static final ResourceLocation ASTRAL_RESOURCE = AsterismArcanum.namespacePath("astral");
 
-    private static final DeferredRegister<SchoolType> ASAR_SCHOOLS =
-            DeferredRegister.create(SCHOOL_REGISTRY_KEY, AsterismArcanum.MOD_ID);
-
-    private static Supplier<SchoolType> registerSchool(SchoolType type) {
-        return ASAR_SCHOOLS.register(type.getId().getPath(), () -> type);
-    }
-
-    public static final Supplier<SchoolType> ASTRAL = registerSchool(new SchoolType
-            (
-                    ASTRAL_RESOURCE,
-                    ASARTags.ASTRAL_FOCUS,
-                    Component.translatable("school.asterismarcanum.astral").withColor(7231167),
-                    ASARAttributeRegistry.ASTRAL_SPELL_POWER,
-                    ASARAttributeRegistry.ASTRAL_MAGIC_RESIST,
-                    SoundRegistry.CLEANSE_CAST,
-                    ASARDamageTypes.ASTRAL_MAGIC
-            ));
+    private static final DeferredRegister<SchoolType> ASAR_SCHOOLS = DeferredRegister.create(SCHOOL_REGISTRY_KEY, AsterismArcanum.MOD_ID);
 
     public static void register(IEventBus eventBus) { ASAR_SCHOOLS.register(eventBus); }
+
+    private static Holder<SchoolType> registerSchool(SchoolType type) {
+        return ASAR_SCHOOLS.register(type.getId().getPath(), () -> type);
+    }
 
     @Nullable
     public static SchoolType getSchoolFromFocus(ItemStack focusStack) {
@@ -44,7 +33,16 @@ public class ASARSchoolRegistry extends SchoolRegistry {
                 return school;
             }
         }
-
         return null;
     }
+
+    public static final Supplier<SchoolType> ASTRAL = (Supplier<SchoolType>) registerSchool(new SchoolType(
+                    ASTRAL_RESOURCE,
+                    ASARTags.ASTRAL_FOCUS,
+                    Component.translatable("school.asterismarcanum.astral").withColor(7231167),
+                    ASARAttributeRegistry.ASTRAL_SPELL_POWER,
+                    ASARAttributeRegistry.ASTRAL_MAGIC_RESIST,
+                    SoundRegistry.CLEANSE_CAST,
+                    ASARDamageTypes.ASTRAL_MAGIC
+            ));
 }
