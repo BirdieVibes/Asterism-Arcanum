@@ -31,9 +31,9 @@ public class LunarChannelingSpell extends AbstractSpell {
     }
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
-            .setMinRarity(SpellRarity.RARE)
+            .setMinRarity(SpellRarity.LEGENDARY)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
-            .setMaxLevel(3)
+            .setMaxLevel(1)
             .setCooldownSeconds(40)
             .build();
 
@@ -63,7 +63,7 @@ public class LunarChannelingSpell extends AbstractSpell {
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
 
-        entity.addEffect(new MobEffectInstance(ASARMobEffectRegistry.LUNAR_CHANNELING, (int) getSpellPower(spellLevel, entity) * 20, -1, false, false, true));
+        entity.addEffect(new MobEffectInstance(ASARMobEffectRegistry.LUNAR_CHANNELING, (int) getSpellPower(spellLevel, entity) * 20,  - 1, false, false, true));
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 
