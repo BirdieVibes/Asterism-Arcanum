@@ -1,0 +1,60 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [-2, 17, -2],
+					"cubes": [
+						{"origin": [-4, 16, -4], "size": [4, 4, 4], "pivot": [-2, 18, 0], "rotation": [7.5, 0, 0], "uv": [48, 23]},
+						{"origin": [-1, 19, -8], "size": [0, 6, 6], "uv": [48, 31]},
+						{"origin": [-3, 19, -8], "size": [0, 6, 6], "uv": [48, 43]}
+					]
+				},
+				{
+					"name": "thorax",
+					"parent": "head",
+					"pivot": [-2, 18, 0],
+					"cubes": [
+						{"origin": [-5, 15, -1], "size": [6, 6, 8], "pivot": [-2, 18, 0], "rotation": [-17.5, 0, 0], "uv": [48, 0]},
+						{"origin": [0, 12, 0], "size": [0, 4, 6], "pivot": [-2, 18, 0], "rotation": [-17.5, 0, 0], "uv": [48, 55]},
+						{"origin": [-4, 12, 0], "size": [0, 4, 6], "pivot": [-2, 18, 0], "rotation": [-17.5, 0, 0], "uv": [60, 31]}
+					]
+				},
+				{
+					"name": "left_wing",
+					"parent": "thorax",
+					"pivot": [-4, 17, 6],
+					"cubes": [
+						{"origin": [-5.76537, 18.84776, -3], "size": [0, 16, 24], "pivot": [-4.76537, 18.84776, 2], "rotation": [-22.5, -10, -60], "uv": [0, 38]}
+					]
+				},
+				{
+					"name": "right_wing",
+					"parent": "thorax",
+					"pivot": [0, 17, 6],
+					"cubes": [
+						{"origin": [1.76537, 18.84776, -3], "size": [0, 16, 24], "pivot": [0.76537, 18.84776, 2], "rotation": [-22.5, 10, 60], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "abdomen",
+					"parent": "thorax",
+					"pivot": [-2, 15, 6],
+					"cubes": [
+						{"origin": [-4, 13, 6], "size": [4, 4, 5], "pivot": [-2, 16, 6], "rotation": [-55, 0, 0], "uv": [48, 14]}
+					]
+				}
+			]
+		}
+	]
+}

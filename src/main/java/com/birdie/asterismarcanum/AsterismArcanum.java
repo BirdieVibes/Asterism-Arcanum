@@ -1,9 +1,11 @@
 package com.birdie.asterismarcanum;
 
+import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothRenderer;
 import com.birdie.asterismarcanum.registries.*;
 import com.birdie.asterismarcanum.registries.ASARItemsRegistry;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
@@ -20,6 +22,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import software.bernie.geckolib.GeckoLib;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 @Mod(AsterismArcanum.MOD_ID)
@@ -45,6 +48,7 @@ public class AsterismArcanum {
         ASARParticleRegistry.register(modEventBus);
         ASARMobEffectRegistry.register(modEventBus);
 
+
         LOGGER.info("Asterism Arcanum finished loading!");
     }
 
@@ -61,7 +65,7 @@ public class AsterismArcanum {
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // curios
-
+            EntityRenderers.register(ASAREntityRegistry.LUNAR_MOTH.get(), LunarMothRenderer::new);
 
             event.enqueueWork(() -> ASARItemsRegistry.getASARItems().stream()
                     .filter(item -> item.get() instanceof SpellBook)

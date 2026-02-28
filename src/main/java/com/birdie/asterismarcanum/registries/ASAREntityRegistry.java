@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.registries;
 import com.birdie.asterismarcanum.AsterismArcanum;
 
 import com.birdie.asterismarcanum.entity.mobs.astromancer.AstromancerEntity;
+import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
 import com.birdie.asterismarcanum.entity.spells.luminous_ray.LuminousFlareProjectile;
@@ -14,6 +15,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.animal.Animal;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -41,12 +43,19 @@ public class ASAREntityRegistry {
                     .clientTrackingRange(64)
                     .build(AsterismArcanum.namespacePath("star_swarm").toString()));
 
-    // Wizards
+    // Mobs
     public static final DeferredHolder<EntityType<?>, EntityType<AstromancerEntity>> ASTROMANCER_MAGE =
             ENTITIES.register("astromancer", () -> EntityType.Builder.of(AstromancerEntity::new, MobCategory.MONSTER)
                     .sized(.6f, 1.8f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "astromancer").toString())
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<LunarMothEntity>> LUNAR_MOTH =
+            ENTITIES.register("lunar_moth", () -> EntityType.Builder.of(LunarMothEntity::new, MobCategory.CREATURE)
+                    .sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "lunar_moth").toString())
             );
 
     // Particle Entities and AOES
