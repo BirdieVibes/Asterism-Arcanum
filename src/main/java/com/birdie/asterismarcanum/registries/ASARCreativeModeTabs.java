@@ -28,6 +28,9 @@ public class ASARCreativeModeTabs {
                         output.accept(ASARItemsRegistry.ASTRAL_CHESTPLATE.get());
                         output.accept(ASARItemsRegistry.ASTRAL_LEGGINGS.get());
                         output.accept(ASARItemsRegistry.ASTRAL_BOOTS.get());
+                        output.accept(ASARItemsRegistry.LUNAR_MOTH_SPAWN_EGG.get());
+                        output.accept(ASARItemsRegistry.ASTROMANCER_SPAWN_EGG.get());
+
                     })
                     .build()
     );

@@ -9,6 +9,11 @@
   "item.asterismarcanum.astral_chestplate" : "Astral Chestplate",
   "item.asterismarcanum.astral_leggings" : "Astral Leggings",
   "item.asterismarcanum.astral_crown" : "Astral Crown",
+  "item.asterismarcanum.astromancer_spawn_egg" : "Astromancer Spawn Egg",
+  "item.asterismarcanum.lunar_moth_spawn_egg" : "Lunar Moth Spawn Egg",
+
+  "entity.asterismarcanum.lunar_moth" : "Lunar Moth",
+  "entity.asterismarcanum.astromancer" : "Astromancer",
 
   "attribute.irons_spellbooks.astral_spell_power" : "Astral Spell Power",
   "attribute.irons_spellbooks.astral_magic_resist" : "Astral Magic Resist",

@@ -65,7 +65,6 @@ public class AsterismArcanum {
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // curios
-            EntityRenderers.register(ASAREntityRegistry.LUNAR_MOTH.get(), LunarMothRenderer::new);
 
             event.enqueueWork(() -> ASARItemsRegistry.getASARItems().stream()
                     .filter(item -> item.get() instanceof SpellBook)

@@ -20,6 +20,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.function.Supplier;
+
 public class ASAREntityRegistry {
     private static final DeferredRegister<EntityType<?>> ENTITIES =
             DeferredRegister.create(Registries.ENTITY_TYPE, AsterismArcanum.MOD_ID);
@@ -52,11 +54,12 @@ public class ASAREntityRegistry {
             );
 
     public static final DeferredHolder<EntityType<?>, EntityType<LunarMothEntity>> LUNAR_MOTH =
-            ENTITIES.register("lunar_moth", () -> EntityType.Builder.of(LunarMothEntity::new, MobCategory.CREATURE)
-                    .sized(1f, 1f)
-                    .clientTrackingRange(64)
-                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "lunar_moth").toString())
-            );
+            ENTITIES.register("lunar_moth", () -> EntityType.Builder.<LunarMothEntity>of
+                            (LunarMothEntity::new, MobCategory.CREATURE).
+                    sized(0.8f, 0.8f)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "lunar_moth").toString()
+                    ));
 
     // Particle Entities and AOES
     public static final DeferredHolder<EntityType<?>, EntityType<MoonbeamEntity>> MOONBEAM =

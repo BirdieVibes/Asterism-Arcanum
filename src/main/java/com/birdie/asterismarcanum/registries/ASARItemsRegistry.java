@@ -17,6 +17,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Collection;
+import java.util.function.Supplier;
 
 
 public class ASARItemsRegistry {
@@ -25,6 +26,13 @@ public class ASARItemsRegistry {
     //MISC
     public static final DeferredItem<Item> STELLAR_NAUTILUS_SHELL = ITEMS
             .register("stellar_nautilus_shell", () -> new Item(new Item.Properties()));
+
+    public static final Supplier<DeferredSpawnEggItem> ASTROMANCER_SPAWN_EGG = ITEMS
+            .register("astromancer_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.ASTROMANCER_MAGE, 3641255, 4386054, ItemPropertiesHelper.material().stacksTo(64)));
+
+
+    public static final Supplier<DeferredSpawnEggItem> LUNAR_MOTH_SPAWN_EGG = ITEMS
+            .register("lunar_moth_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.LUNAR_MOTH, 1341255, 6666054, ItemPropertiesHelper.material().stacksTo(64)));
 
     //School Resource
     public static final DeferredItem<Item> LIQUID_LUMINANCE_BOTTLE = ITEMS

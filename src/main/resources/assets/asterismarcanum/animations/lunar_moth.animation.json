@@ -1,7 +1,7 @@
 {
 	"format_version": "1.8.0",
 	"animations": {
-		"animation": {
+		"animation.lunar_moth.base": {
 			"loop": true,
 			"animation_length": 4,
 			"bones": {
