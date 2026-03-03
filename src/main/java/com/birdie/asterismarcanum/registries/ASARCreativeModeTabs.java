@@ -21,7 +21,6 @@ public class ASARCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ASARItemsRegistry.STELLAR_NAUTILUS_SHELL.get());
                         output.accept(ASARItemsRegistry.LIQUID_LUMINANCE_BOTTLE.get());
-                        output.accept(ASARItemsRegistry.COSMIC_ATLAS.get());
                         output.accept(ASARItemsRegistry.ASTRAL_RUNE.get());
                         output.accept(ASARItemsRegistry.ASTRAL_UPGRADE_ORB.get());
                         output.accept(ASARItemsRegistry.ASTRAL_CROWN.get());
@@ -29,8 +28,8 @@ public class ASARCreativeModeTabs {
                         output.accept(ASARItemsRegistry.ASTRAL_LEGGINGS.get());
                         output.accept(ASARItemsRegistry.ASTRAL_BOOTS.get());
                         output.accept(ASARItemsRegistry.LUNAR_MOTH_SPAWN_EGG.get());
-                        output.accept(ASARItemsRegistry.ASTROMANCER_SPAWN_EGG.get());
-
+                        output.accept(ASARItemsRegistry.STELLAR_COSMOS.get());
+                        output.accept(ASARItemsRegistry.CELESTIAL_STAFF.get());
                     })
                     .build()
     );

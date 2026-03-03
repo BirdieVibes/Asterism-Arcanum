@@ -2,7 +2,11 @@ package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.item.armor.AstralMagicArmorItem;
+import com.birdie.asterismarcanum.item.weapon.ASARStaffTiers;
+import com.birdie.asterismarcanum.item.weapon.AnimatedSwordItem;
+import com.birdie.asterismarcanum.item.weapon.CelestialStaffItem;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.item.UpgradeOrbItem;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
@@ -27,32 +31,15 @@ public class ASARItemsRegistry {
     public static final DeferredItem<Item> STELLAR_NAUTILUS_SHELL = ITEMS
             .register("stellar_nautilus_shell", () -> new Item(new Item.Properties()));
 
-    public static final Supplier<DeferredSpawnEggItem> ASTROMANCER_SPAWN_EGG = ITEMS
-            .register("astromancer_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.ASTROMANCER_MAGE, 3641255, 4386054, ItemPropertiesHelper.material().stacksTo(64)));
-
+    public static final DeferredItem<Item> STELLAR_COSMOS = ITEMS
+            .register("stellar_cosmos", () -> new ItemNameBlockItem(ASARModBlocksRegistry.STELLAR_COSMOS_FLOWERS.get(), new Item.Properties()));
 
     public static final Supplier<DeferredSpawnEggItem> LUNAR_MOTH_SPAWN_EGG = ITEMS
             .register("lunar_moth_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.LUNAR_MOTH, 1341255, 6666054, ItemPropertiesHelper.material().stacksTo(64)));
 
-    //School Resource
+    // Astral School
     public static final DeferredItem<Item> LIQUID_LUMINANCE_BOTTLE = ITEMS
             .register("liquid_luminance_bottle", () -> new Item(new Item.Properties()));
-
-    //I fogor
-    public static  final DeferredItem<Item> SCROLL_ASTRAL = ITEMS
-            .register("scroll_astral", () -> new Item(new Item.Properties()));
-
-    //School Equipment
-    public static final DeferredHolder<Item, Item> COSMIC_ATLAS = ITEMS.register(
-            "cosmic_atlas",
-            () -> new SpellBook(10).withSpellbookAttributes(
-                    new AttributeContainer(
-                            ASARAttributeRegistry.ASTRAL_SPELL_POWER, .15F,
-                            AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-                    new AttributeContainer(AttributeRegistry.MAX_MANA, 200,
-                            AttributeModifier.Operation.ADD_VALUE)
-            )
-    );
 
     public static final DeferredHolder<Item, Item> ASTRAL_CROWN = ITEMS.register("astral_crown",
             () -> new AstralMagicArmorItem(
@@ -93,6 +80,11 @@ public class ASARItemsRegistry {
             )
     );
 
+    public static final DeferredHolder<Item, Item> CELESTIAL_STAFF = ITEMS.register("celestial_staff",
+            () -> new CelestialStaffItem(ItemPropertiesHelper.equipment(1).attributes(AnimatedSwordItem.createAttributes(ASARStaffTiers.CELESTIAL_STAFF)).rarity(Rarity.UNCOMMON),
+                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistries.STARFIRE, 11))));
+
+
     //School Crafting
     public static final DeferredHolder<Item, Item> ASTRAL_RUNE = ITEMS.register(
             "astral_rune", () -> new Item(ItemPropertiesHelper.material())
@@ -105,10 +97,5 @@ public class ASARItemsRegistry {
     public static void register(IEventBus eventBus)
     {
         ITEMS.register(eventBus);
-    }
-
-    public static Collection<DeferredHolder<Item, ? extends Item>> getASARItems()
-    {
-        return ITEMS.getEntries();
     }
 }

@@ -2,7 +2,6 @@ package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 
-import com.birdie.asterismarcanum.entity.mobs.astromancer.AstromancerEntity;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
@@ -46,13 +45,6 @@ public class ASAREntityRegistry {
                     .build(AsterismArcanum.namespacePath("star_swarm").toString()));
 
     // Mobs
-    public static final DeferredHolder<EntityType<?>, EntityType<AstromancerEntity>> ASTROMANCER_MAGE =
-            ENTITIES.register("astromancer", () -> EntityType.Builder.of(AstromancerEntity::new, MobCategory.MONSTER)
-                    .sized(.6f, 1.8f)
-                    .clientTrackingRange(64)
-                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "astromancer").toString())
-            );
-
     public static final DeferredHolder<EntityType<?>, EntityType<LunarMothEntity>> LUNAR_MOTH =
             ENTITIES.register("lunar_moth", () -> EntityType.Builder.<LunarMothEntity>of
                             (LunarMothEntity::new, MobCategory.CREATURE).

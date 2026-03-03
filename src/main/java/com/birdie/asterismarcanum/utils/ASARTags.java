@@ -22,4 +22,6 @@ public class ASARTags {
             ResourceLocation.parse(AsterismArcanum.namespacePath("astral_resource").toString())
     );
 
+    public static final TagKey<Item> STAFF = ItemTags.create(ResourceLocation.parse(AsterismArcanum.namespacePath("staff").toString()));
+
 }

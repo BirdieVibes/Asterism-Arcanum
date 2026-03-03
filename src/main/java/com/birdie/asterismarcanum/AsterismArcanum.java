@@ -1,10 +1,14 @@
 package com.birdie.asterismarcanum;
 
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothRenderer;
+import com.birdie.asterismarcanum.item.weapon.CelestialStaffItemRenderer;
 import com.birdie.asterismarcanum.registries.*;
 import com.birdie.asterismarcanum.registries.ASARItemsRegistry;
 import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
+import mod.azure.azurelib.AzureLib;
+import mod.azure.azurelib.common.animation.cache.AzIdentityRegistry;
+import mod.azure.azurelib.common.render.item.AzItemRendererRegistry;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -12,6 +16,8 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
@@ -47,7 +53,11 @@ public class AsterismArcanum {
         ASARAttributeRegistry.register(modEventBus);
         ASARParticleRegistry.register(modEventBus);
         ASARMobEffectRegistry.register(modEventBus);
+        ASARModBlocksRegistry.register(modEventBus);
 
+        AzureLib.initialize();
+
+        NeoForge.EVENT_BUS.register(this);
 
         LOGGER.info("Asterism Arcanum finished loading!");
     }
@@ -56,7 +66,13 @@ public class AsterismArcanum {
         return ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, path);
     }
 
-    private void commonSetup(FMLCommonSetupEvent event) { }
+    private void commonSetup(final FMLCommonSetupEvent event) { }
+
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event) {
+        AzIdentityRegistry.register(ASARItemsRegistry.CELESTIAL_STAFF.get());
+        LOGGER.info("HELLO from server starting");
+    }
 
     @EventBusSubscriber(modid = MOD_ID, value = Dist.CLIENT)
     public static class ClientModEvents
@@ -64,13 +80,7 @@ public class AsterismArcanum {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // curios
-
-            event.enqueueWork(() -> ASARItemsRegistry.getASARItems().stream()
-                    .filter(item -> item.get() instanceof SpellBook)
-                    .forEach((item) -> CuriosRendererRegistry.register(
-                            item.get(), SpellBookCurioRenderer::new)
-                    ));
+            AzItemRendererRegistry.register(CelestialStaffItemRenderer::new, ASARItemsRegistry.CELESTIAL_STAFF.get());
         }
     }
 

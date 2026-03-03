@@ -206,10 +206,4 @@ public class LunarMothEntity extends Animal implements GeoEntity, FlyingAnimal, 
     public boolean isFlying() {
         return !this.onGround();
     }
-
-//    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
-//        this.anchorPoint = this.blockPosition().above(5);
-//        return super.finalizeSpawn(level, difficulty, spawnType, spawnGroupData);
-//    }
-
 }
