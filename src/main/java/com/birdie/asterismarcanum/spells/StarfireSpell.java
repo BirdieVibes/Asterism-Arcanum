@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
@@ -87,7 +88,7 @@ public class StarfireSpell extends AbstractSpell {
 
     @Override
     public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(SoundRegistry.GUIDING_BOLT_CAST.get());
+        return Optional.of(ASARSoundsRegistry.ASTRAL_CAST.get());
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.birdie.asterismarcanum.particle.DelayedFirstPulseParticleOptions;
 import com.birdie.asterismarcanum.particle.DelayedSecondPulseParticleOptions;
 import com.birdie.asterismarcanum.particle.PulseParticleOptions;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
@@ -20,6 +21,7 @@ import io.redspace.ironsspellbooks.spells.EntityCastData;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -30,6 +32,7 @@ import org.joml.Vector3f;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Optional;
 
 //A hybridization of a Cone spell, Shadow Slash from Iron's Spells n' Spellbooks, and a customized cone entity "beam"
 //Sends out a damaging beam of particles approximately 20 blocks

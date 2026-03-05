@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
@@ -66,16 +67,6 @@ public class StarSwarmSpell extends AbstractSpell {
     @Override
     public ResourceLocation getSpellResource() {
         return spellId;
-    }
-
-    @Override
-    public Optional<SoundEvent> getCastStartSound() {
-        return Optional.of(SoundRegistry.CLEANSE_CAST.get());
-    }
-
-    @Override
-    public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(SoundRegistry.CLOUD_OF_REGEN_LOOP.get());
     }
 
     @Override

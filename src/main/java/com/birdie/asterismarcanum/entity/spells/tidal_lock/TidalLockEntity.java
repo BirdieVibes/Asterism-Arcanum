@@ -2,8 +2,10 @@ package com.birdie.asterismarcanum.entity.spells.tidal_lock;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.mobs.ice_spider.ICritablePartEntity;
 import io.redspace.ironsspellbooks.entity.spells.root.PreventDismount;
@@ -11,7 +13,9 @@ import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -19,6 +23,7 @@ import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.util.Optional;
 import java.util.UUID;
 
 public class TidalLockEntity extends Entity implements PreventDismount, AntiMagicSusceptible, ICritablePartEntity {
@@ -28,6 +33,8 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
 
     private int lifetime = -1;
 
+    private float health = 15;
+
     public TidalLockEntity(EntityType<?> entityType, Level level) {
         super(entityType, level);
     }
@@ -35,6 +42,28 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
     public TidalLockEntity(Level level, Entity owner) {
         super(ASAREntityRegistry.TIDAL_LOCK.get(), level);
         setOwner(owner);
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        if (!level().isClientSide && health > 0) {
+            if (DamageSources.isFriendlyFireBetween(source.getEntity(), this.getFirstPassenger())) {
+                return false;
+            }
+            if (!isInvulnerableTo(source) && (source.getEntity() == null || !isPassengerOfSameVehicle(source.getEntity()))) {
+                health -= amount;
+                if (health <= 0) {
+                    die(source, amount);
+                }
+                return true;
+            }
+        }
+        return super.hurt(source, amount);
+    }
+
+    public void die(DamageSource damageSource, float amount) {
+        var entities = getPassengers();
+        destroyTidalLock();
     }
 
     @Override
@@ -67,6 +96,8 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
         }
 
         Vec3 position = this.position();
+
+        //pseudocode: if health > 10 {first crack}else if 10>health>5{second crack}else if 5>health>0{third crack}else{delete all cracks}
 
         if (lifetime >= 0 && tickCount < lifetime) {
             if (tickCount % 25 == 0) {
@@ -196,13 +227,17 @@ public class TidalLockEntity extends Entity implements PreventDismount, AntiMagi
         this.setPos(d0, d1, d2);
     }
 
+    public Optional<SoundEvent> getShatterSound() {
+        return Optional.of(ASARSoundsRegistry.ASTRAL_SHATTER_1.get());
+    }
+
     public void destroyTidalLock() {
         Level level = level();
 
         if (level.isClientSide) return;
 
         this.ejectPassengers();
-        this.playSound(SoundEvents.GLASS_BREAK, 2, 1);
+        this.getShatterSound();
 
         MagicManager.spawnParticles(
                 level, ASARParticleRegistry.STARS_PARTICLE.get(),

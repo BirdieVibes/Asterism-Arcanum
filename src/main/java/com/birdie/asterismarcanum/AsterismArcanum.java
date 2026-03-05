@@ -54,6 +54,7 @@ public class AsterismArcanum {
         ASARParticleRegistry.register(modEventBus);
         ASARMobEffectRegistry.register(modEventBus);
         ASARModBlocksRegistry.register(modEventBus);
+        ASARSoundsRegistry.register(modEventBus);
 
         AzureLib.initialize();
 

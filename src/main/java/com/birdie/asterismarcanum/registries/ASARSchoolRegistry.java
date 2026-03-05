@@ -42,7 +42,7 @@ public class ASARSchoolRegistry extends SchoolRegistry {
                     Component.translatable("school.asterismarcanum.astral").withColor(7231167),
                     ASARAttributeRegistry.ASTRAL_SPELL_POWER,
                     ASARAttributeRegistry.ASTRAL_MAGIC_RESIST,
-                    SoundRegistry.CLEANSE_CAST,
+                    ASARSoundsRegistry.ASTRAL_CAST,
                     ASARDamageTypes.ASTRAL_MAGIC
             ));
 }

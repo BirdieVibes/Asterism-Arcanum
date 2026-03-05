@@ -2,6 +2,7 @@ package com.birdie.asterismarcanum.entity.spells.constellation;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import com.birdie.asterismarcanum.registries.SpellRegistries;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.util.Utils;
@@ -78,8 +79,8 @@ public class Constellation extends Projectile implements AntiMagicSusceptible {
                     1, 0, 0, 0, 0, true
             );
 
-            level.playSound(null, blockPos, SoundEvents.DRAGON_FIREBALL_EXPLODE,
-                    SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(9, 11) * .3f);
+            level.playSound(null, blockPos, SoundEvents.AMETHYST_BLOCK_CHIME,
+                    SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(2, 5) * .3f);
         }
 
         if (tickCount > duration) {
@@ -99,8 +100,8 @@ public class Constellation extends Projectile implements AntiMagicSusceptible {
                     position.x, position.y + totalRadius, position.z,
                     100, 1, 1, 1, 0.5, true);
 
-            level.playSound(null, blockPos, SoundEvents.DRAGON_FIREBALL_EXPLODE,
-                    SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(9, 11) * .3f);
+            level.playSound(null, blockPos, ASARSoundsRegistry.ASTRAL_SHATTER_2.get(),
+                    SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(2, 5) * .3f);
 
             float explosionRadius = totalRadius * 5;
             var explosionRadiusSqr = explosionRadius * explosionRadius;

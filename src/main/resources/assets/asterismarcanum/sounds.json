@@ -1,0 +1,44 @@
+{
+  "astral_cast" : {
+    "subtitle" : "sounds.asterismarcanum.astral_cast",
+    "sounds" : [
+      "asterismarcanum:astral_cast",
+      "asterismarcanum:astral_cast_low"
+    ]
+  },
+  "astral_cast_impact" : {
+    "subtitle" : "sounds.asterismarcanum.astral_cast_impact",
+    "sounds" : [
+      "asterismarcanum:astral_cast_impact",
+      "asterismarcanum:astral_cast_impact_low"
+    ]
+  },
+  "astral_shatter" : {
+    "subtitle" : "sounds.asterismarcanum.astral_shatter",
+    "sounds" : [
+      "asterismarcanum:astral_shatter_1",
+      "asterismarcanum:astral_shatter_2",
+      "asterismarcanum:astral_shatter_3"
+    ]
+  },
+  "star_shatter" : {
+    "subtitle" : "sounds.asterismarcanum.star_shatter",
+    "sounds" : [
+      "asterismarcanum:star_shatter_1",
+      "asterismarcanum:star_shatter_2",
+      "asterismarcanum:star_shatter_3"
+    ]
+  },
+  "night_vision_cast" : {
+    "subtitle" : "sounds.asterismarcanum.night_vision_cast",
+    "sounds" : [
+      "asterismarcanum:night_vision_cast"
+    ]
+  },
+  "brightburst_cast" : {
+    "subtitle" : "sounds.asterismarcanum.brightburst_cast",
+    "sounds" : [
+      "asterismarcanum:brightburst_cast"
+    ]
+  }
+}

@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.tidal_lock.TidalLockEntity;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
@@ -65,8 +66,8 @@ public class TidalLockSpell extends AbstractSpell {
     }
 
     @Override
-    public Optional<SoundEvent> getCastStartSound() {
-        return Optional.of(SoundRegistry.CLEANSE_CAST.get());
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of(ASARSoundsRegistry.NIGHT_VISION_CAST.get());
     }
 
     @Override

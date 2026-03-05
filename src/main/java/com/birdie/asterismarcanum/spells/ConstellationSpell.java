@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
@@ -76,7 +77,7 @@ public class ConstellationSpell extends AbstractSpell {
 
     @Override
     public Optional<SoundEvent> getCastStartSound() {
-        return Optional.of(SoundRegistry.CLEANSE_CAST.get());
+        return Optional.of(ASARSoundsRegistry.ASTRAL_CAST.get());
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
@@ -84,7 +85,7 @@ public class DarkFlowSpell extends AbstractSpell {
             }
         }
 
-        level.playSound(null, center.x, center.y, center.z, SoundRegistry.BLACK_HOLE_CAST.get(), SoundSource.AMBIENT, 4, 1);
+        level.playSound(null, center.x, center.y, center.z, ASARSoundsRegistry.BRIGHTBURST_CAST.get(), SoundSource.AMBIENT, 4, 1);
 
 
         DarkFlow darkFlow = new DarkFlow(level, entity);
