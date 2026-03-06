@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.item.armor;
 import com.birdie.asterismarcanum.entity.armor.AstralMagicArmorModel;
 import com.birdie.asterismarcanum.registries.ASARAttributeRegistry;
 import io.redspace.ironsspellbooks.entity.armor.GenericCustomArmorRenderer;
+import io.redspace.ironsspellbooks.item.armor.IDisableHat;
 import io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem;
 import io.redspace.ironsspellbooks.registries.ArmorMaterialRegistry;
 import net.minecraft.world.item.ArmorItem;

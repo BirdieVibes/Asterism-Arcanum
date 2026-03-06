@@ -41,7 +41,7 @@ public class ASARItemsRegistry {
     public static final DeferredItem<Item> LIQUID_LUMINANCE_BOTTLE = ITEMS
             .register("liquid_luminance_bottle", () -> new Item(new Item.Properties()));
 
-    public static final DeferredHolder<Item, Item> ASTRAL_CROWN = ITEMS.register("astral_crown",
+    public static final DeferredHolder<Item, Item> ASTRAL_HELMET = ITEMS.register("astral_helmet",
             () -> new AstralMagicArmorItem(
                     ArmorItem.Type.HELMET,
                     ItemPropertiesHelper

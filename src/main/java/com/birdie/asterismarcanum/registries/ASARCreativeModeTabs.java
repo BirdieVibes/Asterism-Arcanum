@@ -5,6 +5,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -23,10 +24,10 @@ public class ASARCreativeModeTabs {
                         output.accept(ASARItemsRegistry.LIQUID_LUMINANCE_BOTTLE.get());
                         output.accept(ASARItemsRegistry.ASTRAL_RUNE.get());
                         output.accept(ASARItemsRegistry.ASTRAL_UPGRADE_ORB.get());
-                        output.accept(ASARItemsRegistry.ASTRAL_CROWN.get());
-                        output.accept(ASARItemsRegistry.ASTRAL_CHESTPLATE.get());
-                        output.accept(ASARItemsRegistry.ASTRAL_LEGGINGS.get());
-                        output.accept(ASARItemsRegistry.ASTRAL_BOOTS.get());
+                        output.accept((ItemLike) ASARItemsRegistry.ASTRAL_HELMET);
+                        output.accept((ItemLike) ASARItemsRegistry.ASTRAL_CHESTPLATE);
+                        output.accept((ItemLike) ASARItemsRegistry.ASTRAL_LEGGINGS);
+                        output.accept((ItemLike) ASARItemsRegistry.ASTRAL_BOOTS);
                         output.accept(ASARItemsRegistry.LUNAR_MOTH_SPAWN_EGG.get());
                         output.accept(ASARItemsRegistry.STELLAR_COSMOS.get());
                         output.accept(ASARItemsRegistry.CELESTIAL_STAFF.get());
