@@ -2,6 +2,7 @@ package com.birdie.asterismarcanum.entity.mobs.lunar_moth;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
+import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
@@ -90,7 +91,7 @@ public class LunarMothEntity extends Animal implements GeoEntity, FlyingAnimal, 
     public void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
 
-        this.goalSelector.addGoal(1, new FleeSunGoal(this, 1.0F));
+        this.goalSelector.addGoal(1, new RestrictSunGoal(this));
         this.goalSelector.addGoal(2, new WaterAvoidingRandomFlyingGoal(this, 0.5F));
 
         this.goalSelector.addGoal(3, new TemptGoal(this, (double)1.0F, (p_335831_) -> p_335831_.is(ItemTags.BEE_FOOD), false));
@@ -102,8 +103,10 @@ public class LunarMothEntity extends Animal implements GeoEntity, FlyingAnimal, 
         return LivingEntity.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 15.0)
                 .add(Attributes.FOLLOW_RANGE, 24.0)
-                .add(Attributes.MOVEMENT_SPEED, 0.5F)
-                .add(Attributes.FLYING_SPEED, 0.8F);
+                .add(Attributes.MOVEMENT_SPEED, 1.0F)
+                .add(Attributes.ATTACK_DAMAGE, 2.0F)
+                .add(ASAttributeRegistry.MANA_REND, 0.15F)
+                .add(Attributes.FLYING_SPEED, 1.3F);
     }
 
     protected PathNavigation createNavigation(Level p_level) {

@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.registries;
 import com.birdie.asterismarcanum.AsterismArcanum;
 
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
+import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothEntity;
 import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
 import com.birdie.asterismarcanum.entity.spells.luminous_ray.LuminousFlareProjectile;
@@ -51,6 +52,15 @@ public class ASAREntityRegistry {
                     sized(0.8f, 0.8f)
                     .build(
                             ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "lunar_moth").toString()
+                    ));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<SummonedLunarMothEntity>> SUMMONED_LUNAR_MOTH =
+            ENTITIES.register("summoned_lunar_moth", () -> EntityType.Builder.<SummonedLunarMothEntity>of
+                            (SummonedLunarMothEntity::new, MobCategory.CREATURE).
+                    sized(0.8f, 0.8f)
+                    .clientTrackingRange(64)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "summoned_lunar_moth").toString()
                     ));
 
     // Particle Entities and AOES

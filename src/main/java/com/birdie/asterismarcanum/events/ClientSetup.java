@@ -3,6 +3,8 @@ package com.birdie.asterismarcanum.events;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothModel;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothRenderer;
+import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothModel;
+import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothRenderer;
 import com.birdie.asterismarcanum.entity.spells.constellation.ConstellationRenderer;
 import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlowRenderer;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamRenderer;
@@ -40,6 +42,7 @@ public class ClientSetup {
         event.registerEntityRenderer(ASAREntityRegistry.CONSTELLATION.get(), ConstellationRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.LUMINOUS_FLARE_PROJECTILE.get(), NoopRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.LUNAR_MOTH.get(), context -> {return new LunarMothRenderer(context, new LunarMothModel());});
+        event.registerEntityRenderer(ASAREntityRegistry.SUMMONED_LUNAR_MOTH.get(), context -> {return new SummonedLunarMothRenderer(context, new SummonedLunarMothModel());});
     }
 
     @SubscribeEvent

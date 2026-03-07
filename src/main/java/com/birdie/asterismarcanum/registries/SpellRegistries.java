@@ -73,8 +73,8 @@ public class SpellRegistries {
 
     // SUMMON LUNAR MOTHS SPELL
     // A spell which summons lunar moths that apply a debuff in a short range around them, I think the debuff is gonna deal damage with enough stacks
-//    public static final Supplier<AbstractSpell> SUMMON_LUNAR_MOTHS =
-//            registerSpell(new SummonLunarMothsSpell());
+    public static final Supplier<AbstractSpell> SUMMON_LUNAR_MOTHS =
+            registerSpell(new SummonLunarMothsSpell());
 
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }
 

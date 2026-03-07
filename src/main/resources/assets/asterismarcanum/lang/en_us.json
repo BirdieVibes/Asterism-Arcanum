@@ -13,6 +13,7 @@
   "item.asterismarcanum.celestial_staff" : "Celestial Staff",
 
   "entity.asterismarcanum.lunar_moth" : "Lunar Moth",
+  "entity.asterismarcanum.summoned_lunar_moth" : "Summoned Lunar Moth",
 
   "attribute.irons_spellbooks.astral_spell_power" : "Astral Spell Power",
   "attribute.irons_spellbooks.astral_magic_resist" : "Astral Magic Resist",
@@ -39,6 +40,8 @@
   "spell.asterismarcanum.luminous_flare.guide" : "Conjure a flare of destructive light, damaging enemies in front of you while continuously consuming mana.",
   "spell.asterismarcanum.lunar_channeling" : "Lunar Channeling",
   "spell.asterismarcanum.lunar_channeling.guide" : "Align yourself to the resonance of the moon, scaling your astral power based on how long the effect has lasted.",
+  "spell.asterismarcanum.summon_lunar_moths" : "Summon Lunar Moths",
+  "spell.asterismarcanum.summon_lunar_moths.guide" : "Conjure a flock of moths which will fly towards and debuff your enemies.",
 
   "creativetab.asterismarcanum.asterism_arcanum_items" : "Asterism Items"
 }

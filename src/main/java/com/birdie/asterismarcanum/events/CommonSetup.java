@@ -2,6 +2,7 @@ package com.birdie.asterismarcanum.events;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
+import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothEntity;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -18,6 +19,7 @@ public class CommonSetup {
     public static void onAttributeCreateEvent(EntityAttributeCreationEvent event)
     {
         event.put(ASAREntityRegistry.LUNAR_MOTH.get(), LunarMothEntity.createAttributes().build());
+        event.put(ASAREntityRegistry.SUMMONED_LUNAR_MOTH.get(), SummonedLunarMothEntity.createAttributes().build());
     }
 
     @SubscribeEvent
