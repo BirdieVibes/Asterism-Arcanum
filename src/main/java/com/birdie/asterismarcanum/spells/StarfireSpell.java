@@ -87,11 +87,6 @@ public class StarfireSpell extends AbstractSpell {
     }
 
     @Override
-    public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(ASARSoundsRegistry.ASTRAL_CAST.get());
-    }
-
-    @Override
     public AnimationHolder getCastFinishAnimation() {
         return SpellAnimations.SLASH_ANIMATION;
     }

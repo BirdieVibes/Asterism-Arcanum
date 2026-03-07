@@ -4,6 +4,7 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.spells.*;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
+import mod.azure.azurelib.core.math.functions.classic.Abs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -72,9 +73,14 @@ public class SpellRegistries {
 //            registerSpell(new MooncallSpell());
 
     // SUMMON LUNAR MOTHS SPELL
-    // A spell which summons lunar moths that apply a debuff in a short range around them, I think the debuff is gonna deal damage with enough stacks
+    // A spell which summons lunar moths that apply a mana rend debuff (aces spell utils) on hit
     public static final Supplier<AbstractSpell> SUMMON_LUNAR_MOTHS =
             registerSpell(new SummonLunarMothsSpell());
+
+    // WISHING STAR SPELL
+    // A multicast slow "dash" that levitates the caster
+    public static final Supplier<AbstractSpell> WISHING_STAR =
+            registerSpell(new WishingStarSpell());
 
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }
 
