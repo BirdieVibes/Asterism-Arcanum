@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum;
 
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothRenderer;
+import com.birdie.asterismarcanum.events.ServerEvents;
 import com.birdie.asterismarcanum.item.weapon.CelestialStaffItemRenderer;
 import com.birdie.asterismarcanum.registries.*;
 import com.birdie.asterismarcanum.registries.ASARItemsRegistry;

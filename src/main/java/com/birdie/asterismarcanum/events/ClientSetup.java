@@ -15,6 +15,7 @@ import com.birdie.asterismarcanum.particle.*;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARMobEffectRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
+import com.birdie.asterismarcanum.render.AstralSeaEffects;
 import io.redspace.ironsspellbooks.entity.mobs.abstract_spell_casting_mob.AbstractSpellCastingMobRenderer;
 import io.redspace.ironsspellbooks.render.EnergySwirlLayer;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -26,6 +27,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
 import static io.redspace.ironsspellbooks.render.EnergySwirlLayer.CHARGE_TEXTURE;
@@ -43,6 +45,11 @@ public class ClientSetup {
         event.registerEntityRenderer(ASAREntityRegistry.LUMINOUS_FLARE_PROJECTILE.get(), NoopRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.LUNAR_MOTH.get(), context -> {return new LunarMothRenderer(context, new LunarMothModel());});
         event.registerEntityRenderer(ASAREntityRegistry.SUMMONED_LUNAR_MOTH.get(), context -> {return new SummonedLunarMothRenderer(context, new SummonedLunarMothModel());});
+    }
+
+    @SubscribeEvent
+    public static void registerDimensionEffects(RegisterDimensionSpecialEffectsEvent event) {
+        event.register(AsterismArcanum.namespacePath("astral_sea"), new AstralSeaEffects());
     }
 
     @SubscribeEvent
