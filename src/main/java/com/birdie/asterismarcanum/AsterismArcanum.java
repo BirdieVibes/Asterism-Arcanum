@@ -68,7 +68,11 @@ public class AsterismArcanum {
         return ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, path);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) { }
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        AzIdentityRegistry.register(
+                ASARItemsRegistry.CELESTIAL_STAFF.get()
+        );
+    }
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
