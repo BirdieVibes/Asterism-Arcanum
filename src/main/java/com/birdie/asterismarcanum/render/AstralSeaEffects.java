@@ -52,8 +52,8 @@ public class AstralSeaEffects extends DimensionSpecialEffects {
         /*
          * Skybox
          */
-        float skyDistance = 100;
-        renderBox(poseStack, tesselator, skyDistance, 0, 1, GameRenderer::getPositionTexColorShader, SKY_LOCATION, 0xFF454545);
+        float skyDistance = 200;
+        renderBox(poseStack, tesselator, skyDistance, 0, 1, GameRenderer::getPositionTexColorShader, SKY_LOCATION, 0xFF456575);
         /*
          * Stars
          */
@@ -72,27 +72,27 @@ public class AstralSeaEffects extends DimensionSpecialEffects {
             poseStack.mulPose(Axis.XP.rotationDegrees(x));
             poseStack.mulPose(Axis.YP.rotationDegrees(y));
             poseStack.mulPose(Axis.ZP.rotationDegrees(z));
-            Vector3f rgb = new Vector3f(random.nextFloat() * 0.5f + 0.5f, random.nextFloat() * 0.5f + 0.5f, random.nextFloat() * 0.5f + 0.5f);
+            Vector3f rgb = new Vector3f(random.nextFloat() * 0.5f + 0.65f, random.nextFloat() * 0.5f + 0.65f, random.nextFloat() * 0.5f + 0.65f);
             float intensity = Mth.lerp(j / (float) layers, 0.25f, 0.8f);
             rgb.mul(intensity);
             rgb = new Vector3f(Math.min(rgb.x, 1), Math.min(rgb.y, 1), Math.min(rgb.z, 1));
             RenderSystem.setShaderColor(rgb.x, rgb.y, rgb.z, 1f);
-            renderBox(poseStack, tesselator, skyDistance * scale, 0, 4f + 2f * scale, GameRenderer::getPositionTexColorShader, CLOUDS_LOCATION, 0xFF808080);
+            renderBox(poseStack, tesselator, skyDistance * scale, 0, 4f + 2f * scale, GameRenderer::getPositionTexColorShader, CLOUDS_LOCATION, 0xFF808060);
             poseStack.popPose();
             scale -= 0.04f; // give slight separation between layers to prevent too much zfighting/artifacting
         }
         /*
          * Nebula
          */
-        var color = new Vector3f(.1f, .4f, .6f);
-        color.mul(0.075f);
+        var color = new Vector3f(.4f, .4f, .1f);
+        color.mul(0.2f);
         // use ever-enclosing z offset to ensure new planes are always in front of old planes, preventing alpha clipping
         float zoff = renderNebula(poseStack, color, random, f, skyDistance, tesselator, scale, 0f);
-        color = new Vector3f(.6f, .1f, .5f);
-        color.mul(0.125f);
+        color = new Vector3f(.2f, .4f, .4f);
+        color.mul(0.25f);
         zoff = renderNebula(poseStack, color, random, f, skyDistance, tesselator, scale, zoff);
-        color = new Vector3f(.3f, .3f, .3f);
-        color.mul(0.125f);
+        color = new Vector3f(.4f, .4f, .01f);
+        color.mul(0.25f);
         zoff = renderNebula(poseStack, color, random, f, skyDistance, tesselator, scale, zoff);
 
         RenderSystem.enableDepthTest();

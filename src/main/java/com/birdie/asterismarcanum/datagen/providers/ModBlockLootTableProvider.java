@@ -17,6 +17,32 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
 
+        this.dropSelf(ASARModBlocksRegistry.LUMINE.get());
+
+        this.dropSelf(ASARModBlocksRegistry.LUMINE_BRICKS.get());
+        this.dropSelf(ASARModBlocksRegistry.CHISELED_LUMINE.get());
+        this.dropSelf(ASARModBlocksRegistry.POLISHED_LUMINE.get());
+
+        this.dropSelf(ASARModBlocksRegistry.LUMINE_STAIRS.get());
+        this.add(ASARModBlocksRegistry.LUMINE_SLAB.get(),
+                block -> createSlabItemTable(ASARModBlocksRegistry.LUMINE_SLAB.get()));
+        this.dropSelf(ASARModBlocksRegistry.LUMINE_WALL.get());
+
+        this.dropSelf(ASARModBlocksRegistry.CHISELED_LUMINE_STAIRS.get());
+        this.add(ASARModBlocksRegistry.CHISELED_LUMINE_SLAB.get(),
+                block -> createSlabItemTable(ASARModBlocksRegistry.CHISELED_LUMINE_SLAB.get()));
+        this.dropSelf(ASARModBlocksRegistry.CHISELED_LUMINE_WALL.get());
+
+        this.dropSelf(ASARModBlocksRegistry.LUMINE_BRICKS_STAIRS.get());
+        this.add(ASARModBlocksRegistry.LUMINE_BRICKS_SLAB.get(),
+                block -> createSlabItemTable(ASARModBlocksRegistry.LUMINE_BRICKS_SLAB.get()));
+        this.dropSelf(ASARModBlocksRegistry.LUMINE_BRICKS_WALL.get());
+
+        this.dropSelf(ASARModBlocksRegistry.POLISHED_LUMINE_STAIRS.get());
+        this.add(ASARModBlocksRegistry.POLISHED_LUMINE_SLAB.get(),
+                block -> createSlabItemTable(ASARModBlocksRegistry.POLISHED_LUMINE_SLAB.get()));
+        this.dropSelf(ASARModBlocksRegistry.POLISHED_LUMINE_WALL.get());
+
         dropOther(ASARModBlocksRegistry.STELLAR_COSMOS_FLOWERS.get(), ASARItemsRegistry.STELLAR_COSMOS.get());
         // protected void dropPottedContents(Block flowerPot) {
         //        this.add(flowerPot, (Function)((p_304146_) -> this.createPotFlowerItemTable(((FlowerPotBlock)p_304146_).getPotted())));

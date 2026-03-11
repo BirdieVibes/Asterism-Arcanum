@@ -11,6 +11,7 @@
   "item.asterismarcanum.astral_helmet" : "Astral Helmet",
   "item.asterismarcanum.lunar_moth_spawn_egg" : "Lunar Moth Spawn Egg",
   "item.asterismarcanum.celestial_staff" : "Celestial Staff",
+  "item.asterismarcanum.ethereal_talisman" : "Stellar Periapt",
 
   "entity.asterismarcanum.lunar_moth" : "Lunar Moth",
   "entity.asterismarcanum.summoned_lunar_moth" : "Summoned Lunar Moth",
@@ -22,6 +23,8 @@
 
   "spell.asterismarcanum.starfire" : "Starfire",
   "spell.asterismarcanum.starfire.guide" : "Bring forth a minor piece of the heavens themselves, and launch it towards where you are looking.",
+  "spell.asterismarcanum.astral_gateway" : "Astral Gateway",
+  "spell.asterismarcanum.astral_gateway.guide" : "Harness the power of the Stellar Periapt to transport you and those around you to and from the Astral Sea. (not craftable)",
   "spell.asterismarcanum.moonbeamed" : "Moonbeamed",
   "spell.asterismarcanum.moonbeamed.guide" : "Disappear in a flash of light, and appear at the location in which you are looking.",
   "spell.asterismarcanum.nebulous_cone" : "Nebulous Cone",

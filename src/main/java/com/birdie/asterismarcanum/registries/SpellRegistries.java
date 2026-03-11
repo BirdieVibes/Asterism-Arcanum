@@ -59,8 +59,8 @@ public class SpellRegistries {
 
     // ASTRAL SEA SPELL
     // Dimension Teleporting spell similar to Pocket Dimension
-    //    public static final Supplier<AbstractSpell> ASTRAL_SEA =
-    //            registerSpell(new AstralSeaSpell());
+        public static final Supplier<AbstractSpell> ASTRAL_GATEWAY =
+                registerSpell(new AstralGatewaySpell());
 
     // LUNAR CHANNELING SPELL
     // Scales power over the duration of the spell following a sin wave

@@ -10,6 +10,8 @@ import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import mod.azure.azurelib.AzureLib;
 import mod.azure.azurelib.common.animation.cache.AzIdentityRegistry;
 import mod.azure.azurelib.common.render.item.AzItemRendererRegistry;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -17,6 +19,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.jetbrains.annotations.NotNull;
@@ -86,6 +89,7 @@ public class AsterismArcanum {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
+
             AzItemRendererRegistry.register(CelestialStaffItemRenderer::new, ASARItemsRegistry.CELESTIAL_STAFF.get());
         }
     }
@@ -96,4 +100,5 @@ public class AsterismArcanum {
             event.accept(ASARItemsRegistry.LIQUID_LUMINANCE_BOTTLE);
         }
     }
+
 }
