@@ -4,7 +4,6 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.spells.*;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
-import mod.azure.azurelib.core.math.functions.classic.Abs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -27,10 +26,10 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> MOONBEAMED =
             registerSpell(new MoonbeamedSpell());
 
-    // DARK FLOW SPELL
+    // BRIGHTBURST SPELL
     // Repels nearby entities including projectiles
-    public static final Supplier<AbstractSpell> DARK_FLOW =
-            registerSpell(new DarkFlowSpell());
+    public static final Supplier<AbstractSpell> BRIGHTBURST =
+            registerSpell(new BrightburstSpell());
 
     // NIGHT VISION SPELL
     // Gives night vision :P

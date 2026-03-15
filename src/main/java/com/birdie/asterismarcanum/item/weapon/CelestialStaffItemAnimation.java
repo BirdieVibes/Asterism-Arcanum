@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 public class CelestialStaffItemAnimation extends AzItemAnimator {
     private static final ResourceLocation ANIMATIONS = ResourceLocation.fromNamespaceAndPath(
             AsterismArcanum.MOD_ID,
-            "animations/celestial_staff.animation.json"
+            "asterismarcanum/animations/celestial_staff.animation.json"
     );
 
     @Override

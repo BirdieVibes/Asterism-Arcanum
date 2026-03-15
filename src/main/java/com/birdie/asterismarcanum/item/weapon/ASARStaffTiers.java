@@ -12,7 +12,8 @@ public class ASARStaffTiers implements IronsWeaponTier {
     public static StaffTier CELESTIAL_STAFF = new StaffTier(
             6.0f, -3.0f,
             new AttributeContainer(ASARAttributeRegistry.ASTRAL_SPELL_POWER, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
+            new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE)
     );
 
     float damage;

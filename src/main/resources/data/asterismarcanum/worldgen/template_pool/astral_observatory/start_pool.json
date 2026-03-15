@@ -1,0 +1,15 @@
+{
+  "name": "asterismarcanum:astral_observatory/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/room/unique/astral_observatory",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    }
+  ]
+}

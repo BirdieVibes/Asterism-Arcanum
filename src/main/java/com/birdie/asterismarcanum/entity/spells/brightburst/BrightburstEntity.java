@@ -1,4 +1,4 @@
-package com.birdie.asterismarcanum.entity.spells.dark_flow;
+package com.birdie.asterismarcanum.entity.spells.brightburst;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
@@ -19,15 +19,15 @@ import net.neoforged.neoforge.common.Tags;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DarkFlow extends Projectile implements AntiMagicSusceptible {
+public class BrightburstEntity extends Projectile implements AntiMagicSusceptible {
     private static final EntityDataAccessor<Float> DATA_RADIUS =
-            SynchedEntityData.defineId(DarkFlow.class, EntityDataSerializers.FLOAT);
+            SynchedEntityData.defineId(BrightburstEntity.class, EntityDataSerializers.FLOAT);
 
-    public DarkFlow(EntityType<? extends Projectile> pEntityType, Level pLevel) {
+    public BrightburstEntity(EntityType<? extends Projectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel); }
 
-    public DarkFlow(Level pLevel, LivingEntity owner) {
-        this(ASAREntityRegistry.DARK_FLOW.get(), pLevel);
+    public BrightburstEntity(Level pLevel, LivingEntity owner) {
+        this(ASAREntityRegistry.BRIGHTBURST.get(), pLevel);
         setOwner(owner);
     }
 
@@ -143,6 +143,7 @@ public class DarkFlow extends Projectile implements AntiMagicSusceptible {
                 entity.fallDistance = 0;
             }
         }
+
         if (tickCount > duration) this.discard();
     }
 

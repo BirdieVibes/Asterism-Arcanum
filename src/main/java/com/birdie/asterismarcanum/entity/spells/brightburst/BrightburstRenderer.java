@@ -1,4 +1,4 @@
-package com.birdie.asterismarcanum.entity.spells.dark_flow;
+package com.birdie.asterismarcanum.entity.spells.brightburst;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -17,8 +17,8 @@ import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-public class DarkFlowRenderer extends EntityRenderer<DarkFlow> {
-    public DarkFlowRenderer(EntityRendererProvider.Context pContext) {
+public class BrightburstRenderer extends EntityRenderer<BrightburstEntity> {
+    public BrightburstRenderer(EntityRendererProvider.Context pContext) {
         super(pContext);
     }
 
@@ -26,7 +26,7 @@ public class DarkFlowRenderer extends EntityRenderer<DarkFlow> {
     private static final ResourceLocation BEAM_TEXTURE = IronsSpellbooks.id("textures/entity/black_hole/beam.png");
 
     @Override
-    public void render(DarkFlow entity, float pEntityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int pPackedLight) {
+    public void render(BrightburstEntity entity, float pEntityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int pPackedLight) {
         poseStack.pushPose();
         poseStack.translate(0, entity.getBoundingBox().getYsize() / 2, 0);
 
@@ -64,7 +64,7 @@ public class DarkFlowRenderer extends EntityRenderer<DarkFlow> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(DarkFlow pEntity) {
+    public ResourceLocation getTextureLocation(BrightburstEntity pEntity) {
         return IcicleRenderer.TEXTURE;
     }
 

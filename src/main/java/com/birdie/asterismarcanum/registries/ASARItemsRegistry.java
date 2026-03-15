@@ -80,8 +80,7 @@ public class ASARItemsRegistry {
     );
 
     public static final DeferredHolder<Item, Item> CELESTIAL_STAFF = ITEMS.register("celestial_staff",
-            () -> new CelestialStaffItem(ItemPropertiesHelper.equipment(1).attributes(AnimatedSwordItem.createAttributes(ASARStaffTiers.CELESTIAL_STAFF)).rarity(Rarity.UNCOMMON),
-                    SpellDataRegistryHolder.of(new SpellDataRegistryHolder(SpellRegistries.STARFIRE, 11))));
+            () -> new CelestialStaffItem(ItemPropertiesHelper.equipment(1).attributes(AnimatedSwordItem.createAttributes(ASARStaffTiers.CELESTIAL_STAFF)).rarity(Rarity.UNCOMMON)));
 
 
     //School Crafting

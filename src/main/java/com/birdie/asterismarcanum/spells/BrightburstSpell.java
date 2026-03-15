@@ -1,7 +1,7 @@
 package com.birdie.asterismarcanum.spells;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
+import com.birdie.asterismarcanum.entity.spells.brightburst.BrightburstEntity;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
@@ -9,7 +9,8 @@ import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.registries.SoundRegistry;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -20,15 +21,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 //Spell based on Black Hole in Iron's Spells n' Spellbooks
 //Pushes entities within a broad range away from the caster by summoning an inverted black hole entity for a brief amount of time
 
-public class DarkFlowSpell extends AbstractSpell {
-    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "dark_flow");
+public class BrightburstSpell extends AbstractSpell {
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "brightburst");
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.EPIC)
@@ -37,7 +37,7 @@ public class DarkFlowSpell extends AbstractSpell {
             .setCooldownSeconds(45)
             .build();
 
-    public DarkFlowSpell() {
+    public BrightburstSpell() {
         this.manaCostPerLevel = 15;
         this.baseSpellPower = 10;
         this.spellPowerPerLevel = 2;
@@ -88,12 +88,49 @@ public class DarkFlowSpell extends AbstractSpell {
         level.playSound(null, center.x, center.y, center.z, ASARSoundsRegistry.BRIGHTBURST_CAST.get(), SoundSource.AMBIENT, 4, 1);
 
 
-        DarkFlow darkFlow = new DarkFlow(level, entity);
-        darkFlow.setRadius(radius);
-        darkFlow.setDamage(getDamage(spellLevel, entity));
-        darkFlow.moveTo(center);
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 1f),
+                center.x, center.y + radius + (0.55 * radius), center.z,
+                1, 0, 0, 0, 0, true
+        );
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 4f),
+                center.x, center.y + radius + (0.5 * radius), center.z,
+                1, 0, 0, 0, 0, true
+        );
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 8f),
+                center.x, center.y + radius + (0.4 * radius), center.z,
+                1, 0, 0, 0, 0, true
+        );
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 11.5f),
+                center.x, center.y + radius + (0.25 * radius), center.z,
+                1, 0, 0, 0, 0, true
+        );
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 13f),
+                center.x, center.y + radius, center.z,
+                1, 0, 0, 0, 0, true
+        );
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 11.5f),
+                center.x, center.y + (0.75 * radius), center.z,
+                1, 0, 0, 0, 0, true
+        );
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 8f),
+                center.x, center.y + (0.6 * radius), center.z,
+                1, 0, 0, 0, 0, true
+        );
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 4f),
+                center.x, center.y + (0.5 * radius), center.z,
+                1, 0, 0, 0, 0, true
+        );
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 1f),
+                center.x, center.y  + (0.45 * radius), center.z,
+                1, 0, 0, 0, 0, true
+        );
 
-        level.addFreshEntity(darkFlow);
+        BrightburstEntity brightburst = new BrightburstEntity(level, entity);
+        brightburst.setRadius(radius);
+        brightburst.setDamage(getDamage(spellLevel, entity));
+        brightburst.moveTo(center);
+
+        level.addFreshEntity(brightburst);
 
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }

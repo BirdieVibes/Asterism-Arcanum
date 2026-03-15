@@ -55,7 +55,6 @@ repositories {
         allowInsecureProtocol = true
     }
 
-
     maven { url = "https://maven.theillusivec4.top" }
     maven { url = "https://cursemaven.com" }
     maven { url = "https://maven.blamejared.com" }

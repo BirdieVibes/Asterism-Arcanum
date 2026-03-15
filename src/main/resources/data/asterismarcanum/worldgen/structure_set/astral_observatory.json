@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "asterismarcanum:astral_observatory",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "chunk_count": 10,
+      "other_set": "irons_spellbooks:mountain_tower"
+    },
+    "spacing": 25,
+    "separation": 15,
+    "salt": 35540833
+  }
+}

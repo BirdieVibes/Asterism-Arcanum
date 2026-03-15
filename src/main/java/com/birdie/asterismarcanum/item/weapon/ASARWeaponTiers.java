@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.item.weapon;
 
+import com.birdie.asterismarcanum.registries.ASARAttributeRegistry;
 import com.birdie.asterismarcanum.registries.ASARItemsRegistry;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.item.weapons.AttributeContainer;
@@ -21,8 +22,9 @@ public class ASARWeaponTiers implements Tier, IronsWeaponTier {
     public static final Tier CELESTIAL_STAFF = new ExtendedWeaponTier(
             3069, 6.0f, -3.0f, 20, BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
             () -> Ingredient.of(ASARItemsRegistry.LIQUID_LUMINANCE_BOTTLE.get()),
-            new AttributeContainer(AttributeRegistry.ENDER_SPELL_POWER, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
-            new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            new AttributeContainer(ASARAttributeRegistry.ASTRAL_SPELL_POWER, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.MANA_REGEN, 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE),
+            new AttributeContainer(AttributeRegistry.COOLDOWN_REDUCTION, 0.10, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
 
     int uses;
     float damage;

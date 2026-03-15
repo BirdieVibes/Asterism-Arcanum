@@ -119,7 +119,7 @@ public class SummonedLunarMothEntity extends LunarMothEntity implements IMagicSu
             return false;
         } else {
             if (entity instanceof LivingEntity) {
-                ((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffectRegistry.SLOWED, 40), this);
+                ((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.LEVITATION, 40), this);
             }
             return Utils.doMeleeAttack(this, entity, SpellRegistries.SUMMON_LUNAR_MOTHS.get().getDamageSource(this, getSummoner()));
         }

@@ -5,7 +5,7 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothEntity;
 import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
-import com.birdie.asterismarcanum.entity.spells.dark_flow.DarkFlow;
+import com.birdie.asterismarcanum.entity.spells.brightburst.BrightburstEntity;
 import com.birdie.asterismarcanum.entity.spells.luminous_ray.LuminousFlareProjectile;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
@@ -15,12 +15,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.animal.Animal;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-
-import java.util.function.Supplier;
 
 public class ASAREntityRegistry {
     private static final DeferredRegister<EntityType<?>> ENTITIES =
@@ -70,11 +67,11 @@ public class ASAREntityRegistry {
                     .clientTrackingRange(64)
                     .build(AsterismArcanum.namespacePath("moonbeam").toString()));
 
-    public static final DeferredHolder<EntityType<?>, EntityType<DarkFlow>> DARK_FLOW =
-            ENTITIES.register("black_hole", () -> EntityType.Builder.<DarkFlow>of(DarkFlow::new, MobCategory.MISC)
+    public static final DeferredHolder<EntityType<?>, EntityType<BrightburstEntity>> BRIGHTBURST =
+            ENTITIES.register("brightburst_entity", () -> EntityType.Builder.<BrightburstEntity>of(BrightburstEntity::new, MobCategory.MISC)
                     .sized(11, 11)
                     .clientTrackingRange(64)
-                    .build(AsterismArcanum.namespacePath("dark_flow").toString()));
+                    .build(AsterismArcanum.namespacePath("brightburst").toString()));
 
     public static final DeferredHolder<EntityType<?>, EntityType<Constellation>> CONSTELLATION =
             ENTITIES.register("constellation", () -> EntityType.Builder.<Constellation>of(Constellation::new, MobCategory.MISC)

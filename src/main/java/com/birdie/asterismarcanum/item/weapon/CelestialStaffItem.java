@@ -1,10 +1,7 @@
 package com.birdie.asterismarcanum.item.weapon;
 
 import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
-import io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer;
-import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.api.spells.SpellData;
-import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -14,14 +11,14 @@ import java.util.Arrays;
 import java.util.List;
 
 // ripped from Crystal Chronicles
-public class CelestialStaffItem extends AnimatedStaffItem implements IPresetSpellContainer {
+public class CelestialStaffItem extends AnimatedStaffItem {
 
     public final CelestialStaffItemDispatcher dispatcher;
 
     List<SpellData> spellData = null;
     SpellDataRegistryHolder[] spellDataRegistryHolders;
 
-    public CelestialStaffItem(Properties pProperties, SpellDataRegistryHolder[] spellDataRegistryHolders) {
+    public CelestialStaffItem(Properties pProperties) {
         super(pProperties);
         this.spellDataRegistryHolders = spellDataRegistryHolders;
         this.dispatcher = new CelestialStaffItemDispatcher();
@@ -33,20 +30,6 @@ public class CelestialStaffItem extends AnimatedStaffItem implements IPresetSpel
             spellDataRegistryHolders = null;
         }
         return spellData;
-    }
-
-    @Override
-    public void initializeSpellContainer(ItemStack itemStack) {
-        if (itemStack == null) {
-            return;
-        }
-
-        if (!ISpellContainer.isSpellContainer(itemStack)) {
-            var spells = getSpells();
-            var spellContainer = ISpellContainer.create(spells.size(), true, false).mutableCopy();
-            spells.forEach(spellData -> spellContainer.addSpell(spellData.getSpell(), spellData.getLevel(), true));
-            itemStack.set(ComponentRegistry.SPELL_CONTAINER, spellContainer.toImmutable());
-        }
     }
 
     /*
