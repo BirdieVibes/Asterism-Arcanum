@@ -3,7 +3,7 @@
   "fallback": "asterismarcanum:astral_observatory/fallback_pool",
   "elements": [
     {
-      "weight": 6,
+      "weight": 3,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "asterismarcanum:astral_observatory/bridge/astral_elbow_bridge",
@@ -12,7 +12,7 @@
       }
     },
     {
-      "weight": 3,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "asterismarcanum:astral_observatory/bridge/astral_terminal_bridge",
@@ -21,7 +21,7 @@
       }
     },
     {
-      "weight": 10,
+      "weight": 5,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "asterismarcanum:astral_observatory/bridge/astral_threeway_bridge",
@@ -34,15 +34,6 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "asterismarcanum:astral_observatory/bridge/portal_bridge",
-        "processors": "minecraft:empty",
-        "projection": "rigid"
-      }
-    },
-    {
-      "weight": 1,
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "location": "asterismarcanum:astral_observatory/connector/cap_connector",
         "processors": "minecraft:empty",
         "projection": "rigid"
       }

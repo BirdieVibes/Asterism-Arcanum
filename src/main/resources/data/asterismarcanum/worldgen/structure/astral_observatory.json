@@ -2,7 +2,7 @@
   "type": "minecraft:jigsaw",
   "liquid_settings": "ignore_waterlogging",
   "start_pool": "asterismarcanum:astral_observatory/start_pool",
-  "max_depth": 7,
+  "size" : 5,
   "ore_veins_enabled": "false",
   "dimension_padding": {
     "top": 30,
