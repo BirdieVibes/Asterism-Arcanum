@@ -81,12 +81,6 @@ public class StarSwarmSpell extends AbstractSpell {
     }
 
     @Override
-    public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
-        Utils.preCastTargetHelper(level, entity, playerMagicData, this, 32, .3f, false);
-        return true;
-    }
-
-    @Override
     public void onServerCastTick(Level level, int spellLevel, LivingEntity entity, @Nullable MagicData playerMagicData) {
     }
 

@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.entity.spells.star_swarm;
 
+import com.birdie.asterismarcanum.entity.spells.star_swarm.star_swarm_projectile.StarSwarmProjectile;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
@@ -44,7 +45,7 @@ public class GatePortal extends AbstractMagicProjectile implements GeoEntity {
     public void shootStar(){
         Vec3 origin;
         origin = this.position();
-        StarfireProjectile starfireProjectile = new StarfireProjectile(this.level(), (LivingEntity) this.getOwner());
+        StarSwarmProjectile starfireProjectile = new StarSwarmProjectile(this.level(), (LivingEntity) this.getOwner());
 
         starfireProjectile.setPos(origin.add(0,starfireProjectile.getBbHeight()/2,0));
         starfireProjectile.setDamage(this.getDamage());

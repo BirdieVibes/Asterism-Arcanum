@@ -9,6 +9,8 @@ import com.birdie.asterismarcanum.entity.spells.constellation.ConstellationRende
 import com.birdie.asterismarcanum.entity.spells.brightburst.BrightburstRenderer;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamRenderer;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.GatePortalRenderer;
+import com.birdie.asterismarcanum.entity.spells.star_swarm.star_swarm_projectile.StarSwarmProjectile;
+import com.birdie.asterismarcanum.entity.spells.star_swarm.star_swarm_projectile.StarSwarmRenderer;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireRenderer;
 import com.birdie.asterismarcanum.entity.spells.tidal_lock.TidalLockRenderer;
 import com.birdie.asterismarcanum.particle.*;
@@ -28,6 +30,7 @@ import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 public class ClientSetup {
     @SubscribeEvent
     public static void  rendererRegister(EntityRenderersEvent.RegisterRenderers event){
+        event.registerEntityRenderer(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), StarSwarmRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.STARFIRE_PROJECTILE.get(), StarfireRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.MOONBEAM.get(), MoonbeamRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.BRIGHTBURST.get(), BrightburstRenderer::new);
