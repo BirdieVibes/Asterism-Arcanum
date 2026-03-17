@@ -36,11 +36,6 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> NIGHT_VISION =
             registerSpell(new NightVisionSpell());
 
-    // STAR SWARM SPELL
-    // Let me be frank I hate this spell. Anyways. Summons a cursor-tracking infinitely piercing entity
-    public static final Supplier<AbstractSpell> STAR_SWARM =
-            registerSpell(new StarSwarmSpell());
-
     // TIDAL LOCK SPELL
     // Allows you to put yourself in 3D stasis, able to look around and aim, but stuck to a single location until you are freed, either by your or other's intervention
     public static final Supplier<AbstractSpell> TIDAL_LOCK =
@@ -55,6 +50,9 @@ public class SpellRegistries {
     // Cone spell but long and skinny <3
     public static final Supplier<AbstractSpell> LUMINOUS_FLARE =
             registerSpell(new LuminousFlareSpell());
+
+    public static final Supplier<AbstractSpell> LUMINOUS_BEAM =
+            registerSpell(new LuminousBeamSpell());
 
     // ASTRAL SEA SPELL
     // Dimension Teleporting spell similar to Pocket Dimension

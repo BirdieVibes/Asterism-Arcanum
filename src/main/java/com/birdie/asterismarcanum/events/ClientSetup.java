@@ -7,10 +7,9 @@ import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarM
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothRenderer;
 import com.birdie.asterismarcanum.entity.spells.constellation.ConstellationRenderer;
 import com.birdie.asterismarcanum.entity.spells.brightburst.BrightburstRenderer;
+import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamProjectile;
+import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamRenderer;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamRenderer;
-import com.birdie.asterismarcanum.entity.spells.star_swarm.GatePortalRenderer;
-import com.birdie.asterismarcanum.entity.spells.star_swarm.star_swarm_projectile.StarSwarmProjectile;
-import com.birdie.asterismarcanum.entity.spells.star_swarm.star_swarm_projectile.StarSwarmRenderer;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireRenderer;
 import com.birdie.asterismarcanum.entity.spells.tidal_lock.TidalLockRenderer;
 import com.birdie.asterismarcanum.particle.*;
@@ -30,14 +29,13 @@ import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 public class ClientSetup {
     @SubscribeEvent
     public static void  rendererRegister(EntityRenderersEvent.RegisterRenderers event){
-        event.registerEntityRenderer(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), StarSwarmRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.STARFIRE_PROJECTILE.get(), StarfireRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.MOONBEAM.get(), MoonbeamRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.BRIGHTBURST.get(), BrightburstRenderer::new);
-        event.registerEntityRenderer(ASAREntityRegistry.GATE_PORTAL.get(), GatePortalRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.TIDAL_LOCK.get(), TidalLockRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.CONSTELLATION.get(), ConstellationRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.LUMINOUS_FLARE_PROJECTILE.get(), NoopRenderer::new);
+        event.registerEntityRenderer(ASAREntityRegistry.LUMINOUS_BEAM_PROJECTILE.get(), LuminousBeamRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.LUNAR_MOTH.get(), context -> {return new LunarMothRenderer(context, new LunarMothModel());});
         event.registerEntityRenderer(ASAREntityRegistry.SUMMONED_LUNAR_MOTH.get(), context -> {return new SummonedLunarMothRenderer(context, new SummonedLunarMothModel());});
     }
