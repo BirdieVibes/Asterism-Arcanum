@@ -7,7 +7,7 @@ import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarM
 import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
 import com.birdie.asterismarcanum.entity.spells.brightburst.BrightburstEntity;
 import com.birdie.asterismarcanum.entity.spells.luminous_ray.LuminousFlareProjectile;
-import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
+import com.birdie.asterismarcanum.entity.spells.star_swarm.GatePortal;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import com.birdie.asterismarcanum.entity.spells.moonbeam.MoonbeamEntity;
 import com.birdie.asterismarcanum.entity.spells.tidal_lock.TidalLockEntity;
@@ -36,11 +36,12 @@ public class ASAREntityRegistry {
                     .clientTrackingRange(64)
                     .build(AsterismArcanum.namespacePath("luminous_flare").toString()));
 
-    public static final DeferredHolder<EntityType<?>, EntityType<StarSwarmProjectile>> STAR_SWARM_PROJECTILE =
-            ENTITIES.register("star_swarm", () -> EntityType.Builder.<StarSwarmProjectile>of(StarSwarmProjectile::new, MobCategory.MISC)
-                    .sized(4f, 4f)
+    public static final DeferredHolder<EntityType<?>, EntityType<GatePortal>> GATE_PORTAL =
+            ENTITIES.register("gate_portal", (e) -> EntityType.Builder.<GatePortal>of(GatePortal::new, MobCategory.MISC)
+                    .sized(.6f, .6f)
                     .clientTrackingRange(64)
-                    .build(AsterismArcanum.namespacePath("star_swarm").toString()));
+                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "gate_portal").toString()));
+
 
     // Mobs
     public static final DeferredHolder<EntityType<?>, EntityType<LunarMothEntity>> LUNAR_MOTH =

@@ -23,8 +23,8 @@ public class SpellRegistries {
 
     // MOONBEAMED SPELL
     // A teleport spell which extends further than Teleport, but can only be used out of combat (Will be disabled eventually once better transportation shows up
-    public static final Supplier<AbstractSpell> MOONBEAMED =
-            registerSpell(new MoonbeamedSpell());
+//    public static final Supplier<AbstractSpell> MOONBEAMED =
+//            registerSpell(new MoonbeamedSpell());
 
     // BRIGHTBURST SPELL
     // Repels nearby entities including projectiles
