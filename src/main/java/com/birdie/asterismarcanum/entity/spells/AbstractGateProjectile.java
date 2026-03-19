@@ -136,8 +136,11 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
 
             for (int i = 0; i < subEntities.length; i++) {
                 var subEntity = subEntities[i];
-                // for SOME reason that I don't understand, each i is equal to pi/4 radians (a 16th of a circle), so keep that in mind when adapting this for your own use
+                // for SOME reason that I don't understand, each i is equal to pi/4 radians (a 8th of a circle),
+                // so keep that in mind when adapting this for your own use
+
                 // i.e. if you want like 10 entities, and you want them in a rainbow configuration, set Deg at 0.4
+
                 // if you wanted a circle of entities, you would need to add in a positive y value in newVector so that the entities dont clip into the floor
                 double Deg = 0.8 * i;
                 double xOffset = Math.cos(Deg) * 2;
