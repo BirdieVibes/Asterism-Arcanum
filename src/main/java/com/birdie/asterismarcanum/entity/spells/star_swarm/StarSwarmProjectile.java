@@ -1,29 +1,17 @@
 package com.birdie.asterismarcanum.entity.spells.star_swarm;
 
-import com.birdie.asterismarcanum.entity.spells.AbstractBeamProjectile;
 import com.birdie.asterismarcanum.entity.spells.AbstractGateProjectile;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
-import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import com.birdie.asterismarcanum.registries.SpellRegistries;
-import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Random;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class StarSwarmProjectile extends AbstractGateProjectile {
-    private List<Vec3> beamVectors;
-
     public StarSwarmProjectile(EntityType<? extends AbstractGateProjectile> entityType, Level level) {
         super(entityType, level);
     }
@@ -32,90 +20,15 @@ public class StarSwarmProjectile extends AbstractGateProjectile {
         super(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), level, entity);
     }
 
-    @Override
-    public boolean shouldRenderAtSqrDistance(double pDistance) {
-        return super.shouldRenderAtSqrDistance(pDistance);
-    }
-
-    @Override
-    public boolean shouldRender(double pX, double pY, double pZ) {
-        return super.shouldRender(pX, pY, pZ);
-    }
-
-    public float getBeamLength(Vec3 start, Vec3 direction, float maxDist) {
-        Vec3 end = start.add(direction.scale(maxDist));
-        BlockHitResult result = this.level().clip(new ClipContext(start, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
-        return result.getType() != HitResult.Type.MISS ? (float) result.getLocation().distanceTo(start) : maxDist;
-    }
-
-
-    public void generateLightningBeams() {
-        //irons_spellbooks.LOGGER.debug("generatingLightningBeams");
-        //irons_spellbooks.LOGGER.debug("generatingLightningBeams");
-
-        Vec3 coreStart = new Vec3(0, 0, 0);
-        int coreLength = 18;
-
-        beamVectors = new ArrayList<>();
-
-
-        for (int core = 0; core < coreLength; core++) {
-            float width = Mth.lerp(core / (float) coreLength, 4f, 4f);
-            Vec3 coreEnd = coreStart.add(0, 0, 1).add(randomVector(0f).multiply(width, 1, width));
-            beamVectors.add(coreStart);
-            beamVectors.add(coreEnd);
-            coreStart = coreEnd;
-
-            int branchSegments = 1;
-            beamVectors.addAll(generateBranch(coreEnd, branchSegments, 0f, 1));
-        }
-    }
-
-    public static List<Vec3> generateBranch(Vec3 origin, int maxLength, float splitChance, int recursionCount) {
-        List<Vec3> branchSegements = new ArrayList<>();
-        Random random = new Random();
-        int branches = random.nextInt(maxLength + 1);
-
-        for (int i = 0; i < branches; i++) {
-        }
-        return branchSegements;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        if (level().isClientSide) {
-            generateLightningBeams();
-        }
-    }
-
-    public static Vec3 randomVector(float radius) {
-        double x = Math.random() * 2 * radius - radius;
-        double y = Math.random() * 2 * radius - radius;
-        double z = Math.random() * 2 * radius - radius;
-        return new Vec3(x, y, z);
-    }
-
-    public List<Vec3> getBeamCache() {
-        if (beamVectors == null)
-            generateLightningBeams();
-        return beamVectors;
-    }
 
     @Override
     public void spawnParticles() {
-
     }
 
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         var entity = entityHitResult.getEntity();
-        DamageSources.applyDamage(entity, damage, SpellRegistries.LUMINOUS_BEAM.get().getDamageSource(this, getOwner()));
-
-        MagicManager.spawnParticles(level(), ASARParticleRegistry.STARS_PARTICLE.get(), entity.getX(), entity.getY() + entity.getBbHeight() / 2, entity.getZ(), 10, entity.getBbWidth() / 3, entity.getBbHeight() / 3, entity.getBbWidth() / 3, 0.1, false);
+        DamageSources.applyDamage(entity, damage, SpellRegistries.STAR_SWARM.get().getDamageSource(this, getOwner()));
     }
+
 }

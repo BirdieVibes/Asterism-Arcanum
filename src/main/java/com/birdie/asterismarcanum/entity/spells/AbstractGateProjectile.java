@@ -1,9 +1,12 @@
 package com.birdie.asterismarcanum.entity.spells;
 
+import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import io.redspace.ironsspellbooks.api.entity.NoKnockbackProjectile;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.registries.ParticleRegistry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -89,6 +92,19 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
     protected void defineSynchedData(SynchedEntityData.Builder pBuilder) {
     }
 
+    // declaring pos so that we can transfer the position of the entity from the tick function
+    public void shootProjectile(Vec3 pos){
+        Vec3 origin = pos;
+        StarfireProjectile projectile;
+        projectile = new StarfireProjectile(this.level(), (LivingEntity) this.getOwner());
+        projectile.setPos(origin.subtract(0.0,this.getBbHeight()/2,0.0));
+        projectile.setPos(origin.add(0,projectile.getBbHeight()/2,0));
+        projectile.setDamage(damage);
+        projectile.getSpeed();
+        projectile.shoot(this.getOwner().getLookAngle());
+        this.level().addFreshEntity(projectile);
+    }
+
     protected static Vec3 rayTrace(Entity owner) {
         float f = owner.getXRot();
         float f1 = owner.getYRot();
@@ -111,7 +127,6 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
 
         var owner = this.getOwner();
         if (owner != null) {
-            var rayTraceVector = rayTrace(owner);
             var ownerEyePos = owner.getEyePosition(1.0f).subtract(0, 1, 0);
             this.setPos(ownerEyePos);
             this.setXRot(owner.getXRot());
@@ -129,7 +144,7 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
                 double sinPsi = Math.sin(Math.toRadians(this.getYRot()));
                 double cosTheta = Math.cos(Math.toRadians(this.getXRot()));
                 double sinTheta = Math.sin(Math.toRadians(this.getXRot()));
-                Vec3 newVector = this.position().add(xOffset* cosPsi- yOffset * sinTheta * sinPsi,yOffset * cosTheta,xOffset * sinPsi + yOffset * sinTheta * cosPsi);
+                Vec3 newVector = this.position().add(xOffset* cosPsi- yOffset * sinTheta * sinPsi,yOffset * cosTheta,(xOffset * sinPsi + yOffset * sinTheta * cosPsi) + 0.5);
 
                 subEntity.setPos(newVector);
                 subEntity.setDeltaMovement(newVector);
@@ -140,7 +155,16 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
                 subEntity.xOld = vec3.x;
                 subEntity.yOld = vec3.y;
                 subEntity.zOld = vec3.z;
+
+                Vec3 pos;
+                pos = newVector;
+
+                if(tickCount %11 == 0){
+                    shootProjectile(pos);
+                }
             }
+
+
         }
 
         if (!level().isClientSide) {
@@ -163,8 +187,8 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
 
     protected Set<Entity> getSubEntityCollisions() {
         List<Entity> collisions = new ArrayList<>();
-        for (Entity beampart : subEntities) {
-            collisions.addAll(level().getEntities(beampart, beampart.getBoundingBox()));
+        for (Entity gatepart : subEntities) {
+            collisions.addAll(level().getEntities(gatepart, gatepart.getBoundingBox()));
         }
 
         return collisions.stream().filter(target ->

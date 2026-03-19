@@ -70,7 +70,7 @@ public class StarSwarmSpell extends AbstractSpell {
 
     @Override
     public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(SoundRegistry.TELEKINESIS_LOOP.get());
+        return Optional.of(SoundRegistry.CLOUD_OF_REGEN_LOOP.get());
     }
 
     @Override

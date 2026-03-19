@@ -8,14 +8,13 @@ import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarM
 import com.birdie.asterismarcanum.entity.spells.constellation.ConstellationRenderer;
 import com.birdie.asterismarcanum.entity.spells.brightburst.BrightburstRenderer;
 import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamRenderer;
-import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
-import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmRenderer;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireRenderer;
 import com.birdie.asterismarcanum.entity.spells.tidal_lock.TidalLockRenderer;
 import com.birdie.asterismarcanum.particle.*;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import com.birdie.asterismarcanum.render.AstralSeaEffects;
+import net.minecraft.client.renderer.entity.NoopRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -33,7 +32,7 @@ public class ClientSetup {
         event.registerEntityRenderer(ASAREntityRegistry.TIDAL_LOCK.get(), TidalLockRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.CONSTELLATION.get(), ConstellationRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.LUMINOUS_BEAM_PROJECTILE.get(), LuminousBeamRenderer::new);
-        event.registerEntityRenderer(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), StarSwarmRenderer::new);
+        event.registerEntityRenderer(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), NoopRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.LUNAR_MOTH.get(), context -> {return new LunarMothRenderer(context, new LunarMothModel());});
         event.registerEntityRenderer(ASAREntityRegistry.SUMMONED_LUNAR_MOTH.get(), context -> {return new SummonedLunarMothRenderer(context, new SummonedLunarMothModel());});
     }
