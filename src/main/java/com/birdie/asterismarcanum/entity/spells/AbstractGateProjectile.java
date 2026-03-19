@@ -105,17 +105,17 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
         this.level().addFreshEntity(projectile);
     }
 
-    protected static Vec3 rayTrace(Entity owner) {
-        float f = owner.getXRot();
-        float f1 = owner.getYRot();
-        float f2 = Mth.cos(-f1 * ((float) Math.PI / 180F) - (float) Math.PI);
-        float f3 = Mth.sin(-f1 * ((float) Math.PI / 180F) - (float) Math.PI);
-        float f4 = -Mth.cos(-f * ((float) Math.PI / 180F));
-        float f5 = Mth.sin(-f * ((float) Math.PI / 180F));
-        float f6 = f3 * f4;
-        float f7 = f2 * f4;
-        return new Vec3(f6, f5, f7);
-    }
+//    protected static Vec3 rayTrace(Entity owner) {
+//        float f = owner.getXRot();
+//        float f1 = owner.getYRot();
+//        float f2 = Mth.cos(-f1 * ((float) Math.PI / 180F) - (float) Math.PI);
+//        float f3 = Mth.sin(-f1 * ((float) Math.PI / 180F) - (float) Math.PI);
+//        float f4 = -Mth.cos(-f * ((float) Math.PI / 180F));
+//        float f5 = Mth.sin(-f * ((float) Math.PI / 180F));
+//        float f6 = f3 * f4;
+//        float f7 = f2 * f4;
+//        return new Vec3(f6, f5, f7);
+//    }
 
     @Override
     public void tick() {
@@ -136,7 +136,9 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
 
             for (int i = 0; i < subEntities.length; i++) {
                 var subEntity = subEntities[i];
-                // for SOME reason that I don't understand, each i is equal to pi/4 radians, so keep that in mind when adapting this for your own use
+                // for SOME reason that I don't understand, each i is equal to pi/4 radians (a 16th of a circle), so keep that in mind when adapting this for your own use
+                // i.e. if you want like 10 entities, and you want them in a rainbow configuration, set Deg at 0.4
+                // if you wanted a circle of entities, you would need to add in a positive y value in newVector so that the entities dont clip into the floor
                 double Deg = 0.8 * i;
                 double xOffset = Math.cos(Deg) * 2;
                 double yOffset = Math.sin(Deg) * 2;
@@ -159,6 +161,7 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
                 Vec3 pos;
                 pos = newVector;
 
+                // V affects the rate of firing, lower number == faster with min of 1
                 if(tickCount %11 == 0){
                     shootProjectile(pos);
                 }
