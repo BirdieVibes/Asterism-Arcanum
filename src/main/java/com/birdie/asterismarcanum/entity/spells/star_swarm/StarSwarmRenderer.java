@@ -1,10 +1,10 @@
-package com.birdie.asterismarcanum.entity.spells.luminous_beam;
+package com.birdie.asterismarcanum.entity.spells.star_swarm;
 
+import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamProjectile;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
-import io.redspace.ironsspellbooks.entity.spells.electrocute.ElectrocuteProjectile;
 import io.redspace.ironsspellbooks.render.RenderHelper;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -16,23 +16,21 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
+
 import java.util.List;
 
 import static io.redspace.ironsspellbooks.api.util.Utils.random;
 
-// HEAVILY BASED ON ELECTROCUTE
-// Single 'lightning' particle in a beam from the caster, theres a lot of things here that aren't theoretically necessary
-// but I didn't want to risk breaking something because I barely get what's going on here
-public class LuminousBeamRenderer extends EntityRenderer<LuminousBeamProjectile> {
+public class StarSwarmRenderer extends EntityRenderer<StarSwarmProjectile> {
 
     private static ResourceLocation SOLID = IronsSpellbooks.id("textures/entity/electric_beams/solid.png");
 
-    public LuminousBeamRenderer(EntityRendererProvider.Context context) {
+    public StarSwarmRenderer(EntityRendererProvider.Context context) {
         super(context);
     }
 
     @Override
-    public void render(LuminousBeamProjectile entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int light) {
+    public void render(StarSwarmProjectile entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int light) {
         if (entity.getOwner() == null)
             return;
         poseStack.pushPose();
@@ -100,7 +98,7 @@ public class LuminousBeamRenderer extends EntityRenderer<LuminousBeamProjectile>
     }
 
     @Override
-    public ResourceLocation getTextureLocation(LuminousBeamProjectile p_115264_) {
+    public ResourceLocation getTextureLocation(StarSwarmProjectile p_115264_) {
         return SOLID;
     }
 }

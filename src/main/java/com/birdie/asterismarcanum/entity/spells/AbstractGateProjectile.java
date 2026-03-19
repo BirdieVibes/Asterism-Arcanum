@@ -20,45 +20,32 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 //based on AbstractConeProjectile from Iron's Spells n' Spellbooks
+//also based on gate of ender from Fire's Ender Expansion
 
-public abstract class AbstractBeamProjectile extends Projectile implements NoKnockbackProjectile {
+public abstract class AbstractGateProjectile extends Projectile implements NoKnockbackProjectile {
     protected static final int FAILSAFE_EXPIRE_TIME = 20 * 20;
     protected int age;
     protected float damage;
     protected boolean dealDamageActive = true;
-    protected final BeamPart[] subEntities;
+    protected final GatePart[] subEntities;
 
-    public AbstractBeamProjectile(EntityType<? extends AbstractBeamProjectile> entityType, Level level, LivingEntity entity) {
+    public AbstractGateProjectile(EntityType<? extends AbstractGateProjectile> entityType, Level level, LivingEntity entity) {
         this(entityType, level);
         setOwner(entity);
     }
 
-    public AbstractBeamProjectile(EntityType<? extends AbstractBeamProjectile> entityType, Level level) {
+    public AbstractGateProjectile(EntityType<? extends AbstractGateProjectile> entityType, Level level) {
         super(entityType, level);
         this.noPhysics = true;
         this.blocksBuilding = false;
 
-        //I don't know off the top of my head any way to truncate this VVV but since it works I decided it would be okay
 
-        this.subEntities = new BeamPart[]{
-                new BeamPart(this, "part1", 1F, 1F),
-                new BeamPart(this, "part2", 1F, 1F),
-                new BeamPart(this, "part3", 1F, 1F),
-                new BeamPart(this, "part4", 1F, 1F),
-                new BeamPart(this, "part5", 1F, 1F),
-                new BeamPart(this, "part6", 1F, 1F),
-                new BeamPart(this, "part7", 1F, 1F),
-                new BeamPart(this, "part8", 1F, 1F),
-                new BeamPart(this, "part9", 1F, 1F),
-                new BeamPart(this, "part10", 1F, 1F),
-                new BeamPart(this, "part11", 1F, 1F),
-                new BeamPart(this, "part12", 1F, 1F),
-                new BeamPart(this, "part13", 1F, 1F),
-                new BeamPart(this, "part14", 1F, 1F),
-                new BeamPart(this, "part15", 1F, 1F),
-                new BeamPart(this, "part16", 1F, 1F),
-                new BeamPart(this, "part17", 1F, 1F),
-                new BeamPart(this, "part18", 1F, 1F)
+        this.subEntities = new GatePart[]{
+                new GatePart(this, "part1", 1F, 1F),
+                new GatePart(this, "part2", 1F, 1F),
+                new GatePart(this, "part3", 1F, 1F),
+                new GatePart(this, "part4", 1F, 1F),
+                new GatePart(this, "part5", 1F, 1F)
         };
     }
 
@@ -131,15 +118,19 @@ public abstract class AbstractBeamProjectile extends Projectile implements NoKno
             this.setYRot(owner.getYRot());
             this.yRotO = getYRot();
             this.xRotO = getXRot();
-            //setDeltaMovement(ownerEyePos);
-
-            double scale = 2;
 
             for (int i = 0; i < subEntities.length; i++) {
                 var subEntity = subEntities[i];
+                // for SOME reason that I don't understand, each i is equal to pi/4 radians, so keep that in mind when adapting this for your own use
+                double Deg = 0.8 * i;
+                double xOffset = Math.cos(Deg) * 2;
+                double yOffset = Math.sin(Deg) * 2;
+                double cosPsi = Math.cos(Math.toRadians(this.getYRot()));
+                double sinPsi = Math.sin(Math.toRadians(this.getYRot()));
+                double cosTheta = Math.cos(Math.toRadians(this.getXRot()));
+                double sinTheta = Math.sin(Math.toRadians(this.getXRot()));
+                Vec3 newVector = this.position().add(xOffset* cosPsi- yOffset * sinTheta * sinPsi,yOffset * cosTheta,xOffset * sinPsi + yOffset * sinTheta * cosPsi);
 
-                double distance = 1 + (i * scale * subEntity.getDimensions(null).width() / 2);
-                Vec3 newVector = ownerEyePos.add(rayTraceVector.multiply(distance, distance, distance));
                 subEntity.setPos(newVector);
                 subEntity.setDeltaMovement(newVector);
                 var vec3 = new Vec3(subEntity.getX(), subEntity.getY(), subEntity.getZ());
@@ -165,8 +156,9 @@ public abstract class AbstractBeamProjectile extends Projectile implements NoKno
 
     }
 
+    // this is the line that says "if you touch the entities you take damage" set it true if you want that
     public void setDealDamageActive() {
-        this.dealDamageActive = true;
+        this.dealDamageActive = false;
     }
 
     protected Set<Entity> getSubEntityCollisions() {

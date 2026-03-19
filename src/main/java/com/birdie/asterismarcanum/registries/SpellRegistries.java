@@ -14,22 +14,18 @@ public class SpellRegistries {
     public static final DeferredRegister<AbstractSpell> SPELLS =
             DeferredRegister.create(SpellRegistry.SPELL_REGISTRY_KEY, AsterismArcanum.MOD_ID);
 
-
-
     // STARFIRE SPELL
     // A missile spell which pierces twice and ricochets to targets at a similar angle compared to the player's view
     public static final Supplier<AbstractSpell> STARFIRE =
             registerSpell(new StarfireSpell());
 
-    // MOONBEAMED SPELL
-    // A teleport spell which extends further than Teleport, but can only be used out of combat (Will be disabled eventually once better transportation shows up
-//    public static final Supplier<AbstractSpell> MOONBEAMED =
-//            registerSpell(new MoonbeamedSpell());
-
     // BRIGHTBURST SPELL
     // Repels nearby entities including projectiles
     public static final Supplier<AbstractSpell> BRIGHTBURST =
             registerSpell(new BrightburstSpell());
+
+    public static final Supplier<AbstractSpell> STAR_SWARM =
+            registerSpell(new StarSwarmSpell());
 
     // NIGHT VISION SPELL
     // Gives night vision :P
@@ -46,11 +42,8 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> CONSTELLATION =
             registerSpell(new ConstellationSpell());
 
-    // LUMINOUS FLARE SPELL
+    // LUMINOUS BEAM SPELL
     // Cone spell but long and skinny <3
-    public static final Supplier<AbstractSpell> LUMINOUS_FLARE =
-            registerSpell(new LuminousFlareSpell());
-
     public static final Supplier<AbstractSpell> LUMINOUS_BEAM =
             registerSpell(new LuminousBeamSpell());
 

@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.AbstractBeamProjectile;
 import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamProjectile;
+import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
@@ -24,8 +25,8 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 import java.util.Optional;
 
-public class LuminousBeamSpell extends AbstractSpell {
-    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "luminous_beam");
+public class StarSwarmSpell extends AbstractSpell {
+    private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "star_swarm");
 
     @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
@@ -39,7 +40,7 @@ public class LuminousBeamSpell extends AbstractSpell {
             .setCooldownSeconds(12)
             .build();
 
-    public LuminousBeamSpell() {
+    public StarSwarmSpell() {
         this.manaCostPerLevel = 1;
         this.baseSpellPower = 1;
         this.spellPowerPerLevel = 1;
@@ -77,10 +78,10 @@ public class LuminousBeamSpell extends AbstractSpell {
         if (playerMagicData.isCasting()
                 && playerMagicData.getCastingSpellId().equals(getSpellId())
                 && playerMagicData.getAdditionalCastData() instanceof EntityCastData entityCastData
-                && entityCastData.getCastingEntity() instanceof AbstractBeamProjectile cone) {
+                && entityCastData.getCastingEntity() instanceof StarSwarmProjectile cone) {
             cone.setDealDamageActive();
         } else {
-            LuminousBeamProjectile luminousBeamProjectile = new LuminousBeamProjectile(world, entity);
+            StarSwarmProjectile luminousBeamProjectile = new StarSwarmProjectile(world, entity);
             luminousBeamProjectile.setPos(entity.position().add(0, entity.getEyeHeight() * .7, 0));
             luminousBeamProjectile.setDamage(getDamage(spellLevel, entity));
             world.addFreshEntity(luminousBeamProjectile);

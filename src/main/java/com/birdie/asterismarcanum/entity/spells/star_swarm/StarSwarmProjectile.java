@@ -1,14 +1,12 @@
-package com.birdie.asterismarcanum.entity.spells.luminous_beam;
+package com.birdie.asterismarcanum.entity.spells.star_swarm;
 
 import com.birdie.asterismarcanum.entity.spells.AbstractBeamProjectile;
+import com.birdie.asterismarcanum.entity.spells.AbstractGateProjectile;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import com.birdie.asterismarcanum.registries.SpellRegistries;
-import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
-import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,17 +21,15 @@ import org.joml.Random;
 import java.util.ArrayList;
 import java.util.List;
 
-// THIS IS HEAVILY BASED ON ELECTROCUTE
-// Creates a single 'lightning' particle, kind of like a long cone spell
-public class LuminousBeamProjectile extends AbstractBeamProjectile {
+public class StarSwarmProjectile extends AbstractGateProjectile {
     private List<Vec3> beamVectors;
 
-    public LuminousBeamProjectile(EntityType<? extends AbstractBeamProjectile> entityType, Level level) {
+    public StarSwarmProjectile(EntityType<? extends AbstractGateProjectile> entityType, Level level) {
         super(entityType, level);
     }
 
-    public LuminousBeamProjectile(Level level, LivingEntity entity) {
-        super(ASAREntityRegistry.LUMINOUS_BEAM_PROJECTILE.get(), level, entity);
+    public StarSwarmProjectile(Level level, LivingEntity entity) {
+        super(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), level, entity);
     }
 
     @Override
