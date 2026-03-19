@@ -24,6 +24,8 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> BRIGHTBURST =
             registerSpell(new BrightburstSpell());
 
+    // STAR SWARM SPELL
+    // Summons 5 projectiles every 12 ticks aimed at your looking angle
     public static final Supplier<AbstractSpell> STAR_SWARM =
             registerSpell(new StarSwarmSpell());
 
@@ -51,11 +53,6 @@ public class SpellRegistries {
     // Dimension Teleporting spell similar to Pocket Dimension
         public static final Supplier<AbstractSpell> ASTRAL_GATEWAY =
                 registerSpell(new AstralGatewaySpell());
-
-    // LUNAR CHANNELING SPELL
-    // Scales power over the duration of the spell following a sin wave
-    public static final Supplier<AbstractSpell> LUNAR_CHANNELING =
-            registerSpell(new LunarChannelingSpell());
 
     // MOONCALL SPELL
     // Moon projectiles orbiting the player which are sent out on second cast to deal damage
