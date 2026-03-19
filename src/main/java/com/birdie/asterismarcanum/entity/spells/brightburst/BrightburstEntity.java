@@ -13,12 +13,14 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.Tags;
 
 import java.util.ArrayList;
 import java.util.List;
 
+// inverted black hole!
 public class BrightburstEntity extends Projectile implements AntiMagicSusceptible {
     private static final EntityDataAccessor<Float> DATA_RADIUS =
             SynchedEntityData.defineId(BrightburstEntity.class, EntityDataSerializers.FLOAT);
@@ -119,6 +121,12 @@ public class BrightburstEntity extends Projectile implements AntiMagicSusceptibl
 
         if (tickCount % update == 0) {
             updateTrackingEntities();
+        }
+
+        var owner = this.getOwner();
+        if (owner != null) {
+            var ownerPos = owner.getPosition(1.0f).subtract(0, getRadius(), 0);
+            this.setPos(ownerPos);
         }
 
         var bb = this.getBoundingBox();

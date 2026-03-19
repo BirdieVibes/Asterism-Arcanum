@@ -87,40 +87,40 @@ public class BrightburstSpell extends AbstractSpell {
 
         level.playSound(null, center.x, center.y, center.z, ASARSoundsRegistry.BRIGHTBURST_CAST.get(), SoundSource.AMBIENT, 4, 1);
 
-
-        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 1f),
+        // I am so sorry but im just gonna leave this here lol, theoretically it could go in the renderer
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(1f, 1f, 1f, 1f),
                 center.x, center.y + radius + (0.55 * radius), center.z,
                 1, 0, 0, 0, 0, true
         );
-        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 4f),
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(1f, 1f, 1f, 4f),
                 center.x, center.y + radius + (0.5 * radius), center.z,
                 1, 0, 0, 0, 0, true
         );
-        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 8f),
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(1f, 1f, 1f, 8f),
                 center.x, center.y + radius + (0.4 * radius), center.z,
                 1, 0, 0, 0, 0, true
         );
-        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 11.5f),
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(1f, 1f, 1f, 11.5f),
                 center.x, center.y + radius + (0.25 * radius), center.z,
                 1, 0, 0, 0, 0, true
         );
-        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 13f),
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(1f, 1f, 1f, 13f),
                 center.x, center.y + radius, center.z,
                 1, 0, 0, 0, 0, true
         );
-        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 11.5f),
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(1f, 1f, 1f, 11.5f),
                 center.x, center.y + (0.75 * radius), center.z,
                 1, 0, 0, 0, 0, true
         );
-        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 8f),
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(1f, 1f, 1f, 8f),
                 center.x, center.y + (0.6 * radius), center.z,
                 1, 0, 0, 0, 0, true
         );
-        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 4f),
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(1f, 1f, 1f, 4f),
                 center.x, center.y + (0.5 * radius), center.z,
                 1, 0, 0, 0, 0, true
         );
-        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(.4f, .85f, 1f, 1f),
+        MagicManager.spawnParticles(level, new BlastwaveParticleOptions(1f, 1f, 1f, 1f),
                 center.x, center.y  + (0.45 * radius), center.z,
                 1, 0, 0, 0, 0, true
         );
@@ -145,12 +145,7 @@ public class BrightburstSpell extends AbstractSpell {
 
     @Override
     public AnimationHolder getCastStartAnimation() {
-        return SpellAnimations.CHARGE_ANIMATION;
-    }
-
-    @Override
-    public AnimationHolder getCastFinishAnimation() {
-        return SpellAnimations.FINISH_ANIMATION;
+        return SpellAnimations.SLASH_ANIMATION;
     }
 
     @Override

@@ -46,13 +46,6 @@ public class LuminousBeamProjectile extends AbstractBeamProjectile {
         return super.shouldRender(pX, pY, pZ);
     }
 
-    public float getBeamLength(Vec3 start, Vec3 direction, float maxDist) {
-        Vec3 end = start.add(direction.scale(maxDist));
-        BlockHitResult result = this.level().clip(new ClipContext(start, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
-        return result.getType() != HitResult.Type.MISS ? (float) result.getLocation().distanceTo(start) : maxDist;
-    }
-
-
     public void generateLightningBeams() {
         //irons_spellbooks.LOGGER.debug("generatingLightningBeams");
         //irons_spellbooks.LOGGER.debug("generatingLightningBeams");

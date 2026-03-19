@@ -13,6 +13,7 @@ import java.util.function.Supplier;
 public class SpellRegistries {
     public static final DeferredRegister<AbstractSpell> SPELLS =
             DeferredRegister.create(SpellRegistry.SPELL_REGISTRY_KEY, AsterismArcanum.MOD_ID);
+// RUNNING TOTAL ----------- 9 IMP, 13 PLANNED ----------------
 
     // STARFIRE SPELL
     // A missile spell which pierces twice and ricochets to targets at a similar angle compared to the player's view
@@ -41,8 +42,8 @@ public class SpellRegistries {
 
     // CONSTELLATION SPELL
     // Summons stars at range which explode after some time
-    public static final Supplier<AbstractSpell> CONSTELLATION =
-            registerSpell(new ConstellationSpell());
+//    public static final Supplier<AbstractSpell> CONSTELLATION =
+//            registerSpell(new ConstellationSpell());
 
     // LUMINOUS BEAM SPELL
     // Cone spell but long and skinny <3
@@ -68,6 +69,10 @@ public class SpellRegistries {
     // A multicast slow "dash" that levitates the caster
     public static final Supplier<AbstractSpell> WISHING_STAR =
             registerSpell(new WishingStarSpell());
+
+    // Remote controlled floating 'orb' of light that you can smack into people?
+
+    // a more bubble shaped 'shield' spell with constellation stuff going on
 
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }
 

@@ -4,7 +4,6 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothEntity;
-import com.birdie.asterismarcanum.entity.spells.constellation.Constellation;
 import com.birdie.asterismarcanum.entity.spells.brightburst.BrightburstEntity;
 import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamProjectile;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
@@ -67,12 +66,6 @@ public class ASAREntityRegistry {
                     .sized(11, 11)
                     .clientTrackingRange(64)
                     .build(AsterismArcanum.namespacePath("brightburst").toString()));
-
-    public static final DeferredHolder<EntityType<?>, EntityType<Constellation>> CONSTELLATION =
-            ENTITIES.register("constellation", () -> EntityType.Builder.<Constellation>of(Constellation::new, MobCategory.MISC)
-                    .sized(1, 1)
-                    .clientTrackingRange(64)
-                    .build(AsterismArcanum.namespacePath("constellation").toString()));
 
     // Mounts
     public static final DeferredHolder<EntityType<?>, EntityType<TidalLockEntity>> TIDAL_LOCK =
