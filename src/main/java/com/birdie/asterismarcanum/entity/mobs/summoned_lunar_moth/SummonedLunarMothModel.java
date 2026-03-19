@@ -1,7 +1,6 @@
 package com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;

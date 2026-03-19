@@ -2,11 +2,11 @@ package com.birdie.asterismarcanum.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
-import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
+//unused
 public class NebulousDustParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
 

@@ -7,7 +7,6 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-import java.util.Random;
 
 public class SignsParticle extends TextureSheetParticle {
     private final SpriteSet sprites;

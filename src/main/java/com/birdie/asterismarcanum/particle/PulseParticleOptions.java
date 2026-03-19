@@ -5,16 +5,12 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import io.redspace.ironsspellbooks.registries.ParticleRegistry;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.util.Mth;
 import org.joml.Vector3f;
-import software.bernie.geckolib.loading.math.function.random.RandomFunction;
 
-import java.util.Random;
-
+//based on trace particle in iss
 public class PulseParticleOptions implements ParticleOptions {
     public final Vector3f color, destination;
 

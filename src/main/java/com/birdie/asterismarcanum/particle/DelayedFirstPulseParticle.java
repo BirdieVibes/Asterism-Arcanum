@@ -12,6 +12,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
+//based on trace particle in iss
 public class DelayedFirstPulseParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
     //    private final Vec3 forward, up;

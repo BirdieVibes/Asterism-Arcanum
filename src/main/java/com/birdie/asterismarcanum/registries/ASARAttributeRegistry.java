@@ -1,7 +1,6 @@
 package com.birdie.asterismarcanum.registries;
 
 import io.redspace.ironsspellbooks.api.attribute.MagicPercentAttribute;
-import io.redspace.ironsspellbooks.api.attribute.MagicRangedAttribute;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.ai.attributes.Attribute;

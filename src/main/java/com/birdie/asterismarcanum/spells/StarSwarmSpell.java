@@ -1,8 +1,6 @@
 package com.birdie.asterismarcanum.spells;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.entity.spells.AbstractBeamProjectile;
-import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamProjectile;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
@@ -24,6 +22,8 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.Optional;
+
+// summons entities around your head that spray projectiles forwards
 
 public class StarSwarmSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "star_swarm");

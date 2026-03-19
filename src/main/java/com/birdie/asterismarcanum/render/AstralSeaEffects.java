@@ -20,6 +20,8 @@ import org.joml.Vector3f;
 import java.util.function.Supplier;
 
 // iron is so smart for making this stuff
+// dimension rendering for the astral sea
+
 public class AstralSeaEffects extends DimensionSpecialEffects {
     public AstralSeaEffects() {
         super(Float.NaN, false, DimensionSpecialEffects.SkyType.NONE, false, false);

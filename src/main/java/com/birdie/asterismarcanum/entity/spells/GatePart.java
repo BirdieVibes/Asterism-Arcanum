@@ -7,6 +7,7 @@ import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.Pose;
 import net.neoforged.neoforge.entity.PartEntity;
 
+// this is based on the pieces of cone entities from ISS
 public class GatePart extends PartEntity<AbstractGateProjectile> {
 
     public final AbstractGateProjectile parentEntity;

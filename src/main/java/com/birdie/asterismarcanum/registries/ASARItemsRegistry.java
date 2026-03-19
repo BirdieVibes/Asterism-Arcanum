@@ -6,7 +6,6 @@ import com.birdie.asterismarcanum.item.armor.AstralMagicArmorItem;
 import com.birdie.asterismarcanum.item.weapon.ASARStaffTiers;
 import com.birdie.asterismarcanum.item.weapon.AnimatedSwordItem;
 import com.birdie.asterismarcanum.item.weapon.CelestialStaffItem;
-import io.redspace.ironsspellbooks.api.registry.SpellDataRegistryHolder;
 import io.redspace.ironsspellbooks.item.UpgradeOrbItem;
 import io.redspace.ironsspellbooks.registries.ComponentRegistry;
 import io.redspace.ironsspellbooks.util.ItemPropertiesHelper;
@@ -19,7 +18,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-
+// this is broken and i dont know why
 public class ASARItemsRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(AsterismArcanum.MOD_ID);
 

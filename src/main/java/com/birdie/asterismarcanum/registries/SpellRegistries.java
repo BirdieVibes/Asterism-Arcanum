@@ -74,6 +74,8 @@ public class SpellRegistries {
 
     // a more bubble shaped 'shield' spell with constellation stuff going on
 
+    // a self-centered "accupuncture" style burst of projectiles
+
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }
 
     public static DeferredHolder<AbstractSpell, AbstractSpell> registerSpell(AbstractSpell spell) {

@@ -18,7 +18,7 @@ import java.util.function.Supplier;
 public class ASARParticleRegistry {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES =
             DeferredRegister.create(Registries.PARTICLE_TYPE, AsterismArcanum.MOD_ID);
-
+// Nebulous dust particles ========= unused
     public static final Supplier<SimpleParticleType> NEBULOUS_DUST_PARTICLE_1 = PARTICLE_TYPES.register(
             "nebulous_dust_1",
             () -> new SimpleParticleType(false));
@@ -42,7 +42,7 @@ public class ASARParticleRegistry {
     public static final Supplier<SimpleParticleType> NEBULOUS_DUST_PARTICLE_6 = PARTICLE_TYPES.register(
             "nebulous_dust_6",
             () -> new SimpleParticleType(false));
-
+// end of nebulous dust particles ===============
     public static final Supplier<SimpleParticleType> STARDUST_PARTICLE = PARTICLE_TYPES.register(
             "stardust",
             () -> new SimpleParticleType(true));
@@ -68,7 +68,7 @@ public class ASARParticleRegistry {
             return PulseParticleOptions.STREAM_CODEC;
         }
     });
-
+//unused pulse particles, based on the trace particle in ISS
     public static final Supplier<ParticleType<DelayedFirstPulseParticleOptions>> DELAYED_FIRST_PULSE_PARTICLE = PARTICLE_TYPES.register("delayed_first_pulse",
             () -> new ParticleType<>(true) {
                 public MapCodec<DelayedFirstPulseParticleOptions> codec() {

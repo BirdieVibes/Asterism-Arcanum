@@ -8,9 +8,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.Vec3;
 
-
+// this is only here because i was afraid to try to summon the abstractGate with the spell
 public class StarSwarmProjectile extends AbstractGateProjectile {
     public StarSwarmProjectile(EntityType<? extends AbstractGateProjectile> entityType, Level level) {
         super(entityType, level);

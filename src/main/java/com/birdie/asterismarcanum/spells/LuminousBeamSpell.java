@@ -24,6 +24,8 @@ import net.minecraft.world.level.Level;
 import java.util.List;
 import java.util.Optional;
 
+// a loooong and skinny cone spell, heavily using things from electrocute
+
 public class LuminousBeamSpell extends AbstractSpell {
     private final ResourceLocation spellId = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "luminous_beam");
 

@@ -10,6 +10,7 @@ import net.minecraft.core.particles.ParticleType;
 import net.minecraft.network.codec.StreamCodec;
 import org.joml.Vector3f;
 
+//based on trace particle in iss
 public class DelayedSecondPulseParticleOptions implements ParticleOptions {
     public final Vector3f color, destination;
 
