@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.entity.spells;
 
+import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightProjectile;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import io.redspace.ironsspellbooks.api.entity.NoKnockbackProjectile;
 import io.redspace.ironsspellbooks.api.util.Utils;
@@ -92,8 +93,8 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
     // declaring pos so that we can transfer the position of the entity from the tick function
     public void shootProjectile(Vec3 pos){
         Vec3 origin = pos;
-        StarfireProjectile projectile;
-        projectile = new StarfireProjectile(this.level(), (LivingEntity) this.getOwner());
+        PiercingLightProjectile projectile;
+        projectile = new PiercingLightProjectile(this.level(), (LivingEntity) this.getOwner());
         projectile.setPos(origin.subtract(0.0,this.getBbHeight()/2,0.0));
         projectile.setPos(origin.add(0,projectile.getBbHeight()/2,0));
         projectile.setDamage(damage);

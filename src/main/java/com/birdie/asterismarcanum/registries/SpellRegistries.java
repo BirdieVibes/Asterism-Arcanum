@@ -70,11 +70,16 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> WISHING_STAR =
             registerSpell(new WishingStarSpell());
 
+    public static final Supplier<AbstractSpell> PIERCING_LIGHT =
+            registerSpell(new PiercingLightSpell());
+
     // Remote controlled floating 'orb' of light that you can smack into people?
 
     // a more bubble shaped 'shield' spell with constellation stuff going on
 
     // a self-centered "accupuncture" style burst of projectiles
+
+    // regular big arrow spell? or maybe a lobbed projectile
 
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }
 
