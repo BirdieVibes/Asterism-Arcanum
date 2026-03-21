@@ -33,7 +33,7 @@ public class SummonLunarMothsSpell extends AbstractSpell {
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.RARE)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
-            .setMaxLevel(4)
+            .setMaxLevel(1)
             .setCooldownSeconds(150)
             .build();
 
@@ -43,7 +43,7 @@ public class SummonLunarMothsSpell extends AbstractSpell {
     }
 
     public SummonLunarMothsSpell() {
-        this.manaCostPerLevel = 50;
+        this.manaCostPerLevel = 0;
         this.baseSpellPower = 20;
         this.spellPowerPerLevel = 10;
         this.castTime = 30;
@@ -62,7 +62,7 @@ public class SummonLunarMothsSpell extends AbstractSpell {
         return spellId;
     }
 
-    public int getSummonCount(int spellLevel, LivingEntity caster) {return spellLevel*2;}
+    public int getSummonCount(int spellLevel, LivingEntity caster) {return 1;}
 
     @Override public int getRecastCount(int spellLevel, @Nullable LivingEntity entity) {
         return 2;
@@ -86,15 +86,14 @@ public class SummonLunarMothsSpell extends AbstractSpell {
         if (!recasts.hasRecastForSpell(this)) {
             SummonedEntitiesCastData summonedEntitiesCastData = new SummonedEntitiesCastData();
             int summonTime = 20 * 60 * 10;
-            int count = getSummonCount(spellLevel, entity);
-            for (int i = 0; i < count; i++) {
-                SummonedLunarMothEntity vex = new SummonedLunarMothEntity(world, entity);
-                vex.moveTo(entity.getEyePosition().add(new Vec3(Utils.getRandomScaled(2), 1, Utils.getRandomScaled(2))));
-                vex.finalizeSpawn((ServerLevel) world, world.getCurrentDifficultyAt(vex.getOnPos()), MobSpawnType.MOB_SUMMONED, null);
-                var creature = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(entity, vex, this.spellId, spellLevel)).getCreature();
-                world.addFreshEntity(creature);
-                SummonManager.initSummon(entity, creature, summonTime, summonedEntitiesCastData);
-            }
+
+            SummonedLunarMothEntity moth = new SummonedLunarMothEntity(world, entity);
+            moth.moveTo(entity.getEyePosition().add(new Vec3(Utils.getRandomScaled(2), 1, Utils.getRandomScaled(2))));
+            moth.finalizeSpawn((ServerLevel) world, world.getCurrentDifficultyAt(moth.getOnPos()), MobSpawnType.MOB_SUMMONED, null);
+            var creature = NeoForge.EVENT_BUS.post(new SpellSummonEvent<>(entity, moth, this.spellId, spellLevel)).getCreature();
+            world.addFreshEntity(creature);
+            SummonManager.initSummon(entity, creature, summonTime, summonedEntitiesCastData);
+
             RecastInstance recastInstance = new RecastInstance(this.getSpellId(), spellLevel, getRecastCount(spellLevel, entity), summonTime, castSource, summonedEntitiesCastData);
             recasts.addRecast(recastInstance, playerMagicData);
         }

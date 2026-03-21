@@ -13,7 +13,7 @@ public class SummonedLunarMothRenderer extends GeoEntityRenderer<SummonedLunarMo
 
     public SummonedLunarMothRenderer(EntityRendererProvider.Context renderManager, GeoModel<SummonedLunarMothEntity> model) {
         super(renderManager, model);
-        this.shadowRadius = 0.5f;
+        this.shadowRadius = 2f;
         this.addRenderLayer(new AutoGlowingGeoLayer<>(this));
     }
 

@@ -64,16 +64,6 @@ public class ASAREntityRegistry {
                             ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "lunar_moth").toString()
                     ));
 
-    // extends lunar moths, currently combat summons, will be repurposed as a mount
-    public static final DeferredHolder<EntityType<?>, EntityType<SummonedLunarMothEntity>> SUMMONED_LUNAR_MOTH =
-            ENTITIES.register("summoned_lunar_moth", () -> EntityType.Builder.<SummonedLunarMothEntity>of
-                            (SummonedLunarMothEntity::new, MobCategory.CREATURE).
-                    sized(0.8f, 0.8f)
-                    .clientTrackingRange(64)
-                    .build(
-                            ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "summoned_lunar_moth").toString()
-                    ));
-
 // Particle Entities and AOES ===================================
 
     // reverse-movement black hole, instant cast but only lasts for like 5 ticks so its balanced :)
@@ -91,6 +81,16 @@ public class ASAREntityRegistry {
                 .sized(1f, 1f)
                 .clientTrackingRange(64)
                 .build(AsterismArcanum.namespacePath("tidal_lock").toString()));
+
+    // extends lunar moths, 1 gigantic moth u can ride :)
+    public static final DeferredHolder<EntityType<?>, EntityType<SummonedLunarMothEntity>> SUMMONED_LUNAR_MOTH =
+            ENTITIES.register("summoned_lunar_moth", () -> EntityType.Builder.<SummonedLunarMothEntity>of
+                            (SummonedLunarMothEntity::new, MobCategory.CREATURE).
+                    sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "summoned_lunar_moth").toString()
+                    ));
 
     public static void register(IEventBus eventBus) { ENTITIES.register(eventBus); }
 }

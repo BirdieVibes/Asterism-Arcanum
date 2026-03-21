@@ -14,7 +14,7 @@ public class SummonedLunarMothModel extends DefaultedEntityGeoModel<SummonedLuna
 
     @Override
     public ResourceLocation getModelResource(SummonedLunarMothEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "geo/lunar_moth.geo.json");
+        return ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "geo/big_moth.geo.json");
     }
 
     @Override
@@ -24,7 +24,7 @@ public class SummonedLunarMothModel extends DefaultedEntityGeoModel<SummonedLuna
 
     @Override
     public ResourceLocation getAnimationResource(SummonedLunarMothEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "animations/lunar_moth.animation.json");
+        return ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "animations/big_moth.animation.json");
     }
 
     @Override

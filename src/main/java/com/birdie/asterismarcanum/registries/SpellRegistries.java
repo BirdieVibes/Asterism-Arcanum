@@ -61,7 +61,7 @@ public class SpellRegistries {
 //            registerSpell(new MooncallSpell());
 
     // SUMMON LUNAR MOTHS SPELL
-    // A spell which summons lunar moths that apply a mana rend debuff (aces spell utils) on hit
+    // A spell which summons a giant moth mount
     public static final Supplier<AbstractSpell> SUMMON_LUNAR_MOTHS =
             registerSpell(new SummonLunarMothsSpell());
 
