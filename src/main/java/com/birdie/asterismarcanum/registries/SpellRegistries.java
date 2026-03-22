@@ -13,73 +13,79 @@ import java.util.function.Supplier;
 public class SpellRegistries {
     public static final DeferredRegister<AbstractSpell> SPELLS =
             DeferredRegister.create(SpellRegistry.SPELL_REGISTRY_KEY, AsterismArcanum.MOD_ID);
-// RUNNING TOTAL ----------- 9 IMP, 13 PLANNED ----------------
+// RUNNING TOTAL ----------- 10 IMP, 14 PLANNED ----------------
 
-    // STARFIRE SPELL
+    // STARFIRE SPELL (my concept)
     // A missile spell which pierces twice and ricochets to targets at a similar angle compared to the player's view
     public static final Supplier<AbstractSpell> STARFIRE =
             registerSpell(new StarfireSpell());
 
-    // BRIGHTBURST SPELL
+    // BRIGHTBURST SPELL (my concept)
     // Repels nearby entities including projectiles
     public static final Supplier<AbstractSpell> BRIGHTBURST =
             registerSpell(new BrightburstSpell());
 
-    // STAR SWARM SPELL
+    // STAR SWARM SPELL (my concept)
     // Summons 5 projectiles every 12 ticks aimed at your looking angle
     public static final Supplier<AbstractSpell> STAR_SWARM =
             registerSpell(new StarSwarmSpell());
 
-    // NIGHT VISION SPELL
+    // NIGHT VISION SPELL (my concept)
     // Gives night vision :P
     public static final Supplier<AbstractSpell> NIGHT_VISION =
             registerSpell(new NightVisionSpell());
 
-    // TIDAL LOCK SPELL
-    // Allows you to put yourself in 3D stasis, able to look around and aim, but stuck to a single location until you are freed, either by your or other's intervention
+    // TIDAL LOCK SPELL (my concept)
+    // Allows you to put yourself in 3D stasis, able to look around and aim, but stuck to a single location until you are dislodged,
+    // either by your or another's intervention
     public static final Supplier<AbstractSpell> TIDAL_LOCK =
             registerSpell(new TidalLockSpell());
 
-    // CONSTELLATION SPELL
-    // Summons stars at range which explode after some time
-//    public static final Supplier<AbstractSpell> CONSTELLATION =
-//            registerSpell(new ConstellationSpell());
-
-    // LUMINOUS BEAM SPELL
+    // LUMINOUS BEAM SPELL (my concept)
     // Cone spell but long and skinny <3
     public static final Supplier<AbstractSpell> LUMINOUS_BEAM =
             registerSpell(new LuminousBeamSpell());
 
-    // ASTRAL SEA SPELL
+    // ASTRAL SEA SPELL (my concept)
     // Dimension Teleporting spell similar to Pocket Dimension
         public static final Supplier<AbstractSpell> ASTRAL_GATEWAY =
                 registerSpell(new AstralGatewaySpell());
 
-    // MOONCALL SPELL
-    // Moon projectiles orbiting the player which are sent out on second cast to deal damage
-//    public static final Supplier<AbstractSpell> MOONCALL =
-//            registerSpell(new MooncallSpell());
-
-    // SUMMON LUNAR MOTHS SPELL
+    // SUMMON LUNAR MOTHS SPELL (my concept)
     // A spell which summons a giant moth mount
     public static final Supplier<AbstractSpell> SUMMON_LUNAR_MOTHS =
             registerSpell(new SummonLunarMothsSpell());
 
-    // WISHING STAR SPELL
+    // WISHING STAR SPELL (my concept)
     // A multicast slow "dash" that levitates the caster
     public static final Supplier<AbstractSpell> WISHING_STAR =
             registerSpell(new WishingStarSpell());
 
+    // PIERCING LIGHT SPELL (my concept)
+    // Creates dozens of low damage short range projectiles around you to ward off enemies
     public static final Supplier<AbstractSpell> PIERCING_LIGHT =
             registerSpell(new PiercingLightSpell());
 
-    // Remote controlled floating 'orb' of light that you can smack into people?
+    //STARCUTTER SPELL (Mouse's concept)
+    //Generate a small orb of astral magic before you, and then barrage that area with magical tears/slashes.
+    public static final Supplier<AbstractSpell> STARCUTTER =
+            registerSpell(new StarcutterSpell());
 
-    // a more bubble shaped 'shield' spell with constellation stuff going on
+    //STELLAR CHIME SPELL (Mouse's concept)
+    //Resonate a glimmering bell, granting anyone targeted the stellar buff, or yourself if no one is targeted.
+//    public static final Supplier<AbstractSpell> STELLAR_CHIME =
+//            registerSpell(new StellarChimeSpell());
 
-    // a self-centered "accupuncture" style burst of projectiles
+    //CONSTELLATION SPELL (Mouse's concept)
+    //Blast the target with the power of the stars. Starts with 30 star projectiles, gain one star for every effect.
+//    public static final Supplier<AbstractSpell> CONSTELLATION =
+//            registerSpell(new ConstellationSpell());
 
-    // regular big arrow spell? or maybe a lobbed projectile
+    //TRAILBLAZE SPELL (Mouse's concept)
+    //Create a comet to lob, creating a AoE that deal damage and inflicts starburn debuff.
+//    public static final Supplier<AbstractSpell> TRAILBLAZE =
+//            registerSpell(new TrailblazeSpell());
+
 
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }
 

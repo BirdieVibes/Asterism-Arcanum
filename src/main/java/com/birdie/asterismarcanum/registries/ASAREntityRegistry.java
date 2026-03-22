@@ -8,6 +8,7 @@ import com.birdie.asterismarcanum.entity.spells.brightburst.BrightburstEntity;
 import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamProjectile;
 import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightProjectile;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
+import com.birdie.asterismarcanum.entity.spells.starcutter.StarcutterEntity;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
 import com.birdie.asterismarcanum.entity.spells.tidal_lock.TidalLockEntity;
 import net.minecraft.core.registries.Registries;
@@ -72,6 +73,12 @@ public class ASAREntityRegistry {
                     .sized(11, 11)
                     .clientTrackingRange(64)
                     .build(AsterismArcanum.namespacePath("brightburst").toString()));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<StarcutterEntity>> STARCUTTER_PROJECTILE =
+            ENTITIES.register("starcutter_entity", () -> EntityType.Builder.<StarcutterEntity>of(StarcutterEntity::new, MobCategory.MISC)
+                    .sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(AsterismArcanum.namespacePath("starcutter").toString()));
 
 // Mounts ===================================================================
 

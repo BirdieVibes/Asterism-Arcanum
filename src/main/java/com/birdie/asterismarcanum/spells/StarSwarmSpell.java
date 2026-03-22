@@ -81,11 +81,11 @@ public class StarSwarmSpell extends AbstractSpell {
                 && entityCastData.getCastingEntity() instanceof StarSwarmProjectile cone) {
             cone.setDealDamageActive();
         } else {
-            StarSwarmProjectile luminousBeamProjectile = new StarSwarmProjectile(world, entity);
-            luminousBeamProjectile.setPos(entity.position().add(0, entity.getEyeHeight() * .7, 0));
-            luminousBeamProjectile.setDamage(getDamage(spellLevel, entity));
-            world.addFreshEntity(luminousBeamProjectile);
-            playerMagicData.setAdditionalCastData(new EntityCastData(luminousBeamProjectile));
+            StarSwarmProjectile starSwarm = new StarSwarmProjectile(world, entity);
+            starSwarm.setPos(entity.position().add(0, entity.getEyeHeight() * .7, 0));
+            starSwarm.setDamage(getDamage(spellLevel, entity));
+            world.addFreshEntity(starSwarm);
+            playerMagicData.setAdditionalCastData(new EntityCastData(starSwarm));
         }
         super.onCast(world, spellLevel, entity, castSource, playerMagicData);
     }

@@ -35,7 +35,7 @@ public class PiercingLightSpell extends AbstractSpell {
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         return List.of(Component.translatable("ui.irons_spellbooks.damage", Utils.stringTruncation(getDamage(spellLevel, caster), 2)),
                 // times 3 because we are adding entities 3 times per i (this has to be here because getCount affects the amount of entities spawned)
-                Component.translatable("ui.irons_spellbooks.projectile_count", getCount(spellLevel, caster) * 3));
+                Component.translatable("ui.irons_spellbooks.projectile_count",  Utils.stringTruncation(getCount(spellLevel, caster) * 3, 1)));
     }
 
     public PiercingLightSpell() {
