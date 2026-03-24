@@ -1,6 +1,8 @@
 package com.birdie.asterismarcanum.events;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyModel;
+import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyRenderer;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothModel;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothRenderer;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothModel;
@@ -35,6 +37,7 @@ public class ClientSetup {
         event.registerEntityRenderer(ASAREntityRegistry.LUMINOUS_BEAM_PROJECTILE.get(), LuminousBeamRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), NoopRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.PIERCING_LIGHT_PROJECTILE.get(), PiercingLightRenderer::new);
+        event.registerEntityRenderer(ASAREntityRegistry.DRAGONFLY.get(), context -> {return new DragonflyRenderer(context, new DragonflyModel());});
         event.registerEntityRenderer(ASAREntityRegistry.LUNAR_MOTH.get(), context -> {return new LunarMothRenderer(context, new LunarMothModel());});
         event.registerEntityRenderer(ASAREntityRegistry.SUMMONED_LUNAR_MOTH.get(), context -> {return new SummonedLunarMothRenderer(context, new SummonedLunarMothModel());});
     }
@@ -57,6 +60,7 @@ public class ClientSetup {
         event.registerSpriteSet(ASARParticleRegistry.SIGNS_PARTICLE.get(), SignsParticle.Provider::new);
         event.registerSpriteSet(ASARParticleRegistry.ALTSIGNS_PARTICLE.get(), AltsignsParticle.Provider::new);
         event.registerSpriteSet(ASARParticleRegistry.PULSE_PARTICLE.get(), PulseParticle.Provider::new);
+        event.registerSpriteSet(ASARParticleRegistry.STAR_CUT_PARTICLE.get(), StarCutParticle.Provider::new);
         event.registerSpriteSet(ASARParticleRegistry.DELAYED_FIRST_PULSE_PARTICLE.get(), DelayedFirstPulseParticle.Provider::new);
         event.registerSpriteSet(ASARParticleRegistry.DELAYED_SECOND_PULSE_PARTICLE.get(), DelayedSecondPulseParticle.Provider::new);
     }

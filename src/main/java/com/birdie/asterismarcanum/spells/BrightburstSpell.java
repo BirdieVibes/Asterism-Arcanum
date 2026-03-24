@@ -2,6 +2,7 @@ package com.birdie.asterismarcanum.spells;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.brightburst.BrightburstEntity;
+import com.birdie.asterismarcanum.particle.StarCutParticleOptions;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
@@ -23,6 +24,9 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
+
+import static io.redspace.ironsspellbooks.api.util.Utils.random;
+import static net.minecraft.Util.getRandom;
 
 //Spell based on Black Hole in Iron's Spells n' Spellbooks
 //Pushes entities within a broad range away from the caster by summoning an inverted black hole entity for a brief amount of time

@@ -1,15 +1,18 @@
 package com.birdie.asterismarcanum.entity.spells.starcutter;
 
+import com.birdie.asterismarcanum.particle.StarCutParticleOptions;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import com.birdie.asterismarcanum.registries.SpellRegistries;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
+import io.redspace.ironsspellbooks.particle.FlameStrikeParticleOptions;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -92,9 +95,19 @@ public class StarcutterEntity extends Projectile implements AntiMagicSusceptible
                     1, 0, 0, 0, 0, true
             );
 
-            MagicManager.spawnParticles(level, ParticleTypes.EXPLOSION,
-                    position.x, position.y + totalRadius, position.z,
-                    15, 1, 1, 1, 0.5, true);
+            for (int i = 0; i < 7; i++) {
+                float xOff = (float) getRandomX(360) * getRandom().nextIntBetweenInclusive(-1, 1);
+                float zOff = (float) getRandomZ(360) * getRandom().nextIntBetweenInclusive(-1, 1);
+                float yOffer = (float) ((xOff - zOff) * (zOff + xOff));
+                float yOff = (float) (yOffer * getRandom().nextIntBetweenInclusive(-1, 1));
+
+                boolean mirror = random.nextBoolean();
+                MagicManager.spawnParticles(level, new StarCutParticleOptions(
+                                (float) position.x * xOff, (float) position.y * yOff, (float) position.z * zOff, mirror, false, 1f),
+                        position.x, position.y + totalRadius, position.z,
+                        1, 0, 0, 0, 0, true
+                );
+            }
 
             level.playSound(null, blockPos, ASARSoundsRegistry.ASTRAL_SHATTER_2.get(),
                     SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(2, 5) * .3f);

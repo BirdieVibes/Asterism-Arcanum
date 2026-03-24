@@ -76,11 +76,6 @@ public class SpellRegistries {
 //    public static final Supplier<AbstractSpell> STELLAR_CHIME =
 //            registerSpell(new StellarChimeSpell());
 
-    //CONSTELLATION SPELL (Mouse's concept)
-    //Blast the target with the power of the stars. Starts with 30 star projectiles, gain one star for every effect.
-//    public static final Supplier<AbstractSpell> CONSTELLATION =
-//            registerSpell(new ConstellationSpell());
-
     //TRAILBLAZE SPELL (Mouse's concept)
     //Create a comet to lob, creating a AoE that deal damage and inflicts starburn debuff.
 //    public static final Supplier<AbstractSpell> TRAILBLAZE =

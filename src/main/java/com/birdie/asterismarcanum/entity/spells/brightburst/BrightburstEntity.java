@@ -1,7 +1,9 @@
 package com.birdie.asterismarcanum.entity.spells.brightburst;
 
+import com.birdie.asterismarcanum.particle.StarCutParticleOptions;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import net.minecraft.nbt.CompoundTag;

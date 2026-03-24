@@ -4,7 +4,9 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.particle.DelayedFirstPulseParticleOptions;
 import com.birdie.asterismarcanum.particle.DelayedSecondPulseParticleOptions;
 import com.birdie.asterismarcanum.particle.PulseParticleOptions;
+import com.birdie.asterismarcanum.particle.StarCutParticleOptions;
 import com.mojang.serialization.MapCodec;
+import io.redspace.ironsspellbooks.particle.FlameStrikeParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
@@ -68,6 +70,17 @@ public class ASARParticleRegistry {
             return PulseParticleOptions.STREAM_CODEC;
         }
     });
+
+    //basically a clone of flaming strike
+    public static final Supplier<ParticleType<StarCutParticleOptions>> STAR_CUT_PARTICLE = PARTICLE_TYPES.register("star_cut", () -> new ParticleType<>(true) {
+        public MapCodec<StarCutParticleOptions> codec() {
+            return StarCutParticleOptions.MAP_CODEC;
+        }
+        public StreamCodec<? super RegistryFriendlyByteBuf, StarCutParticleOptions> streamCodec() {
+            return StarCutParticleOptions.STREAM_CODEC;
+        }
+    });
+
 //unused pulse particles, based on the trace particle in ISS
     public static final Supplier<ParticleType<DelayedFirstPulseParticleOptions>> DELAYED_FIRST_PULSE_PARTICLE = PARTICLE_TYPES.register("delayed_first_pulse",
             () -> new ParticleType<>(true) {
