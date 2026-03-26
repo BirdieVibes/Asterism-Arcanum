@@ -47,15 +47,6 @@ public class AstrolabeSpellBook extends SpellBook implements GeoItem {
     }
 
     @Override
-    public void initializeSpellContainer(ItemStack itemStack) {
-        if (itemStack == null) {
-            return;
-        }
-
-        super.initializeSpellContainer(itemStack);
-    }
-
-    @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
 
     }

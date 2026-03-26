@@ -5,6 +5,7 @@ import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.entity.mobs.goals.WispAttackGoal;
+import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -229,16 +230,21 @@ public class DragonflyEntity extends Animal implements GeoEntity, FlyingAnimal, 
         super.onRemovedFromLevel();
     }
 
+    @Override
+    public int getAmbientSoundInterval() {
+        return super.getAmbientSoundInterval() / 5;
+    }
+
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.GLOW_SQUID_AMBIENT;
+        return SoundEvents.BEE_LOOP;
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return SoundEvents.GLOW_SQUID_HURT;
+        return SoundEvents.SILVERFISH_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.GLOW_SQUID_HURT;
+        return SoundEvents.SILVERFISH_DEATH;
     }
 
     protected void checkFallDamage(double y, boolean onGround, BlockState state, BlockPos pos) {

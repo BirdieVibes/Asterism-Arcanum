@@ -15,7 +15,7 @@ public class AstrolabeModel extends DefaultedItemGeoModel<AstrolabeSpellBook> {
         return ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "textures/item/astrolabe.png");
     }
 
-    public ResourceLocation getAnimatioNResource(AstrolabeSpellBook animatable) {
+    public ResourceLocation getAnimationResource(AstrolabeSpellBook animatable) {
         return ResourceLocation.fromNamespaceAndPath("irons_spellbooks", "animations/wizard_armor_animation.json");
     }
 }
