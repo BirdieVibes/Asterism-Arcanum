@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.registries;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.item.EtherealTalisman;
 import com.birdie.asterismarcanum.item.armor.AstralMagicArmorItem;
+import com.birdie.asterismarcanum.item.curios.spellbooks.astrolabe.AstrolabeSpellBook;
 import com.birdie.asterismarcanum.item.staves.CelestialStaffItem;
 import io.redspace.ironsspellbooks.item.UpgradeOrbItem;
 import io.redspace.ironsspellbooks.registries.ComponentRegistry;
@@ -77,6 +78,7 @@ public class ASARItemsRegistry {
     );
 
     public static final DeferredHolder<Item, Item> CELESTIAL_STAFF = ITEMS.register("celestial_staff", CelestialStaffItem::new);
+    public static final DeferredHolder<Item, Item> ASTROLABE = ITEMS.register("astrolabe", AstrolabeSpellBook::new);
 
     //School Crafting
     public static final DeferredHolder<Item, Item> ASTRAL_RUNE = ITEMS.registerSimpleItem("astral_rune");
