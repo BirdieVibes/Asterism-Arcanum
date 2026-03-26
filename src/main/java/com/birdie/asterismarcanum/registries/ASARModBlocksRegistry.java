@@ -1,7 +1,6 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.block.AstralFlowerBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -15,9 +14,6 @@ import java.util.function.Supplier;
 public class ASARModBlocksRegistry {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(AsterismArcanum.MOD_ID);
-    //FLORA//
-    public static final DeferredBlock<Block> STELLAR_COSMOS_FLOWERS = BLOCKS.register("stellar_cosmos_flowers",
-            () -> new AstralFlowerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ALLIUM)));
 
     //LIQUID LUMINANCE BLOCKS//
     public static final DeferredBlock<Block> LUMINE = registerBlock("lumine",

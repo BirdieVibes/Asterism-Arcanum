@@ -25,11 +25,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
 //        tag(ASARTags.Items.TRANSFORMABLE_ITEMS)
 //                .add(ASARTags.BISMUTH.get())
 //                .add(Items.ALLIUM);
-        tag(ItemTags.SWORDS)
-                .add(ASARItemsRegistry.CELESTIAL_STAFF.get());
-
-        tag(ASARTags.STAFF)
-                .add(ASARItemsRegistry.CELESTIAL_STAFF.get());
 
     }
 }

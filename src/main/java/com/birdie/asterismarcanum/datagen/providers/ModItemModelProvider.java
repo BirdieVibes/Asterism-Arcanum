@@ -18,16 +18,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-
-        basicItem(ASARItemsRegistry.ASTRAL_HELMET.get());
-        basicItem(ASARItemsRegistry.ASTRAL_CHESTPLATE.get());
-        basicItem(ASARItemsRegistry.ASTRAL_LEGGINGS.get());
-        basicItem(ASARItemsRegistry.ASTRAL_BOOTS.get());
-
         basicItem(ASARItemsRegistry.STELLAR_NAUTILUS_SHELL.get());
         basicItem(ASARItemsRegistry.LIQUID_LUMINANCE_BOTTLE.get());
         basicItem(ASARItemsRegistry.ASTRAL_RUNE.get());
-        basicItem(ASARItemsRegistry.STELLAR_COSMOS.get());
 
         wallItem(ASARModBlocksRegistry.LUMINE_WALL, ASARModBlocksRegistry.LUMINE);
         wallItem(ASARModBlocksRegistry.CHISELED_LUMINE_WALL, ASARModBlocksRegistry.CHISELED_LUMINE);

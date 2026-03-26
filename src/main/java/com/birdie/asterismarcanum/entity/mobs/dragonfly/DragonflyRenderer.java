@@ -15,7 +15,7 @@ public class DragonflyRenderer extends GeoEntityRenderer<DragonflyEntity> {
     public DragonflyRenderer(EntityRendererProvider.Context renderManager, GeoModel<DragonflyEntity> model) {
         super(renderManager, model);
         this.shadowRadius = 0.5f;
-//        this.addRenderLayer(new AutoGlowingGeoLayer<>(this));
+        this.addRenderLayer(new AutoGlowingGeoLayer<>(this));
     }
 
     @Override

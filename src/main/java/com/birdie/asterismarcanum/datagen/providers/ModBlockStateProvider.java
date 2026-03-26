@@ -49,10 +49,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock(((WallBlock) ASARModBlocksRegistry.POLISHED_LUMINE_WALL.get()), blockTexture(ASARModBlocksRegistry.POLISHED_LUMINE.get()));
         blockItem(ASARModBlocksRegistry.POLISHED_LUMINE_STAIRS);
         blockItem(ASARModBlocksRegistry.POLISHED_LUMINE_SLAB);
-
-        simpleBlock(ASARModBlocksRegistry.STELLAR_COSMOS_FLOWERS.get(),
-                models().cross(blockTexture(ASARModBlocksRegistry.STELLAR_COSMOS_FLOWERS.get()).getPath(), blockTexture(ASARModBlocksRegistry.STELLAR_COSMOS_FLOWERS.get())).renderType("cutout"));
-
     }
 
     private void blockWithItem(DeferredBlock<Block> deferredBlock) {

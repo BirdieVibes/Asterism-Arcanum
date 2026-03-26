@@ -42,11 +42,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.add(ASARModBlocksRegistry.POLISHED_LUMINE_SLAB.get(),
                 block -> createSlabItemTable(ASARModBlocksRegistry.POLISHED_LUMINE_SLAB.get()));
         this.dropSelf(ASARModBlocksRegistry.POLISHED_LUMINE_WALL.get());
-
-        dropOther(ASARModBlocksRegistry.STELLAR_COSMOS_FLOWERS.get(), ASARItemsRegistry.STELLAR_COSMOS.get());
-        // protected void dropPottedContents(Block flowerPot) {
-        //        this.add(flowerPot, (Function)((p_304146_) -> this.createPotFlowerItemTable(((FlowerPotBlock)p_304146_).getPotted())));
-        //    }
     }
 
 //    protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

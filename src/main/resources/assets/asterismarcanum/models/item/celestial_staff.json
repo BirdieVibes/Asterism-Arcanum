@@ -1,42 +1,97 @@
 {
-  "format_version": "1.21.11",
   "credit": "Made with Blockbench",
   "parent": "builtin/entity",
-  "texture_size": [32, 32],
-  "textures": {
-    "0": "asterismarcanum:item/celestial_staff",
-    "particle": "asterismarcanum:item/celestial_staff"
-  },
+  "texture_size": [
+    64,
+    64
+  ],
   "display": {
     "thirdperson_righthand": {
-      "translation": [0, -3.5, 0.75],
-      "scale": [1.5, 1.5, 1.5]
+      "scale": [
+        1.5,
+        1.5,
+        1.5
+      ],
+      "translation": [
+        0,
+        -30,
+        1
+      ]
     },
     "thirdperson_lefthand": {
-      "translation": [0, -3.5, 0.75],
-      "scale": [1.5, 1.5, 1.5]
+      "scale": [
+        1.5,
+        1.5,
+        1.5
+      ],
+      "translation": [
+        0,
+        -30,
+        1
+      ]
     },
     "firstperson_righthand": {
-      "translation": [0, -3, 0],
-      "scale": [1.4, 1.4, 1.4]
+      "translation": [
+        0,
+        -20,
+        0
+      ]
     },
     "firstperson_lefthand": {
-      "translation": [0, -3, 0],
-      "scale": [1.4, 1.4, 1.4]
+      "translation": [
+        0,
+        -20,
+        0
+      ]
     },
     "ground": {
-      "translation": [0, 7, 0],
-      "scale": [0.7, 0.7, 0.7]
+      "scale": [
+        0.67,
+        0.67,
+        0.67
+      ],
+      "translation": [
+        0,
+        -4,
+        0
+      ]
     },
     "gui": {
-      "rotation": [43, 34, -50],
-      "translation": [-2.25, -2.75, 0],
-      "scale": [1, 1, 1]
+      "rotation": [
+        -13,
+        128,
+        65
+      ],
+      "translation": [
+        -12,
+        -12,
+        0
+      ],
+      "scale": [
+        1.1,
+        1.1,
+        1.1
+      ]
     },
     "fixed": {
-      "rotation": [0, 90, 0],
-      "translation": [0, 0, 0],
-      "scale": [0.8, 0.8, 0.8]
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        -10,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.7,
+        0.7
+      ]
     }
+  },
+  "textures": {
+    "particle": "asterismarcanum:item/celestial_staff"
   }
 }

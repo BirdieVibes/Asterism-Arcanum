@@ -1,25 +1,17 @@
 package com.birdie.asterismarcanum;
 
-import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothRenderer;
-import com.birdie.asterismarcanum.events.ServerEvents;
-import com.birdie.asterismarcanum.item.weapon.CelestialStaffItemRenderer;
+import com.birdie.asterismarcanum.item.staves.CelestialStaffRenderer;
 import com.birdie.asterismarcanum.registries.*;
 import com.birdie.asterismarcanum.registries.ASARItemsRegistry;
-import io.redspace.ironsspellbooks.item.SpellBook;
-import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import mod.azure.azurelib.AzureLib;
 import mod.azure.azurelib.common.animation.cache.AzIdentityRegistry;
 import mod.azure.azurelib.common.render.item.AzItemRendererRegistry;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.jetbrains.annotations.NotNull;
@@ -32,8 +24,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import software.bernie.geckolib.GeckoLib;
-import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 @Mod(AsterismArcanum.MOD_ID)
 public class AsterismArcanum {
@@ -78,7 +68,6 @@ public class AsterismArcanum {
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-        AzIdentityRegistry.register(ASARItemsRegistry.CELESTIAL_STAFF.get());
         LOGGER.info("HELLO from server starting");
     }
 
@@ -86,10 +75,8 @@ public class AsterismArcanum {
     public static class ClientModEvents
     {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-
-            AzItemRendererRegistry.register(CelestialStaffItemRenderer::new, ASARItemsRegistry.CELESTIAL_STAFF.get());
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            AzItemRendererRegistry.register(CelestialStaffRenderer::new, ASARItemsRegistry.CELESTIAL_STAFF.get());
         }
     }
 

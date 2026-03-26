@@ -7,22 +7,27 @@
 			"bones": {
 				"gem": {
 					"position": {
-						"0": {
-							"lerp_mode": "catmullrom",
-							"vector": [0, -0.3, 0]
-						},
-						"3": {
-							"lerp_mode": "catmullrom",
-							"vector": [0, -0.3, 0]
+						"0.0": {
+							"post": {
+								"vector": [0, -0.3, 0]
+							},
+							"lerp_mode": "catmullrom"
 						},
 						"1.5": {
-							"lerp_mode": "catmullrom",
-							"vector": [0, 0.2, 0]
+							"post": {
+								"vector": [0, 0.2, 0]
+							},
+							"lerp_mode": "catmullrom"
+						},
+						"3.0": {
+							"post": {
+								"vector": [0, -0.3, 0]
+							},
+							"lerp_mode": "catmullrom"
 						}
 					}
 				}
 			}
 		}
-	},
-	"geckolib_format_version": 2
+	}
 }

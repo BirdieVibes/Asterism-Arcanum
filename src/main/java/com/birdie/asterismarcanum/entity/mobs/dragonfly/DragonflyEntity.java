@@ -3,6 +3,8 @@ package com.birdie.asterismarcanum.entity.mobs.dragonfly;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
+import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
+import io.redspace.ironsspellbooks.entity.mobs.goals.WispAttackGoal;
 import net.acetheeldritchking.aces_spell_utils.registries.ASAttributeRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -34,6 +36,8 @@ import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.entity.animal.*;
+import net.minecraft.world.entity.monster.Spider;
+import net.minecraft.world.entity.npc.WanderingTrader;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -50,11 +54,12 @@ import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.EnumSet;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.function.Predicate;
 
-
+//I don't know why you're allowed to do this but even though this is a neutral mob it auto-aggroes on players
 public class DragonflyEntity extends Animal implements GeoEntity, FlyingAnimal, GeoAnimatable, NeutralMob {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
@@ -64,9 +69,10 @@ public class DragonflyEntity extends Animal implements GeoEntity, FlyingAnimal, 
         this.lookControl = createLookControl();
         this.moveControl = new FlyingMoveControl(this, 40, true);
 
-        this.setPathfindingMalus(PathType.DANGER_FIRE, -1.0F);
-        this.setPathfindingMalus(PathType.WATER, -1.0F);
-        this.setPathfindingMalus(PathType.WATER_BORDER, -16.0F);
+        this.setPathfindingMalus(PathType.DANGER_FIRE, 1.0F);
+        this.setPathfindingMalus(PathType.WATER, 10.0F);
+        this.setPathfindingMalus(PathType.WATER_BORDER, 10.0F);
+
         noCulling = true;
     }
 
@@ -103,17 +109,20 @@ public class DragonflyEntity extends Animal implements GeoEntity, FlyingAnimal, 
     public void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
 
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomFlyingGoal(this, DragonflyEntity.this.getAttributeValue(Attributes.FLYING_SPEED)));
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, DragonflyEntity.this.getAttributeValue(Attributes.FLYING_SPEED), true));
+        this.goalSelector.addGoal(4, new WaterAvoidingRandomFlyingGoal(this, DragonflyEntity.this.getAttributeValue(Attributes.FLYING_SPEED)));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, new Class[0])).setAlertOthers(new Class[0]));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, null));
 
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Bee.class, 10, true, false, null));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LunarMothEntity.class, 10, true, false, null));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Bee.class, 10, true, false, null));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Spider.class, 10, true, false, null));
         this.targetSelector.addGoal(1, new ResetUniversalAngerTargetGoal<>(this, true));
-        this.targetSelector.addGoal(1, new MoveTowardsTargetGoal(this, DragonflyEntity.this.getAttributeValue(Attributes.FLYING_SPEED), 24.0F));
-        this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
-        this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Mob.class, 8.0F));
+        this.targetSelector.addGoal(1, new MoveTowardsTargetGoal(this, DragonflyEntity.this.getAttributeValue(Attributes.FLYING_SPEED), 24));
+        this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 3.0F, 1.0F));
+        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Mob.class, 8.0F));
     }
-
+// if you dont have this VVVVV then flying speed doesnt affect how fast the mob moves, don't set over 1 if you want your entities to move reasonable speeds
     public void travel(Vec3 travelVector) {
         if (this.isControlledByLocalInstance()) {
             if (this.isInWater()) {
@@ -127,7 +136,7 @@ public class DragonflyEntity extends Animal implements GeoEntity, FlyingAnimal, 
             } else {
                 this.moveRelative(this.getSpeed(), travelVector);
                 this.move(MoverType.SELF, this.getDeltaMovement());
-                this.setDeltaMovement(this.getDeltaMovement().scale((double)0.97F));
+                this.setDeltaMovement(this.getDeltaMovement().scale((double)0.9F));
             }
         }
 
@@ -196,7 +205,9 @@ public class DragonflyEntity extends Animal implements GeoEntity, FlyingAnimal, 
                 .add(Attributes.MAX_HEALTH, 20.0)
                 .add(Attributes.FOLLOW_RANGE, 24.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.0F)
-                .add(Attributes.ATTACK_DAMAGE, 5.0F)
+                .add(Attributes.ARMOR, 2.0F)
+                .add(AttributeRegistry.SPELL_RESIST, 0.1F)
+                .add(Attributes.ATTACK_DAMAGE, 2.0F)
                 .add(Attributes.ENTITY_INTERACTION_RANGE, 4.0F)
                 .add(Attributes.FLYING_SPEED, 0.5F);
     }
@@ -204,7 +215,7 @@ public class DragonflyEntity extends Animal implements GeoEntity, FlyingAnimal, 
     protected PathNavigation createNavigation(Level p_level) {
         FlyingPathNavigation flyingpathnavigation = new FlyingPathNavigation(this, p_level) {
             public boolean isStableDestination(BlockPos p_27947_) {
-                return !this.level.getBlockState(p_27947_.below()).isAir();
+                return !this.level.getBlockState(p_27947_.below(4)).isAir();
             }
         };
         flyingpathnavigation.setCanOpenDoors(false);

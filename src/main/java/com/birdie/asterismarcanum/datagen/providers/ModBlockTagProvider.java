@@ -37,10 +37,5 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ASARModBlocksRegistry.CHISELED_LUMINE_WALL.get())
                 .add(ASARModBlocksRegistry.LUMINE_BRICKS_WALL.get())
                 .add(ASARModBlocksRegistry.POLISHED_LUMINE_WALL.get());
-//        tag(BlockTags.FLOWERS)
-//                .add(ASARModBlocksRegistry.STELLAR_COSMOS_FLOWERS.get());
-
-//        tag(BlockTags.FLOWER_POTS)
-//                .add(ASARModBlocksRegistry.flowerpot.get());
     }
 }
