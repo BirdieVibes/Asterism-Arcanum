@@ -1,6 +1,8 @@
 package com.birdie.asterismarcanum.item.curios.spellbooks.astrolabe;
 
 import com.birdie.asterismarcanum.registries.ASARAttributeRegistry;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import io.redspace.ironsspellbooks.api.item.curios.AffinityData;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.item.SpellBook;
@@ -75,5 +77,14 @@ public class AstrolabeSpellBook extends SpellBook implements GeoItem {
                 return this.renderer;
             }
         });
+    }
+
+
+    @Override
+    public void handleCustomLecternPosing(PoseStack poseStack) {
+        poseStack.mulPose(Axis.XP.rotationDegrees(0));
+        poseStack.mulPose(Axis.YP.rotationDegrees(270));
+        poseStack.mulPose(Axis.ZP.rotationDegrees(90));
+        poseStack.translate(.55, -0.1, 0.125);
     }
 }
