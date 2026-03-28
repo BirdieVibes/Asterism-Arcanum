@@ -1,6 +1,5 @@
 package com.birdie.asterismarcanum;
 
-import com.birdie.asterismarcanum.item.curios.spellbooks.astrolabe.AstrolabeRenderer;
 import com.birdie.asterismarcanum.item.staves.CelestialStaffRenderer;
 import com.birdie.asterismarcanum.registries.*;
 import com.birdie.asterismarcanum.registries.ASARItemsRegistry;
@@ -8,6 +7,7 @@ import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import mod.azure.azurelib.AzureLib;
 import mod.azure.azurelib.common.animation.cache.AzIdentityRegistry;
+import mod.azure.azurelib.common.render.armor.AzArmorRendererRegistry;
 import mod.azure.azurelib.common.render.item.AzItemRendererRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -83,6 +83,7 @@ public class AsterismArcanum {
             event.enqueueWork(() -> {
                 ASARItemsRegistry.ITEMS.getEntries().stream().filter(item -> item.get() instanceof SpellBook).forEach((item) -> CuriosRendererRegistry.register(item.get(), SpellBookCurioRenderer::new));
             });
+
             AzItemRendererRegistry.register(CelestialStaffRenderer::new, ASARItemsRegistry.CELESTIAL_STAFF.get());
         }
     }

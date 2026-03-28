@@ -83,6 +83,9 @@ public class ASARItemsRegistry {
     //School Crafting
     public static final DeferredHolder<Item, Item> ASTRAL_RUNE = ITEMS.registerSimpleItem("astral_rune");
 
+    public static final DeferredHolder<Item, Item> DRAGONFLY_CHITIN = ITEMS.registerSimpleItem("dragonfly_chitin");
+
+
     public static final DeferredHolder<Item, Item> ASTRAL_UPGRADE_ORB = ITEMS.register("astral_upgrade_orb",
             () -> new UpgradeOrbItem(ItemPropertiesHelper.material().rarity(Rarity.UNCOMMON).component(ComponentRegistry.UPGRADE_ORB_TYPE,
                     ASARUpgradeOrbTypeRegistry.ASTRAL_SPELL_POWER)));

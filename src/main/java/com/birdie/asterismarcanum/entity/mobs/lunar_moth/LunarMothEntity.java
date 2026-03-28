@@ -62,8 +62,7 @@ public class LunarMothEntity extends Animal implements GeoEntity, FlyingAnimal, 
         this(ASAREntityRegistry.LUNAR_MOTH.get(), level);
     }
 
-    protected LookControl createLookControl()
-    {
+    protected LookControl createLookControl() {
         return new LookControl(this)
         {
             @Override
@@ -141,8 +140,7 @@ public class LunarMothEntity extends Animal implements GeoEntity, FlyingAnimal, 
         controllers.add(animationController);
     }
 
-    private PlayState predicate(AnimationState<LunarMothEntity> event)
-    {
+    private PlayState predicate(AnimationState<LunarMothEntity> event) {
         if (event.isMoving() && this.animationToPlay == null)
         {
             event.getController().setAnimation(RawAnimation.begin().then("animation.lunar_moth.base", Animation.LoopType.LOOP));

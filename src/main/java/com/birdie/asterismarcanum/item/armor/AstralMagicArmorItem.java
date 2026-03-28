@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.item.armor;
 
 import com.birdie.asterismarcanum.entity.armor.AstralMagicArmorModel;
+import com.birdie.asterismarcanum.registries.ASARArmorMaterialRegistry;
 import com.birdie.asterismarcanum.registries.ASARAttributeRegistry;
 import io.redspace.ironsspellbooks.entity.armor.GenericCustomArmorRenderer;
 import io.redspace.ironsspellbooks.item.armor.ImbuableChestplateArmorItem;
@@ -9,6 +10,8 @@ import net.minecraft.world.item.ArmorItem;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
+
+import static io.redspace.ironsspellbooks.item.armor.ExtendedArmorItem.schoolAttributes;
 
 public class AstralMagicArmorItem extends ImbuableChestplateArmorItem {
     public AstralMagicArmorItem(ArmorItem.Type slot, Properties settings) {

@@ -22,6 +22,7 @@ public class ASARCreativeModeTabs {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ASARItemsRegistry.STELLAR_NAUTILUS_SHELL.get());
                         output.accept(ASARItemsRegistry.LIQUID_LUMINANCE_BOTTLE.get());
+                        output.accept(ASARItemsRegistry.DRAGONFLY_CHITIN.get());
                         output.accept(ASARItemsRegistry.ASTRAL_RUNE.get());
                         output.accept(ASARItemsRegistry.ASTRAL_UPGRADE_ORB.get());
                         output.accept((ItemLike) ASARItemsRegistry.ASTRAL_HELMET);

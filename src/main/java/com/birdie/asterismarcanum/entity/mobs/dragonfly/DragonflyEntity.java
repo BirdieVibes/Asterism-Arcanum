@@ -148,6 +148,10 @@ public class DragonflyEntity extends Animal implements GeoEntity, FlyingAnimal, 
         this.setRemainingPersistentAngerTime(PERSISTENT_ANGER_TIME.sample(this.random));
     }
 
+    protected boolean shouldDropLoot() {
+        return true;
+    }
+
     public void setRemainingPersistentAngerTime(int time) {
         this.remainingPersistentAngerTime = time;
     }
@@ -167,23 +171,6 @@ public class DragonflyEntity extends Animal implements GeoEntity, FlyingAnimal, 
 
     public void tick() {
         super.tick();
-//        if (this.level().isClientSide) {
-//            if (this.clientSideStandAnimation != this.clientSideStandAnimationO) {
-//                this.refreshDimensions();
-//            }
-//
-//            this.clientSideStandAnimationO = this.clientSideStandAnimation;
-//            if (this.isStanding()) {
-//                this.clientSideStandAnimation = Mth.clamp(this.clientSideStandAnimation + 1.0F, 0.0F, 6.0F);
-//            } else {
-//                this.clientSideStandAnimation = Mth.clamp(this.clientSideStandAnimation - 1.0F, 0.0F, 6.0F);
-//            }
-//        }
-//
-//        if (this.warningSoundTicks > 0) {
-//            --this.warningSoundTicks;
-//        }
-
         if (!this.level().isClientSide) {
             this.updatePersistentAnger((ServerLevel)this.level(), true);
         }
@@ -192,14 +179,6 @@ public class DragonflyEntity extends Animal implements GeoEntity, FlyingAnimal, 
     static {
         PERSISTENT_ANGER_TIME = TimeUtil.rangeOfSeconds(60, 80);
     }
-
-//    public boolean isStanding() {
-//        return (Boolean)this.entityData.get(DATA_STANDING_ID);
-//    }
-//
-//    public void setStanding(boolean standing) {
-//        this.entityData.set(DATA_STANDING_ID, standing);
-//    }
 
     public static AttributeSupplier.Builder createAttributes() {
         return LivingEntity.createLivingAttributes()
