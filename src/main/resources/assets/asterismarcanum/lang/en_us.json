@@ -1,6 +1,4 @@
 {
-  "item.asterismarcanum.stellar_nautilus_shell" : "Stellar Nautilus Shell",
-  "item.asterismarcanum.liquid_luminance_bottle" : "Liquid Luminance Bottle",
   "item.asterismarcanum.scroll_astral" : "Astral Scroll",
   "item.asterismarcanum.astral_rune" : "Astral Rune",
   "item.asterismarcanum.astral_upgrade_orb" : "Astral Upgrade Orb",
@@ -13,8 +11,7 @@
   "item.asterismarcanum.lunar_moth_spawn_egg" : "Lunar Moth Spawn Egg",
   "item.asterismarcanum.celestial_staff" : "Celestial Staff",
   "item.asterismarcanum.ethereal_talisman" : "Stellar Periapt",
-  "item.asterismarcanum.dragonfly_chitin" : "Dragonfly Chitin",
-
+  "item.asterismarcanum.dragonfly_wings" : "Dragonfly Wings",
 
   "entity.asterismarcanum.dragonfly" : "Dragonfly",
   "entity.asterismarcanum.lunar_moth" : "Lunar Moth",
@@ -45,15 +42,12 @@
   "spell.asterismarcanum.constellation.guide" : "Rely on the magic of the patterns in the night sky, summoning stars which after a short moment will burst with explosive light.",
   "spell.asterismarcanum.luminous_beam" : "Luminous Beam",
   "spell.asterismarcanum.luminous_beam.guide" : "Conjure a beam of destructive light, damaging enemies in front of you while continuously consuming mana.",
-   "spell.asterismarcanum.summon_lunar_moths" : "Summon Lunar Moths",
+  "spell.asterismarcanum.summon_lunar_moths" : "Summon Lunar Moths",
   "spell.asterismarcanum.summon_lunar_moths.guide" : "Conjure a flock of moths which will fly towards and debuff your enemies.",
   "spell.asterismarcanum.wishing_star" : "Wishing Star",
   "spell.asterismarcanum.wishing_star.guide" : "Dash through the air as though you yourself are a shooting star.",
   "spell.asterismarcanum.piercing_light" : "Piercing Light",
   "spell.asterismarcanum.piercing_light.guide" : "Unleash a burst of luminous shards from your position, damaging enemies nearby.",
-
-
-
 
   "block.asterismarcanum.lumine" : "Lumine",
   "block.asterismarcanum.polished_lumine" : "Polished Lumine",

@@ -23,9 +23,6 @@ public class ASARItemsRegistry {
 
     //MISC
 
-    public static final DeferredItem<Item> STELLAR_NAUTILUS_SHELL = ITEMS
-            .registerSimpleItem("stellar_nautilus_shell");
-
     public static final DeferredHolder<Item, Item> ARCANE_TALISMAN = ITEMS.register("ethereal_talisman", () -> new EtherealTalisman(ItemPropertiesHelper.equipment(1).rarity(Rarity.EPIC)));
 
     public static final Supplier<DeferredSpawnEggItem> DRAGONFLY_SPAWN_EGG = ITEMS
@@ -35,8 +32,6 @@ public class ASARItemsRegistry {
             .register("lunar_moth_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.LUNAR_MOTH, 1541255, 8666054, ItemPropertiesHelper.material().stacksTo(64)));
 
     // Astral School
-    public static final DeferredItem<Item> LIQUID_LUMINANCE_BOTTLE = ITEMS
-            .registerSimpleItem("liquid_luminance_bottle");
 
     public static final DeferredHolder<Item, Item> ASTRAL_HELMET = ITEMS.register("astral_helmet",
             () -> new AstralMagicArmorItem(
@@ -83,7 +78,7 @@ public class ASARItemsRegistry {
     //School Crafting
     public static final DeferredHolder<Item, Item> ASTRAL_RUNE = ITEMS.registerSimpleItem("astral_rune");
 
-    public static final DeferredHolder<Item, Item> DRAGONFLY_CHITIN = ITEMS.registerSimpleItem("dragonfly_chitin");
+    public static final DeferredHolder<Item, Item> DRAGONFLY_WINGS = ITEMS.registerSimpleItem("dragonfly_wings");
 
 
     public static final DeferredHolder<Item, Item> ASTRAL_UPGRADE_ORB = ITEMS.register("astral_upgrade_orb",

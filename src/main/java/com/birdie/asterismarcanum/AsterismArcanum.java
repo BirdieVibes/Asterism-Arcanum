@@ -7,10 +7,8 @@ import io.redspace.ironsspellbooks.item.SpellBook;
 import io.redspace.ironsspellbooks.render.SpellBookCurioRenderer;
 import mod.azure.azurelib.AzureLib;
 import mod.azure.azurelib.common.animation.cache.AzIdentityRegistry;
-import mod.azure.azurelib.common.render.armor.AzArmorRendererRegistry;
 import mod.azure.azurelib.common.render.item.AzItemRendererRegistry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -26,7 +24,6 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 @Mod(AsterismArcanum.MOD_ID)
@@ -42,8 +39,6 @@ public class AsterismArcanum {
         ASARCreativeModeTabs.register(modEventBus);
 
         ASARItemsRegistry.register(modEventBus);
-
-        modEventBus.addListener(this::addCreative);
 
         SpellRegistries.register(modEventBus);
         ASAREntityRegistry.register(modEventBus);
@@ -87,12 +82,4 @@ public class AsterismArcanum {
             AzItemRendererRegistry.register(CelestialStaffRenderer::new, ASARItemsRegistry.CELESTIAL_STAFF.get());
         }
     }
-
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ASARItemsRegistry.STELLAR_NAUTILUS_SHELL);
-            event.accept(ASARItemsRegistry.LIQUID_LUMINANCE_BOTTLE);
-        }
-    }
-
 }

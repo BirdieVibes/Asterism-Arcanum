@@ -17,12 +17,10 @@ public class ASARCreativeModeTabs {
 
     public static final Supplier<CreativeModeTab> ASTERISM_ARCANUM_ITEMS_TAB = CREATIVE_MODE_TAB.register(
             "asterism_arcanum_items_tab",
-            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ASARItemsRegistry.STELLAR_NAUTILUS_SHELL.get()))
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ASARItemsRegistry.DRAGONFLY_WINGS.get()))
                     .title(Component.translatable("creativetab.asterismarcanum.asterism_arcanum_items"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ASARItemsRegistry.STELLAR_NAUTILUS_SHELL.get());
-                        output.accept(ASARItemsRegistry.LIQUID_LUMINANCE_BOTTLE.get());
-                        output.accept(ASARItemsRegistry.DRAGONFLY_CHITIN.get());
+                        output.accept(ASARItemsRegistry.DRAGONFLY_WINGS.get());
                         output.accept(ASARItemsRegistry.ASTRAL_RUNE.get());
                         output.accept(ASARItemsRegistry.ASTRAL_UPGRADE_ORB.get());
                         output.accept((ItemLike) ASARItemsRegistry.ASTRAL_HELMET);
