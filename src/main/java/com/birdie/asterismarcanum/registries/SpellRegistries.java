@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 public class SpellRegistries {
     public static final DeferredRegister<AbstractSpell> SPELLS =
             DeferredRegister.create(SpellRegistry.SPELL_REGISTRY_KEY, AsterismArcanum.MOD_ID);
-// RUNNING TOTAL ----------- 10 IMP, 14 PLANNED ----------------
+// RUNNING TOTAL ----------- 10 IMP, 13 PLANNED ----------------
 
     // STARFIRE SPELL (my concept)
     // A missile spell which pierces twice and ricochets to targets at a similar angle compared to the player's view
@@ -71,13 +71,8 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> STARCUTTER =
             registerSpell(new StarcutterSpell());
 
-    //STELLAR CHIME SPELL (Mouse's concept)
-    //Resonate a glimmering bell, granting anyone targeted the stellar buff, or yourself if no one is targeted.
-//    public static final Supplier<AbstractSpell> STELLAR_CHIME =
-//            registerSpell(new StellarChimeSpell());
-
     //TRAILBLAZE SPELL (Mouse's concept)
-    //Create a comet to lob, creating a AoE that deal damage and inflicts starburn debuff.
+    //Create a comet to lob, creating a AoE that deal damage and inflicts starburn (total damage reduction) debuff.
 //    public static final Supplier<AbstractSpell> TRAILBLAZE =
 //            registerSpell(new TrailblazeSpell());
 

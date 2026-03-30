@@ -20,6 +20,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         basicItem(ASARItemsRegistry.DRAGONFLY_WINGS.get());
         basicItem(ASARItemsRegistry.ASTRAL_RUNE.get());
+        basicItem(ASARItemsRegistry.LUMINE_DUST.get());
 
         wallItem(ASARModBlocksRegistry.LUMINE_WALL, ASARModBlocksRegistry.LUMINE);
         wallItem(ASARModBlocksRegistry.CHISELED_LUMINE_WALL, ASARModBlocksRegistry.CHISELED_LUMINE);

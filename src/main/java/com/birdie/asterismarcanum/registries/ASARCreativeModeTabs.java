@@ -32,6 +32,7 @@ public class ASARCreativeModeTabs {
                         output.accept(ASARItemsRegistry.CELESTIAL_STAFF.get());
                         output.accept(ASARItemsRegistry.ASTROLABE.get());
                         output.accept(ASARItemsRegistry.ARCANE_TALISMAN.get());
+                        output.accept(ASARItemsRegistry.LUMINE_DUST.get());
                         output.accept(ASARModBlocksRegistry.LUMINE.get());
                         output.accept(ASARModBlocksRegistry.LUMINE_SLAB.get());
                         output.accept(ASARModBlocksRegistry.LUMINE_STAIRS.get());

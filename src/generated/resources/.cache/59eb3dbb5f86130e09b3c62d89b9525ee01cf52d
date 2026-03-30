@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-10T19:24:46.4911175	Loot Tables
+// 1.21.1	2026-03-28T22:13:43.1686099	Loot Tables
 f6ce021c5062fc77ad563f748becc25b8f8c01ed data/asterismarcanum/loot_table/blocks/chiseled_lumine.json
 f6b9241b11d1eb0a303745488004e2703d8ef6a1 data/asterismarcanum/loot_table/blocks/chiseled_lumine_slab.json
 67106f57d4238f66a9f9eb69ff9b1fd898c2f9d1 data/asterismarcanum/loot_table/blocks/chiseled_lumine_stairs.json
@@ -15,4 +15,3 @@ e32cabe6c78f4beff072bb1e8f3a8eb309444fb6 data/asterismarcanum/loot_table/blocks/
 9bddae8c5f9af8a2926c13521a957ebe0833cca2 data/asterismarcanum/loot_table/blocks/polished_lumine_slab.json
 66530679df487546509959b8104eba58d23a2efc data/asterismarcanum/loot_table/blocks/polished_lumine_stairs.json
 441d83451c56fcfcae3765f8cde070023e108a0e data/asterismarcanum/loot_table/blocks/polished_lumine_wall.json
-f278306a9cbbda91befe27b9723a7f0f1b9a78f4 data/asterismarcanum/loot_table/blocks/stellar_cosmos_flowers.json

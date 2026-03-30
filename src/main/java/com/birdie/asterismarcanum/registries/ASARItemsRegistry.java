@@ -25,6 +25,8 @@ public class ASARItemsRegistry {
 
     public static final DeferredHolder<Item, Item> ARCANE_TALISMAN = ITEMS.register("ethereal_talisman", () -> new EtherealTalisman(ItemPropertiesHelper.equipment(1).rarity(Rarity.EPIC)));
 
+    public static final DeferredHolder<Item, Item> LUMINE_DUST = ITEMS.registerSimpleItem("lumine_dust");
+
     public static final Supplier<DeferredSpawnEggItem> DRAGONFLY_SPAWN_EGG = ITEMS
             .register("dragonfly_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.DRAGONFLY, 1001255, 2666054, ItemPropertiesHelper.material().stacksTo(64)));
 
