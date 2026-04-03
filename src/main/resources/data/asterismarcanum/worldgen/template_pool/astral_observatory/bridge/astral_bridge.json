@@ -3,29 +3,65 @@
   "fallback": "asterismarcanum:astral_observatory/fallback_pool",
   "elements": [
     {
-      "weight": 3,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "asterismarcanum:astral_observatory/bridge/astral_elbow_bridge",
-        "processors": "minecraft:empty",
+        "location": "asterismarcanum:astral_observatory/bridge/elbow_bridge_prong",
+        "processors": "asterismarcanum:observatory_pillar_extend",
         "projection": "rigid"
       }
     },
     {
-      "weight": 2,
+      "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "asterismarcanum:astral_observatory/bridge/astral_terminal_bridge",
-        "processors": "minecraft:empty",
+        "processors": "asterismarcanum:observatory_pillar_extend",
         "projection": "rigid"
       }
     },
     {
-      "weight": 5,
+      "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "asterismarcanum:astral_observatory/bridge/astral_threeway_bridge",
-        "processors": "minecraft:empty",
+        "location": "asterismarcanum:astral_observatory/bridge/astral_elbow_bridge_pivot",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/threeway_bridge_prong",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/threeway_bridge_pivot",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/stair_elbow",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/stair_elbow_path",
+        "processors": "asterismarcanum:observatory_pillar_extend",
         "projection": "rigid"
       }
     },
@@ -33,8 +69,26 @@
       "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "asterismarcanum:astral_observatory/bridge/portal_bridge",
-        "processors": "minecraft:empty",
+        "location": "asterismarcanum:astral_observatory/bridge/stair_middle",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/stair_middle_path",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/stair",
+        "processors": "asterismarcanum:observatory_pillar_extend",
         "projection": "rigid"
       }
     }

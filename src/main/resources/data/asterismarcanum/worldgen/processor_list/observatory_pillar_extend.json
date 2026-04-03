@@ -1,0 +1,145 @@
+{
+  "processors": [
+    {
+      "processor_type": "irons_spellbooks:foundation",
+      "block": {
+        "Name": "minecraft:smooth_basalt"
+      }
+    },
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:amethyst_block",
+            "probability": 0.35
+          },
+          "output_state": {
+            "Name": "minecraft:crying_obsidian"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:amethyst_block",
+            "probability": 0.08
+          },
+          "output_state": {
+            "Name": "minecraft:blackstone_slab"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:blackstone",
+            "probability": 0.20
+          },
+          "output_state": {
+            "Name": "minecraft:blackstone_stairs"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:blackstone",
+            "probability": 0.20
+          },
+          "output_state": {
+            "Name": "minecraft:blackstone_slab"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:blackstone",
+            "probability": 0.20
+          },
+          "output_state": {
+            "Name": "minecraft:amethyst_block"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:blackstone",
+            "probability": 0.20
+          },
+          "output_state": {
+            "Name": "minecraft:gray_glazed_terracotta"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "asterismarcanum:polished_lumine",
+            "probability": 0.05
+          },
+          "output_state": {
+            "Name": "asterismarcanum:lumine_slab"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "asterismarcanum:polished_lumine",
+            "probability": 0.10
+          },
+          "output_state": {
+            "Name": "asterismarcanum:polished_lumine_slab"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:gray_glazed_terracotta",
+            "probability": 0.10
+          },
+          "output_state": {
+            "Name": "minecraft:cyan_terracotta"
+          }
+        },
+        {
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "input_predicate": {
+            "predicate_type": "minecraft:random_block_match",
+            "block": "minecraft:sculk",
+            "probability": 0.30
+          },
+          "output_state": {
+            "Name": "minecraft:sculk_sensor"
+          }
+        }
+      ]
+    }
+  ]
+}
