@@ -33,14 +33,12 @@ public class ASARCreativeModeTabs {
                         output.accept(ASARItemsRegistry.ASTROLABE.get());
                         output.accept(ASARItemsRegistry.ARCANE_TALISMAN.get());
                         output.accept(ASARItemsRegistry.LUMINE_DUST.get());
+                        //==============lumine===================
                         output.accept(ASARModBlocksRegistry.LUMINE.get());
                         output.accept(ASARModBlocksRegistry.LUMINE_SLAB.get());
                         output.accept(ASARModBlocksRegistry.LUMINE_STAIRS.get());
                         output.accept(ASARModBlocksRegistry.LUMINE_WALL.get());
                         output.accept(ASARModBlocksRegistry.CHISELED_LUMINE.get());
-                        output.accept(ASARModBlocksRegistry.CHISELED_LUMINE_SLAB.get());
-                        output.accept(ASARModBlocksRegistry.CHISELED_LUMINE_STAIRS.get());
-                        output.accept(ASARModBlocksRegistry.CHISELED_LUMINE_WALL.get());
                         output.accept(ASARModBlocksRegistry.POLISHED_LUMINE.get());
                         output.accept(ASARModBlocksRegistry.POLISHED_LUMINE_SLAB.get());
                         output.accept(ASARModBlocksRegistry.POLISHED_LUMINE_STAIRS.get());
@@ -49,6 +47,20 @@ public class ASARCreativeModeTabs {
                         output.accept(ASARModBlocksRegistry.LUMINE_BRICKS_SLAB.get());
                         output.accept(ASARModBlocksRegistry.LUMINE_BRICKS_STAIRS.get());
                         output.accept(ASARModBlocksRegistry.LUMINE_BRICKS_WALL.get());
+                        //==================umbral lumine=========================
+                        output.accept(ASARModBlocksRegistry.UMBRAL_LUMINE.get());
+                        output.accept(ASARModBlocksRegistry.UMBRAL_LUMINE_SLAB.get());
+                        output.accept(ASARModBlocksRegistry.UMBRAL_LUMINE_STAIRS.get());
+                        output.accept(ASARModBlocksRegistry.UMBRAL_LUMINE_WALL.get());
+                        output.accept(ASARModBlocksRegistry.CHISELED_UMBRAL_LUMINE.get());
+                        output.accept(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get());
+                        output.accept(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_SLAB.get());
+                        output.accept(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_STAIRS.get());
+                        output.accept(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_WALL.get());
+                        output.accept(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get());
+                        output.accept(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB.get());
+                        output.accept(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_STAIRS.get());
+                        output.accept(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_WALL.get());
                     })
                     .build()
     );

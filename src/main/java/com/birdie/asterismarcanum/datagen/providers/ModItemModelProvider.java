@@ -23,9 +23,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ASARItemsRegistry.LUMINE_DUST.get());
 
         wallItem(ASARModBlocksRegistry.LUMINE_WALL, ASARModBlocksRegistry.LUMINE);
-        wallItem(ASARModBlocksRegistry.CHISELED_LUMINE_WALL, ASARModBlocksRegistry.CHISELED_LUMINE);
         wallItem(ASARModBlocksRegistry.LUMINE_BRICKS_WALL, ASARModBlocksRegistry.LUMINE_BRICKS);
         wallItem(ASARModBlocksRegistry.POLISHED_LUMINE_WALL, ASARModBlocksRegistry.POLISHED_LUMINE);
+        wallItem(ASARModBlocksRegistry.UMBRAL_LUMINE_WALL, ASARModBlocksRegistry.UMBRAL_LUMINE);
+        wallItem(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_WALL, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS);
+        wallItem(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_WALL, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE);
     }
 
     public void wallItem(DeferredBlock<Block> block, DeferredBlock<Block> baseBlock) {

@@ -24,17 +24,25 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ASARModBlocksRegistry.LUMINE.get())
                 .add(ASARModBlocksRegistry.LUMINE_BRICKS.get())
                 .add(ASARModBlocksRegistry.CHISELED_LUMINE.get())
-                .add(ASARModBlocksRegistry.POLISHED_LUMINE.get());
+                .add(ASARModBlocksRegistry.POLISHED_LUMINE.get())
+                .add(ASARModBlocksRegistry.UMBRAL_LUMINE.get())
+                .add(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get())
+                .add(ASARModBlocksRegistry.CHISELED_UMBRAL_LUMINE.get())
+                .add(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get());
 
         this.tag(BlockTags.STONE_BRICKS)
+                .add(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get())
                 .add(ASARModBlocksRegistry.LUMINE_BRICKS.get());
 
         this.tag(Tags.Blocks.STONES)
+                .add(ASARModBlocksRegistry.UMBRAL_LUMINE.get())
                 .add(ASARModBlocksRegistry.LUMINE.get());
 
         this.tag(BlockTags.WALLS)
+                .add(ASARModBlocksRegistry.UMBRAL_LUMINE_WALL.get())
+                .add(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_WALL.get())
+                .add(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_WALL.get())
                 .add(ASARModBlocksRegistry.LUMINE_WALL.get())
-                .add(ASARModBlocksRegistry.CHISELED_LUMINE_WALL.get())
                 .add(ASARModBlocksRegistry.LUMINE_BRICKS_WALL.get())
                 .add(ASARModBlocksRegistry.POLISHED_LUMINE_WALL.get());
     }

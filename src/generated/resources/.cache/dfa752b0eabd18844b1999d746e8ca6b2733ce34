@@ -1,8 +1,10 @@
-// 1.21.1	2026-03-29T13:57:12.4207258	Item Models: asterismarcanum
+// 1.21.1	2026-04-04T15:52:43.7130636	Item Models: asterismarcanum
 a08533507c5afffadb3f67b3c03b4d5168a8e74e assets/asterismarcanum/models/item/astral_rune.json
-43988be3c54594731a29e561f578365fca7fc0d2 assets/asterismarcanum/models/item/chiseled_lumine_wall.json
 82d08d9bc2ba150e93e8bf1b4395854c2809a992 assets/asterismarcanum/models/item/dragonfly_wings.json
 588e1a5911f8d9da754dbaf599cd013ad532aa94 assets/asterismarcanum/models/item/lumine_bricks_wall.json
 58727cb36b7442f678eba78f5609cedb48a66629 assets/asterismarcanum/models/item/lumine_dust.json
 c2c281d0def455974934cb3246c8c74c99ab09fb assets/asterismarcanum/models/item/lumine_wall.json
 bdcedc64396fd7d3c8bf273b7e20882a87010186 assets/asterismarcanum/models/item/polished_lumine_wall.json
+afef5758429c7534a15ff71eed0ec79da69e5ea0 assets/asterismarcanum/models/item/polished_umbral_lumine_wall.json
+da6ae0f0917507d94d429c14d83f9f2b372eb971 assets/asterismarcanum/models/item/umbral_lumine_bricks_wall.json
+8130cfe96392771b6f7a529229827fbb015607b1 assets/asterismarcanum/models/item/umbral_lumine_wall.json

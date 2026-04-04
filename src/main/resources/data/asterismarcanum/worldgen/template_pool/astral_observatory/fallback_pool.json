@@ -28,6 +28,78 @@
         "processors": "asterismarcanum:observatory_pillar_extend",
         "projection": "rigid"
       }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/stair_middle_trunc",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/path_middle_trunc",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/stair_elbow_trunc",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/path_elbow_trunc",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/elbow_prong_pillar_trunc",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/threeway_prong_pillar_trunc",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/elbow_prong_trunc",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/bridge/threeway_prong_trunc",
+        "processors": "asterismarcanum:observatory_pillar_extend",
+        "projection": "rigid"
+      }
     }
   ]
 }

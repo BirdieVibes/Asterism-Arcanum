@@ -15,16 +15,7 @@
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "asterismarcanum:astral_observatory/bridge/astral_terminal_bridge",
-        "processors": "asterismarcanum:observatory_pillar_extend",
-        "projection": "rigid"
-      }
-    },
-    {
-      "weight": 1,
-      "element": {
-        "element_type": "minecraft:single_pool_element",
-        "location": "asterismarcanum:astral_observatory/bridge/astral_elbow_bridge_pivot",
+        "location": "asterismarcanum:astral_observatory/bridge/elbow_bridge_pivot",
         "processors": "asterismarcanum:observatory_pillar_extend",
         "projection": "rigid"
       }
@@ -87,7 +78,7 @@
       "weight": 1,
       "element": {
         "element_type": "minecraft:single_pool_element",
-        "location": "asterismarcanum:astral_observatory/bridge/stair",
+        "location": "asterismarcanum:astral_observatory/bridge/stairs",
         "processors": "asterismarcanum:observatory_pillar_extend",
         "projection": "rigid"
       }

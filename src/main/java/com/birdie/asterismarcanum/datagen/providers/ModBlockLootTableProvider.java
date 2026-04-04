@@ -16,7 +16,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     }
     @Override
     protected void generate() {
-
+//=========================LUMINE=======================================
         this.dropSelf(ASARModBlocksRegistry.LUMINE.get());
 
         this.dropSelf(ASARModBlocksRegistry.LUMINE_BRICKS.get());
@@ -28,11 +28,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 block -> createSlabItemTable(ASARModBlocksRegistry.LUMINE_SLAB.get()));
         this.dropSelf(ASARModBlocksRegistry.LUMINE_WALL.get());
 
-        this.dropSelf(ASARModBlocksRegistry.CHISELED_LUMINE_STAIRS.get());
-        this.add(ASARModBlocksRegistry.CHISELED_LUMINE_SLAB.get(),
-                block -> createSlabItemTable(ASARModBlocksRegistry.CHISELED_LUMINE_SLAB.get()));
-        this.dropSelf(ASARModBlocksRegistry.CHISELED_LUMINE_WALL.get());
-
         this.dropSelf(ASARModBlocksRegistry.LUMINE_BRICKS_STAIRS.get());
         this.add(ASARModBlocksRegistry.LUMINE_BRICKS_SLAB.get(),
                 block -> createSlabItemTable(ASARModBlocksRegistry.LUMINE_BRICKS_SLAB.get()));
@@ -42,6 +37,28 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.add(ASARModBlocksRegistry.POLISHED_LUMINE_SLAB.get(),
                 block -> createSlabItemTable(ASARModBlocksRegistry.POLISHED_LUMINE_SLAB.get()));
         this.dropSelf(ASARModBlocksRegistry.POLISHED_LUMINE_WALL.get());
+
+//============================UMBRAL LUMINE==============================================
+        this.dropSelf(ASARModBlocksRegistry.UMBRAL_LUMINE.get());
+
+        this.dropSelf(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get());
+        this.dropSelf(ASARModBlocksRegistry.CHISELED_UMBRAL_LUMINE.get());
+        this.dropSelf(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get());
+
+        this.dropSelf(ASARModBlocksRegistry.UMBRAL_LUMINE_STAIRS.get());
+        this.add(ASARModBlocksRegistry.UMBRAL_LUMINE_SLAB.get(),
+                block -> createSlabItemTable(ASARModBlocksRegistry.UMBRAL_LUMINE_SLAB.get()));
+        this.dropSelf(ASARModBlocksRegistry.UMBRAL_LUMINE_WALL.get());
+
+        this.dropSelf(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_STAIRS.get());
+        this.add(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB.get(),
+                block -> createSlabItemTable(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB.get()));
+        this.dropSelf(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_WALL.get());
+
+        this.dropSelf(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_STAIRS.get());
+        this.add(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_SLAB.get(),
+                block -> createSlabItemTable(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_SLAB.get()));
+        this.dropSelf(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_WALL.get());
     }
 
 //    protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

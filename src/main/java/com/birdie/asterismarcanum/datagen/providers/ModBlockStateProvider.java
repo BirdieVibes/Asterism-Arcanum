@@ -20,7 +20,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
 
-
+//==================================LUMINE=========================================
         blockWithItem(ASARModBlocksRegistry.LUMINE);
         blockWithItem(ASARModBlocksRegistry.LUMINE_BRICKS);
         blockWithItem(ASARModBlocksRegistry.CHISELED_LUMINE);
@@ -31,12 +31,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock(((WallBlock) ASARModBlocksRegistry.LUMINE_WALL.get()), blockTexture(ASARModBlocksRegistry.LUMINE.get()));
         blockItem(ASARModBlocksRegistry.LUMINE_STAIRS);
         blockItem(ASARModBlocksRegistry.LUMINE_SLAB);
-
-        stairsBlock(((StairBlock) ASARModBlocksRegistry.CHISELED_LUMINE_STAIRS.get()), blockTexture(ASARModBlocksRegistry.CHISELED_LUMINE.get()));
-        slabBlock(((SlabBlock) ASARModBlocksRegistry.CHISELED_LUMINE_SLAB.get()), blockTexture(ASARModBlocksRegistry.CHISELED_LUMINE.get()), blockTexture(ASARModBlocksRegistry.CHISELED_LUMINE.get()));
-        wallBlock(((WallBlock) ASARModBlocksRegistry.CHISELED_LUMINE_WALL.get()), blockTexture(ASARModBlocksRegistry.CHISELED_LUMINE.get()));
-        blockItem(ASARModBlocksRegistry.CHISELED_LUMINE_STAIRS);
-        blockItem(ASARModBlocksRegistry.CHISELED_LUMINE_SLAB);
 
         stairsBlock(((StairBlock) ASARModBlocksRegistry.LUMINE_BRICKS_STAIRS.get()), blockTexture(ASARModBlocksRegistry.LUMINE_BRICKS.get()));
         slabBlock(((SlabBlock) ASARModBlocksRegistry.LUMINE_BRICKS_SLAB.get()), blockTexture(ASARModBlocksRegistry.LUMINE_BRICKS.get()), blockTexture(ASARModBlocksRegistry.LUMINE_BRICKS.get()));
@@ -49,6 +43,30 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock(((WallBlock) ASARModBlocksRegistry.POLISHED_LUMINE_WALL.get()), blockTexture(ASARModBlocksRegistry.POLISHED_LUMINE.get()));
         blockItem(ASARModBlocksRegistry.POLISHED_LUMINE_STAIRS);
         blockItem(ASARModBlocksRegistry.POLISHED_LUMINE_SLAB);
+
+//====================================UMBRAL LUMINE===============================================================
+        blockWithItem(ASARModBlocksRegistry.UMBRAL_LUMINE);
+        blockWithItem(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS);
+        blockWithItem(ASARModBlocksRegistry.CHISELED_UMBRAL_LUMINE);
+        blockWithItem(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE);
+
+        stairsBlock(((StairBlock) ASARModBlocksRegistry.UMBRAL_LUMINE_STAIRS.get()), blockTexture(ASARModBlocksRegistry.UMBRAL_LUMINE.get()));
+        slabBlock(((SlabBlock) ASARModBlocksRegistry.UMBRAL_LUMINE_SLAB.get()), blockTexture(ASARModBlocksRegistry.UMBRAL_LUMINE.get()), blockTexture(ASARModBlocksRegistry.UMBRAL_LUMINE.get()));
+        wallBlock(((WallBlock) ASARModBlocksRegistry.UMBRAL_LUMINE_WALL.get()), blockTexture(ASARModBlocksRegistry.UMBRAL_LUMINE.get()));
+        blockItem(ASARModBlocksRegistry.UMBRAL_LUMINE_STAIRS);
+        blockItem(ASARModBlocksRegistry.UMBRAL_LUMINE_SLAB);
+
+        stairsBlock(((StairBlock) ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_STAIRS.get()), blockTexture(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get()));
+        slabBlock(((SlabBlock) ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB.get()), blockTexture(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get()), blockTexture(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get()));
+        wallBlock(((WallBlock) ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_WALL.get()), blockTexture(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get()));
+        blockItem(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_STAIRS);
+        blockItem(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB);
+
+        stairsBlock(((StairBlock) ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_STAIRS.get()), blockTexture(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get()));
+        slabBlock(((SlabBlock) ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_SLAB.get()), blockTexture(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get()), blockTexture(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get()));
+        wallBlock(((WallBlock) ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_WALL.get()), blockTexture(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get()));
+        blockItem(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_STAIRS);
+        blockItem(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_SLAB);
     }
 
     private void blockWithItem(DeferredBlock<Block> deferredBlock) {

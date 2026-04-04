@@ -1,5 +1,5 @@
-// 1.21.1	2026-03-10T19:24:46.4936204	Tags for minecraft:block mod id asterismarcanum
-b2102761e5cf803144607c533b04e42e0921d328 data/c/tags/block/stones.json
-013ceb07cf6fd3c78a3584367169c6b9b27b5859 data/minecraft/tags/block/mineable/pickaxe.json
-e84222513d85e438c9a57638265d31636f4c3735 data/minecraft/tags/block/stone_bricks.json
-7363078308987aa0097ebfd7f5c1b7e09da87efd data/minecraft/tags/block/walls.json
+// 1.21.1	2026-04-04T15:52:43.7190645	Tags for minecraft:block mod id asterismarcanum
+c87a46b1de2d590e53d1b542205751ad84c85d26 data/c/tags/block/stones.json
+2f888d3985f4802671626f7ef6924c7b195c5088 data/minecraft/tags/block/mineable/pickaxe.json
+7b73fa19989f1f54c947cf25932257e705105c1d data/minecraft/tags/block/stone_bricks.json
+09ad3e49ba1e0d66b9a17b958857c1a740a0bf14 data/minecraft/tags/block/walls.json

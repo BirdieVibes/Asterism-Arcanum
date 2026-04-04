@@ -93,32 +93,6 @@
           },
           "input_predicate": {
             "predicate_type": "minecraft:random_block_match",
-            "block": "asterismarcanum:polished_lumine",
-            "probability": 0.05
-          },
-          "output_state": {
-            "Name": "asterismarcanum:lumine_slab"
-          }
-        },
-        {
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "input_predicate": {
-            "predicate_type": "minecraft:random_block_match",
-            "block": "asterismarcanum:polished_lumine",
-            "probability": 0.10
-          },
-          "output_state": {
-            "Name": "asterismarcanum:polished_lumine_slab"
-          }
-        },
-        {
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "input_predicate": {
-            "predicate_type": "minecraft:random_block_match",
             "block": "minecraft:gray_glazed_terracotta",
             "probability": 0.10
           },

@@ -107,29 +107,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('B', ASARModBlocksRegistry.LUMINE_BRICKS_SLAB)
                 .unlockedBy("has_material", has(ASARModBlocksRegistry.LUMINE_BRICKS)).save(recipeOutput);
 
-        stairBuilder(ASARModBlocksRegistry.CHISELED_LUMINE_STAIRS.get(), Ingredient.of(ASARModBlocksRegistry.CHISELED_LUMINE)).group("chiseled_lumine")
-                .unlockedBy("has_material", has(ASARModBlocksRegistry.CHISELED_LUMINE.get())).save(recipeOutput);
-        slab(recipeOutput,RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_SLAB.get(), ASARModBlocksRegistry.CHISELED_LUMINE.get());
-        wall(recipeOutput,RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_WALL.get(), ASARModBlocksRegistry.CHISELED_LUMINE.get());
-
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE, ASARModBlocksRegistry.LUMINE);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE, ASARModBlocksRegistry.POLISHED_LUMINE);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE, ASARModBlocksRegistry.LUMINE_BRICKS);
-
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_STAIRS, ASARModBlocksRegistry.CHISELED_LUMINE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_SLAB, ASARModBlocksRegistry.CHISELED_LUMINE,2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_WALL, ASARModBlocksRegistry.CHISELED_LUMINE);
-        //'lower' tiers of lumine can also craft higher tiers in the stonecutter
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_STAIRS, ASARModBlocksRegistry.LUMINE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_SLAB, ASARModBlocksRegistry.LUMINE,2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_WALL, ASARModBlocksRegistry.LUMINE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_STAIRS, ASARModBlocksRegistry.POLISHED_LUMINE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_SLAB, ASARModBlocksRegistry.POLISHED_LUMINE,2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_WALL, ASARModBlocksRegistry.POLISHED_LUMINE);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_STAIRS, ASARModBlocksRegistry.LUMINE_BRICKS);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_SLAB, ASARModBlocksRegistry.LUMINE_BRICKS,2);
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE_WALL, ASARModBlocksRegistry.LUMINE_BRICKS);
-
 
 
         //

@@ -15,7 +15,7 @@ public class ASARModBlocksRegistry {
     public static final DeferredRegister.Blocks BLOCKS =
             DeferredRegister.createBlocks(AsterismArcanum.MOD_ID);
 
-    //LIQUID LUMINANCE BLOCKS//
+    //==============================LUMINE BLOCKS====================================================
     public static final DeferredBlock<Block> LUMINE = registerBlock("lumine",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
     public static final DeferredBlock<Block> CHISELED_LUMINE = registerBlock("chiseled_lumine",
@@ -33,14 +33,6 @@ public class ASARModBlocksRegistry {
     public static final DeferredBlock<Block> LUMINE_WALL = registerBlock("lumine_wall",
             () -> new WallBlock(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
 
-    public static final DeferredBlock<Block> CHISELED_LUMINE_STAIRS = registerBlock("chiseled_lumine_stairs",
-            () -> new StairBlock(ASARModBlocksRegistry.CHISELED_LUMINE.get().defaultBlockState(),
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_STAIRS).requiresCorrectToolForDrops()));
-    public static final DeferredBlock<Block> CHISELED_LUMINE_SLAB = registerBlock("chiseled_lumine_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB).requiresCorrectToolForDrops()));
-    public static final DeferredBlock<Block> CHISELED_LUMINE_WALL = registerBlock("chiseled_lumine_wall",
-            () -> new WallBlock(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
-
     public static final DeferredBlock<Block> LUMINE_BRICKS_STAIRS = registerBlock("lumine_bricks_stairs",
             () -> new StairBlock(ASARModBlocksRegistry.LUMINE_BRICKS.get().defaultBlockState(),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_STAIRS).requiresCorrectToolForDrops()));
@@ -55,6 +47,40 @@ public class ASARModBlocksRegistry {
     public static final DeferredBlock<Block> POLISHED_LUMINE_SLAB = registerBlock("polished_lumine_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB).requiresCorrectToolForDrops()));
     public static final DeferredBlock<Block> POLISHED_LUMINE_WALL = registerBlock("polished_lumine_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
+
+    //==========================UMBRAL LUMINE BLOCKS=====================================================
+    public static final DeferredBlock<Block> UMBRAL_LUMINE = registerBlock("umbral_lumine",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final DeferredBlock<Block> CHISELED_UMBRAL_LUMINE = registerBlock("chiseled_umbral_lumine",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final DeferredBlock<Block> UMBRAL_LUMINE_BRICKS = registerBlock("umbral_lumine_bricks",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+    public static final DeferredBlock<Block> POLISHED_UMBRAL_LUMINE = registerBlock("polished_umbral_lumine",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE)));
+
+    public static final DeferredBlock<Block> UMBRAL_LUMINE_STAIRS = registerBlock("umbral_lumine_stairs",
+            () -> new StairBlock(ASARModBlocksRegistry.UMBRAL_LUMINE.get().defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_STAIRS).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> UMBRAL_LUMINE_SLAB = registerBlock("umbral_lumine_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> UMBRAL_LUMINE_WALL = registerBlock("umbral_lumine_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
+
+    public static final DeferredBlock<Block> UMBRAL_LUMINE_BRICKS_STAIRS = registerBlock("umbral_lumine_bricks_stairs",
+            () -> new StairBlock(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get().defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_STAIRS).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> UMBRAL_LUMINE_BRICKS_SLAB = registerBlock("umbral_lumine_bricks_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> UMBRAL_LUMINE_BRICKS_WALL = registerBlock("umbral_lumine_bricks_wall",
+            () -> new WallBlock(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
+
+    public static final DeferredBlock<Block> POLISHED_UMBRAL_LUMINE_STAIRS = registerBlock("polished_umbral_lumine_stairs",
+            () -> new StairBlock(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get().defaultBlockState(),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_STAIRS).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> POLISHED_UMBRAL_LUMINE_SLAB = registerBlock("polished_umbral_lumine_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STONE_SLAB).requiresCorrectToolForDrops()));
+    public static final DeferredBlock<Block> POLISHED_UMBRAL_LUMINE_WALL = registerBlock("polished_umbral_lumine_wall",
             () -> new WallBlock(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
 
 

@@ -177,6 +177,8 @@ dependencies {
 
     implementation "be.florens:expandability-neoforge:12.0.0"
 
+    implementation "curse.maven:worldedit-225608:5830452"
+
     implementation "com.google.code.gson:gson:${gson_version}"
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
