@@ -21,7 +21,7 @@ public class SpellRegistries {
             registerSpell(new StarfireSpell());
 
     // BRIGHTBURST SPELL (my concept)
-    // Repels nearby entities including projectiles
+    // Repels and damages nearby entities with repulsion scaled against knockback resistance
     public static final Supplier<AbstractSpell> BRIGHTBURST =
             registerSpell(new BrightburstSpell());
 
@@ -34,12 +34,6 @@ public class SpellRegistries {
     // Gives night vision :P
     public static final Supplier<AbstractSpell> NIGHT_VISION =
             registerSpell(new NightVisionSpell());
-
-    // TIDAL LOCK SPELL (my concept)
-    // Allows you to put yourself in 3D stasis, able to look around and aim, but stuck to a single location until you are dislodged,
-    // either by your or another's intervention
-    public static final Supplier<AbstractSpell> TIDAL_LOCK =
-            registerSpell(new TidalLockSpell());
 
     // LUMINOUS BEAM SPELL (my concept)
     // Cone spell but long and skinny <3

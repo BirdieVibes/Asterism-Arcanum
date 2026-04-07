@@ -32,11 +32,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ).unlockedBy("has_material", has((ItemLike) ASARItemsRegistry.DRAGONFLY_WINGS)).save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.LUMINE.get(), 1)
-                        .pattern("BBB")
                         .pattern("BAB")
-                        .pattern("BBB")
+                        .pattern("ABA")
+                        .pattern("BAB")
                         .define('B', (ItemLike) ASARItemsRegistry.LUMINE_DUST)
-                        .define('A', Items.BLAZE_POWDER)
+                        .define('A', Items.QUARTZ)
                         .unlockedBy("has_material", has((ItemLike) ASARItemsRegistry.LUMINE_DUST)).save(recipeOutput);
 
         stairBuilder(ASARModBlocksRegistry.LUMINE_STAIRS.get(), Ingredient.of(ASARModBlocksRegistry.LUMINE)).group("lumine")
@@ -110,6 +110,88 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE, ASARModBlocksRegistry.LUMINE);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE, ASARModBlocksRegistry.POLISHED_LUMINE);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE, ASARModBlocksRegistry.LUMINE_BRICKS);
+
+        //=============================UMBRAL LUMINE============================================================
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE.get(), 1)
+                .pattern("BAB")
+                .pattern("ABA")
+                .pattern("BAB")
+                .define('B', (ItemLike) ASARItemsRegistry.LUMINE_DUST)
+                .define('A', Items.AMETHYST_SHARD)
+                .unlockedBy("has_material", has((ItemLike) ASARItemsRegistry.LUMINE_DUST)).save(recipeOutput);
+
+        stairBuilder(ASARModBlocksRegistry.UMBRAL_LUMINE_STAIRS.get(), Ingredient.of(ASARModBlocksRegistry.UMBRAL_LUMINE)).group("umbral_lumine")
+                .unlockedBy("has_material", has(ASARModBlocksRegistry.UMBRAL_LUMINE.get())).save(recipeOutput);
+        slab(recipeOutput,RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_SLAB.get(), ASARModBlocksRegistry.UMBRAL_LUMINE.get());
+        wall(recipeOutput,RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_WALL.get(), ASARModBlocksRegistry.UMBRAL_LUMINE.get());
+
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_STAIRS, ASARModBlocksRegistry.UMBRAL_LUMINE);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_SLAB, ASARModBlocksRegistry.UMBRAL_LUMINE,2);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_WALL, ASARModBlocksRegistry.UMBRAL_LUMINE);
+
+        //=================================POLISHED UMBRAL LUMINE=====================================
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get(), 4)
+                .pattern("BB ")
+                .pattern("BB ")
+                .pattern("   ")
+                .define('B', ASARModBlocksRegistry.UMBRAL_LUMINE)
+                .unlockedBy("has_material", has(ASARModBlocksRegistry.UMBRAL_LUMINE)).save(recipeOutput);
+
+        stairBuilder(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_STAIRS.get(), Ingredient.of(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE)).group("polished_umbral_lumine")
+                .unlockedBy("has_material", has(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get())).save(recipeOutput);
+        slab(recipeOutput,RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_SLAB.get(), ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get());
+        wall(recipeOutput,RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_WALL.get(), ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get());
+
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE, ASARModBlocksRegistry.UMBRAL_LUMINE);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_STAIRS, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_SLAB, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE,2);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_WALL, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE);
+        //'lower' tiers of lumine can also craft higher tiers in the stonecutter
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_STAIRS, ASARModBlocksRegistry.UMBRAL_LUMINE);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_SLAB, ASARModBlocksRegistry.UMBRAL_LUMINE,2);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_WALL, ASARModBlocksRegistry.UMBRAL_LUMINE);
+
+        //=================================UMBRAL LUMINE BRICK=============================================================
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get(), 4)
+                .pattern("BB ")
+                .pattern("BB ")
+                .pattern("   ")
+                .define('B', ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE)
+                .unlockedBy("has_material", has(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE)).save(recipeOutput);
+
+        stairBuilder(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_STAIRS.get(), Ingredient.of(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS)).group("umbral_lumine_bricks")
+                .unlockedBy("has_material", has(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get())).save(recipeOutput);
+        slab(recipeOutput,RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB.get(), ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get());
+        wall(recipeOutput,RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_WALL.get(), ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get());
+
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS, ASARModBlocksRegistry.UMBRAL_LUMINE);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_STAIRS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS,2);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_WALL, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS);
+        //'lower' tiers of lumine can also craft higher tiers in the stonecutter
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_STAIRS, ASARModBlocksRegistry.UMBRAL_LUMINE);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB, ASARModBlocksRegistry.UMBRAL_LUMINE,2);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_WALL, ASARModBlocksRegistry.UMBRAL_LUMINE);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_STAIRS, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE,2);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_WALL, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE);
+
+        //==================================CHISELED UMBRAL LUMINE=========================================================
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ASARModBlocksRegistry.CHISELED_UMBRAL_LUMINE.get())
+                .pattern("   ")
+                .pattern("B  ")
+                .pattern("B  ")
+                .define('B', ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB)
+                .unlockedBy("has_material", has(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS)).save(recipeOutput);
+
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_UMBRAL_LUMINE, ASARModBlocksRegistry.UMBRAL_LUMINE);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_UMBRAL_LUMINE, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_UMBRAL_LUMINE, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS);
 
 
         //

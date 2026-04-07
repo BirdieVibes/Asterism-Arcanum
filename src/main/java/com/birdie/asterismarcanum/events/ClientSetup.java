@@ -7,12 +7,10 @@ import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothModel;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothRenderer;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothModel;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothRenderer;
-import com.birdie.asterismarcanum.entity.spells.brightburst.BrightburstRenderer;
 import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamRenderer;
 import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightRenderer;
 import com.birdie.asterismarcanum.entity.spells.starcutter.StarcutterRenderer;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireRenderer;
-import com.birdie.asterismarcanum.entity.spells.tidal_lock.TidalLockRenderer;
 import com.birdie.asterismarcanum.particle.*;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
@@ -31,9 +29,7 @@ public class ClientSetup {
     @SubscribeEvent
     public static void  rendererRegister(EntityRenderersEvent.RegisterRenderers event){
         event.registerEntityRenderer(ASAREntityRegistry.STARFIRE_PROJECTILE.get(), StarfireRenderer::new);
-        event.registerEntityRenderer(ASAREntityRegistry.BRIGHTBURST.get(), BrightburstRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.STARCUTTER_PROJECTILE.get(), StarcutterRenderer::new);
-        event.registerEntityRenderer(ASAREntityRegistry.TIDAL_LOCK.get(), TidalLockRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.LUMINOUS_BEAM_PROJECTILE.get(), LuminousBeamRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), NoopRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.PIERCING_LIGHT_PROJECTILE.get(), PiercingLightRenderer::new);

@@ -5,13 +5,11 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyEntity;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothEntity;
-import com.birdie.asterismarcanum.entity.spells.brightburst.BrightburstEntity;
 import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamProjectile;
 import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightProjectile;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.entity.spells.starcutter.StarcutterEntity;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
-import com.birdie.asterismarcanum.entity.spells.tidal_lock.TidalLockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -76,13 +74,6 @@ public class ASAREntityRegistry {
 
 // Particle Entities and AOES ===================================
 
-    // reverse-movement black hole, instant cast but only lasts for like 5 ticks so its balanced :)
-    public static final DeferredHolder<EntityType<?>, EntityType<BrightburstEntity>> BRIGHTBURST =
-            ENTITIES.register("brightburst_entity", () -> EntityType.Builder.<BrightburstEntity>of(BrightburstEntity::new, MobCategory.MISC)
-                    .sized(11, 11)
-                    .clientTrackingRange(64)
-                    .build(AsterismArcanum.namespacePath("brightburst").toString()));
-
     public static final DeferredHolder<EntityType<?>, EntityType<StarcutterEntity>> STARCUTTER_PROJECTILE =
             ENTITIES.register("starcutter_entity", () -> EntityType.Builder.<StarcutterEntity>of(StarcutterEntity::new, MobCategory.MISC)
                     .sized(1f, 1f)
@@ -90,13 +81,6 @@ public class ASAREntityRegistry {
                     .build(AsterismArcanum.namespacePath("starcutter").toString()));
 
 // Mounts ===================================================================
-
-    // this is an invisible non-falling ice tomb entity
-    public static final DeferredHolder<EntityType<?>, EntityType<TidalLockEntity>> TIDAL_LOCK =
-        ENTITIES.register("tidal_lock", () -> EntityType.Builder.<TidalLockEntity>of(TidalLockEntity::new, MobCategory.MISC)
-                .sized(1f, 1f)
-                .clientTrackingRange(64)
-                .build(AsterismArcanum.namespacePath("tidal_lock").toString()));
 
     // extends lunar moths, 1 gigantic moth u can ride :)
     public static final DeferredHolder<EntityType<?>, EntityType<SummonedLunarMothEntity>> SUMMONED_LUNAR_MOTH =
