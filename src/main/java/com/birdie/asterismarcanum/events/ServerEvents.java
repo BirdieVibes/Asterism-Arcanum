@@ -4,6 +4,8 @@ package com.birdie.asterismarcanum.events;
 import be.florens.expandability.api.EventResult;
 import be.florens.expandability.api.forge.PlayerSwimEvent;
 import com.birdie.asterismarcanum.capabilities.magic.AstralSeaManager;
+import com.birdie.asterismarcanum.entity.spells.celestial_tether.CelestialTetherEntity;
+import io.redspace.ironsspellbooks.damage.DamageSources;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -13,6 +15,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.EntityLeaveLevelEvent;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
@@ -35,6 +38,16 @@ public class ServerEvents {
         } else if (event.getEntity().getTags().contains("entity_in_astral_sea")){
             event.getEntity().setNoGravity(false);
             event.getEntity().removeTag("entity_in_astral_sea");
+        }
+    }
+
+    @SubscribeEvent
+    public static void onTetherIncomingDamage(LivingIncomingDamageEvent event) {
+        var tetheredEntity = event.getEntity();
+
+        if (event.getSource().getEntity() != null && tetheredEntity.getVehicle() instanceof CelestialTetherEntity celestialTetherEntity && !DamageSources.isFriendlyFireBetween(event.getSource().getEntity(), tetheredEntity)) {
+            event.setCanceled(true);
+            celestialTetherEntity.subtractAbsorbedHits();
         }
     }
 }

@@ -25,6 +25,11 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> BRIGHTBURST =
             registerSpell(new BrightburstSpell());
 
+    // CELESTIAL TETHER SPELL (my concept)
+    // hover in the air blabla absorbs hits blabla
+    public static final Supplier<AbstractSpell> CELESTIAL_TETHER =
+            registerSpell(new CelestialTetherSpell());
+
     // STAR SWARM SPELL (my concept)
     // Summons 5 projectiles every 12 ticks aimed at your looking angle
     public static final Supplier<AbstractSpell> STAR_SWARM =

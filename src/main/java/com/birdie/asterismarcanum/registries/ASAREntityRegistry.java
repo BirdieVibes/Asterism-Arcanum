@@ -5,6 +5,7 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyEntity;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothEntity;
+import com.birdie.asterismarcanum.entity.spells.celestial_tether.CelestialTetherEntity;
 import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamProjectile;
 import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightProjectile;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
@@ -90,6 +91,15 @@ public class ASAREntityRegistry {
                     .clientTrackingRange(64)
                     .build(
                             ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "summoned_lunar_moth").toString()
+                    ));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<CelestialTetherEntity>> CELESTIAL_TETHER_ENTITY =
+            ENTITIES.register("celestial_tether_entity", () -> EntityType.Builder.<CelestialTetherEntity>of
+                            (CelestialTetherEntity::new, MobCategory.MISC).
+                    sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "celestial_tether_entity").toString()
                     ));
 
     public static void register(IEventBus eventBus) { ENTITIES.register(eventBus); }
