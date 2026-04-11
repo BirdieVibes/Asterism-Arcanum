@@ -2,6 +2,7 @@ package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 
+import com.birdie.asterismarcanum.entity.mobs.astromancer.AstromancerEntity;
 import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyEntity;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothEntity;
@@ -73,13 +74,21 @@ public class ASAREntityRegistry {
                             ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "dragonfly").toString()
                     ));
 
+    public static final DeferredHolder<EntityType<?>, EntityType<AstromancerEntity>> ASTROMANCER =
+            ENTITIES.register("astromancer", () -> EntityType.Builder.<AstromancerEntity>of
+                            (AstromancerEntity::new, MobCategory.MONSTER).
+                    sized(.6f, 2f)
+                    .build(
+                            ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "astromancer").toString()
+                    ));
+
 // Particle Entities and AOES ===================================
 
     public static final DeferredHolder<EntityType<?>, EntityType<StarcutterEntity>> STARCUTTER_PROJECTILE =
             ENTITIES.register("starcutter_entity", () -> EntityType.Builder.<StarcutterEntity>of(StarcutterEntity::new, MobCategory.MISC)
                     .sized(1f, 1f)
                     .clientTrackingRange(64)
-                    .build(AsterismArcanum.namespacePath("starcutter").toString()));
+                    .build(AsterismArcanum.namespacePath("starcutter_entity").toString()));
 
 // Mounts ===================================================================
 

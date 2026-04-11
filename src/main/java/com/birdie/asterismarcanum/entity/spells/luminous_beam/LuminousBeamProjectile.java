@@ -4,12 +4,15 @@ import com.birdie.asterismarcanum.entity.spells.AbstractBeamProjectile;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import com.birdie.asterismarcanum.registries.SpellRegistries;
+import io.redspace.ironsspellbooks.api.util.RaycastBuilder;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Random;
@@ -40,12 +43,27 @@ public class LuminousBeamProjectile extends AbstractBeamProjectile {
         return super.shouldRender(pX, pY, pZ);
     }
 
+    public double getBeamBlockCollision(Entity entity) {
+        if (this.getOwner() != null) {
+            Entity owner = this.getOwner();
+            var start = owner.position();
+            var blockCollision = RaycastBuilder.begin(level(), owner)
+                    .range(18)
+                    .checkForBlocks(true)
+                    .bbInflation(.15f)
+                    .build();
+            if (blockCollision instanceof BlockHitResult) {
+                double distance = start.distanceTo(blockCollision.getLocation());
+                return distance;
+            }
+        }
+        return 17;
+    }
+
     public void generateLightningBeams() {
-        //irons_spellbooks.LOGGER.debug("generatingLightningBeams");
-        //irons_spellbooks.LOGGER.debug("generatingLightningBeams");
 
         Vec3 coreStart = new Vec3(0, 0, 0);
-        int coreLength = 18;
+        int coreLength = (int) getBeamBlockCollision(this) + 1;
 
         beamVectors = new ArrayList<>();
 
@@ -58,11 +76,11 @@ public class LuminousBeamProjectile extends AbstractBeamProjectile {
             coreStart = coreEnd;
 
             int branchSegments = 1;
-            beamVectors.addAll(generateBranch(coreEnd, branchSegments, 0f, 1));
+            beamVectors.addAll(generateBranch(coreEnd, branchSegments));
         }
     }
 
-    public static List<Vec3> generateBranch(Vec3 origin, int maxLength, float splitChance, int recursionCount) {
+    public static List<Vec3> generateBranch(Vec3 origin, int maxLength) {
         List<Vec3> branchSegements = new ArrayList<>();
         Random random = new Random();
         int branches = random.nextInt(maxLength + 1);
@@ -70,10 +88,6 @@ public class LuminousBeamProjectile extends AbstractBeamProjectile {
         for (int i = 0; i < branches; i++) {
         }
         return branchSegements;
-    }
-
-    public int getAge() {
-        return age;
     }
 
     @Override

@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class StarcutterSpell extends AbstractSpell {
-    private final ResourceLocation spellId = AsterismArcanum.namespacePath("star_cutter");
+    private final ResourceLocation spellId = AsterismArcanum.namespacePath("starcutter");
 
     private final DefaultConfig defaultConfig = new DefaultConfig()
             .setMinRarity(SpellRarity.UNCOMMON)

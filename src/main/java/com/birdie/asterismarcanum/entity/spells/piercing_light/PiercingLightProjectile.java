@@ -8,6 +8,7 @@ import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -105,7 +106,7 @@ public class PiercingLightProjectile extends AbstractMagicProjectile {
             double dx = Utils.random.nextDouble() * 2 * speed - speed;
             double dy = Utils.random.nextDouble() * 2 * speed - speed;
             double dz = Utils.random.nextDouble() * 2 * speed - speed;
-            level().addParticle(ASARParticleRegistry.STARS_PARTICLE.get(), this.getX() + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
+            level().addParticle(ParticleTypes.ELECTRIC_SPARK, this.getX() + dx, this.getY() + dy, this.getZ() + dz, dx, dy, dz);
         }
     }
 

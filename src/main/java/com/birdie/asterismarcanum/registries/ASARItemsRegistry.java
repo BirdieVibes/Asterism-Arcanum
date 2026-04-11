@@ -33,6 +33,9 @@ public class ASARItemsRegistry {
     public static final Supplier<DeferredSpawnEggItem> LUNAR_MOTH_SPAWN_EGG = ITEMS
             .register("lunar_moth_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.LUNAR_MOTH, 1541255, 8666054, ItemPropertiesHelper.material().stacksTo(64)));
 
+    public static final Supplier<DeferredSpawnEggItem> ASTROMANCER_SPAWN_EGG = ITEMS
+            .register("astromancer_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.ASTROMANCER, 9541255, 4006054, ItemPropertiesHelper.material().stacksTo(64)));
+
     // Astral School
 
     public static final DeferredHolder<Item, Item> ASTRAL_HELMET = ITEMS.register("astral_helmet",

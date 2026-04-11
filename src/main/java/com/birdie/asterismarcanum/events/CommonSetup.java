@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.events;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.entity.mobs.astromancer.AstromancerEntity;
 import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyEntity;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothEntity;
@@ -21,6 +22,7 @@ public class CommonSetup {
         event.put(ASAREntityRegistry.DRAGONFLY.get(), DragonflyEntity.createAttributes().build());
         event.put(ASAREntityRegistry.LUNAR_MOTH.get(), LunarMothEntity.createAttributes().build());
         event.put(ASAREntityRegistry.SUMMONED_LUNAR_MOTH.get(), SummonedLunarMothEntity.createAttributes().build());
+        event.put(ASAREntityRegistry.ASTROMANCER.get(), AstromancerEntity.createAttributes().build());
     }
 
     @SubscribeEvent

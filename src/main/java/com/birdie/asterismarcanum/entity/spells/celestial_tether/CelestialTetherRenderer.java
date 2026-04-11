@@ -17,6 +17,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
+// I am reusing the ice tomb renderer because we don't actually need to be able to see this entity
 public class CelestialTetherRenderer extends EntityRenderer<CelestialTetherEntity> {
 
     public static final ResourceLocation NOCULL = AsterismArcanum.namespacePath("textures/entity/blank_texture/blank_texture.png");

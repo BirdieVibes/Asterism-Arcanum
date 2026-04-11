@@ -26,7 +26,7 @@ public class SpellRegistries {
             registerSpell(new BrightburstSpell());
 
     // CELESTIAL TETHER SPELL (my concept)
-    // hover in the air blabla absorbs hits blabla
+    // nullifies a number of incoming attacks and suspends you midair until the spell ends
     public static final Supplier<AbstractSpell> CELESTIAL_TETHER =
             registerSpell(new CelestialTetherSpell());
 
@@ -69,11 +69,6 @@ public class SpellRegistries {
     //Generate a small orb of astral magic before you, and then barrage that area with magical tears/slashes.
     public static final Supplier<AbstractSpell> STARCUTTER =
             registerSpell(new StarcutterSpell());
-
-    //TRAILBLAZE SPELL (Mouse's concept)
-    //Create a comet to lob, creating a AoE that deal damage and inflicts starburn (total damage reduction) debuff.
-//    public static final Supplier<AbstractSpell> TRAILBLAZE =
-//            registerSpell(new TrailblazeSpell());
 
 
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }

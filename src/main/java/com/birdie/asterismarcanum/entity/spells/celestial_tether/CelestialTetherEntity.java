@@ -3,33 +3,25 @@ package com.birdie.asterismarcanum.entity.spells.celestial_tether;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
-import io.redspace.ironsspellbooks.damage.DamageSources;
-import io.redspace.ironsspellbooks.datagen.DamageTypeTagGenerator;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.mobs.ice_spider.ICritablePartEntity;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
-import net.acetheeldritchking.aces_spell_utils.items.example.ASWeaponTiers;
-import net.acetheeldritchking.aces_spell_utils.utils.ASRarities;
-import net.acetheeldritchking.aces_spell_utils.utils.ASTags;
-import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.fluids.FluidType;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.UUID;
 
+//I've based a lot of this off of the ice tomb entity
 public class CelestialTetherEntity extends Entity implements AntiMagicSusceptible, ICritablePartEntity {
     @Nullable
     private Entity cachedOwner;
@@ -210,7 +202,7 @@ public class CelestialTetherEntity extends Entity implements AntiMagicSusceptibl
         if (!passengers.isEmpty() && passengers.getFirst() instanceof LivingEntity livingEntity) {
             hScale = livingEntity.getBbWidth() + .4f;//* 1.66f; // ratio of our default hitbox to the players default hitbox
             vScale = livingEntity.getBbHeight() + .2f;//* 0.555f;  // ratio of our default hitbox to the players default hitbox
-            vScale = (vScale + hScale); // average fixed-scale to desired scale. no change for humanoids, but will stretch for more cuboid entities
+            vScale = (vScale + hScale)/2; // average fixed-scale to desired scale. no change for humanoids, but will stretch for more cuboid entities
         }
         return super.getDimensions(pPose).scale(hScale, vScale);
     }

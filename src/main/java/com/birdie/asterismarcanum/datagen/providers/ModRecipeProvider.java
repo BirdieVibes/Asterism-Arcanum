@@ -2,6 +2,7 @@ package com.birdie.asterismarcanum.datagen.providers;
 
 import com.birdie.asterismarcanum.registries.ASARItemsRegistry;
 import com.birdie.asterismarcanum.registries.ASARModBlocksRegistry;
+import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -21,6 +22,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
 
+        //====================================ASTROLABE================================
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ASARItemsRegistry.ASTROLABE.get(), 1)
+            .pattern(" DC")
+            .pattern("DAD")
+            .pattern("BD ")
+            .define('A', Items.CLOCK)
+            .define('B', ItemRegistry.MITHRIL_INGOT.get())
+            .define('C', ItemRegistry.TARNISHED_CROWN.get())
+            .define('D', Items.CHAIN)
+            .unlockedBy("has_material", has(ItemRegistry.MITHRIL_INGOT.get())).save(recipeOutput);
+
         //=================================LUMINE======================================
 
         SimpleCookingRecipeBuilder.smelting(
@@ -32,12 +44,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ).unlockedBy("has_material", has((ItemLike) ASARItemsRegistry.DRAGONFLY_WINGS)).save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.LUMINE.get(), 1)
-                        .pattern("BAB")
-                        .pattern("ABA")
-                        .pattern("BAB")
-                        .define('B', (ItemLike) ASARItemsRegistry.LUMINE_DUST)
-                        .define('A', Items.QUARTZ)
-                        .unlockedBy("has_material", has((ItemLike) ASARItemsRegistry.LUMINE_DUST)).save(recipeOutput);
+            .pattern("BAB")
+            .pattern("ABA")
+            .pattern("BAB")
+            .define('B', (ItemLike) ASARItemsRegistry.LUMINE_DUST)
+            .define('A', Items.QUARTZ)
+            .unlockedBy("has_material", has((ItemLike) ASARItemsRegistry.LUMINE_DUST)).save(recipeOutput);
 
         stairBuilder(ASARModBlocksRegistry.LUMINE_STAIRS.get(), Ingredient.of(ASARModBlocksRegistry.LUMINE)).group("lumine")
                 .unlockedBy("has_material", has(ASARModBlocksRegistry.LUMINE.get())).save(recipeOutput);
@@ -51,11 +63,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //=================================POLISHED LUMINE=====================================
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ASARModBlocksRegistry.POLISHED_LUMINE.get(), 4)
-                .pattern("BB ")
-                .pattern("BB ")
-                .pattern("   ")
-                .define('B', ASARModBlocksRegistry.LUMINE)
-                .unlockedBy("has_material", has(ASARModBlocksRegistry.LUMINE)).save(recipeOutput);
+            .pattern("BB ")
+            .pattern("BB ")
+            .pattern("   ")
+            .define('B', ASARModBlocksRegistry.LUMINE)
+            .unlockedBy("has_material", has(ASARModBlocksRegistry.LUMINE)).save(recipeOutput);
 
         stairBuilder(ASARModBlocksRegistry.POLISHED_LUMINE_STAIRS.get(), Ingredient.of(ASARModBlocksRegistry.POLISHED_LUMINE)).group("polished_lumine")
                 .unlockedBy("has_material", has(ASARModBlocksRegistry.POLISHED_LUMINE.get())).save(recipeOutput);
@@ -74,11 +86,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //=================================LUMINE BRICK=============================================================
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ASARModBlocksRegistry.LUMINE_BRICKS.get(), 4)
-                .pattern("BB ")
-                .pattern("BB ")
-                .pattern("   ")
-                .define('B', ASARModBlocksRegistry.POLISHED_LUMINE)
-                .unlockedBy("has_material", has(ASARModBlocksRegistry.POLISHED_LUMINE)).save(recipeOutput);
+            .pattern("BB ")
+            .pattern("BB ")
+            .pattern("   ")
+            .define('B', ASARModBlocksRegistry.POLISHED_LUMINE)
+            .unlockedBy("has_material", has(ASARModBlocksRegistry.POLISHED_LUMINE)).save(recipeOutput);
 
         stairBuilder(ASARModBlocksRegistry.LUMINE_BRICKS_STAIRS.get(), Ingredient.of(ASARModBlocksRegistry.LUMINE_BRICKS)).group("lumine_bricks")
                 .unlockedBy("has_material", has(ASARModBlocksRegistry.LUMINE_BRICKS.get())).save(recipeOutput);
@@ -101,11 +113,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //==================================CHISELED LUMINE=========================================================
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ASARModBlocksRegistry.CHISELED_LUMINE.get())
-                .pattern("   ")
-                .pattern("B  ")
-                .pattern("B  ")
-                .define('B', ASARModBlocksRegistry.LUMINE_BRICKS_SLAB)
-                .unlockedBy("has_material", has(ASARModBlocksRegistry.LUMINE_BRICKS)).save(recipeOutput);
+            .pattern("   ")
+            .pattern("B  ")
+            .pattern("B  ")
+            .define('B', ASARModBlocksRegistry.LUMINE_BRICKS_SLAB)
+            .unlockedBy("has_material", has(ASARModBlocksRegistry.LUMINE_BRICKS)).save(recipeOutput);
 
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE, ASARModBlocksRegistry.LUMINE);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_LUMINE, ASARModBlocksRegistry.POLISHED_LUMINE);
@@ -114,12 +126,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //=============================UMBRAL LUMINE============================================================
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE.get(), 1)
-                .pattern("BAB")
-                .pattern("ABA")
-                .pattern("BAB")
-                .define('B', (ItemLike) ASARItemsRegistry.LUMINE_DUST)
-                .define('A', Items.AMETHYST_SHARD)
-                .unlockedBy("has_material", has((ItemLike) ASARItemsRegistry.LUMINE_DUST)).save(recipeOutput);
+            .pattern("BAB")
+            .pattern("ABA")
+            .pattern("BAB")
+            .define('B', (ItemLike) ASARItemsRegistry.LUMINE_DUST)
+            .define('A', Items.AMETHYST_SHARD)
+            .unlockedBy("has_material", has((ItemLike) ASARItemsRegistry.LUMINE_DUST)).save(recipeOutput);
 
         stairBuilder(ASARModBlocksRegistry.UMBRAL_LUMINE_STAIRS.get(), Ingredient.of(ASARModBlocksRegistry.UMBRAL_LUMINE)).group("umbral_lumine")
                 .unlockedBy("has_material", has(ASARModBlocksRegistry.UMBRAL_LUMINE.get())).save(recipeOutput);
@@ -133,11 +145,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //=================================POLISHED UMBRAL LUMINE=====================================
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get(), 4)
-                .pattern("BB ")
-                .pattern("BB ")
-                .pattern("   ")
-                .define('B', ASARModBlocksRegistry.UMBRAL_LUMINE)
-                .unlockedBy("has_material", has(ASARModBlocksRegistry.UMBRAL_LUMINE)).save(recipeOutput);
+            .pattern("BB ")
+            .pattern("BB ")
+            .pattern("   ")
+            .define('B', ASARModBlocksRegistry.UMBRAL_LUMINE)
+            .unlockedBy("has_material", has(ASARModBlocksRegistry.UMBRAL_LUMINE)).save(recipeOutput);
 
         stairBuilder(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_STAIRS.get(), Ingredient.of(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE)).group("polished_umbral_lumine")
                 .unlockedBy("has_material", has(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get())).save(recipeOutput);
@@ -156,11 +168,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //=================================UMBRAL LUMINE BRICK=============================================================
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get(), 4)
-                .pattern("BB ")
-                .pattern("BB ")
-                .pattern("   ")
-                .define('B', ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE)
-                .unlockedBy("has_material", has(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE)).save(recipeOutput);
+            .pattern("BB ")
+            .pattern("BB ")
+            .pattern("   ")
+            .define('B', ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE)
+            .unlockedBy("has_material", has(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE)).save(recipeOutput);
 
         stairBuilder(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_STAIRS.get(), Ingredient.of(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS)).group("umbral_lumine_bricks")
                 .unlockedBy("has_material", has(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS.get())).save(recipeOutput);
@@ -183,11 +195,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //==================================CHISELED UMBRAL LUMINE=========================================================
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ASARModBlocksRegistry.CHISELED_UMBRAL_LUMINE.get())
-                .pattern("   ")
-                .pattern("B  ")
-                .pattern("B  ")
-                .define('B', ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB)
-                .unlockedBy("has_material", has(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS)).save(recipeOutput);
+            .pattern("   ")
+            .pattern("B  ")
+            .pattern("B  ")
+            .define('B', ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB)
+            .unlockedBy("has_material", has(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS)).save(recipeOutput);
 
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_UMBRAL_LUMINE, ASARModBlocksRegistry.UMBRAL_LUMINE);
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.CHISELED_UMBRAL_LUMINE, ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE);

@@ -6,6 +6,7 @@ import io.redspace.ironsspellbooks.api.entity.NoKnockbackProjectile;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -91,29 +92,21 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
     }
 
     // declaring pos so that we can transfer the position of the entity from the tick function
-    public void shootProjectile(Vec3 pos){
-        Vec3 origin = pos;
+    public void shootProjectile(Vec3 pos) {
+        Vec3 origin = new Vec3(
+                pos.x + Mth.randomBetween(random, -1, 1),
+                pos.y + Mth.randomBetween(random, -1, 1),
+                pos.z + Mth.randomBetween(random, 0, 1));
         PiercingLightProjectile projectile;
         projectile = new PiercingLightProjectile(this.level(), (LivingEntity) this.getOwner());
         projectile.setPos(origin.subtract(0.0,this.getBbHeight()/2,0.0));
         projectile.setPos(origin.add(0,projectile.getBbHeight()/2,0));
         projectile.setDamage(damage);
+        projectile.setScale(.6f);
         projectile.getSpeed();
         projectile.shoot(this.getOwner().getLookAngle());
         this.level().addFreshEntity(projectile);
     }
-
-//    protected static Vec3 rayTrace(Entity owner) {
-//        float f = owner.getXRot();
-//        float f1 = owner.getYRot();
-//        float f2 = Mth.cos(-f1 * ((float) Math.PI / 180F) - (float) Math.PI);
-//        float f3 = Mth.sin(-f1 * ((float) Math.PI / 180F) - (float) Math.PI);
-//        float f4 = -Mth.cos(-f * ((float) Math.PI / 180F));
-//        float f5 = Mth.sin(-f * ((float) Math.PI / 180F));
-//        float f6 = f3 * f4;
-//        float f7 = f2 * f4;
-//        return new Vec3(f6, f5, f7);
-//    }
 
     @Override
     public void tick() {
@@ -163,8 +156,11 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
                 pos = newVector;
 
                 // V affects the rate of firing, lower number == faster with min of 1
-                if(tickCount %11 == 0){
-                    shootProjectile(pos);
+                if(tickCount %12 == 0 || tickCount % 20 == 0){
+                    // remove the for statement if you only want to summon 1 at a time
+                    for (int k = 0; k < 3; k++) {
+                        shootProjectile(pos);
+                    }
                 }
             }
 

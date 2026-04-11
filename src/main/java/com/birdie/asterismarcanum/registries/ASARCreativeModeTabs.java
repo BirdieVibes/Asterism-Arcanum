@@ -29,6 +29,7 @@ public class ASARCreativeModeTabs {
                         output.accept((ItemLike) ASARItemsRegistry.ASTRAL_BOOTS);
                         output.accept(ASARItemsRegistry.DRAGONFLY_SPAWN_EGG.get());
                         output.accept(ASARItemsRegistry.LUNAR_MOTH_SPAWN_EGG.get());
+                        output.accept(ASARItemsRegistry.ASTROMANCER_SPAWN_EGG.get());
                         output.accept(ASARItemsRegistry.CELESTIAL_STAFF.get());
                         output.accept(ASARItemsRegistry.ASTROLABE.get());
                         output.accept(ASARItemsRegistry.ARCANE_TALISMAN.get());

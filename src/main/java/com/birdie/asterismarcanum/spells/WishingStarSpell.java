@@ -92,27 +92,12 @@ public class WishingStarSpell extends AbstractSpell {
         float distance = ((2 * spellPower) + 8F);
         Vec3 forward = entity.getForward();
         Vec3 end = Utils.raycastForBlock(level, entity.getEyePosition(), entity.getEyePosition().add(forward.scale(distance)), ClipContext.Fluid.NONE).getLocation();
-        AABB hitbox = entity.getHitbox().expandTowards(end.subtract(entity.getEyePosition())).inflate(2);
-        var targetableEntities = level.getEntities(entity, hitbox, e ->
-                !e.isSpectator() &&
-                        (e instanceof LivingEntity || e instanceof Projectile) &&
-                        e.getBoundingBox().getCenter().subtract(entity.getBoundingBox().getCenter()).normalize().dot(entity.getForward()) >= .85);
-        targetableEntities.sort(Comparator.comparingDouble(e -> e.distanceToSqr(entity)));
 
         Vec3 rayVector = end.subtract(entity.getEyePosition());
         Vec3 impulse = rayVector.scale(1 / 12f).add(0, 0.1, 0);
         entity.setDeltaMovement(entity.getDeltaMovement().scale(0.2).add(impulse));
-        entity.hurtMarked = true;
         entity.addEffect(new MobEffectInstance(MobEffectRegistry.FALL_DAMAGE_IMMUNITY, 80, 0, false, false, false));
         entity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 60, 0, false, false, false));
-
-        forward = impulse.normalize(); // recalculate forward as the direction we are actually moving
-        Vec3 up = new Vec3(0, 1, 0);
-        if (forward.dot(up) > .999) {
-            up = new Vec3(1, 0, 0);
-        }
-        Vec3 right = up.cross(forward);
-        Vec3 particlePos = end.subtract(forward.scale(3)).add(right.scale(-0.3));
 
         int trailParticles = 15;
         double speed = rayVector.length() / ((2 * spellPower) + 8.0) * .75;

@@ -1,4 +1,7 @@
 {
+  "effect.asterismarcanum.starburn" : "Starburn",
+  "effect.asterismarcanum.starburn.description" : "Reduces attack damage, attack speed, and spell power",
+
   "item.asterismarcanum.scroll_astral" : "Astral Scroll",
   "item.asterismarcanum.astral_rune" : "Astral Rune",
   "item.asterismarcanum.astral_upgrade_orb" : "Astral Upgrade Orb",
@@ -9,6 +12,7 @@
   "item.asterismarcanum.astral_helmet" : "Astral Helmet",
   "item.asterismarcanum.dragonfly_spawn_egg" : "Dragonfly Spawn Egg",
   "item.asterismarcanum.lunar_moth_spawn_egg" : "Lunar Moth Spawn Egg",
+  "item.asterismarcanum.astromancer_spawn_egg" : "Astromancer Spawn Egg",
   "item.asterismarcanum.celestial_staff" : "Celestial Staff",
   "item.asterismarcanum.ethereal_talisman" : "Stellar Periapt",
   "item.asterismarcanum.dragonfly_wings" : "Dragonfly Wings",
@@ -18,6 +22,7 @@
   "entity.asterismarcanum.dragonfly" : "Dragonfly",
   "entity.asterismarcanum.lunar_moth" : "Lunar Moth",
   "entity.asterismarcanum.summoned_lunar_moth" : "Summoned Lunar Moth",
+  "entity.asterismarcanum.astromancer" : "Astromancer",
 
   "attribute.irons_spellbooks.astral_spell_power" : "Astral Spell Power",
   "attribute.irons_spellbooks.astral_magic_resist" : "Astral Magic Resist",
@@ -30,18 +35,14 @@
   "spell.asterismarcanum.starcutter.guide" : "Generate a small orb of astral magic before you, and then barrage that area with magical tears.",
   "spell.asterismarcanum.astral_gateway" : "Astral Gateway",
   "spell.asterismarcanum.astral_gateway.guide" : "Harness the power of the Stellar Periapt to transport you and those around you to and from the Astral Sea. (not craftable)",
-  "spell.asterismarcanum.moonbeamed" : "Moonbeamed",
-  "spell.asterismarcanum.moonbeamed.guide" : "Disappear in a flash of light, and appear at the location in which you are looking.",
   "spell.asterismarcanum.brightburst" : "Brightburst",
   "spell.asterismarcanum.brightburst.guide" : "Bring forth a warding aura which pushes away nearby enemies.",
   "spell.asterismarcanum.night_vision" : "Night Vision",
   "spell.asterismarcanum.night_vision.guide" : "Bestow your eyes with the ability to see clearly, even in the darkest of places.",
   "spell.asterismarcanum.star_swarm" : "Star Swarm",
   "spell.asterismarcanum.star_swarm.guide" : "Call upon the night sky to manifest as a mass of lights which follow your command to attack your enemies.",
-  "spell.asterismarcanum.tidal_lock" : "Tidal Lock",
-  "spell.asterismarcanum.tidal_lock.guide" :"Lock yourself into place, allowing you to hover until you are knocked free or leave of your own accord.",
-  "spell.asterismarcanum.constellation" : "Constellation",
-  "spell.asterismarcanum.constellation.guide" : "Rely on the magic of the patterns in the night sky, summoning stars which after a short moment will burst with explosive light.",
+  "spell.asterismarcanum.celestial_tether" : "Celestial Tether",
+  "spell.asterismarcanum.celestial_tether.guide" :"Using the sky above, lock yourself in place while nullfying an amount of incoming damage.",
   "spell.asterismarcanum.luminous_beam" : "Luminous Beam",
   "spell.asterismarcanum.luminous_beam.guide" : "Conjure a beam of destructive light, damaging enemies in front of you while continuously consuming mana.",
   "spell.asterismarcanum.summon_lunar_moths" : "Summon Lunar Moths",
@@ -81,5 +82,14 @@
   "block.asterismarcanum.polished_umbral_lumine_wall" : "Polished Umbral Lumine Wall",
 
 
-  "creativetab.asterismarcanum.asterism_arcanum_items" : "Asterism Items"
+  "creativetab.asterismarcanum.asterism_arcanum_items" : "Asterism Items",
+
+  "death.attack.asterismarcanum.starfire" : "%1$s was struck down with starfire from %2$s.",
+  "death.attack.asterismarcanum.starcutter" : "%1$s turned into shreds of confetti with %2$s's Starcutter spell.",
+  "death.attack.asterismarcanum.brightburst" : "%1$s is blasting away because of %2$s.",
+  "death.attack.asterismarcanum.starswarm" : "%1$s died to %2$s's swarm of stars.",
+  "death.attack.asterismarcanum.luminous_beam" : "%1$s was bisected by %2$s's laser.",
+  "death.attack.asterismarcanum.summon_lunar_moths" : "%1$s was nibbled to death by %2$s's moth.",
+  "death.attack.asterismarcanum.piercing_light" : "%1$s turned into %2$s's arcane pin cushion.",
+  "death.attack.asterismarcanum.celestial_staff.item" : "%1$s has joined the stars because of %2$s's %3$s."
 }

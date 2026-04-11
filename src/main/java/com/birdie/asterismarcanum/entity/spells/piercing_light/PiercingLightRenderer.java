@@ -61,10 +61,10 @@ public class PiercingLightRenderer extends EntityRenderer<PiercingLightProjectil
         VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityTranslucentEmissive(getTextureLocation(entity)));
         float halfWidth = width * .5f;
         //old color: 125, 0, 10
-        consumer.addVertex(poseMatrix, 0, -halfWidth, -halfWidth).setColor(220, 220, 180, 255).setUv(0f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0f, 1f, 0f);
-        consumer.addVertex(poseMatrix, 0, halfWidth, -halfWidth).setColor(180, 180, 220, 255).setUv(1f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0f, 1f, 0f);
-        consumer.addVertex(poseMatrix, 0, halfWidth, halfWidth).setColor(220, 180, 180, 255).setUv(1f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0f, 1f, 0f);
-        consumer.addVertex(poseMatrix, 0, -halfWidth, halfWidth).setColor(180, 220, 180, 255).setUv(0f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0f, 1f, 0f);
+        consumer.addVertex(poseMatrix, 0, -halfWidth, -halfWidth).setColor(220, 220, 200, 255).setUv(0f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0f, 1f, 0f);
+        consumer.addVertex(poseMatrix, 0, halfWidth, -halfWidth).setColor(200, 200, 220, 255).setUv(1f, 1f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0f, 1f, 0f);
+        consumer.addVertex(poseMatrix, 0, halfWidth, halfWidth).setColor(220, 200, 200, 255).setUv(1f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0f, 1f, 0f);
+        consumer.addVertex(poseMatrix, 0, -halfWidth, halfWidth).setColor(200, 220, 200, 255).setUv(0f, 0f).setOverlay(OverlayTexture.NO_OVERLAY).setLight(light).setNormal(0f, 1f, 0f);
     }
 
     @Override
