@@ -1,10 +1,7 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.particle.DelayedFirstPulseParticleOptions;
-import com.birdie.asterismarcanum.particle.DelayedSecondPulseParticleOptions;
-import com.birdie.asterismarcanum.particle.PulseParticleOptions;
-import com.birdie.asterismarcanum.particle.StarCutParticleOptions;
+import com.birdie.asterismarcanum.particle.*;
 import com.mojang.serialization.MapCodec;
 import io.redspace.ironsspellbooks.particle.FlameStrikeParticleOptions;
 import net.minecraft.core.particles.ParticleType;
@@ -20,31 +17,7 @@ import java.util.function.Supplier;
 public class ASARParticleRegistry {
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES =
             DeferredRegister.create(Registries.PARTICLE_TYPE, AsterismArcanum.MOD_ID);
-// Nebulous dust particles ========= unused
-    public static final Supplier<SimpleParticleType> NEBULOUS_DUST_PARTICLE_1 = PARTICLE_TYPES.register(
-            "nebulous_dust_1",
-            () -> new SimpleParticleType(false));
 
-    public static final Supplier<SimpleParticleType> NEBULOUS_DUST_PARTICLE_2 = PARTICLE_TYPES.register(
-            "nebulous_dust_2",
-            () -> new SimpleParticleType(false));
-
-    public static final Supplier<SimpleParticleType> NEBULOUS_DUST_PARTICLE_3 = PARTICLE_TYPES.register(
-            "nebulous_dust_3",
-            () -> new SimpleParticleType(false));
-
-    public static final Supplier<SimpleParticleType> NEBULOUS_DUST_PARTICLE_4 = PARTICLE_TYPES.register(
-            "nebulous_dust_4",
-            () -> new SimpleParticleType(false));
-
-    public static final Supplier<SimpleParticleType> NEBULOUS_DUST_PARTICLE_5 = PARTICLE_TYPES.register(
-            "nebulous_dust_5",
-            () -> new SimpleParticleType(false));
-
-    public static final Supplier<SimpleParticleType> NEBULOUS_DUST_PARTICLE_6 = PARTICLE_TYPES.register(
-            "nebulous_dust_6",
-            () -> new SimpleParticleType(false));
-// end of nebulous dust particles ===============
     public static final Supplier<SimpleParticleType> STARDUST_PARTICLE = PARTICLE_TYPES.register(
             "stardust",
             () -> new SimpleParticleType(true));
@@ -78,6 +51,15 @@ public class ASARParticleRegistry {
         }
         public StreamCodec<? super RegistryFriendlyByteBuf, StarCutParticleOptions> streamCodec() {
             return StarCutParticleOptions.STREAM_CODEC;
+        }
+    });
+
+    public static final Supplier<ParticleType<GateParticleOptions>> GATE_PARTICLE = PARTICLE_TYPES.register("gate", () -> new ParticleType<>(true) {
+        public MapCodec<GateParticleOptions> codec() {
+            return GateParticleOptions.MAP_CODEC;
+        }
+        public StreamCodec<? super RegistryFriendlyByteBuf, GateParticleOptions> streamCodec() {
+            return GateParticleOptions.STREAM_CODEC;
         }
     });
 

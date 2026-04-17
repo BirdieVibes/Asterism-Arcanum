@@ -10,6 +10,8 @@ import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -103,8 +105,8 @@ public class PiercingLightSpell extends AbstractSpell {
                 needleFar.setScale(.2f);
                 world.addFreshEntity(needleFar);
             }
+            MagicManager.spawnParticles(entity.level(), ParticleTypes.FLASH, center.x, center.y, center.z, 1, 0,0,0,.1,false);
         }
-
 
         super.onCast(world, spellLevel, entity, castSource, playerMagicData);
     }

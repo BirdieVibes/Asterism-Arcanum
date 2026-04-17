@@ -4,6 +4,7 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.spells.*;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
+import io.redspace.ironsspellbooks.spells.lightning.ThunderStepSpell;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -13,7 +14,7 @@ import java.util.function.Supplier;
 public class SpellRegistries {
     public static final DeferredRegister<AbstractSpell> SPELLS =
             DeferredRegister.create(SpellRegistry.SPELL_REGISTRY_KEY, AsterismArcanum.MOD_ID);
-// RUNNING TOTAL ----------- 10 IMP, 13 PLANNED ----------------
+// RUNNING TOTAL ----------- 12 ----------------
 
     // STARFIRE SPELL (my concept)
     // A missile spell which pierces twice and ricochets to targets at a similar angle compared to the player's view
@@ -66,9 +67,14 @@ public class SpellRegistries {
             registerSpell(new PiercingLightSpell());
 
     //STARCUTTER SPELL (Mouse's concept)
-    //Generate a small orb of astral magic before you, and then barrage that area with magical tears/slashes.
+    // raycast an entity that explodes after a short time.
     public static final Supplier<AbstractSpell> STARCUTTER =
             registerSpell(new StarcutterSpell());
+
+    //SILVERY BARBS SPELL (my concept)
+    // raycast target an area with allied entities including summons, and for a brief time cancel incoming damage to those entities
+    public static final Supplier<AbstractSpell> SILVERY_BARBS =
+            registerSpell(new SilveryBarbsSpell());
 
 
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }

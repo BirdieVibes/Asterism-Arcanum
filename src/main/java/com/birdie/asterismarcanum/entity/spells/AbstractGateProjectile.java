@@ -2,10 +2,21 @@ package com.birdie.asterismarcanum.entity.spells;
 
 import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightProjectile;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
+import com.birdie.asterismarcanum.particle.GateParticleOptions;
+import com.birdie.asterismarcanum.particle.StarCutParticleOptions;
+import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import io.redspace.ironsspellbooks.api.entity.NoKnockbackProjectile;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import io.redspace.ironsspellbooks.registries.SoundRegistry;
+import io.redspace.ironsspellbooks.util.ParticleHelper;
+import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
+import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -18,6 +29,7 @@ import net.neoforged.neoforge.entity.PartEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -98,6 +110,7 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
                 pos.y + Mth.randomBetween(random, -1, 1),
                 pos.z + Mth.randomBetween(random, 0, 1));
         PiercingLightProjectile projectile;
+
         projectile = new PiercingLightProjectile(this.level(), (LivingEntity) this.getOwner());
         projectile.setPos(origin.subtract(0.0,this.getBbHeight()/2,0.0));
         projectile.setPos(origin.add(0,projectile.getBbHeight()/2,0));
@@ -106,6 +119,7 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
         projectile.getSpeed();
         projectile.shoot(this.getOwner().getLookAngle());
         this.level().addFreshEntity(projectile);
+        this.level().addParticle(ParticleTypes.SMALL_GUST, origin.x, origin.y, origin.z, 0, 0, 0);
     }
 
     @Override
@@ -140,7 +154,7 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
                 double sinPsi = Math.sin(Math.toRadians(this.getYRot()));
                 double cosTheta = Math.cos(Math.toRadians(this.getXRot()));
                 double sinTheta = Math.sin(Math.toRadians(this.getXRot()));
-                Vec3 newVector = this.position().add(xOffset* cosPsi- yOffset * sinTheta * sinPsi,yOffset * cosTheta,(xOffset * sinPsi + yOffset * sinTheta * cosPsi) + 0.5);
+                Vec3 newVector = this.position().add(xOffset* cosPsi- yOffset * sinTheta * sinPsi,yOffset * cosTheta,(xOffset * sinPsi + yOffset * sinTheta * cosPsi));
 
                 subEntity.setPos(newVector);
                 subEntity.setDeltaMovement(newVector);
@@ -157,14 +171,13 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
 
                 // V affects the rate of firing, lower number == faster with min of 1
                 if(tickCount %12 == 0 || tickCount % 20 == 0){
+                    this.playSound(SoundRegistry.GUIDING_BOLT_CAST.get(), .5f, 1);
                     // remove the for statement if you only want to summon 1 at a time
                     for (int k = 0; k < 3; k++) {
                         shootProjectile(pos);
                     }
                 }
             }
-
-
         }
 
         if (!level().isClientSide) {
@@ -174,12 +187,8 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
                 }
                 dealDamageActive = false;
             }
-        } else {
-            spawnParticles();
         }
-
     }
-
     // this is the line that says "if you touch the entities you take damage" set it true if you want that
     public void setDealDamageActive() {
         this.dealDamageActive = false;

@@ -95,7 +95,6 @@ public class SummonedLunarMothEntity extends LunarMothEntity implements IMagicSu
                 .add(Attributes.FOLLOW_RANGE, 24.0)
                 .add(Attributes.MOVEMENT_SPEED, 1.0F)
                 .add(Attributes.ATTACK_DAMAGE, 2.0F)
-                .add(Attributes.SCALE, 5F)
                 .add(ASAttributeRegistry.MANA_REND, 0.15F)
                 .add(Attributes.FLYING_SPEED, 1.3F);
     }
@@ -192,9 +191,8 @@ public class SummonedLunarMothEntity extends LunarMothEntity implements IMagicSu
 
     // took this from the boat class
     protected Vec3 getPassengerAttachmentPoint(Entity entity, EntityDimensions dimensions, float partialTick) {
-        float f = 1.6F;
 
-        return (new Vec3((double)0.0F, (double)(dimensions.height() / 2.0F) - 0.3, (double)f)).yRot(-this.getYRot() * ((float)Math.PI / 180F));
+        return (new Vec3((double)0.0F, (double)(dimensions.height() / 2.0F) + 0.6, (double)0.0F));
     }
 
     // Event Handling ======================================================

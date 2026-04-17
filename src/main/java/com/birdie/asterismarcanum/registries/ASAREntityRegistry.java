@@ -12,6 +12,8 @@ import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightProj
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.entity.spells.starcutter.StarcutterEntity;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
+import io.redspace.ironsspellbooks.IronsSpellbooks;
+import io.redspace.ironsspellbooks.entity.spells.thunderstep.ThunderstepProjectile;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -61,7 +63,7 @@ public class ASAREntityRegistry {
     public static final DeferredHolder<EntityType<?>, EntityType<LunarMothEntity>> LUNAR_MOTH =
             ENTITIES.register("lunar_moth", () -> EntityType.Builder.<LunarMothEntity>of
                             (LunarMothEntity::new, MobCategory.CREATURE).
-                    sized(0.8f, 0.8f)
+                    sized(2f, 2f)
                     .build(
                             ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "lunar_moth").toString()
                     ));
@@ -96,7 +98,7 @@ public class ASAREntityRegistry {
     public static final DeferredHolder<EntityType<?>, EntityType<SummonedLunarMothEntity>> SUMMONED_LUNAR_MOTH =
             ENTITIES.register("summoned_lunar_moth", () -> EntityType.Builder.<SummonedLunarMothEntity>of
                             (SummonedLunarMothEntity::new, MobCategory.CREATURE).
-                    sized(1f, 1f)
+                    sized(2f, 2f)
                     .clientTrackingRange(64)
                     .build(
                             ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "summoned_lunar_moth").toString()

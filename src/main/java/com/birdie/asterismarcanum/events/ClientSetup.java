@@ -55,6 +55,7 @@ public class ClientSetup {
         event.registerSpriteSet(ASARParticleRegistry.ALTSIGNS_PARTICLE.get(), AltsignsParticle.Provider::new);
         event.registerSpriteSet(ASARParticleRegistry.PULSE_PARTICLE.get(), PulseParticle.Provider::new);
         event.registerSpriteSet(ASARParticleRegistry.STAR_CUT_PARTICLE.get(), StarCutParticle.Provider::new);
+        event.registerSpriteSet(ASARParticleRegistry.GATE_PARTICLE.get(), GateParticle.Provider::new);
         event.registerSpriteSet(ASARParticleRegistry.DELAYED_FIRST_PULSE_PARTICLE.get(), DelayedFirstPulseParticle.Provider::new);
         event.registerSpriteSet(ASARParticleRegistry.DELAYED_SECOND_PULSE_PARTICLE.get(), DelayedSecondPulseParticle.Provider::new);
     }

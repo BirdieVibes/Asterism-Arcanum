@@ -1,8 +1,10 @@
 package com.birdie.asterismarcanum.entity.spells.star_swarm;
 
 import com.birdie.asterismarcanum.entity.spells.AbstractGateProjectile;
+import com.birdie.asterismarcanum.particle.GateParticleOptions;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.SpellRegistries;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;

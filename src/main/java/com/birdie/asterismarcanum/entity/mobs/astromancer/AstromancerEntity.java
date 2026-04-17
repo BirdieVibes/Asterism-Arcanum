@@ -62,7 +62,7 @@ public class AstromancerEntity extends NeutralWizard implements IMerchantWizard 
 
         this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.5f, 25, 40)
                 .setSpells(// Attack
-                        List.of(SpellRegistries.LUMINOUS_BEAM.get(), SpellRegistries.STARFIRE.get(), SpellRegistries.STARCUTTER.get()),
+                        List.of(SpellRegistries.LUMINOUS_BEAM.get(), SpellRegistries.STARFIRE.get(), SpellRegistries.STAR_SWARM.get()),
                         // Defense
                         List.of(SpellRegistries.CELESTIAL_TETHER.get(), SpellRegistries.BRIGHTBURST.get(), SpellRegistries.PIERCING_LIGHT.get()),
                         // Movement
@@ -78,7 +78,7 @@ public class AstromancerEntity extends NeutralWizard implements IMerchantWizard 
                 List.of(
                         SpellRegistries.STARCUTTER.get(),
                         SpellRegistries.BRIGHTBURST.get(),
-                        SpellRegistries.STARFIRE.get()
+                        SpellRegistries.STAR_SWARM.get()
                 ), 1.3f, 1.3f, 100, 250));
 
         this.goalSelector.addGoal(3, new PatrolNearLocationGoal(this, 30, .75f));

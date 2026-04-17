@@ -3,7 +3,6 @@ package com.birdie.asterismarcanum.particle;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -15,13 +14,13 @@ import net.neoforged.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector3f;
 
-public class StarCutParticle extends TextureSheetParticle {
+public class GateParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
     private final Vec3 forward;
     private final boolean mirror, vertical;
     private final Vector3f[] localVertices;
 
-    StarCutParticle(ClientLevel pLevel, double pX, double pY, double pZ, SpriteSet spriteSet, double xd, double yd, double zd, StarCutParticleOptions options) {
+    GateParticle(ClientLevel pLevel, double pX, double pY, double pZ, SpriteSet spriteSet, double xd, double yd, double zd, GateParticleOptions options) {
         super(pLevel, pX, pY, pZ, 0, 0, 0);
 
         this.xd = xd;
@@ -134,15 +133,15 @@ public class StarCutParticle extends TextureSheetParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<StarCutParticleOptions> {
+    public static class Provider implements ParticleProvider<GateParticleOptions> {
         private final SpriteSet sprite;
 
         public Provider(SpriteSet pSprite) {
             this.sprite = pSprite;
         }
 
-        public Particle createParticle(@NotNull StarCutParticleOptions options, @NotNull ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
-            StarCutParticle shriekparticle = new StarCutParticle(pLevel, pX, pY, pZ, sprite, pXSpeed, pYSpeed, pZSpeed, options);
+        public Particle createParticle(@NotNull GateParticleOptions options, @NotNull ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed) {
+            GateParticle shriekparticle = new GateParticle(pLevel, pX, pY, pZ, sprite, pXSpeed, pYSpeed, pZSpeed, options);
             shriekparticle.setSpriteFromAge(this.sprite);
             shriekparticle.setAlpha(1.0F);
             return shriekparticle;

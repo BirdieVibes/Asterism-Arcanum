@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.ImpulseCastData;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -88,6 +89,8 @@ public class BrightburstSpell extends AbstractSpell {
                         .scale(baseScale - Mth.clamp((target.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE) * 5), 0, baseScale)));
             }
         });
+
+        MagicManager.spawnParticles(world, ParticleTypes.FLASH, entity.getX(), entity.getY(), entity.getZ(), 1, 0, 0, 0, 0, false);
 
         for (int i = 0; i < 7; i++) {
             float xOff = Mth.randomBetween(random, 0, 360) * Mth.nextInt(random, -1, 1);

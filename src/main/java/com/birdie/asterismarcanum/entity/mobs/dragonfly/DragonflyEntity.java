@@ -1,5 +1,6 @@
 package com.birdie.asterismarcanum.entity.mobs.dragonfly;
 
+import com.birdie.asterismarcanum.entity.mobs.astromancer.AstromancerEntity;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
@@ -115,7 +116,7 @@ public class DragonflyEntity extends Animal implements GeoEntity, FlyingAnimal, 
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, new Class[0])).setAlertOthers(new Class[0]));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, null));
 
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LunarMothEntity.class, 10, true, false, null));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, AstromancerEntity.class, 10, true, false, null));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Bee.class, 10, true, false, null));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Spider.class, 10, true, false, null));
         this.targetSelector.addGoal(1, new ResetUniversalAngerTargetGoal<>(this, true));

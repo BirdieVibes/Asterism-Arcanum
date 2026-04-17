@@ -79,9 +79,7 @@ public class StarcutterEntity extends Projectile implements AntiMagicSusceptible
 
         if (tickCount == WARMUP_TIME) {
             MagicManager.spawnParticles(level,
-                    new BlastwaveParticleOptions(.3f, .3f, 0.8f, 10f),
-                    position.x, position.y + (blastWaveRadius / 2) + 0.06, position.z,
-                    1, 0, 0, 0, 0, true
+                    ParticleTypes.FLASH, position.x, position.y + this.getBbHeight()/2, position.z, 1, 0, 0, 0, 0, false
             );
 
             level.playSound(null, blockPos, SoundEvents.AMETHYST_BLOCK_CHIME,
@@ -90,9 +88,7 @@ public class StarcutterEntity extends Projectile implements AntiMagicSusceptible
 
         if (tickCount > duration) {
             MagicManager.spawnParticles(level,
-                    new BlastwaveParticleOptions(.3f, .3f, 0.8f, 10f),
-                    position.x, position.y + (blastWaveRadius / 2) + 0.06, position.z,
-                    1, 0, 0, 0, 0, true
+                    ParticleTypes.FLASH, position.x, position.y + this.getBbHeight()/2, position.z, 1, 0, 0, 0, 0, false
             );
 
             for (int i = 0; i < 7; i++) {

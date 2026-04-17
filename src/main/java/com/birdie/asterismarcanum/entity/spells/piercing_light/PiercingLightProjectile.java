@@ -122,6 +122,6 @@ public class PiercingLightProjectile extends AbstractMagicProjectile {
 
     @Override
     public Optional<Holder<SoundEvent>> getImpactSound() {
-        return Optional.of(SoundRegistry.BLOOD_NEEDLE_IMPACT);
+        return Optional.of(SoundRegistry.GUIDING_BOLT_IMPACT);
     }
 }

@@ -7,6 +7,7 @@ import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.mobs.ice_spider.ICritablePartEntity;
 import io.redspace.ironsspellbooks.particle.BlastwaveParticleOptions;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
@@ -102,13 +103,9 @@ public class CelestialTetherEntity extends Entity implements AntiMagicSusceptibl
                         (int) 1, 0, 0, 0, 0, false);
             }
 
-            MagicManager.spawnParticles(cachedOwner.level(), new BlastwaveParticleOptions(
-                    250 * 200f,
-                    250 * 200f,
-                    250 * 200f,
-                    1 + (absorbedHitsRemaining/4)),
+            MagicManager.spawnParticles(cachedOwner.level(), ParticleTypes.FLASH,
                     this.getX(),
-                    this.getY() + 0.06,
+                    this.getY() + .5,
                     this.getZ(),
                     1, 0, 0, 0, 0, false);
         }

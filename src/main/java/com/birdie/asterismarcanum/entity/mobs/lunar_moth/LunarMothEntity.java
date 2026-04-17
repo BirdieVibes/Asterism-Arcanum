@@ -94,6 +94,7 @@ public class LunarMothEntity extends Animal implements GeoEntity, FlyingAnimal, 
                 .add(Attributes.MAX_HEALTH, 15.0)
                 .add(Attributes.FOLLOW_RANGE, 24.0)
                 .add(Attributes.MOVEMENT_SPEED, 1.0F)
+                .add(Attributes.SCALE, 0.5F)
                 .add(Attributes.ATTACK_DAMAGE, 2.0F)
                 .add(ASAttributeRegistry.MANA_REND, 0.15F)
                 .add(Attributes.FLYING_SPEED, 1.3F);

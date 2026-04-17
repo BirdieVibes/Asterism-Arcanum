@@ -2,6 +2,8 @@ package com.birdie.asterismarcanum.spells;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
+import com.birdie.asterismarcanum.particle.GateParticleOptions;
+import com.birdie.asterismarcanum.particle.StarCutParticleOptions;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
@@ -10,6 +12,7 @@ import io.redspace.ironsspellbooks.api.spells.CastSource;
 import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.Utils;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.spells.EntityCastData;
 import net.minecraft.network.chat.Component;
@@ -19,9 +22,12 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
+
+import static io.redspace.ironsspellbooks.api.util.Utils.random;
 
 // summons entities around your head that spray projectiles forwards
 
