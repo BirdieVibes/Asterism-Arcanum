@@ -51,6 +51,8 @@
   "spell.asterismarcanum.wishing_star.guide" : "Dash through the air as though you yourself are a shooting star.",
   "spell.asterismarcanum.piercing_light" : "Piercing Light",
   "spell.asterismarcanum.piercing_light.guide" : "Unleash a burst of luminous shards from your position, damaging enemies nearby.",
+  "spell.asterismarcanum.astral_slash" : "Astral Slash",
+  "spell.asterismarcanum.astral_slash.guide" : "Release a burst of astral magic to slice through your targets.",
 
   "block.asterismarcanum.lumine" : "Lumine",
   "block.asterismarcanum.polished_lumine" : "Polished Lumine",
@@ -86,6 +88,7 @@
 
   "death.attack.asterismarcanum.starfire" : "%1$s was struck down with starfire from %2$s.",
   "death.attack.asterismarcanum.starcutter" : "%1$s turned into shreds of confetti with %2$s's Starcutter spell.",
+  "death.attack.asterismarcanum.astral_slash" : "%1$s was split in two by %2$s's astral slash.",
   "death.attack.asterismarcanum.brightburst" : "%1$s is blasting away because of %2$s.",
   "death.attack.asterismarcanum.starswarm" : "%1$s died to %2$s's swarm of stars.",
   "death.attack.asterismarcanum.luminous_beam" : "%1$s was bisected by %2$s's laser.",

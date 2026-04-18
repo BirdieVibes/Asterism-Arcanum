@@ -68,7 +68,11 @@ public class StarfireSpell extends AbstractSpell {
     public void onCast(Level world, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         StarfireProjectile starfire = new StarfireProjectile(world, entity);
 
-        starfire.setPos(entity.position().add(0, entity.getEyeHeight() - starfire.getBoundingBox().getYsize() * .5f, 0));
+        starfire.setPos(entity.position().add(
+                entity.getLookAngle().normalize().scale(.2).x,
+                (entity.getLookAngle().normalize().scale(.2).y + entity.getEyeHeight()) - (starfire.getBoundingBox().getYsize() * .5f),
+                entity.getLookAngle().normalize().scale(.2).z)
+        );
         starfire.shoot(entity.getLookAngle());
         starfire.setDamage(getDamage(spellLevel, entity));
         starfire.setNoGravity(true);

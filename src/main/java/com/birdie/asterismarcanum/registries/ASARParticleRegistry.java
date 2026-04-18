@@ -3,7 +3,6 @@ package com.birdie.asterismarcanum.registries;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.particle.*;
 import com.mojang.serialization.MapCodec;
-import io.redspace.ironsspellbooks.particle.FlameStrikeParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
@@ -51,15 +50,6 @@ public class ASARParticleRegistry {
         }
         public StreamCodec<? super RegistryFriendlyByteBuf, StarCutParticleOptions> streamCodec() {
             return StarCutParticleOptions.STREAM_CODEC;
-        }
-    });
-
-    public static final Supplier<ParticleType<GateParticleOptions>> GATE_PARTICLE = PARTICLE_TYPES.register("gate", () -> new ParticleType<>(true) {
-        public MapCodec<GateParticleOptions> codec() {
-            return GateParticleOptions.MAP_CODEC;
-        }
-        public StreamCodec<? super RegistryFriendlyByteBuf, GateParticleOptions> streamCodec() {
-            return GateParticleOptions.STREAM_CODEC;
         }
     });
 

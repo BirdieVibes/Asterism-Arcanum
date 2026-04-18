@@ -6,14 +6,13 @@ import com.birdie.asterismarcanum.entity.mobs.astromancer.AstromancerEntity;
 import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyEntity;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothEntity;
+import com.birdie.asterismarcanum.entity.spells.astral_slash.AstralSlashProjectile;
 import com.birdie.asterismarcanum.entity.spells.celestial_tether.CelestialTetherEntity;
 import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamProjectile;
 import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightProjectile;
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.entity.spells.starcutter.StarcutterEntity;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
-import io.redspace.ironsspellbooks.IronsSpellbooks;
-import io.redspace.ironsspellbooks.entity.spells.thunderstep.ThunderstepProjectile;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -55,6 +54,13 @@ public class ASAREntityRegistry {
                     .sized(.5f, .5f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "piercing_light").toString()));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<AstralSlashProjectile>> ASTRAL_SLASH_PROJECTILE =
+            ENTITIES.register("astral_slash", () -> EntityType.Builder.<AstralSlashProjectile>of(AstralSlashProjectile::new, MobCategory.MISC)
+                    .sized(5f, 1f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "astral_slash").toString())
+            );
 
 
 // Mobs ===========================================================

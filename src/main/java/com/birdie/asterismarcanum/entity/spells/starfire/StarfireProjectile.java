@@ -8,6 +8,7 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
+import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
@@ -65,10 +66,16 @@ public class StarfireProjectile extends AbstractMagicProjectile {
     @Override
     public void impactParticles(double x, double y, double z) {
         MagicManager.spawnParticles(
-                level(), ASARParticleRegistry.STARDUST_PARTICLE.get(),
-                x, y, z, 25, 0, 0, 0, .18, true
+                level(), ParticleTypes.ELECTRIC_SPARK,
+                x, y, z, 13, 0, 0, 0, .18, true
         );
-        MagicManager.spawnParticles(this.level(), ASARParticleRegistry.STARDUST_PARTICLE.get(), x, y, z, 25, 0, 0, 0, .18, true);
+        MagicManager.spawnParticles(
+                level(), ParticleTypes.SMALL_GUST,
+                x, y, z, 13, .5, .5,.5, 0, true
+        );
+        MagicManager.spawnParticles(this.level(), ParticleTypes.FLASH,
+                x, y, z, 1, 0, 0, 0, 0, false
+        );
 
     }
 
@@ -113,11 +120,11 @@ public class StarfireProjectile extends AbstractMagicProjectile {
         Vec3 position = position();
 
         for (int i = 0; i < count; i++) {
-            Vec3 random = Utils.getRandomVec3(0.02 * i);
+            Vec3 random = Utils.getRandomVec3(0.05 * i);
             Vec3 p = vec.scale(f * i);
 
-            SpellUtils.addParticle(level, ASARParticleRegistry.STARS_PARTICLE.get(), position, p, random);
             SpellUtils.addParticle(level, ParticleTypes.ELECTRIC_SPARK, position, p, random);
+            SpellUtils.addParticle(level, ParticleTypes.END_ROD, position, p, random);
         }
     }
 

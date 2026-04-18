@@ -8,6 +8,7 @@ import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothModel;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothRenderer;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothModel;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothRenderer;
+import com.birdie.asterismarcanum.entity.spells.astral_slash.AstralSlashRenderer;
 import com.birdie.asterismarcanum.entity.spells.celestial_tether.CelestialTetherRenderer;
 import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamRenderer;
 import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightRenderer;
@@ -35,6 +36,7 @@ public class ClientSetup {
         event.registerEntityRenderer(ASAREntityRegistry.LUMINOUS_BEAM_PROJECTILE.get(), LuminousBeamRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.CELESTIAL_TETHER_ENTITY.get(), CelestialTetherRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), NoopRenderer::new);
+        event.registerEntityRenderer(ASAREntityRegistry.ASTRAL_SLASH_PROJECTILE.get(), AstralSlashRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.PIERCING_LIGHT_PROJECTILE.get(), PiercingLightRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.ASTROMANCER.get(), AstromancerRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.DRAGONFLY.get(), context -> {return new DragonflyRenderer(context, new DragonflyModel());});
@@ -55,7 +57,6 @@ public class ClientSetup {
         event.registerSpriteSet(ASARParticleRegistry.ALTSIGNS_PARTICLE.get(), AltsignsParticle.Provider::new);
         event.registerSpriteSet(ASARParticleRegistry.PULSE_PARTICLE.get(), PulseParticle.Provider::new);
         event.registerSpriteSet(ASARParticleRegistry.STAR_CUT_PARTICLE.get(), StarCutParticle.Provider::new);
-        event.registerSpriteSet(ASARParticleRegistry.GATE_PARTICLE.get(), GateParticle.Provider::new);
         event.registerSpriteSet(ASARParticleRegistry.DELAYED_FIRST_PULSE_PARTICLE.get(), DelayedFirstPulseParticle.Provider::new);
         event.registerSpriteSet(ASARParticleRegistry.DELAYED_SECOND_PULSE_PARTICLE.get(), DelayedSecondPulseParticle.Provider::new);
     }

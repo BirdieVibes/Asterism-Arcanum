@@ -1,6 +1,5 @@
 package com.birdie.asterismarcanum.datagen.providers;
 
-import com.birdie.asterismarcanum.registries.ASARItemsRegistry;
 import com.birdie.asterismarcanum.registries.ASARModBlocksRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;

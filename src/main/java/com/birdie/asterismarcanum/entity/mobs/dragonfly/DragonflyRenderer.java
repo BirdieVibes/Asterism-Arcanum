@@ -1,7 +1,6 @@
 package com.birdie.asterismarcanum.entity.mobs.dragonfly;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

@@ -18,12 +18,10 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
 import static io.redspace.ironsspellbooks.api.util.Utils.random;
-import static net.minecraft.Util.getRandom;
 
 //self-made spell, brightburst pushes away nearby entities and damages them, the distance the entities are repelled is based on spell power, radius,
 // and the knockback resistance in the entity

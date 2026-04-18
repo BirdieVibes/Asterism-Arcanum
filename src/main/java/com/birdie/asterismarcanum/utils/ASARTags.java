@@ -2,14 +2,10 @@ package com.birdie.asterismarcanum.utils;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 
-import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-
-import javax.swing.text.html.parser.Entity;
-
 
 public class ASARTags {
     // Astral School Focus

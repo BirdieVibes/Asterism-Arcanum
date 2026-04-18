@@ -4,7 +4,6 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.spells.*;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
-import io.redspace.ironsspellbooks.spells.lightning.ThunderStepSpell;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -14,7 +13,7 @@ import java.util.function.Supplier;
 public class SpellRegistries {
     public static final DeferredRegister<AbstractSpell> SPELLS =
             DeferredRegister.create(SpellRegistry.SPELL_REGISTRY_KEY, AsterismArcanum.MOD_ID);
-// RUNNING TOTAL ----------- 12 ----------------
+// RUNNING TOTAL ----------- 11 ----------------
 
     // STARFIRE SPELL (my concept)
     // A missile spell which pierces twice and ricochets to targets at a similar angle compared to the player's view
@@ -35,11 +34,6 @@ public class SpellRegistries {
     // Summons 5 projectiles every 12 ticks aimed at your looking angle
     public static final Supplier<AbstractSpell> STAR_SWARM =
             registerSpell(new StarSwarmSpell());
-
-    // NIGHT VISION SPELL (my concept)
-    // Gives night vision :P
-    public static final Supplier<AbstractSpell> NIGHT_VISION =
-            registerSpell(new NightVisionSpell());
 
     // LUMINOUS BEAM SPELL (my concept)
     // Cone spell but long and skinny <3
@@ -75,6 +69,9 @@ public class SpellRegistries {
     // raycast target an area with allied entities including summons, and for a brief time cancel incoming damage to those entities
     public static final Supplier<AbstractSpell> SILVERY_BARBS =
             registerSpell(new SilveryBarbsSpell());
+
+    public static final Supplier<AbstractSpell> ASTRAL_SLASH =
+            registerSpell(new AstralSlashSpell());
 
 
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }

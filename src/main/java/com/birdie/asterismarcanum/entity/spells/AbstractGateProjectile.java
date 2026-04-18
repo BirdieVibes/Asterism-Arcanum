@@ -1,22 +1,12 @@
 package com.birdie.asterismarcanum.entity.spells;
 
 import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightProjectile;
-import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
-import com.birdie.asterismarcanum.particle.GateParticleOptions;
-import com.birdie.asterismarcanum.particle.StarCutParticleOptions;
-import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import io.redspace.ironsspellbooks.api.entity.NoKnockbackProjectile;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
-import net.acetheeldritchking.aces_spell_utils.utils.ASUtils;
-import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -29,7 +19,6 @@ import net.neoforged.neoforge.entity.PartEntity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
