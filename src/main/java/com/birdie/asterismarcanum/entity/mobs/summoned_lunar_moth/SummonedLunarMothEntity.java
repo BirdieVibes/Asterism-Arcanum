@@ -2,7 +2,7 @@ package com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth;
 
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
-import com.birdie.asterismarcanum.registries.SpellRegistries;
+import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
 import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
@@ -108,7 +108,7 @@ public class SummonedLunarMothEntity extends LunarMothEntity implements IMagicSu
             if (entity instanceof LivingEntity) {
                 ((LivingEntity)entity).addEffect(new MobEffectInstance(MobEffects.LEVITATION, 40), this);
             }
-            return Utils.doMeleeAttack(this, entity, SpellRegistries.SUMMON_LUNAR_MOTHS.get().getDamageSource(this, getSummoner()));
+            return Utils.doMeleeAttack(this, entity, ASARSpellRegistry.SUMMON_LUNAR_MOTHS.get().getDamageSource(this, getSummoner()));
         }
     }
 

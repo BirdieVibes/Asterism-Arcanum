@@ -16,7 +16,7 @@ import net.minecraft.util.Mth;
 import org.joml.Matrix4f;
 import org.joml.Random;
 
-// Credit to Glacial Slash from Discerning The Eldritch (and also blood slash!)
+// Credit to Glacial Cleave from Discerning The Eldritch (and also blood slash!)
 public class AstralSlashRenderer extends EntityRenderer<AstralSlashProjectile> {
     private static final ResourceLocation[] TEXTURES = {
             AsterismArcanum.namespacePath("textures/particle/astral_slash_1.png"),

@@ -3,7 +3,7 @@ package com.birdie.asterismarcanum.entity.spells.luminous_beam;
 import com.birdie.asterismarcanum.entity.spells.AbstractBeamProjectile;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
-import com.birdie.asterismarcanum.registries.SpellRegistries;
+import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
 import io.redspace.ironsspellbooks.api.util.RaycastBuilder;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
@@ -119,7 +119,7 @@ public class LuminousBeamProjectile extends AbstractBeamProjectile {
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         var entity = entityHitResult.getEntity();
-        DamageSources.applyDamage(entity, damage, SpellRegistries.LUMINOUS_BEAM.get().getDamageSource(this, getOwner()));
+        DamageSources.applyDamage(entity, damage, ASARSpellRegistry.LUMINOUS_BEAM.get().getDamageSource(this, getOwner()));
 
         MagicManager.spawnParticles(level(), ASARParticleRegistry.STARS_PARTICLE.get(), entity.getX(), entity.getY() + entity.getBbHeight() / 2, entity.getZ(), 10, entity.getBbWidth() / 3, entity.getBbHeight() / 3, entity.getBbWidth() / 3, 0.1, false);
     }

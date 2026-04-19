@@ -40,7 +40,7 @@ public class AsterismArcanum {
 
         ASARItemsRegistry.register(modEventBus);
 
-        SpellRegistries.register(modEventBus);
+        ASARSpellRegistry.register(modEventBus);
         ASAREntityRegistry.register(modEventBus);
         ASARSchoolRegistry.register(modEventBus);
         ASARAttributeRegistry.register(modEventBus);

@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-public class SpellRegistries {
+public class ASARSpellRegistry {
     public static final DeferredRegister<AbstractSpell> SPELLS =
             DeferredRegister.create(SpellRegistry.SPELL_REGISTRY_KEY, AsterismArcanum.MOD_ID);
 // RUNNING TOTAL ----------- 11 ----------------
@@ -70,8 +70,13 @@ public class SpellRegistries {
     public static final Supplier<AbstractSpell> SILVERY_BARBS =
             registerSpell(new SilveryBarbsSpell());
 
+    //ASTRAL SLASH SPELL (my concept)
+    // basic slash spell I fear
     public static final Supplier<AbstractSpell> ASTRAL_SLASH =
             registerSpell(new AstralSlashSpell());
+
+    public static final Supplier<AbstractSpell> TRAILBLAZE =
+            registerSpell(new TrailblazeSpell());
 
 
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }

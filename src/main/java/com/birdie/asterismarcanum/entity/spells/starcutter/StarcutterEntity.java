@@ -3,7 +3,7 @@ package com.birdie.asterismarcanum.entity.spells.starcutter;
 import com.birdie.asterismarcanum.particle.StarCutParticleOptions;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
-import com.birdie.asterismarcanum.registries.SpellRegistries;
+import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
@@ -114,7 +114,7 @@ public class StarcutterEntity extends Projectile implements AntiMagicSusceptible
                 if (distanceSqr < explosionRadiusSqr && canHitEntity(entity) && Utils.hasLineOfSight(level, losPoint, entity.getBoundingBox().getCenter(), true)) {
                     double p = (1 - distanceSqr / explosionRadiusSqr);
                     float damage = (float) (this.damage * p);
-                    DamageSources.applyDamage(entity, damage, SpellRegistries.STARCUTTER.get().getDamageSource(this, getOwner()));
+                    DamageSources.applyDamage(entity, damage, ASARSpellRegistry.STARCUTTER.get().getDamageSource(this, getOwner()));
                 }
             }
 

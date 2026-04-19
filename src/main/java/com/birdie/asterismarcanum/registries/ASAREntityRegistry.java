@@ -13,6 +13,8 @@ import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightProj
 import com.birdie.asterismarcanum.entity.spells.star_swarm.StarSwarmProjectile;
 import com.birdie.asterismarcanum.entity.spells.starcutter.StarcutterEntity;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireProjectile;
+import com.birdie.asterismarcanum.entity.spells.trailblaze.TrailblazeEntity;
+import com.birdie.asterismarcanum.entity.spells.trailblaze.TrailblazeField;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -60,6 +62,20 @@ public class ASAREntityRegistry {
                     .sized(5f, 1f)
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "astral_slash").toString())
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<TrailblazeEntity>> TRAILBLAZE_ENTITY =
+            ENTITIES.register("trailblaze", () -> EntityType.Builder.<TrailblazeEntity>of(TrailblazeEntity::new, MobCategory.MISC)
+                    .sized(1f, 4f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "trailblaze").toString())
+            );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<TrailblazeField>> TRAILBLAZE_FIELD =
+            ENTITIES.register("trailblaze_field", () -> EntityType.Builder.<TrailblazeField>of(TrailblazeField::new, MobCategory.MISC)
+                    .sized(1f, 1f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "trailblaze_field").toString())
             );
 
 

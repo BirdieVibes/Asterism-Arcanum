@@ -3,7 +3,7 @@ package com.birdie.asterismarcanum.entity.mobs.astromancer;
 import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyEntity;
 import com.birdie.asterismarcanum.registries.ASARItemsRegistry;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
-import com.birdie.asterismarcanum.registries.SpellRegistries;
+import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
 import com.google.common.collect.Sets;
 import io.redspace.ironsspellbooks.api.registry.AttributeRegistry;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
@@ -61,11 +61,11 @@ public class AstromancerEntity extends NeutralWizard implements IMerchantWizard 
 
         this.goalSelector.addGoal(3, new WizardAttackGoal(this, 1.5f, 25, 40)
                 .setSpells(// Attack
-                        List.of(SpellRegistries.LUMINOUS_BEAM.get(), SpellRegistries.STARFIRE.get(), SpellRegistries.STAR_SWARM.get()),
+                        List.of(ASARSpellRegistry.LUMINOUS_BEAM.get(), ASARSpellRegistry.STARFIRE.get(), ASARSpellRegistry.STAR_SWARM.get()),
                         // Defense
-                        List.of(SpellRegistries.CELESTIAL_TETHER.get(), SpellRegistries.BRIGHTBURST.get(), SpellRegistries.PIERCING_LIGHT.get()),
+                        List.of(ASARSpellRegistry.CELESTIAL_TETHER.get(), ASARSpellRegistry.BRIGHTBURST.get(), ASARSpellRegistry.PIERCING_LIGHT.get()),
                         // Movement
-                        List.of(SpellRegistries.WISHING_STAR.get()),
+                        List.of(ASARSpellRegistry.WISHING_STAR.get()),
                         // Support
                         List.of(SpellRegistry.EVASION_SPELL.get())
                 )
@@ -75,9 +75,9 @@ public class AstromancerEntity extends NeutralWizard implements IMerchantWizard 
         );
         this.goalSelector.addGoal(2, new WizardSpellComboGoal(this,
                 List.of(
-                        SpellRegistries.STARCUTTER.get(),
-                        SpellRegistries.BRIGHTBURST.get(),
-                        SpellRegistries.STAR_SWARM.get()
+                        ASARSpellRegistry.STARCUTTER.get(),
+                        ASARSpellRegistry.BRIGHTBURST.get(),
+                        ASARSpellRegistry.STAR_SWARM.get()
                 ), 1.3f, 1.3f, 100, 250));
 
         this.goalSelector.addGoal(3, new PatrolNearLocationGoal(this, 30, .75f));

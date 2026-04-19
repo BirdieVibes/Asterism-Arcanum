@@ -2,13 +2,11 @@ package com.birdie.asterismarcanum.entity.spells.starfire;
 
 import com.birdie.asterismarcanum.entity.spells.SpellUtils;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
-import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
-import com.birdie.asterismarcanum.registries.SpellRegistries;
+import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
@@ -99,7 +97,7 @@ public class StarfireProjectile extends AbstractMagicProjectile {
 
         DamageSources.applyDamage(
                 entityHitResult.getEntity(), getDamage(),
-                SpellRegistries.STARFIRE.get().getDamageSource(this, getOwner())
+                ASARSpellRegistry.STARFIRE.get().getDamageSource(this, getOwner())
         );
 
         pierceOrDiscard();

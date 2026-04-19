@@ -1,6 +1,6 @@
 package com.birdie.asterismarcanum.item;
 
-import com.birdie.asterismarcanum.registries.SpellRegistries;
+import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.IPresetSpellContainer;
 import io.redspace.ironsspellbooks.api.spells.ISpellContainer;
 import io.redspace.ironsspellbooks.item.UniqueItem;
@@ -31,7 +31,7 @@ public class EtherealTalisman extends Item implements IPresetSpellContainer, Uni
 
         if (!ISpellContainer.isSpellContainer(itemStack)) {
             var spellContainer = ISpellContainer.create(1, true, false).mutableCopy();
-            spellContainer.addSpell(SpellRegistries.ASTRAL_GATEWAY.get(), 1, true);
+            spellContainer.addSpell(ASARSpellRegistry.ASTRAL_GATEWAY.get(), 1, true);
             ISpellContainer.set(itemStack, spellContainer.toImmutable());
         }
     }

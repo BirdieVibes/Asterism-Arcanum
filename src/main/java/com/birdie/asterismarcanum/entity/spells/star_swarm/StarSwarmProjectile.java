@@ -2,7 +2,7 @@ package com.birdie.asterismarcanum.entity.spells.star_swarm;
 
 import com.birdie.asterismarcanum.entity.spells.AbstractGateProjectile;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
-import com.birdie.asterismarcanum.registries.SpellRegistries;
+import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,7 +27,7 @@ public class StarSwarmProjectile extends AbstractGateProjectile {
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         var entity = entityHitResult.getEntity();
-        DamageSources.applyDamage(entity, damage, SpellRegistries.STAR_SWARM.get().getDamageSource(this, getOwner()));
+        DamageSources.applyDamage(entity, damage, ASARSpellRegistry.STAR_SWARM.get().getDamageSource(this, getOwner()));
     }
 
 }

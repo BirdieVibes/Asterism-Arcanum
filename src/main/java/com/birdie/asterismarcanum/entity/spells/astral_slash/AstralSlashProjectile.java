@@ -1,7 +1,7 @@
 package com.birdie.asterismarcanum.entity.spells.astral_slash;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
-import com.birdie.asterismarcanum.registries.SpellRegistries;
+import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
@@ -147,7 +147,7 @@ public class AstralSlashProjectile extends Projectile implements AntiMagicSuscep
 
     private void damageEntity(Entity entity) {
         if (!victims.contains(entity)) {
-            DamageSources.applyDamage(entity, damage, SpellRegistries.ASTRAL_SLASH.get().getDamageSource(this, getOwner()));
+            DamageSources.applyDamage(entity, damage, ASARSpellRegistry.ASTRAL_SLASH.get().getDamageSource(this, getOwner()));
             victims.add(entity);
         }
     }

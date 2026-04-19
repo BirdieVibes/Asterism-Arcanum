@@ -1,7 +1,7 @@
 package com.birdie.asterismarcanum.entity.spells.piercing_light;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
-import com.birdie.asterismarcanum.registries.SpellRegistries;
+import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
@@ -79,7 +79,7 @@ public class PiercingLightProjectile extends AbstractMagicProjectile {
     @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         super.onHitEntity(entityHitResult);
-        DamageSources.applyDamage(entityHitResult.getEntity(), getDamage(), SpellRegistries.PIERCING_LIGHT.get().getDamageSource(this, getOwner()));
+        DamageSources.applyDamage(entityHitResult.getEntity(), getDamage(), ASARSpellRegistry.PIERCING_LIGHT.get().getDamageSource(this, getOwner()));
     }
 
     @Override
