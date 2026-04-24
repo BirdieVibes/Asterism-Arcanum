@@ -45,10 +45,34 @@ public class TrailblazeEntity extends AoeEntity implements AntiMagicSusceptible 
     public void tick() {
         this.setOldPosAndRot();
 
+        if (this.tickCount % 10 == 0) {
+            if (!level().isClientSide) {
+                MagicManager.spawnParticles(level(), ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER_OMINOUS,
+                        getX(),
+                        getY() + 0.06,
+                        getZ(),
+                        15, 1, 0, 1, 0.05f, false);
+            }
+        }
+
+        if (this.tickCount % 12 == 0) {
+            if (!level().isClientSide) {
+                MagicManager.spawnParticles(level(), ParticleTypes.ELECTRIC_SPARK,
+                        getX(),
+                        getY() + 0.06,
+                        getZ(),
+                        15, 1, 0, 1, 0.5f, false);
+            }
+        }
+
         if (tickCount == WARMUP_TIME) {
             if (!level().isClientSide) {
                 checkHits();
-                MagicManager.spawnParticles(level(), ParticleTypes.FLASH, getX(), getY()+0.06, getZ(), 1, 0, 0, 0, 0, true);
+                MagicManager.spawnParticles(level(), ParticleTypes.FLASH,
+                        getX(),
+                        getY()+0.06,
+                        getZ(),
+                        1, 0, 0, 0, 0, true);
                 level().playSound(null, this.blockPosition(), SoundRegistry.SUNBEAM_IMPACT.get(), SoundSource.NEUTRAL, 1.5f, Utils.random.nextIntBetweenInclusive(9, 11) * .1f);
             }
         }

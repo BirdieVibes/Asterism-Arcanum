@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum;
 
 import com.birdie.asterismarcanum.item.staves.CelestialStaffRenderer;
+import com.birdie.asterismarcanum.loot.ASARLootModifiers;
 import com.birdie.asterismarcanum.registries.*;
 import com.birdie.asterismarcanum.registries.ASARItemsRegistry;
 import io.redspace.ironsspellbooks.item.SpellBook;
@@ -37,6 +38,8 @@ public class AsterismArcanum {
         modEventBus.addListener(this::commonSetup);
 
         ASARCreativeModeTabs.register(modEventBus);
+
+        ASARLootModifiers.register(modEventBus);
 
         ASARItemsRegistry.register(modEventBus);
 

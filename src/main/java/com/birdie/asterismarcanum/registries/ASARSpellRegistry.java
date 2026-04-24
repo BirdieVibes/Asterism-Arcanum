@@ -75,6 +75,8 @@ public class ASARSpellRegistry {
     public static final Supplier<AbstractSpell> ASTRAL_SLASH =
             registerSpell(new AstralSlashSpell());
 
+    //TRAILBLAZE SPELL (hybrid mine and mouses' concept)
+    // planned to make a 3d minefield that gives debuffs if you hit a mine
     public static final Supplier<AbstractSpell> TRAILBLAZE =
             registerSpell(new TrailblazeSpell());
 
