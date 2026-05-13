@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.spells;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.entity.mobs.astral_echo.AstralEcho;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
@@ -91,7 +92,7 @@ public class SilveryBarbsSpell extends AbstractSpell {
         Vec3 center = raycast.getLocation();
 
         level.getEntitiesOfClass(LivingEntity.class, new AABB(center.subtract(radius, radius, radius), center.add(radius, radius, radius))).forEach((target) -> {
-           if (target != entity && (target.isAlliedTo(entity) || (target instanceof IMagicSummon summon && summon.getSummoner() == entity))) {
+           if (target != entity && (target.isAlliedTo(entity) || (target instanceof IMagicSummon summon && summon.getSummoner() == entity) || (target instanceof AstralEcho))) {
                target.addEffect(new MobEffectInstance(MobEffects.LUCK, 20, 1));
                target.addTag("silvery_barbs_tag");
                MagicManager.spawnParticles(level, ParticleTypes.SMALL_GUST,

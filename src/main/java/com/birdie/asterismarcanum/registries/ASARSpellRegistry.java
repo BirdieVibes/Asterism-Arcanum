@@ -50,10 +50,10 @@ public class ASARSpellRegistry {
     public static final Supplier<AbstractSpell> SUMMON_LUNAR_MOTHS =
             registerSpell(new SummonLunarMothsSpell());
 
-    // WISHING STAR SPELL (my concept)
-    // A multicast slow "dash" that levitates the caster
-    public static final Supplier<AbstractSpell> WISHING_STAR =
-            registerSpell(new WishingStarSpell());
+    //ASTRAL ECHO SPELL (my concept)
+    // an instant teleport which can be counterspelled for the duration of the shadow left behind by the teleporter
+    public static final Supplier<AbstractSpell> ASTRAL_ECHO =
+            registerSpell(new AstralEchoSpell());
 
     // PIERCING LIGHT SPELL (my concept)
     // Creates dozens of low damage short range projectiles around you to ward off enemies
@@ -77,8 +77,8 @@ public class ASARSpellRegistry {
 
     //TRAILBLAZE SPELL (hybrid mine and mouses' concept)
     // planned to make a 3d minefield that gives debuffs if you hit a mine
-    public static final Supplier<AbstractSpell> TRAILBLAZE =
-            registerSpell(new TrailblazeSpell());
+//    public static final Supplier<AbstractSpell> TRAILBLAZE =
+//            registerSpell(new TrailblazeSpell());
 
 
     public static void register(IEventBus eventBus) { SPELLS.register(eventBus); }

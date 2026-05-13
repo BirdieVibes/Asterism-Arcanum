@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "asterismarcanum:block/dragonfly_comb_bottom",
+    "front": "asterismarcanum:block/dragonfly_comb_side",
+    "side": "asterismarcanum:block/dragonfly_comb_side",
+    "top": "asterismarcanum:block/dragonfly_comb_top"
+  }
+}

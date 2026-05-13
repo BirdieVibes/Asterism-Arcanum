@@ -1,4 +1,4 @@
-package com.birdie.asterismarcanum.entity.spells.trailblaze;
+/*package com.birdie.asterismarcanum.entity.spells.trailblaze;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
@@ -125,4 +125,4 @@ public class TrailblazeEntity extends AoeEntity implements AntiMagicSusceptible 
     public void onAntiMagic(MagicData magicData) {
         discard();
     }
-}
+}*/

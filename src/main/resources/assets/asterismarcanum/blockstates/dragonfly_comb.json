@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=up":    { "model": "asterismarcanum:block/dragonfly_comb" },
+    "facing=north": { "model": "asterismarcanum:block/dragonfly_comb", "x": 90 },
+    "facing=south": { "model": "asterismarcanum:block/dragonfly_comb", "x": 270 },
+    "facing=east":  { "model": "asterismarcanum:block/dragonfly_comb", "x": 90,"y": 90 },
+    "facing=west":  { "model": "asterismarcanum:block/dragonfly_comb", "x": 90,"y": 270 },
+    "facing=down":  { "model": "asterismarcanum:block/dragonfly_comb", "x": 180 }
+  }
+}

@@ -3,10 +3,7 @@ package com.birdie.asterismarcanum.datagen.providers;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.registries.ASARModBlocksRegistry;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SlabBlock;
-import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.*;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -67,6 +64,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         wallBlock(((WallBlock) ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_WALL.get()), blockTexture(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE.get()));
         blockItem(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_STAIRS);
         blockItem(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_SLAB);
+
+//================================DRAGONFLY COMB===============================================
+
+    }
+
+    @Override
+    public void axisBlock(RotatedPillarBlock block, ModelFile vertical, ModelFile horizontal) {
+        super.axisBlock(block, vertical, horizontal);
     }
 
     private void blockWithItem(DeferredBlock<Block> deferredBlock) {

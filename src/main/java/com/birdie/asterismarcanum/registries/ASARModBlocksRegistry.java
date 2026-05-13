@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.blocks.PillarWithBottomBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
@@ -83,6 +84,10 @@ public class ASARModBlocksRegistry {
     public static final DeferredBlock<Block> POLISHED_UMBRAL_LUMINE_WALL = registerBlock("polished_umbral_lumine_wall",
             () -> new WallBlock(BlockBehaviour.Properties.of().strength(4f).requiresCorrectToolForDrops()));
 
+    //=============================DRAGONFLY_COMB===============================================
+
+    public static final DeferredBlock<Block> DRAGONFLY_COMB = registerBlock("dragonfly_comb",
+            () -> new PillarWithBottomBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MUD)));
 
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = BLOCKS.register(name, block);

@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.events;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.entity.mobs.astral_echo.AstralEcho;
 import com.birdie.asterismarcanum.entity.mobs.astromancer.AstromancerEntity;
 import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyEntity;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothEntity;

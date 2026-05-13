@@ -1,4 +1,4 @@
-package com.birdie.asterismarcanum.entity.spells.trailblaze;
+/*package com.birdie.asterismarcanum.entity.spells.trailblaze;
 
 import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightProjectile;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
@@ -155,4 +155,4 @@ public class TrailblazeField extends Projectile implements AntiMagicSusceptible 
     public boolean displayFireAnimation() {
         return false;
     }
-}
+}*/

@@ -34,8 +34,8 @@ public class ClientSetup {
         event.registerEntityRenderer(ASAREntityRegistry.STARCUTTER_PROJECTILE.get(), StarcutterRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.LUMINOUS_BEAM_PROJECTILE.get(), LuminousBeamRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.CELESTIAL_TETHER_ENTITY.get(), NoopRenderer::new);
-        event.registerEntityRenderer(ASAREntityRegistry.TRAILBLAZE_ENTITY.get(), NoopRenderer::new);
-        event.registerEntityRenderer(ASAREntityRegistry.TRAILBLAZE_FIELD.get(), NoopRenderer::new);
+//        event.registerEntityRenderer(ASAREntityRegistry.TRAILBLAZE_ENTITY.get(), NoopRenderer::new);
+//        event.registerEntityRenderer(ASAREntityRegistry.TRAILBLAZE_FIELD.get(), NoopRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), NoopRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.ASTRAL_SLASH_PROJECTILE.get(), AstralSlashRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.PIERCING_LIGHT_PROJECTILE.get(), PiercingLightRenderer::new);

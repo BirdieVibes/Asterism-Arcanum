@@ -1,4 +1,4 @@
-package com.birdie.asterismarcanum.spells;
+/*package com.birdie.asterismarcanum.spells;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.trailblaze.TrailblazeEntity;
@@ -124,4 +124,4 @@ public class TrailblazeSpell extends AbstractSpell {
     public AnimationHolder getCastFinishAnimation() {
         return SpellAnimations.ANIMATION_INSTANT_CAST;
     }
-}
+}*/

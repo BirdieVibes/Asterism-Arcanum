@@ -4,14 +4,19 @@ package com.birdie.asterismarcanum.events;
 import be.florens.expandability.api.EventResult;
 import be.florens.expandability.api.forge.PlayerSwimEvent;
 import com.birdie.asterismarcanum.capabilities.magic.AstralSeaManager;
+import com.birdie.asterismarcanum.entity.mobs.astral_echo.AstralEcho;
 import com.birdie.asterismarcanum.entity.spells.celestial_tether.CelestialTetherEntity;
+import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import io.redspace.ironsspellbooks.damage.DamageSources;
+import io.redspace.ironsspellbooks.entity.mobs.frozen_humanoid.FrozenHumanoid;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 
 @EventBusSubscriber
@@ -50,12 +55,12 @@ public class ServerEvents {
     public static void livingIncomingDamageEvent(LivingIncomingDamageEvent event) {
         var target = event.getEntity();
 
+        //SILVERY BARBS
         if (target.hasEffect(MobEffects.LUCK) && target.getTags().contains("silvery_barbs_tag")) {
             target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 10, 1));
             event.setCanceled(true);
         } else if (target.getTags().contains("silvery_barbs_tag") && !target.hasEffect(MobEffects.LUCK)) {
             target.removeTag("silvery_barbs_tag");
         }
-
     }
 }

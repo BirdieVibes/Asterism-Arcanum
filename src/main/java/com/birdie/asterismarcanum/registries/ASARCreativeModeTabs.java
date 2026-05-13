@@ -62,6 +62,8 @@ public class ASARCreativeModeTabs {
                         output.accept(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_SLAB.get());
                         output.accept(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_STAIRS.get());
                         output.accept(ASARModBlocksRegistry.UMBRAL_LUMINE_BRICKS_WALL.get());
+                        //=====================Dragonfly comb=======================
+                        output.accept(ASARModBlocksRegistry.DRAGONFLY_COMB.get());
                     })
                     .build()
     );

@@ -65,7 +65,7 @@ public class AstromancerEntity extends NeutralWizard implements IMerchantWizard 
                         // Defense
                         List.of(ASARSpellRegistry.CELESTIAL_TETHER.get(), ASARSpellRegistry.BRIGHTBURST.get(), ASARSpellRegistry.PIERCING_LIGHT.get()),
                         // Movement
-                        List.of(ASARSpellRegistry.WISHING_STAR.get()),
+                        List.of(SpellRegistry.TELEPORT_SPELL.get()),
                         // Support
                         List.of(SpellRegistry.EVASION_SPELL.get())
                 )
@@ -94,8 +94,6 @@ public class AstromancerEntity extends NeutralWizard implements IMerchantWizard 
     protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
         this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(ASARItemsRegistry.ASTRAL_HELMET.get()));
         this.setItemSlot(EquipmentSlot.CHEST, new ItemStack(ASARItemsRegistry.ASTRAL_CHESTPLATE.get()));
-        this.setItemSlot(EquipmentSlot.LEGS, new ItemStack(ASARItemsRegistry.ASTRAL_LEGGINGS.get()));
-        this.setItemSlot(EquipmentSlot.FEET, new ItemStack(ASARItemsRegistry.ASTRAL_BOOTS.get()));
         this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ASARItemsRegistry.CELESTIAL_STAFF));
         this.setDropChance(EquipmentSlot.HEAD, 0.0F);
         this.setDropChance(EquipmentSlot.CHEST, 0.0F);
