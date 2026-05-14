@@ -58,6 +58,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.add(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_SLAB.get(),
                 block -> createSlabItemTable(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_SLAB.get()));
         this.dropSelf(ASARModBlocksRegistry.POLISHED_UMBRAL_LUMINE_WALL.get());
+
+        this.dropSelf(ASARModBlocksRegistry.DRAGONFLY_COMB.get());
     }
 
 //    protected LootTable.Builder createMultipleOreDrops(Block pBlock, Item item, float minDrops, float maxDrops) {

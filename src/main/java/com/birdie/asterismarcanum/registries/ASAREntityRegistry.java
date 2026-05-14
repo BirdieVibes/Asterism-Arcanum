@@ -2,6 +2,7 @@ package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 
+import com.birdie.asterismarcanum.entity.mobs.ThrownMothspawn;
 import com.birdie.asterismarcanum.entity.mobs.astral_echo.AstralEcho;
 import com.birdie.asterismarcanum.entity.mobs.astromancer.AstromancerEntity;
 import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyEntity;
@@ -66,6 +67,12 @@ public class ASAREntityRegistry {
                     .clientTrackingRange(64)
                     .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "astral_slash").toString())
             );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<ThrownMothspawn>> THROWN_MOTHSPAWN =
+            ENTITIES.register("thrown_mothspawn", () -> EntityType.Builder.<ThrownMothspawn>of(ThrownMothspawn::new, MobCategory.MISC)
+                    .sized(0.3f, 0.3f)
+                    .clientTrackingRange(64)
+                    .build(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "thrown_mothspawn").toString()));
 
 //    public static final DeferredHolder<EntityType<?>, EntityType<TrailblazeEntity>> TRAILBLAZE_ENTITY =
 //            ENTITIES.register("trailblaze", () -> EntityType.Builder.<TrailblazeEntity>of(TrailblazeEntity::new, MobCategory.MISC)

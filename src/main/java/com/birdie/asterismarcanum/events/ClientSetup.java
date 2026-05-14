@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.events;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import com.birdie.asterismarcanum.entity.mobs.ThrownMothspawn;
 import com.birdie.asterismarcanum.entity.mobs.astromancer.AstromancerRenderer;
 import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyModel;
 import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyRenderer;
@@ -13,11 +14,13 @@ import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamRender
 import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightRenderer;
 import com.birdie.asterismarcanum.entity.spells.starcutter.StarcutterRenderer;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireRenderer;
+import com.birdie.asterismarcanum.item.misc.MothspawnItem;
 import com.birdie.asterismarcanum.particle.*;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
 import com.birdie.asterismarcanum.render.AstralSeaEffects;
 import net.minecraft.client.renderer.entity.NoopRenderer;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -40,6 +43,7 @@ public class ClientSetup {
         event.registerEntityRenderer(ASAREntityRegistry.ASTRAL_SLASH_PROJECTILE.get(), AstralSlashRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.PIERCING_LIGHT_PROJECTILE.get(), PiercingLightRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.ASTROMANCER.get(), AstromancerRenderer::new);
+        event.registerEntityRenderer(ASAREntityRegistry.THROWN_MOTHSPAWN.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.DRAGONFLY.get(), context -> {return new DragonflyRenderer(context, new DragonflyModel());});
         event.registerEntityRenderer(ASAREntityRegistry.LUNAR_MOTH.get(), context -> {return new LunarMothRenderer(context, new LunarMothModel());});
         event.registerEntityRenderer(ASAREntityRegistry.SUMMONED_LUNAR_MOTH.get(), context -> {return new SummonedLunarMothRenderer(context, new SummonedLunarMothModel());});

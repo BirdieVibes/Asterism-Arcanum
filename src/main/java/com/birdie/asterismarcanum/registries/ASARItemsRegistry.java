@@ -4,6 +4,7 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.item.EtherealTalisman;
 import com.birdie.asterismarcanum.item.armor.AstralMagicArmorItem;
 import com.birdie.asterismarcanum.item.curios.spellbooks.astrolabe.AstrolabeSpellBook;
+import com.birdie.asterismarcanum.item.misc.MothspawnItem;
 import com.birdie.asterismarcanum.item.staves.CelestialStaffItem;
 import io.redspace.ironsspellbooks.item.UpgradeOrbItem;
 import io.redspace.ironsspellbooks.registries.ComponentRegistry;
@@ -16,7 +17,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
-// this is broken and i dont know why
 public class ASARItemsRegistry {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(AsterismArcanum.MOD_ID);
 
@@ -26,14 +26,17 @@ public class ASARItemsRegistry {
 
     public static final DeferredHolder<Item, Item> LUMINE_DUST = ITEMS.registerSimpleItem("lumine_dust");
 
+    public static final Supplier<MothspawnItem> MOTHSPAWN = ITEMS.register("mothspawn", ()-> new MothspawnItem(ItemPropertiesHelper.material().stacksTo(16)));
+
+    //You can use hex codes for these eggs if you add "0x" to the beginning!
     public static final Supplier<DeferredSpawnEggItem> DRAGONFLY_SPAWN_EGG = ITEMS
-            .register("dragonfly_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.DRAGONFLY, 1001255, 2666054, ItemPropertiesHelper.material().stacksTo(64)));
+            .register("dragonfly_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.DRAGONFLY, 0xBDD9DE, 0xDBCECC, ItemPropertiesHelper.material().stacksTo(64)));
 
     public static final Supplier<DeferredSpawnEggItem> LUNAR_MOTH_SPAWN_EGG = ITEMS
-            .register("lunar_moth_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.LUNAR_MOTH, 1541255, 8666054, ItemPropertiesHelper.material().stacksTo(64)));
+            .register("lunar_moth_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.LUNAR_MOTH, 0xEDDDE9, 0xBA82D9, ItemPropertiesHelper.material().stacksTo(64)));
 
     public static final Supplier<DeferredSpawnEggItem> ASTROMANCER_SPAWN_EGG = ITEMS
-            .register("astromancer_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.ASTROMANCER, 9541255, 4006054, ItemPropertiesHelper.material().stacksTo(64)));
+            .register("astromancer_spawn_egg", () -> new DeferredSpawnEggItem(ASAREntityRegistry.ASTROMANCER, 0xD4C9D0, 0xB2D4C3, ItemPropertiesHelper.material().stacksTo(64)));
 
     // Astral School
 

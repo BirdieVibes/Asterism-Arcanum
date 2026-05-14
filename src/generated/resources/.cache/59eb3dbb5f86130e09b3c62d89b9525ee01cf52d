@@ -1,6 +1,7 @@
-// 1.21.1	2026-04-04T15:52:43.7110632	Loot Tables
+// 1.21.1	2026-05-13T18:21:08.7021004	Loot Tables
 f6ce021c5062fc77ad563f748becc25b8f8c01ed data/asterismarcanum/loot_table/blocks/chiseled_lumine.json
 d63d7be515833c1adfdf7c349809a978482aac54 data/asterismarcanum/loot_table/blocks/chiseled_umbral_lumine.json
+6f0e9562c7209c81092a2b2da71130b49808a2d0 data/asterismarcanum/loot_table/blocks/dragonfly_comb.json
 57532170c40c1beb472e4b041891b260a55d798f data/asterismarcanum/loot_table/blocks/lumine.json
 da790064401e0b3cd3355a0a8a8777632fbb047c data/asterismarcanum/loot_table/blocks/lumine_bricks.json
 97f17c54a3c105ab8ea3cd0ed1364fb281fdc87c data/asterismarcanum/loot_table/blocks/lumine_bricks_slab.json
