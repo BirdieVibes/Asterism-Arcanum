@@ -17,6 +17,7 @@
   "item.asterismarcanum.ethereal_talisman" : "Stellar Periapt",
   "item.asterismarcanum.dragonfly_wings" : "Dragonfly Wings",
   "item.asterismarcanum.lumine_dust" : "Lumine Dust",
+  "item.asterismarcanum.mothspawn" : "Mothspawn",
 
 
   "entity.asterismarcanum.dragonfly" : "Dragonfly",
@@ -31,10 +32,12 @@
 
   "spell.asterismarcanum.starfire" : "Starfire",
   "spell.asterismarcanum.starfire.guide" : "Bring forth a minor piece of the heavens themselves, and launch it towards where you are looking.",
+  "spell.asterismarcanum.silvery_barbs" : "Silvery Barbs",
+  "spell.asterismarcanum.silvery_barbs.guide" : "Defend your allies from imminent harm, briefly deflecting incoming damage in an area you target.",
   "spell.asterismarcanum.starcutter" : "Starcutter",
   "spell.asterismarcanum.starcutter.guide" : "Generate a small orb of astral magic before you, and then barrage that area with magical tears.",
   "spell.asterismarcanum.astral_gateway" : "Astral Gateway",
-  "spell.asterismarcanum.astral_gateway.guide" : "Harness the power of the Stellar Periapt to transport you and those around you to and from the Astral Sea. (not craftable)",
+  "spell.asterismarcanum.astral_gateway.guide" : "Harness the power of the Stellar Periapt to transport you and those around you to and from the Astral Sea. (not fully implemented)",
   "spell.asterismarcanum.brightburst" : "Brightburst",
   "spell.asterismarcanum.brightburst.guide" : "Bring forth a warding aura which pushes away nearby enemies.",
   "spell.asterismarcanum.night_vision" : "Night Vision",
@@ -47,8 +50,8 @@
   "spell.asterismarcanum.luminous_beam.guide" : "Conjure a beam of destructive light, damaging enemies in front of you while continuously consuming mana.",
   "spell.asterismarcanum.summon_lunar_moths" : "Summon Lunar Moths",
   "spell.asterismarcanum.summon_lunar_moths.guide" : "Conjure a flock of moths which will fly towards and debuff your enemies.",
-  "spell.asterismarcanum.wishing_star" : "Wishing Star",
-  "spell.asterismarcanum.wishing_star.guide" : "Dash through the air as though you yourself are a shooting star.",
+  "spell.asterismarcanum.astral_echo" : "Astral Echo",
+  "spell.asterismarcanum.astral_echo.guide" : "Dash through the air as though you yourself are a shooting star.",
   "spell.asterismarcanum.piercing_light" : "Piercing Light",
   "spell.asterismarcanum.piercing_light.guide" : "Unleash a burst of luminous shards from your position, damaging enemies nearby.",
   "spell.asterismarcanum.astral_slash" : "Astral Slash",

@@ -19,7 +19,7 @@ import net.minecraft.world.phys.Vec3;
 
 public class StarfireRenderer  extends EntityRenderer<StarfireProjectile> {
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, "textures/entity/starfire/starfire.png");
-            private final ModelPart body;
+    private final ModelPart body;
 
     public StarfireRenderer(EntityRendererProvider.Context context) {
         super(context);

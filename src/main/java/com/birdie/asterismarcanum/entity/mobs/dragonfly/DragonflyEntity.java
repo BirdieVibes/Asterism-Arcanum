@@ -235,13 +235,13 @@ public class DragonflyEntity extends Animal implements GeoEntity, FlyingAnimal, 
         return PlayState.STOP;
     }
 
-    public void playAnimation(String animationId) {
-        try {
-            animationToPlay = RawAnimation.begin().thenPlay(animationId);
-        } catch (Exception ignored) {
-            IronsSpellbooks.LOGGER.error("Entity {} Failed to play animation: {}", this, animationId);
-        }
-    }
+//    public void playAnimation(String animationId) {
+//        try {
+//            animationToPlay = RawAnimation.begin().thenPlay(animationId);
+//        } catch (Exception ignored) {
+//            IronsSpellbooks.LOGGER.error("Entity {} Failed to play animation: {}", this, animationId);
+//        }
+//    }
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {

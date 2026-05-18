@@ -1,7 +1,7 @@
 package com.birdie.asterismarcanum.spells;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.entity.mobs.astral_echo.AstralEcho;
+import com.birdie.asterismarcanum.entity.spells.starcutter.StarcutterEntity;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
@@ -11,11 +11,9 @@ import io.redspace.ironsspellbooks.api.spells.CastType;
 import io.redspace.ironsspellbooks.api.spells.SpellRarity;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.entity.mobs.frozen_humanoid.FrozenHumanoid;
-import io.redspace.ironsspellbooks.network.particles.FrostStepParticlesPacket;
+import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.spells.ender.TeleportSpell;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -27,7 +25,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,7 +44,7 @@ public class AstralEchoSpell extends AbstractSpell {
             .setMinRarity(SpellRarity.RARE)
             .setSchoolResource(ASARSchoolRegistry.ASTRAL_RESOURCE)
             .setMaxLevel(8)
-            .setCooldownSeconds(3)
+            .setCooldownSeconds(12)
             .build();
 
     public AstralEchoSpell() {
@@ -80,21 +77,19 @@ public class AstralEchoSpell extends AbstractSpell {
 
     @Override
     public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(SoundRegistry.FROST_STEP.get());
+        return Optional.of(SoundRegistry.MAGIC_SPELL_REVERSE_3.get());
     }
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
         var teleportData = (TeleportSpell.TeleportData) playerMagicData.getAdditionalCastData();
 
-        AstralEcho shadow = new AstralEcho(level, entity);
-        shadow.setDeathTimer(100);
+        StarcutterEntity shadow = new StarcutterEntity(level, entity);
+        shadow.addTag("astral_echo_entity");
+        shadow.setDamage(0);
+        shadow.setPos(entity.position());
         level.addFreshEntity(shadow);
-        var tauntTarget = entity.getLastHurtByMob();
-        Predicate<Entity> predicate = tauntTarget == null ? (mob -> entity instanceof Enemy ^ mob instanceof Enemy)
-                : (mob -> mob.getClass().isAssignableFrom(tauntTarget.getClass()) || mob.isAlliedTo(tauntTarget) || entity instanceof Enemy ^ mob instanceof Enemy);
-        Utils.performTaunt(shadow, 10, predicate);
-        Vec3 dest = null;
+               Vec3 dest = null;
         if (teleportData != null) {
             var potentialTarget = teleportData.getTeleportTargetPosition();
             dest = potentialTarget;
@@ -104,13 +99,12 @@ public class AstralEchoSpell extends AbstractSpell {
             dest = findTeleportLocation(spellLevel, level, entity);
         }
 
-        PacketDistributor.sendToPlayersTrackingEntityAndSelf(entity, new FrostStepParticlesPacket(entity.position(), dest));
-
         if (entity.isPassenger()) {
             entity.stopRiding();
         }
         Utils.handleSpellTeleport(this, entity, dest);
         entity.resetFallDistance();
+        MagicManager.spawnParticles(entity.level(), ParticleTypes.SMALL_GUST, dest.x, dest.y+1, dest.z, 15, 1, 1, 1, 0.5f, false);
         level.playSound(null, dest.x, dest.y, dest.z, getCastFinishSound().get(), SoundSource.NEUTRAL, 1f, 1f);
 
         playerMagicData.resetAdditionalCastData();
@@ -122,29 +116,8 @@ public class AstralEchoSpell extends AbstractSpell {
         return TeleportSpell.findTeleportLocation(level, entity, getDistance(spellLevel, entity));
     }
 
-    public static void particleCloud(Level level, Vec3 pos) {
-        if (level.isClientSide) {
-            double width = 0.5;
-            float height = 1;
-            for (int i = 0; i < 25; i++) {
-                double x = pos.x + Utils.random.nextDouble() * width * 2 - width;
-                double y = pos.y + height + Utils.random.nextDouble() * height * 1.2 * 2 - height * 1.2;
-                double z = pos.z + Utils.random.nextDouble() * width * 2 - width;
-                double dx = Utils.random.nextDouble() * .1 * (Utils.random.nextBoolean() ? 1 : -1);
-                double dy = Utils.random.nextDouble() * .1 * (Utils.random.nextBoolean() ? 1 : -1);
-                double dz = Utils.random.nextDouble() * .1 * (Utils.random.nextBoolean() ? 1 : -1);
-                level.addParticle(ParticleHelper.SNOWFLAKE, true, x, y, z, dx, dy, dz);
-                level.addParticle(ParticleTypes.SNOWFLAKE, true, x, y, z, -dx, -dy, -dz);
-            }
-        }
-    }
-
     private float getDistance(int spellLevel, LivingEntity sourceEntity) {
-        return 9 + (float) (Utils.softCapFormula(getEntityPowerMultiplier(sourceEntity)) * spellLevel * 4.3);
-    }
-
-    private float getDamage(int spellLevel, LivingEntity caster) {
-        return this.getSpellPower(spellLevel, caster);
+        return 9 + (float) (Utils.softCapFormula(getEntityPowerMultiplier(sourceEntity)) * spellLevel * 3.5);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.birdie.asterismarcanum.events;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
-import com.birdie.asterismarcanum.entity.mobs.ThrownMothspawn;
 import com.birdie.asterismarcanum.entity.mobs.astromancer.AstromancerRenderer;
 import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyModel;
 import com.birdie.asterismarcanum.entity.mobs.dragonfly.DragonflyRenderer;
@@ -9,12 +8,10 @@ import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothModel;
 import com.birdie.asterismarcanum.entity.mobs.lunar_moth.LunarMothRenderer;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothModel;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothRenderer;
-import com.birdie.asterismarcanum.entity.spells.astral_slash.AstralSlashRenderer;
 import com.birdie.asterismarcanum.entity.spells.luminous_beam.LuminousBeamRenderer;
 import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightRenderer;
 import com.birdie.asterismarcanum.entity.spells.starcutter.StarcutterRenderer;
 import com.birdie.asterismarcanum.entity.spells.starfire.StarfireRenderer;
-import com.birdie.asterismarcanum.item.misc.MothspawnItem;
 import com.birdie.asterismarcanum.particle.*;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARParticleRegistry;
@@ -40,7 +37,6 @@ public class ClientSetup {
 //        event.registerEntityRenderer(ASAREntityRegistry.TRAILBLAZE_ENTITY.get(), NoopRenderer::new);
 //        event.registerEntityRenderer(ASAREntityRegistry.TRAILBLAZE_FIELD.get(), NoopRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.STAR_SWARM_PROJECTILE.get(), NoopRenderer::new);
-        event.registerEntityRenderer(ASAREntityRegistry.ASTRAL_SLASH_PROJECTILE.get(), AstralSlashRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.PIERCING_LIGHT_PROJECTILE.get(), PiercingLightRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.ASTROMANCER.get(), AstromancerRenderer::new);
         event.registerEntityRenderer(ASAREntityRegistry.THROWN_MOTHSPAWN.get(), ThrownItemRenderer::new);

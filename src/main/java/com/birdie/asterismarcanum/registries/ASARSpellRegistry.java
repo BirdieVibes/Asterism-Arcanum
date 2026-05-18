@@ -70,11 +70,6 @@ public class ASARSpellRegistry {
     public static final Supplier<AbstractSpell> SILVERY_BARBS =
             registerSpell(new SilveryBarbsSpell());
 
-    //ASTRAL SLASH SPELL (my concept)
-    // basic slash spell I fear
-    public static final Supplier<AbstractSpell> ASTRAL_SLASH =
-            registerSpell(new AstralSlashSpell());
-
     //TRAILBLAZE SPELL (hybrid mine and mouses' concept)
     // planned to make a 3d minefield that gives debuffs if you hit a mine
 //    public static final Supplier<AbstractSpell> TRAILBLAZE =

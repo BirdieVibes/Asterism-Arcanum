@@ -43,7 +43,13 @@ public class StarcutterEntity extends Projectile implements AntiMagicSusceptible
     }
 
     @Override
-    public void onAntiMagic(MagicData playerMagicData) { }
+    public void onAntiMagic(MagicData playerMagicData) {
+        if(this.getTags().contains("astral_echo_entity") && this.getOwner() != null) {
+            this.getOwner().setPos(this.position());
+        }
+
+        this.tickCount = 30;
+    }
 
     @Override
     public void onSyncedDataUpdated(EntityDataAccessor<?> pKey) {
@@ -59,15 +65,12 @@ public class StarcutterEntity extends Projectile implements AntiMagicSusceptible
     @Override
     public void tick() {
         super.tick();
-
         Level level = this.level();
 
         if (level.isClientSide) return;
 
         AABB boundingBox = this.getBoundingBox();
-        float blastWaveRadius = (float) (boundingBox.getXsize());
         float totalRadius = this.getRadius();
-
 
         Vec3 position = this.position();
         BlockPos blockPos = this.blockPosition();
