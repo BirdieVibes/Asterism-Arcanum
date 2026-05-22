@@ -160,7 +160,6 @@ public abstract class AbstractGateProjectile extends Projectile implements NoKno
 
                 // V affects the rate of firing, lower number == faster with min of 1
                 if(tickCount %12 == 0 || tickCount % 20 == 0){
-                    this.playSound(SoundRegistry.GUIDING_BOLT_CAST.get(), .5f, 1);
                     // remove the for statement if you only want to summon 1 at a time
                     for (int k = 0; k < 3; k++) {
                         shootProjectile(pos);

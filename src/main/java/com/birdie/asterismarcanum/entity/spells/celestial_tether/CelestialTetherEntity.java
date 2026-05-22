@@ -1,16 +1,20 @@
 package com.birdie.asterismarcanum.entity.spells.celestial_tether;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.mobs.ice_spider.ICritablePartEntity;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.Level;
@@ -80,6 +84,13 @@ public class CelestialTetherEntity extends Entity implements AntiMagicSusceptibl
 
     public void subtractAbsorbedHits() {
         absorbedHitsRemaining--;
+//        Level level = this.level();
+//
+//        BlockPos blockPos = this.blockPosition();
+
+        //TODO SOUND
+//        level.playSound(null, blockPos, ASARSoundsRegistry.GALE_V3.get(),
+//                SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(2, 5) * .3f);
     }
 
     @Override
@@ -95,18 +106,19 @@ public class CelestialTetherEntity extends Entity implements AntiMagicSusceptibl
 
         if (tickCount % 15 == 0 && (cachedOwner != null)) {
             for (int i = 0; i < (3*absorbedHitsRemaining); i++) {
-                MagicManager.spawnParticles(cachedOwner.level(), ParticleHelper.CLEANSE_PARTICLE,
+                MagicManager.spawnParticles(cachedOwner.level(), ParticleTypes.TRIAL_SPAWNER_DETECTED_PLAYER_OMINOUS.getType(),
                         this.getX() + Mth.randomBetween(random, -1, 1),
                         this.getY() + Mth.randomBetween(random, -1, 1),
                         this.getZ() + Mth.randomBetween(random, -1, 1),
-                        (int) 1, 0, 0, 0, 0, false);
+                        (int) 4, 0.1, 0.1, 0.1, 0, false);
             }
 
-            MagicManager.spawnParticles(cachedOwner.level(), ParticleTypes.FLASH,
+            MagicManager.spawnParticles(cachedOwner.level(), ParticleTypes.SMALL_GUST,
                     this.getX(),
                     this.getY() + .5,
                     this.getZ(),
-                    1, 0, 0, 0, 0, false);
+                    4, 0.5, 0.5, 0.5, 0, false);
+            this.playSound(SoundEvents.BEACON_AMBIENT, 1, 1);
         }
     }
 
@@ -130,8 +142,15 @@ public class CelestialTetherEntity extends Entity implements AntiMagicSusceptibl
     public void destroyTether() {
         if (!level().isClientSide) {
             this.ejectPassengers();
-            this.playSound(SoundEvents.GLASS_BREAK, 2, 1);
-            this.discard();
+            //TODO SOUND
+
+//            Level level = this.level();
+//
+//            BlockPos blockPos = this.blockPosition();
+//
+//            level.playSound(null, blockPos, ASARSoundsRegistry.GALE_V3.get(),
+//                    SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(2, 5) * .3f);
+//            this.discard();
         }
     }
 

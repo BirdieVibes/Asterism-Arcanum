@@ -14,6 +14,12 @@ public class ASARSoundsRegistry {
     public static final DeferredRegister<SoundEvent> ASAR_SOUND_EVENTS =
             DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, AsterismArcanum.MOD_ID);
 
+    //-----tartrapped sounds-----
+    // (building doppler tingly effect)
+    public static final DeferredHolder<SoundEvent, SoundEvent> GALE_RECHARGE = registerSoundEvent("gale_recharge");
+    // (clang falling tingly sound)
+    public static final DeferredHolder<SoundEvent, SoundEvent> GALE_V3 = registerSoundEvent("gale_v3");
+
     //power bow unique arrow whoosh (short hum jingly)
     public static final DeferredHolder<SoundEvent, SoundEvent> ASTRAL_CAST = registerSoundEvent("astral_cast");
     public static final DeferredHolder<SoundEvent, SoundEvent> ASTRAL_CAST_LOW = registerSoundEvent("astral_cast_low");

@@ -2,6 +2,7 @@ package com.birdie.asterismarcanum.entity.spells.starfire;
 
 import com.birdie.asterismarcanum.entity.spells.SpellUtils;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
@@ -24,7 +25,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class StarfireProjectile extends AbstractMagicProjectile {
-    private int bounces;
 
     public StarfireProjectile(Level levelIn, LivingEntity shooter) {
         this(ASAREntityRegistry.STARFIRE_PROJECTILE.get(), levelIn, shooter);
@@ -79,20 +79,6 @@ public class StarfireProjectile extends AbstractMagicProjectile {
     }
 
     @Override
-    protected void onHitBlock(BlockHitResult pResult) {
-        super.onHitBlock(pResult);
-        switch (pResult.getDirection()) {
-            case UP, DOWN ->
-                    this.setDeltaMovement(this.getDeltaMovement().multiply(1, this.isNoGravity() ? -1 : -2.5f, 1));
-            case EAST, WEST -> this.setDeltaMovement(this.getDeltaMovement().multiply(-1, 1, 1));
-            case NORTH, SOUTH -> this.setDeltaMovement(this.getDeltaMovement().multiply(1, 1, -1));
-        }
-        if (++bounces >= 0) {
-            discard();
-        }
-    }
-
-    @Override
     protected void onHitEntity(EntityHitResult entityHitResult) {
         super.onHitEntity(entityHitResult);
 
@@ -131,9 +117,9 @@ public class StarfireProjectile extends AbstractMagicProjectile {
     public float getSpeed() {
         return 2.5f;
     }
-
+//TODO SOUND
     @Override
     public Optional<Holder<SoundEvent>> getImpactSound() {
-        return Optional.empty();
+        return Optional.of(ASARSoundsRegistry.GALE_V3);
     }
 }

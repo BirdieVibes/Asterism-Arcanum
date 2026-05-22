@@ -4,7 +4,7 @@ package com.birdie.asterismarcanum.events;
 import be.florens.expandability.api.EventResult;
 import be.florens.expandability.api.forge.PlayerSwimEvent;
 import com.birdie.asterismarcanum.capabilities.magic.AstralSeaManager;
-import com.birdie.asterismarcanum.entity.mobs.astral_echo.AstralEcho;
+
 import com.birdie.asterismarcanum.entity.spells.celestial_tether.CelestialTetherEntity;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import io.redspace.ironsspellbooks.damage.DamageSources;

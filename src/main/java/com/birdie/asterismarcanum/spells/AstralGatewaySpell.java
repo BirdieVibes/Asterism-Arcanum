@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.capabilities.magic.AstralSeaManager;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
@@ -66,9 +67,10 @@ public class AstralGatewaySpell extends AbstractSpell {
         return Optional.of(SoundRegistry.POCKET_DIMENSION_TRAVEL.get());
     }
 
+    //TODO SOUND
     @Override
     public Optional<SoundEvent> getCastStartSound() {
-        return Optional.of(SoundRegistry.ELDRITCH_PREPARE.get());
+        return Optional.of(ASARSoundsRegistry.GALE_RECHARGE.get());
     }
 
     @Override

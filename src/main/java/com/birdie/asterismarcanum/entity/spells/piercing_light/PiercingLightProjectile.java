@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.entity.spells.piercing_light;
 
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.damage.DamageSources;
@@ -119,8 +120,9 @@ public class PiercingLightProjectile extends AbstractMagicProjectile {
         return 2.5f;
     }
 
+    //TODO SOUND
     @Override
     public Optional<Holder<SoundEvent>> getImpactSound() {
-        return Optional.of(SoundRegistry.GUIDING_BOLT_IMPACT);
+        return Optional.of(ASARSoundsRegistry.GALE_V3);
     }
 }
