@@ -1,6 +1,7 @@
 package com.birdie.asterismarcanum.registries;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
+import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -8,45 +9,44 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.function.Supplier;
+
 
 public class ASARSoundsRegistry {
 
     public static final DeferredRegister<SoundEvent> ASAR_SOUND_EVENTS =
             DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, AsterismArcanum.MOD_ID);
 
-    //-----tartrapped sounds-----
-    // (building doppler tingly effect)
-    public static final DeferredHolder<SoundEvent, SoundEvent> GALE_RECHARGE = registerSoundEvent("gale_recharge");
-    // (clang falling tingly sound)
-    public static final DeferredHolder<SoundEvent, SoundEvent> GALE_V3 = registerSoundEvent("gale_v3");
+    //GENERIC ASTRAL-----------------------------
+    //---------------Minecraft Dungeons Enchanted Critical Hit Sounds
+    public static final DeferredHolder<SoundEvent, SoundEvent> ASTRAL_SOUND = registerSoundEvent("astral_sound");
 
-    //power bow unique arrow whoosh (short hum jingly)
-    public static final DeferredHolder<SoundEvent, SoundEvent> ASTRAL_CAST = registerSoundEvent("astral_cast");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ASTRAL_CAST_LOW = registerSoundEvent("astral_cast_low");
-    //enchantment critical hit (echoey ting sound)
-    public static final DeferredHolder<SoundEvent, SoundEvent> ASTRAL_CAST_IMPACT = registerSoundEvent("astral_cast_impact");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ASTRAL_CAST_IMPACT_LOW = registerSoundEvent("astral_cast_impact_low");
 
-    //death cap mushroom (slow high warble with jingly and hum)
-    public static final DeferredHolder<SoundEvent, SoundEvent> LUMINOUS_RAY_LOOP = registerSoundEvent("luminous_ray_loop");
+    //ASTRAL ECHO-----------------------------------------------
+    //--------------Minecraft Dungeons Cape Prism Sound
+    public static final DeferredHolder<SoundEvent, SoundEvent> ASTRAL_ECHO_CAST = registerSoundEvent("astral_echo_sound");
 
-    //void quiver charge impact (hum shatter)
-    public static final DeferredHolder<SoundEvent, SoundEvent> ASTRAL_SHATTER_1 = registerSoundEvent("astral_shatter_1");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ASTRAL_SHATTER_2 = registerSoundEvent("astral_shatter_2");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ASTRAL_SHATTER_3 = registerSoundEvent("astral_shatter_3");
+    //BRIGHTBURST--------------------------------------------------
+    //--------------Minecraft Dungeons Orb Frenzy Flair Sound
+    public static final DeferredHolder<SoundEvent, SoundEvent> BRIGHTBURST_SOUND = registerSoundEvent("brightburst_sound");
 
-    //item claymore winter impact (sharp shatter)
-    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_SHATTER_1 = registerSoundEvent("star_shatter_1");
-    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_SHATTER_2 = registerSoundEvent("star_shatter_2");
-    public static final DeferredHolder<SoundEvent, SoundEvent> STAR_SHATTER_3 = registerSoundEvent("star_shatter_3");
+    //LUMINOUS BEAM-------------------------------------------
+    //---------------Tar Prism Beam V1
+    public static final DeferredHolder<SoundEvent, SoundEvent> LUMINOUS_BEAM_LOOP = registerSoundEvent("luminous_beam_loop");
 
-    //flair amethyst crystal rise (thudwhoosh amethyst chimes sound)
-    public static final DeferredHolder<SoundEvent, SoundEvent> NIGHT_VISION_CAST = registerSoundEvent("night_vision_cast");
+    //CELESTIAL TETHER---------------------------------------------
+    //-------------Minecraft Dungeons Void Quiver Charged Impact Sounds
+    public static final DeferredHolder<SoundEvent, SoundEvent> CELESTIAL_TETHER_SHATTER = registerSoundEvent("celestial_tether_shatter");
 
-    //flair orb frenzy ---- dark flow cast (whoosh fast warble with chimes at end)
-    public static final DeferredHolder<SoundEvent, SoundEvent> BRIGHTBURST_CAST = registerSoundEvent("brightburst_cast");
+    //PIERCING LIGHT--------------------------------------------
+    //-----------MC Dungeons Rainbow Flair, MC Dungeons Rainbow Rings Flair, MC Dungeons Smelling Roses Flair, MC Dungeons Level up Glitter
+    public static final DeferredHolder<SoundEvent, SoundEvent> PIERCING_LIGHT_CAST_SOUND = registerSoundEvent("piercing_light_cast_sound");
 
-    private static DeferredHolder<SoundEvent, SoundEvent> registerSoundEvent(String name) {
+    //SUMMON LUNAR MOTH-----------------------------------------
+    //-----------Tar Gale Recharge V2
+    public static final DeferredHolder<SoundEvent, SoundEvent> SUMMON_MOTH_SOUND = registerSoundEvent("summon_moth_sound");
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> registerSoundEvent(String name) {
         return ASAR_SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(AsterismArcanum.MOD_ID, name)));
     }
 

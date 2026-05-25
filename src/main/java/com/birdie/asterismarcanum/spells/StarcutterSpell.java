@@ -62,7 +62,7 @@ public class StarcutterSpell extends AbstractSpell {
 
     @Override
     public Optional<SoundEvent> getCastStartSound() {
-        return Optional.of(ASARSoundsRegistry.ASTRAL_CAST.get());
+        return Optional.of(ASARSoundsRegistry.ASTRAL_SOUND.get());
     }
 
     @Override

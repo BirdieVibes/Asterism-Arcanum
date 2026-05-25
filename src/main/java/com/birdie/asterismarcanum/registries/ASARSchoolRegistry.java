@@ -4,8 +4,10 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.utils.ASARTags;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
 import io.redspace.ironsspellbooks.api.spells.SchoolType;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -47,7 +49,7 @@ public class ASARSchoolRegistry extends SchoolRegistry {
             Component.translatable("school.asterismarcanum.astral").withColor(7231167),
             ASARAttributeRegistry.ASTRAL_SPELL_POWER,
             ASARAttributeRegistry.ASTRAL_MAGIC_RESIST,
-            ASARSoundsRegistry.ASTRAL_CAST_IMPACT_LOW,
+            ASARSoundsRegistry.ASTRAL_SOUND,
             ASARDamageTypes.ASTRAL_MAGIC
     ));
 }

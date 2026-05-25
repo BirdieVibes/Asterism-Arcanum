@@ -67,12 +67,6 @@ public class AstralGatewaySpell extends AbstractSpell {
         return Optional.of(SoundRegistry.POCKET_DIMENSION_TRAVEL.get());
     }
 
-    //TODO SOUND
-    @Override
-    public Optional<SoundEvent> getCastStartSound() {
-        return Optional.of(ASARSoundsRegistry.GALE_RECHARGE.get());
-    }
-
     @Override
     public CastType getCastType() {
         return CastType.LONG;

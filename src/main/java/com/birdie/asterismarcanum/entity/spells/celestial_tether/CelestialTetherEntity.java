@@ -84,13 +84,12 @@ public class CelestialTetherEntity extends Entity implements AntiMagicSusceptibl
 
     public void subtractAbsorbedHits() {
         absorbedHitsRemaining--;
-//        Level level = this.level();
-//
-//        BlockPos blockPos = this.blockPosition();
+        Level level = this.level();
 
-        //TODO SOUND
-//        level.playSound(null, blockPos, ASARSoundsRegistry.GALE_V3.get(),
-//                SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(2, 5) * .3f);
+        BlockPos blockPos = this.blockPosition();
+
+        level.playSound(null, blockPos, ASARSoundsRegistry.CELESTIAL_TETHER_SHATTER.get(),
+                SoundSource.NEUTRAL, 0.5f, Utils.random.nextIntBetweenInclusive(1, 2) * .3f);
     }
 
     @Override
@@ -113,12 +112,13 @@ public class CelestialTetherEntity extends Entity implements AntiMagicSusceptibl
                         (int) 4, 0.1, 0.1, 0.1, 0, false);
             }
 
+            this.playSound(ASARSoundsRegistry.LUMINOUS_BEAM_LOOP.get(), 1f, Utils.random.nextIntBetweenInclusive(3, 4) * .3f);
+
             MagicManager.spawnParticles(cachedOwner.level(), ParticleTypes.SMALL_GUST,
                     this.getX(),
                     this.getY() + .5,
                     this.getZ(),
                     4, 0.5, 0.5, 0.5, 0, false);
-            this.playSound(SoundEvents.BEACON_AMBIENT, 1, 1);
         }
     }
 
@@ -142,15 +142,14 @@ public class CelestialTetherEntity extends Entity implements AntiMagicSusceptibl
     public void destroyTether() {
         if (!level().isClientSide) {
             this.ejectPassengers();
-            //TODO SOUND
 
-//            Level level = this.level();
-//
-//            BlockPos blockPos = this.blockPosition();
-//
-//            level.playSound(null, blockPos, ASARSoundsRegistry.GALE_V3.get(),
-//                    SoundSource.NEUTRAL, 3.5f, Utils.random.nextIntBetweenInclusive(2, 5) * .3f);
-//            this.discard();
+            Level level = this.level();
+
+            BlockPos blockPos = this.blockPosition();
+
+            level.playSound(null, blockPos, ASARSoundsRegistry.CELESTIAL_TETHER_SHATTER.get(),
+                    SoundSource.NEUTRAL, 1f, Utils.random.nextIntBetweenInclusive(2, 3) * .3f);
+            this.discard();
         }
     }
 

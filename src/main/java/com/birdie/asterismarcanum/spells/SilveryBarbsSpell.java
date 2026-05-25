@@ -2,6 +2,7 @@ package com.birdie.asterismarcanum.spells;
 
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
@@ -17,6 +18,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -69,7 +71,7 @@ public class SilveryBarbsSpell extends AbstractSpell {
 
     @Override
     public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.empty();
+        return Optional.of(ASARSoundsRegistry.ASTRAL_SOUND.get());
     }
 
     public static float radius;
@@ -108,7 +110,7 @@ public class SilveryBarbsSpell extends AbstractSpell {
         });
 
         MagicManager.spawnParticles(level, ParticleTypes.FLASH, center.x, center.y, center.z, 1, 0,0,0,.1,false);
-
+        level.playSound(null, center.x, center.y, center.z, getCastFinishSound().get(), SoundSource.NEUTRAL);
         super.onCast(level, spellLevel, entity, castSource, playerMagicData);
     }
 

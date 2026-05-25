@@ -1,44 +1,52 @@
 {
-  "astral_cast" : {
-    "subtitle" : "sounds.asterismarcanum.astral_cast",
+  "astral_sound" : {
+    "subtitle" : "Astral magic occurs.",
     "sounds" : [
-      "asterismarcanum:astral_cast",
-      "asterismarcanum:astral_cast_low"
+      "asterismarcanum:astral_sound_1",
+      "asterismarcanum:astral_sound_2",
+      "asterismarcanum:astral_sound_3",
+      "asterismarcanum:astral_sound_4"
     ]
   },
-  "astral_cast_impact" : {
-    "subtitle" : "sounds.asterismarcanum.astral_cast_impact",
+  "astral_echo_sound" : {
+    "subtitle" : "Player casts Astral Echo.",
     "sounds" : [
-      "asterismarcanum:astral_cast_impact",
-      "asterismarcanum:astral_cast_impact_low"
+      "asterismarcanum:astral_echo_sound"
     ]
   },
-  "astral_shatter" : {
-    "subtitle" : "sounds.asterismarcanum.astral_shatter",
+  "brightburst_sound" : {
+    "subtitle" : "Astral Magic explosion occurs.",
     "sounds" : [
-      "asterismarcanum:astral_shatter_1",
-      "asterismarcanum:astral_shatter_2",
-      "asterismarcanum:astral_shatter_3"
+      "asterismarcanum:brightburst_sound"
     ]
   },
-  "star_shatter" : {
-    "subtitle" : "sounds.asterismarcanum.star_shatter",
+  "celestial_tether_shatter" : {
+    "subtitle" : "Celestial Tether Shatters.",
     "sounds" : [
-      "asterismarcanum:star_shatter_1",
-      "asterismarcanum:star_shatter_2",
-      "asterismarcanum:star_shatter_3"
+      "asterismarcanum:celestial_tether_shatter_sound_1",
+      "asterismarcanum:celestial_tether_shatter_sound_2",
+      "asterismarcanum:celestial_tether_shatter_sound_3"
     ]
   },
-  "night_vision_cast" : {
-    "subtitle" : "sounds.asterismarcanum.night_vision_cast",
+  "piercing_light_cast_sound" : {
+    "subtitle" : "Piercing Light is cast.",
     "sounds" : [
-      "asterismarcanum:night_vision_cast"
+      "asterismarcanum:piercing_light_cast_sound_1",
+      "asterismarcanum:piercing_light_cast_sound_2",
+      "asterismarcanum:piercing_light_cast_sound_3",
+      "asterismarcanum:piercing_light_cast_sound_4"
     ]
   },
-  "brightburst_cast" : {
-    "subtitle" : "sounds.asterismarcanum.brightburst_cast",
+  "summon_moth_sound" : {
+    "subtitle" : "Player summons Lunar Moth.",
     "sounds" : [
-      "asterismarcanum:brightburst_cast"
+      "asterismarcanum:summon_moth_sound"
+    ]
+  },
+  "luminous_beam_loop" : {
+    "subtitle" : "Astral Magic continues.",
+    "sounds" : [
+      "asterismarcanum:luminous_beam_loop"
     ]
   }
 }

@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.celestial_tether.CelestialTetherEntity;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
@@ -11,10 +12,12 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
+import java.util.Optional;
 
 // Celestial tether suspends you in the air and will absorb a number of incoming hits
 public class CelestialTetherSpell extends AbstractSpell {
@@ -58,14 +61,10 @@ public class CelestialTetherSpell extends AbstractSpell {
         return spellId;
     }
 
-    // Im thinking this VVVV isnt actually necessary because you automatically dismount when you teleport anyways and if it has no rider the tether dies
-//    @Override
-//    public boolean checkPreCastConditions(Level level, int spellLevel, LivingEntity entity, MagicData playerMagicData) {
-//        if (entity.hasEffect(MobEffectRegistry.ABYSSAL_SHROUD) || entity.hasEffect(MobEffectRegistry.EVASION)) {
-//            return false;
-//        }
-//        return super.checkPreCastConditions(level, spellLevel, entity, playerMagicData);
-//    }
+    @Override
+    public Optional<SoundEvent> getCastFinishSound() {
+        return Optional.of(ASARSoundsRegistry.ASTRAL_SOUND.get());
+    }
 
     @Override
     public void onCast(Level world, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {

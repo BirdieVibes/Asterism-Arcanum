@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.spells.starcutter.StarcutterEntity;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
@@ -77,7 +78,7 @@ public class AstralEchoSpell extends AbstractSpell {
 
     @Override
     public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(SoundRegistry.MAGIC_SPELL_REVERSE_3.get());
+        return Optional.of(ASARSoundsRegistry.ASTRAL_ECHO_CAST.get());
     }
 
     @Override
@@ -105,7 +106,7 @@ public class AstralEchoSpell extends AbstractSpell {
         Utils.handleSpellTeleport(this, entity, dest);
         entity.resetFallDistance();
         MagicManager.spawnParticles(entity.level(), ParticleTypes.SMALL_GUST, dest.x, dest.y+1, dest.z, 15, 1, 1, 1, 0.5f, false);
-        level.playSound(null, dest.x, dest.y, dest.z, getCastFinishSound().get(), SoundSource.NEUTRAL, 1f, 1f);
+        level.playSound(null, dest.x, dest.y, dest.z, getCastFinishSound().get(), SoundSource.NEUTRAL, 1f,  Utils.random.nextIntBetweenInclusive(2, 5) * .3f);
 
         playerMagicData.resetAdditionalCastData();
 

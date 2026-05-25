@@ -21,14 +21,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
 
+        //===================================CELESTIAL STAFF=======================================
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ASARItemsRegistry.CELESTIAL_STAFF.get(), 1)
-            .pattern("BCB")
-            .pattern(" A ")
-            .pattern(" A ")
+            .pattern("CB ")
+            .pattern("BA ")
+            .pattern("  B")
             .define('A', ItemRegistry.MITHRIL_SCRAP.get())
-            .define('B', Items.IRON_BARS)
-            .define('C', Items.AMETHYST_SHARD)
-            .unlockedBy("has_material", has(ItemRegistry.MITHRIL_SCRAP.get())).save(recipeOutput);
+            .define('B', ItemRegistry.ARCANE_INGOT.get())
+            .define('C', ItemRegistry.AFFINITY_RING.get())
+            .unlockedBy("has_material", has(ItemRegistry.ARCANE_INGOT.get())).save(recipeOutput);
 
         //====================================ASTROLABE================================
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ASARItemsRegistry.ASTROLABE.get(), 1)

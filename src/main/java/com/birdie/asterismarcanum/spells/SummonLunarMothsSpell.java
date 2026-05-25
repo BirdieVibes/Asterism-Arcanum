@@ -3,6 +3,7 @@ package com.birdie.asterismarcanum.spells;
 import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.entity.mobs.summoned_lunar_moth.SummonedLunarMothEntity;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
+import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.events.SpellSummonEvent;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
@@ -17,6 +18,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.Level;
@@ -25,6 +27,7 @@ import net.neoforged.neoforge.common.NeoForge;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Optional;
 
 // summons a small swarm of moths that will attack your enemies!! very weak but they apply levitation on hit
 
@@ -63,6 +66,11 @@ public class SummonLunarMothsSpell extends AbstractSpell {
     }
 
     public int getSummonCount(int spellLevel, LivingEntity caster) {return 1;}
+
+    @Override
+    public Optional<SoundEvent> getCastStartSound() {
+        return Optional.of(ASARSoundsRegistry.SUMMON_MOTH_SOUND.get());
+    }
 
     @Override public int getRecastCount(int spellLevel, @Nullable LivingEntity entity) {
         return 2;

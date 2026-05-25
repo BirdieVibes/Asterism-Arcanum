@@ -117,9 +117,9 @@ public class StarfireProjectile extends AbstractMagicProjectile {
     public float getSpeed() {
         return 2.5f;
     }
-//TODO SOUND
+
     @Override
     public Optional<Holder<SoundEvent>> getImpactSound() {
-        return Optional.of(ASARSoundsRegistry.GALE_V3);
+        return Optional.of(ASARSoundsRegistry.ASTRAL_SOUND);
     }
 }

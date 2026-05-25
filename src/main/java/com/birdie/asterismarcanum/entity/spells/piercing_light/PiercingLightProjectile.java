@@ -21,6 +21,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public class PiercingLightProjectile extends AbstractMagicProjectile {
     private static final EntityDataAccessor<Float> DATA_Z_ROT = SynchedEntityData.defineId(PiercingLightProjectile.class, EntityDataSerializers.FLOAT);
@@ -120,9 +121,8 @@ public class PiercingLightProjectile extends AbstractMagicProjectile {
         return 2.5f;
     }
 
-    //TODO SOUND
     @Override
     public Optional<Holder<SoundEvent>> getImpactSound() {
-        return Optional.of(ASARSoundsRegistry.GALE_V3);
+        return Optional.of(ASARSoundsRegistry.ASTRAL_SOUND);
     }
 }

@@ -3,25 +3,42 @@
 	"animations": {
 		"idle": {
 			"loop": true,
-			"animation_length": 3,
+			"animation_length": 2,
 			"bones": {
 				"gem": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 90, 0]
+						},
+						"1.0": {
+							"vector": [0, 180, 0]
+						},
+						"1.5": {
+							"vector": [0, 270, 0]
+						},
+						"2.0": {
+							"vector": [0, 360, 0]
+						}
+					},
 					"position": {
 						"0.0": {
 							"post": {
-								"vector": [0, -0.3, 0]
+								"vector": [0, 0, 0]
 							},
 							"lerp_mode": "catmullrom"
 						},
-						"1.5": {
+						"1.0": {
 							"post": {
-								"vector": [0, 0.2, 0]
+								"vector": [0, 1, 0]
 							},
 							"lerp_mode": "catmullrom"
 						},
-						"3.0": {
+						"2.0": {
 							"post": {
-								"vector": [0, -0.3, 0]
+								"vector": [0, 0, 0]
 							},
 							"lerp_mode": "catmullrom"
 						}

@@ -80,9 +80,8 @@ public class StarcutterEntity extends Projectile implements AntiMagicSusceptible
                     ParticleTypes.FLASH, position.x, position.y + this.getBbHeight()/2, position.z, 1, 0, 0, 0, 0, false
             );
 
-            //TODO SOUND
-//            level.playSound(null, blockPos, ASARSoundsRegistry.GALE_RECHARGE.get(),
-//                    SoundSource.NEUTRAL, 10f, Utils.random.nextIntBetweenInclusive(2, 5) * .3f);
+            level.playSound(null, blockPos, ASARSoundsRegistry.ASTRAL_SOUND.get(),
+                    SoundSource.NEUTRAL, 1.5f,  Utils.random.nextIntBetweenInclusive(1, 3) * .3f);
         }
 
         if (tickCount > duration) {
@@ -104,8 +103,8 @@ public class StarcutterEntity extends Projectile implements AntiMagicSusceptible
                 );
             }
 //TODO SOUND
-//            level.playSound(null, blockPos, ASARSoundsRegistry.ASTRAL_SHATTER_2.get(),
-//                    SoundSource.NEUTRAL, 10, Utils.random.nextIntBetweenInclusive(2, 5) * .1f);
+            level.playSound(null, blockPos, ASARSoundsRegistry.CELESTIAL_TETHER_SHATTER.get(),
+                    SoundSource.NEUTRAL, 1f,  Utils.random.nextIntBetweenInclusive(2, 5) * .3f);
 
             float explosionRadius = totalRadius * 10;
             var explosionRadiusSqr = explosionRadius * explosionRadius;

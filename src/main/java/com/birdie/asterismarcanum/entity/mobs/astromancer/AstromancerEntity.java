@@ -65,7 +65,7 @@ public class AstromancerEntity extends NeutralWizard implements IMerchantWizard 
                         // Defense
                         List.of(ASARSpellRegistry.CELESTIAL_TETHER.get(), ASARSpellRegistry.BRIGHTBURST.get(), ASARSpellRegistry.PIERCING_LIGHT.get()),
                         // Movement
-                        List.of(SpellRegistry.TELEPORT_SPELL.get()),
+                        List.of(ASARSpellRegistry.ASTRAL_ECHO.get()),
                         // Support
                         List.of(SpellRegistry.EVASION_SPELL.get())
                 )
@@ -75,8 +75,8 @@ public class AstromancerEntity extends NeutralWizard implements IMerchantWizard 
         );
         this.goalSelector.addGoal(2, new WizardSpellComboGoal(this,
                 List.of(
-                        ASARSpellRegistry.STARCUTTER.get(),
                         ASARSpellRegistry.BRIGHTBURST.get(),
+                        ASARSpellRegistry.STARCUTTER.get(),
                         ASARSpellRegistry.STAR_SWARM.get()
                 ), 1.3f, 1.3f, 100, 250));
 

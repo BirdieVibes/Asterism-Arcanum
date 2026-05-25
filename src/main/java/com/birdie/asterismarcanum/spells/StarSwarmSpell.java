@@ -69,10 +69,9 @@ public class StarSwarmSpell extends AbstractSpell {
         return Optional.empty();
     }
 
-    //TODO: SOUND
     @Override
     public Optional<SoundEvent> getCastFinishSound() {
-        return Optional.of(ASARSoundsRegistry.GALE_V3.get());
+        return Optional.of(ASARSoundsRegistry.LUMINOUS_BEAM_LOOP.get());
     }
 
     @Override
