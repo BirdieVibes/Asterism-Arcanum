@@ -48,7 +48,7 @@
       }
     },
     {
-      "weight": 2,
+      "weight": 4,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "asterismarcanum:astral_observatory/room/clutter/empty",
@@ -66,7 +66,7 @@
       }
     },
     {
-      "weight": 1,
+      "weight": 2,
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "asterismarcanum:astral_observatory/room/clutter/misc_wide",
@@ -79,6 +79,33 @@
       "element": {
         "element_type": "minecraft:single_pool_element",
         "location": "asterismarcanum:astral_observatory/room/clutter/dragonfly",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/room/clutter/dragonfly1",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/room/clutter/dragonfly2",
+        "processors": "minecraft:empty",
+        "projection": "rigid"
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "asterismarcanum:astral_observatory/room/clutter/statue",
         "processors": "minecraft:empty",
         "projection": "rigid"
       }

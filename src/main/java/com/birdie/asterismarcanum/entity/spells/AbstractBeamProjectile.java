@@ -5,7 +5,6 @@ import io.redspace.ironsspellbooks.api.entity.NoKnockbackProjectile;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -125,7 +124,7 @@ public abstract class AbstractBeamProjectile extends Projectile implements NoKno
         }
 
         if (tickCount % 15 == 0) {
-            this.playSound(ASARSoundsRegistry.LUMINOUS_BEAM_LOOP.get(), 1f, Utils.random.nextIntBetweenInclusive(3, 4) * .3f);
+            this.playSound(ASARSoundsRegistry.LUMINOUS_BEAM_LOOP.get(), 2f, Utils.random.nextIntBetweenInclusive(3, 4) * .3f);
         }
         var owner = this.getOwner();
         if (owner != null) {

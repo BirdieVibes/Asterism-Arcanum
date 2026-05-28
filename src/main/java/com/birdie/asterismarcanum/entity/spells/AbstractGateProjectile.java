@@ -3,7 +3,6 @@ package com.birdie.asterismarcanum.entity.spells;
 import com.birdie.asterismarcanum.entity.spells.piercing_light.PiercingLightProjectile;
 import io.redspace.ironsspellbooks.api.entity.NoKnockbackProjectile;
 import io.redspace.ironsspellbooks.api.util.Utils;
-import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;

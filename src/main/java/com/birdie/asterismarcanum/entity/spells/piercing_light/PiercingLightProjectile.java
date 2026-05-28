@@ -6,7 +6,6 @@ import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.spells.AbstractMagicProjectile;
-import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -21,7 +20,6 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
 import java.util.Optional;
-import java.util.function.Supplier;
 
 public class PiercingLightProjectile extends AbstractMagicProjectile {
     private static final EntityDataAccessor<Float> DATA_Z_ROT = SynchedEntityData.defineId(PiercingLightProjectile.class, EntityDataSerializers.FLOAT);

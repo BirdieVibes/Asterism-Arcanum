@@ -7,13 +7,11 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
 import io.redspace.ironsspellbooks.entity.mobs.ice_spider.ICritablePartEntity;
-import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
@@ -112,7 +110,7 @@ public class CelestialTetherEntity extends Entity implements AntiMagicSusceptibl
                         (int) 4, 0.1, 0.1, 0.1, 0, false);
             }
 
-            this.playSound(ASARSoundsRegistry.LUMINOUS_BEAM_LOOP.get(), 1f, Utils.random.nextIntBetweenInclusive(3, 4) * .3f);
+            this.playSound(ASARSoundsRegistry.LUMINOUS_BEAM_LOOP.get(), 2f, Utils.random.nextIntBetweenInclusive(3, 4) * .3f);
 
             MagicManager.spawnParticles(cachedOwner.level(), ParticleTypes.SMALL_GUST,
                     this.getX(),
