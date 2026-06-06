@@ -52,10 +52,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
           100
         ).unlockedBy("has_material", has((ItemLike) ASARItemsRegistry.DRAGONFLY_WINGS)).save(recipeOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.LUMINE.get(), 1)
-            .pattern("BAB")
-            .pattern("ABA")
-            .pattern("BAB")
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.LUMINE.get(), 4)
+            .pattern("BA ")
+            .pattern("AB ")
+            .pattern("   ")
             .define('B', (ItemLike) ASARItemsRegistry.LUMINE_DUST)
             .define('A', Items.QUARTZ)
             .unlockedBy("has_material", has((ItemLike) ASARItemsRegistry.LUMINE_DUST)).save(recipeOutput);
@@ -134,10 +134,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         //=============================UMBRAL LUMINE============================================================
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE.get(), 1)
-            .pattern("BAB")
-            .pattern("ABA")
-            .pattern("BAB")
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ASARModBlocksRegistry.UMBRAL_LUMINE.get(), 4)
+            .pattern("BA ")
+            .pattern("AB ")
+            .pattern("   ")
             .define('B', (ItemLike) ASARItemsRegistry.LUMINE_DUST)
             .define('A', Items.AMETHYST_SHARD)
             .unlockedBy("has_material", has((ItemLike) ASARItemsRegistry.LUMINE_DUST)).save(recipeOutput);

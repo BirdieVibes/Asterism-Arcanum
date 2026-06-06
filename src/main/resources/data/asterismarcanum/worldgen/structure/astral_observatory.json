@@ -15,16 +15,9 @@
     "absolute": 10
   },
   "project_start_to_heightmap": "WORLD_SURFACE_WG",
-  "biomes": [
-    "minecraft:frozen_peaks",
-    "minecraft:stony_peaks",
-    "minecraft:jagged_peaks",
-    "minecraft:meadow",
-    "minecraft:grove",
-    "minecraft:snowy_slopes",
-    "minecraft:windswept_gravelly_hills",
-    "minecraft:windswept_hills"
-  ],
+  "biomes":
+    "#asterismarcanum:/has_structure/astral_observatory"
+  ,
   "terrain_adaptation": "none",
   "spawn_overrides": {
   }

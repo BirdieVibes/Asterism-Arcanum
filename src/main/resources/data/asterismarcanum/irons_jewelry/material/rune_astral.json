@@ -1,0 +1,18 @@
+{
+  "descriptionId": "material.asterismarcanum.rune_astral",
+  "ingredient": {
+    "item": "asterismarcanum:astral_rune"
+  },
+  "materialType": [
+    "spellbooks_rune"
+  ],
+  "paletteLocation": "asterismarcanum:palettes/rune_astral",
+  "quality": 1.5,
+  "bonusParameters": {
+    "irons_jewelry:attribute": {
+      "attribute": "asterismarcanum:astral_spell_power",
+      "amount": 0.025,
+      "operation": "add_multiplied_total"
+    }
+  }
+}

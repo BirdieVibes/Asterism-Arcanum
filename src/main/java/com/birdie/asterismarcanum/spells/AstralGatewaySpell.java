@@ -4,6 +4,8 @@ import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.capabilities.magic.AstralSeaManager;
 import com.birdie.asterismarcanum.registries.ASARSchoolRegistry;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
+import io.redspace.ironsspellbooks.api.config.SpellConfigManager;
+import io.redspace.ironsspellbooks.api.config.SpellConfigParameter;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
@@ -45,6 +47,10 @@ public class AstralGatewaySpell extends AbstractSpell {
         this.spellPowerPerLevel = 0;
         this.castTime = 40;
         this.baseManaCost = 300;
+    }
+
+    public boolean allowCrafting() {
+        return false;
     }
 
     @Override

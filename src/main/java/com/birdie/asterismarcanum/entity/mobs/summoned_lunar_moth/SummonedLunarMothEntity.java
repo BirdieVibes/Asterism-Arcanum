@@ -93,10 +93,9 @@ public class SummonedLunarMothEntity extends LunarMothEntity implements IMagicSu
         return LivingEntity.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 15.0)
                 .add(Attributes.FOLLOW_RANGE, 24.0)
-                .add(Attributes.MOVEMENT_SPEED, 1.0F)
                 .add(Attributes.ATTACK_DAMAGE, 2.0F)
                 .add(ASAttributeRegistry.MANA_REND, 0.15F)
-                .add(Attributes.FLYING_SPEED, 1.3F);
+                .add(Attributes.FLYING_SPEED, 0.8F);
     }
 
     @Override
@@ -144,7 +143,6 @@ public class SummonedLunarMothEntity extends LunarMothEntity implements IMagicSu
             if (entity instanceof Player) {
                 return (Player) entity;
             }
-
             return null;
         }
     }
@@ -165,7 +163,6 @@ public class SummonedLunarMothEntity extends LunarMothEntity implements IMagicSu
         float f = player.xxa * 0.5F;
         float f1 = player.zza;
         double f2 = 0;
-
         if (this.isInWater()) {
             f *= .3f;
             f1 *= .3f;
@@ -186,12 +183,14 @@ public class SummonedLunarMothEntity extends LunarMothEntity implements IMagicSu
 
     @Override
     protected float getRiddenSpeed(Player p_278336_) {
-        return (float) this.getAttributeValue(Attributes.FLYING_SPEED) * 0.25f;
+        if (this.onGround()) {
+            return (float) (this.getAttributeValue(Attributes.FLYING_SPEED) * 0.25f);
+        }
+        return (float) this.getAttributeValue(Attributes.FLYING_SPEED);
     }
 
     // took this from the boat class
     protected Vec3 getPassengerAttachmentPoint(Entity entity, EntityDimensions dimensions, float partialTick) {
-
         return (new Vec3((double)0.0F, (double)(dimensions.height() / 2.0F) + 0.6, (double)0.0F));
     }
 

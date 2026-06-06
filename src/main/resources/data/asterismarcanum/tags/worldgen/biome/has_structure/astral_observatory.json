@@ -1,0 +1,22 @@
+{
+  "values" : [
+    "c:is_mountain",
+    "minecraft:stony_peaks",
+    "minecraft:jagged_peaks",
+    "minecraft:frozen_peaks",
+    "minecraft:meadow",
+    "minecraft:snowy_slopes",
+    "minecraft:windswept_hills",
+    "minecraft:windswept_savanna",
+    {"id": "eternal_starlight:crystallized_desert", "required": false},
+    {"id": "eternal_starlight:grim_shore", "required": false},
+    {"id": "eternal_starlight:lucent_mycelium_isle", "required": false},
+    {"id": "eternal_starlight:lush_shallow_sea", "required": false},
+    {"id": "eternal_starlight:starlight_taiga", "required": false},
+    {"id": "eternal_starlight:glimmer_scrubland", "required": false},
+    {"id": "eternal_starlight:umbral_plains", "required": false},
+    {"id": "eternal_starlight:warm_shore", "required": false}
+  ],
+  "remove" :
+  "minecraft:cherry_grove"
+}
