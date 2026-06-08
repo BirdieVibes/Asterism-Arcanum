@@ -9,6 +9,7 @@ import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
 import io.redspace.ironsspellbooks.entity.mobs.AntiMagicSusceptible;
+import io.redspace.ironsspellbooks.spells.ender.TeleportSpell;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -17,11 +18,14 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+
+import static io.redspace.ironsspellbooks.spells.ender.TeleportSpell.findTeleportLocation;
 
 public class StarcutterEntity extends Projectile implements AntiMagicSusceptible {
     private static final EntityDataAccessor<Float> DATA_RADIUS =
@@ -44,7 +48,17 @@ public class StarcutterEntity extends Projectile implements AntiMagicSusceptible
     @Override
     public void onAntiMagic(MagicData playerMagicData) {
         if(this.getTags().contains("astral_echo_entity") && this.getOwner() != null) {
-            this.getOwner().setPos(this.position());
+            var entity = this.getOwner();
+            var teleportData = (TeleportSpell.TeleportData) playerMagicData.getAdditionalCastData();
+            if (teleportData != null) {
+                Vec3 dest = this.position();
+
+                if (entity.isPassenger()) {
+                    entity.stopRiding();
+                }
+                Utils.handleSpellTeleport(ASARSpellRegistry.ASTRAL_ECHO.get(), entity, dest);
+                entity.resetFallDistance();
+            }
         }
 
         this.tickCount = 30;

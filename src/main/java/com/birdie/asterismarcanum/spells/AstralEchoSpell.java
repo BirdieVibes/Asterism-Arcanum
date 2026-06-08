@@ -86,7 +86,7 @@ public class AstralEchoSpell extends AbstractSpell {
         shadow.setDamage(0);
         shadow.setPos(entity.position());
         level.addFreshEntity(shadow);
-               Vec3 dest = null;
+        Vec3 dest = null;
         if (teleportData != null) {
             var potentialTarget = teleportData.getTeleportTargetPosition();
             dest = potentialTarget;
