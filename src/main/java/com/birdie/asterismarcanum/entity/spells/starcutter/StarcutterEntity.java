@@ -1,10 +1,14 @@
 package com.birdie.asterismarcanum.entity.spells.starcutter;
 
+import com.birdie.asterismarcanum.AsterismArcanum;
 import com.birdie.asterismarcanum.particle.StarCutParticleOptions;
 import com.birdie.asterismarcanum.registries.ASAREntityRegistry;
 import com.birdie.asterismarcanum.registries.ASARSoundsRegistry;
 import com.birdie.asterismarcanum.registries.ASARSpellRegistry;
+import com.birdie.asterismarcanum.spells.AstralEchoSpell;
+import io.redspace.ironsspellbooks.IronsSpellbooks;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.damage.DamageSources;
@@ -48,17 +52,7 @@ public class StarcutterEntity extends Projectile implements AntiMagicSusceptible
     @Override
     public void onAntiMagic(MagicData playerMagicData) {
         if(this.getTags().contains("astral_echo_entity") && this.getOwner() != null) {
-            var entity = this.getOwner();
-            var teleportData = (TeleportSpell.TeleportData) playerMagicData.getAdditionalCastData();
-            if (teleportData != null) {
-                Vec3 dest = this.position();
-
-                if (entity.isPassenger()) {
-                    entity.stopRiding();
-                }
-                Utils.handleSpellTeleport(ASARSpellRegistry.ASTRAL_ECHO.get(), entity, dest);
-                entity.resetFallDistance();
-            }
+           this.getOwner().teleportTo(this.getX(), this.getY(), this.getZ());
         }
 
         this.tickCount = 30;
