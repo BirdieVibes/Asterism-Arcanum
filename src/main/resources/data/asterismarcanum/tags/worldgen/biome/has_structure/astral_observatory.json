@@ -1,6 +1,6 @@
 {
   "values" : [
-    "c:is_mountain",
+    "#c:is_mountain",
     "minecraft:stony_peaks",
     "minecraft:jagged_peaks",
     "minecraft:frozen_peaks",
@@ -17,6 +17,7 @@
     {"id": "eternal_starlight:umbral_plains", "required": false},
     {"id": "eternal_starlight:warm_shore", "required": false}
   ],
-  "remove" :
+  "remove" : [
   "minecraft:cherry_grove"
+  ]
 }
