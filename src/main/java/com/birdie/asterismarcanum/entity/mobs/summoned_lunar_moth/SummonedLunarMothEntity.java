@@ -95,7 +95,7 @@ public class SummonedLunarMothEntity extends LunarMothEntity implements IMagicSu
                 .add(Attributes.FOLLOW_RANGE, 24.0)
                 .add(Attributes.ATTACK_DAMAGE, 2.0F)
                 .add(ASAttributeRegistry.MANA_REND, 0.15F)
-                .add(Attributes.FLYING_SPEED, 0.8F);
+                .add(Attributes.FLYING_SPEED, 1.1F);
     }
 
     @Override

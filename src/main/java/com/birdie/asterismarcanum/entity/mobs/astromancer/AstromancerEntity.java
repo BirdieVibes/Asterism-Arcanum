@@ -20,8 +20,10 @@ import io.redspace.ironsspellbooks.player.AdditionalWanderingTrades;
 import io.redspace.ironsspellbooks.registries.ItemRegistry;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import net.acetheeldritchking.aces_spell_utils.entity.mobs.goals.WizardSpellComboGoal;
+import net.minecraft.Util;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
@@ -282,9 +284,10 @@ public class AstromancerEntity extends NeutralWizard implements IMerchantWizard 
     }
 
     private static final List<VillagerTrades.ItemListing> filler = List.of(
-            new AdditionalWanderingTrades.SimpleBuy(1, new ItemCost(ASARItemsRegistry.DRAGONFLY_WINGS.get(), 1), 6, 12),
             new AdditionalWanderingTrades.SimpleSell(1, new ItemStack(ASARItemsRegistry.ASTRAL_RUNE.get(), 2), 25, 55),
-            new AdditionalWanderingTrades.SimpleSell(1, new ItemStack(ASARItemsRegistry.DRAGONFLY_WINGS.get(), 1), 6, 12)
+            new AdditionalWanderingTrades.SimpleSell(1, new ItemStack(ASARItemsRegistry.MOTHSPAWN.get(), 3), 25, 55),
+            new AdditionalWanderingTrades.SimpleSell(1, new ItemStack(ASARItemsRegistry.LUMINE_DUST.get(), 16), 2, 6),
+            new AdditionalWanderingTrades.SimpleSell(1, new ItemStack(ASARItemsRegistry.DRAGONFLY_WINGS.get(), Mth.randomBetweenInclusive(Utils.random, 1, 5)), 6, 12)
     );
 
     private Collection<MerchantOffer> createRandomOffers(int min, int max)
