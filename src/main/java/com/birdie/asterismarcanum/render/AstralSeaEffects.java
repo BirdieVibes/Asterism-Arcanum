@@ -54,7 +54,7 @@ public class AstralSeaEffects extends DimensionSpecialEffects {
         /*
          * Skybox
          */
-        float skyDistance = 200;
+        float skyDistance = 400;
         renderBox(poseStack, tesselator, skyDistance, 0, 1, GameRenderer::getPositionTexColorShader, SKY_LOCATION, 0xFF456575);
         /*
          * Stars
